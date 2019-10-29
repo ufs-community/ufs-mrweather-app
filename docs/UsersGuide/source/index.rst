@@ -1,10 +1,10 @@
-.. ufs-mrweather-app documentation master file, created by
+.. UFS MR Weather App Users Guide, created by
    sphinx-quickstart on Tue Oct 29 09:07:29 2019.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to ufs-mrweather-app's documentation!
-=============================================
+Welcome to the UFS MR Weather App Users Guide!
+==============================================
 
 .. toctree::
    :numbered:
