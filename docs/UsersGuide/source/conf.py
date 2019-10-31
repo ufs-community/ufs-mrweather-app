@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.abspath('.'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'UFS MR Weather App Users Guide'
+project = 'UFS Medium-Range Weather App Users Guide'
 copyright = '2019'
 author = ' '
 
@@ -118,7 +118,7 @@ def setup(app):
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'CCPPtechnical'
+htmlhelp_basename = 'UFS-Weather-App'
 
 
 # -- Options for LaTeX output ------------------------------------------------
