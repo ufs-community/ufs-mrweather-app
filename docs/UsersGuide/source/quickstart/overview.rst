@@ -4,39 +4,8 @@
 Overview
 ============
 
-How To Use This Document
-------------------------
-
-This guide instructs both novice and experienced users on downloading,
-building and running `CESM2
-<http://www.cesm.ucar.edu/models/cesm2>`_.
-
-The mrweather app workflow is built on the `CIME framework <http://github.com/ESMCI/cime>`_.
-
-If you are a new user, we recommend reading the first few sections of
-the `CIME`_ documentation which is written so that, as much as
-possible, individual sections stand on their own and the `CIME`_
-documentation guide can be scanned and sections read in a relatively
-ad hoc order.
-
-.. code-block:: console
-
-    Throughout the guide, this presentation style indicates shell
-    commands and options, fragments of code, namelist variables, etc.
-
-.. note::
-
-   Variables presented as ``$VAR`` in this guide typically refer to variables in XML files
-   in a CESM case. From within a case directory, you can determine the value of such a
-   variable with ``./xmlquery VAR``. In some instances, ``$VAR`` refers to a shell
-   variable or some other variable; we try to make these exceptions clear.
-
-Please feel free to provide feedback to the `CESM forum <https://bb.cgd.ucar.edu/>`_ about how to improve the
-documentation.
-
-
 What is the mrweather app?
-==========================
+--------------------------
 
 .. todo::
 	describe naming convention
@@ -69,6 +38,36 @@ the working groups. The `CESM website <http://www.cesm.ucar.edu/>`__
 provides more information on the CESM project, such as the management
 structure, the scientific working groups, downloadable source code,
 and online archives of data from previous CESM experiments.
+
+How To Use This Document
+------------------------
+
+This guide instructs both novice and experienced users on downloading,
+building and running the UFS mrweather application `CESM2 <http://www.cesm.ucar.edu/models/cesm2>`_.
+
+The mrweather app workflow is built on the `CIME framework <http://github.com/ESMCI/cime>`_.
+
+If you are a new user, we recommend reading the first few sections of
+the `CIME`_ documentation which is written so that, as much as
+possible, individual sections stand on their own and the `CIME`_
+documentation guide can be scanned and sections read in a relatively
+ad hoc order.
+
+.. code-block:: console
+
+    Throughout the guide, this presentation style indicates shell
+    commands and options, fragments of code, namelist variables, etc.
+
+.. note::
+
+   Variables presented as ``$VAR`` in this guide typically refer to variables in XML files
+   in a CESM case. From within a case directory, you can determine the value of such a
+   variable with ``./xmlquery VAR``. In some instances, ``$VAR`` refers to a shell
+   variable or some other variable; we try to make these exceptions clear.
+
+Please feel free to provide feedback to the `CESM forum <https://bb.cgd.ucar.edu/>`_ about how to improve the
+documentation.
+
 
 Software/Operating System Prerequisites
 ---------------------------------------------
