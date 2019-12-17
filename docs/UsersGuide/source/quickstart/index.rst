@@ -8,7 +8,7 @@
 .. toctree::
    :maxdepth: 2
 
-   requirements.rst
+   overview.rst
    downloading.rst
    configurations.rst
    quickstart.rst

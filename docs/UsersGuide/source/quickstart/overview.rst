@@ -8,9 +8,9 @@ What is the mrweather app?
 --------------------------
 
 .. todo::
-	describe naming convention
+   describe naming convention
 
-The Community Earth System Model (CESM) is a coupled climate model for
+The mrweather app l (CESM) is a coupled climate model for
 simulating Earth's climate system. Composed of separate models
 simultaneously simulating the Earth's atmosphere, ocean, land, river
 run-off, land-ice, and sea-ice, plus one central coupler/moderator
