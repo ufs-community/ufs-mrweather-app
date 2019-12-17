@@ -8,23 +8,38 @@ The mrweather app currently can be configured at four out of the box resolutions
 and one preprocessed initial conditions for each resolution.
 
 
-supported component sets
+Supported component sets
 ----------------------------
 
-Describe component sets here. Running **query_config**
-with the ``--compsets`` option will also provide a listing of the
-supported out-of-the-box component sets for the local version of CESM.
+   .. todo:: Define what a compset is for the UFS
+
+To determine what out of the box MR Weather Application compsets are available in the release, do
+the following:
+::
+
+      > cd $SRCROOT/cime/scripts
+      > ./query_config --compsets
 
 
-supported grids
+Supported grids
 ---------------
 
-The mrweather app currently supports four out of the box grids. Give description.
-grid with three poles that are all centered over land.
-Describe how you will query the grid.
+The MR Weather Application currently supports four out of the box grids.
+
+* C96 (~100km)
+* C192 (~50km),
+* C384 (~25km)
+* C768 (~13km),
+
+all with 64 vertical levels.CIME supports numerous out-of-the box model resolutions. To see the
+grids that are supported, call `query_config <../Tools_user/query_config.html>`_ as shown below.
+::
+
+      > cd $SRCROOT/cime/scripts
+      > ./query_config --grids
 
 
-supported platforms and compilers
+Supported platforms and compilers
 ---------------------------------
 
 Scripts for `supported machines
@@ -52,19 +67,11 @@ process. The machines available in each of these categories changes as
 access to machines change over time.
 
 
-validation
-----------
+Validating your port
+--------------------
 
-Although CESM can be run out-of-the-box for a variety of resolutions,
+Although the MR Weather Application can be run out-of-the-box for a variety of resolutions,
 component combinations, and machines, MOST combinations of component
-sets, resolutions, and machines have not undergone rigorous scientific
-climate validation. Control runs accompany `scientifically supported
-<http://www.cesm.ucar.edu/models/scientifically-supported.html>`_
-component sets and resolutions and are documented on the release page.
-These control runs should be scientifically reproducible on the
-original platform or other platforms. Bit-for-bit reproducibility
-cannot be guaranteed due to variations in compiler or system
-versions. Users should carry out their own `port validations
-<http://esmci.github.io/cime/users_guide/porting-cime.html#validating-your-port>`_
-on any platform prior to doing scientific runs or scientific analysis
-and documentation.
+sets, resolutions, and machines have not undergone rigorous scientific validation.
+
+  .. todo:: Define the port validation process

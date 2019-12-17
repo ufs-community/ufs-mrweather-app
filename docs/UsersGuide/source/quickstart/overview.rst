@@ -4,48 +4,83 @@
 Overview
 ============
 
-What is the mrweather app?
---------------------------
+What is the UFS Medium-Range Weather Application
+------------------------------------------------------------
 
-.. todo::
-   describe naming convention
+The Unified Forecast System (UFS) can be configured into multiple
+applications. The first of these to be released to the community is
+the UFS Medium-Range (MR) Weather Application, which targets
+predictions of atmospheric behavior out to about two weeks.  The MR
+Weather Application 1.0 includes a prognostic atmospheric model, pre-
+and post-processing, and a community workflow, but does not include
+data assimilation.
 
-The mrweather app l (CESM) is a coupled climate model for
-simulating Earth's climate system. Composed of separate models
-simultaneously simulating the Earth's atmosphere, ocean, land, river
-run-off, land-ice, and sea-ice, plus one central coupler/moderator
-component, CESM allows researchers to conduct fundamental research
-into the Earth's past, present, and future climate states.
+The release is available on `GitHub <https://github.com/ufs-community/ufs-mrweather-app/>`__
+and is designed to be a code that the research community can
+run and improve. It is portable to a set of commonly used
+platforms. Specific configurations of the release (e.g. specific model
+resolutions and physics options) are documented and supported.
 
-CESM can be run on a number of different `hardware platforms
-<http://www.cesm.ucar.edu/models/cesm2/cesm/machines.html>`__, and
-has a relatively flexible design with respect to `processor layout
-<http://esmci.github.io/cime/users_guide/pes-threads.html>`__
-of components.
+The prognostic model in the UFS MR Weather Application is the UFS
+global atmosphere with the Finite Volume Cubed Sphere (FV3) dynamical
+core. The dynamical core is the computational part of a model that
+solves the equations of fluid motion. The version of the atmospheric
+model in this release is an updated version of the same atmospheric
+model that is being used in the operational Global Forecast System v15
+(GFSv15). Interoperable atmospheric physics are supported through the
+use of the Common Community Physics Package (CCPP). There are two
+physics options supported for the release. The first is the physics
+suite used in the operational GFS v15, and the second is an
+experimental suite that includes the latest developments for the next
+version of GFS, GFS v16.
 
-The CESM project is a cooperative effort among U.S. climate
-researchers.  Primarily supported by the `National Science
-Foundation(NSF) <https://www.nsf.gov/>`_ and centered at the `National
-Center for Atmospheric Research (NCAR) <https://ncar.ucar.edu/>`_ in
-Boulder, Colorado, the CESM project enjoys close collaborations with
-the `U.S. Department of Energy (DOE) <https://energy.gov/>`_ and the
-`National Aeronautics and Space Administration (NASA)
-<http://www.nasa.gov>`_.  Scientific development of the CESM is guided
-by the CESM working groups, which meet twice a year. The main CESM
-workshop is held each year in June to showcase results from the
-various working groups and coordinate future CESM developments among
-the working groups. The `CESM website <http://www.cesm.ucar.edu/>`__
-provides more information on the CESM project, such as the management
-structure, the scientific working groups, downloadable source code,
-and online archives of data from previous CESM experiments.
+There are four supported model resolutions that accompany the release:
+
+* C96 (~100km)
+* C192 (~50km),
+* C384 (~25km)
+* C768 (~13km),
+
+all with 64 vertical levels.  The Geophysical Fluid Dynamics
+Laboratory website provides more information about FV3 grids.
+
+
+Workflow and Build System
+------------------------------------------------------------
+
+The MR Weather Application has a user-friendly workflow and a portable
+build system.  The workflow leverages the Common Infrastructure for
+Modeling Earth (CIME) Case Control System (CCS) `CIME framework
+<http://github.com/ESMCI/cime>`_. This established community workflow
+is familiar to many through its use in the Community Earth System
+Model (CESM). CIME generates a default namelist for the atmospheric
+model and provides a way to change namelist options, such as history
+file frequency. It also allows for configuration of other elements of
+the workflow; for example, whether to run some orf all of the
+pre-processing, forecast model, and post-processing steps.
+
+The CIME-CCS builds the forecast model and the workflow itself. There
+is unified scripting available through the NCEPLIBS repository that
+builds the prerequisite libraries for the application, along with pre-
+and post-processing software. There is a small set of system libraries
+that are assumed to be present on the target computer: the cmake build
+software, compiler, and MPI library.
+
+This release can be run with Linux and Mac operating systems with
+Intel and GNU compilers.  The MR Weather Application can be run out of
+the box on a number of different hardware platforms such as the NOAA
+research Hera system, the National Center for Atmospheric Research
+(NCAR) Cheyenne system, the National Science Foundation Stampede
+system, and Mac laptops.
+
+.. note::
+   list hardware platforms and compilers
 
 How To Use This Document
 ------------------------
 
 This guide instructs both novice and experienced users on downloading,
-building and running the UFS mrweather application `CESM2 <http://www.cesm.ucar.edu/models/cesm2>`_.
-
-The mrweather app workflow is built on the `CIME framework <http://github.com/ESMCI/cime>`_.
+building and running the MR Weather Application.
 
 If you are a new user, we recommend reading the first few sections of
 the `CIME`_ documentation which is written so that, as much as
@@ -61,11 +96,13 @@ ad hoc order.
 .. note::
 
    Variables presented as ``$VAR`` in this guide typically refer to variables in XML files
-   in a CESM case. From within a case directory, you can determine the value of such a
+   in a MR Weather experimental case. From within a case directory, you can determine the value of such a
    variable with ``./xmlquery VAR``. In some instances, ``$VAR`` refers to a shell
    variable or some other variable; we try to make these exceptions clear.
 
-Please feel free to provide feedback to the `CESM forum <https://bb.cgd.ucar.edu/>`_ about how to improve the
+Please feel free to provide feedback to the
+
+`CESM forum <https://bb.cgd.ucar.edu/>`_ about how to improve the
 documentation.
 
 
@@ -102,13 +139,5 @@ installing and running CESM2.
 -  `LAPACK <http://www.netlib.org/lapack/>`_ and `BLAS <http://www.netlib.org/blas/>`_
 
 -  `CMake 2.8.6 or newer <http://www.cmake.org/>`_
-
-.. warning:: NetCDF must be built with the same Fortran compiler as CESM. In the netCDF build the FC environment variable specifies which Fortran compiler to use. CESM is written mostly in Fortran, netCDF is written in C. Because there is no standard way to call a C program from a Fortran program, the Fortran to C layer between CESM and netCDF will vary depending on which Fortran compiler you use for CESM. When a function in the netCDF library is called from a Fortran application, the netCDF Fortran API calls the netCDF C library. If you do not use the same compiler to build netCDF and CESM you will in most cases get errors from netCDF saying certain netCDF functions cannot be found.
-
-Parallel-netCDF, also referred to as pnetcdf, is optional. If a user
-chooses to use pnetcdf, version 1.7.0 or later should be used with CESM.
-It is a library that is file-format compatible with netCDF, and provides
-higher performance by using MPI-IO. Pnetcdf is enabled by setting the
-``$PNETCDF_PATH`` Makefile variable in the ``Macros.make`` file.
 
 .. _CIME: http://esmci.github.io/cime
