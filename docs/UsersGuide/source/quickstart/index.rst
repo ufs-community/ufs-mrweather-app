@@ -12,3 +12,4 @@
    downloading.rst
    configurations.rst
    quickstart.rst
+   cime_overview.rst
