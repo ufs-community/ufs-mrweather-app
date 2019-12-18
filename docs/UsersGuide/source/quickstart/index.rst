@@ -13,3 +13,4 @@
    configurations.rst
    quickstart.rst
    cime_overview.rst
+   workflow_overview.rst
