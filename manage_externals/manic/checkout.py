@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-Tool to assemble repositories represented in a model-description file.
+Tool to assemble respositories represented in a model-description file.
 
 If loaded as a module (e.g., in a component's buildcpp), it can be used
 to check the validity of existing subdirectories and load missing sources.
@@ -20,7 +20,7 @@ from manic.externals_description import create_externals_description
 from manic.externals_description import read_externals_description_file
 from manic.externals_status import check_safe_to_update_repos
 from manic.sourcetree import SourceTree
-from manic.utils import printlog, fatal_error
+from manic.utils import printlog
 from manic.global_constants import VERSION_SEPERATOR, LOG_FILE_NAME
 
 if sys.hexversion < 0x02070000:
@@ -48,8 +48,16 @@ def commandline_arguments(args=None):
     description = '''
 
 %(prog)s manages checking out groups of externals from revision
-control based on an externals description file. By default only the
+control based on a externals description file. By default only the
 required externals are checkout out.
+
+Operations performed by manage_externals utilities are explicit and
+data driven. %(prog)s will always make the working copy *exactly*
+match what is in the externals file when modifying the working copy of
+a repository.
+
+If %(prog)s isn't doing what you expected, double check the contents
+of the externals description file.
 
 Running %(prog)s without the '--status' option will always attempt to
 synchronize the working copy to exactly match the externals description.
@@ -68,7 +76,7 @@ obtained a sub-project via a checkout of another project:
     $ git clone git@github.com/{SOME_ORG}/some-project some-project-dev
 
 and you need to checkout the sub-project externals, then the root of the
-source tree remains /path/to/some-project-dev. Do *NOT* run %(prog)s
+source tree is /path/to/some-project-dev. Do *NOT* run %(prog)s
 from within /path/to/some-project-dev/sub-project
 
 The root of the source tree will be referred to as `${SRC_ROOT}` below.
@@ -101,7 +109,7 @@ The root of the source tree will be referred to as `${SRC_ROOT}` below.
     description file:
 
         $ cd ${SRC_ROOT}
-        $ ./manage_externals/%(prog)s --externals my-externals.cfg
+        $ ./manage_externals/%(prog)s --excernals my-externals.cfg
 
   * Status summary of the repositories managed by %(prog)s:
 
@@ -170,9 +178,8 @@ The root of the source tree will be referred to as `${SRC_ROOT}` below.
 
     Note: 'externals_only' will only process the external's own
     external description file without trying to manage a repository
-    for the component. This is used for retrieving externals for
-    standalone components like cam and ctsm which also serve as
-    sub-components within a larger project. If the source root of the
+    for the component. This is used for retreiving externals for
+    standalone components like cam and clm. If the source root of the
     externals_only component is the same as the main source root, then
     the local path must be set to '.', the unix current working
     directory, e. g. 'local_path = .'
@@ -212,39 +219,15 @@ The root of the source tree will be referred to as `${SRC_ROOT}` below.
 
   * externals (string) : used to make manage_externals aware of
     sub-externals required by an external. This is a relative path to
-    the external's root directory. For example, if LIBX is often used
-    as a sub-external, it might have an externals file (for its
-    externals) called Externals_LIBX.cfg. To use libx as a standalone
-    checkout, it would have another file, Externals.cfg with the
-    following entry:
+    the external's root directory. For example, the main externals
+    description has an external checkout out at 'src/useful_library'.
+    useful_library requires additional externals to be complete.
+    Those additional externals are managed from the source root by the
+    externals description file pointed 'useful_library/sub-xternals.cfg',
+    Then the main 'externals' field in the top level repo should point to
+    'sub-externals.cfg'.
 
-    [ libx ]
-    local_path = .
-    protocol = externals_only
-    externals = Externals_LIBX.cfg
-    required = True
-
-    Now, %(prog)s will process Externals.cfg and also process
-    Externals_LIBX.cfg as if it was a sub-external.
-
-  * Lines beginning with '#' or ';' are comments and will be ignored.
-
-# Obtaining this tool, reporting issues, etc.
-
-  The master repository for manage_externals is
-  https://github.com/ESMCI/manage_externals. Any issues with this tool
-  should be reported there.
-
-# Troubleshooting
-
-Operations performed by manage_externals utilities are explicit and
-data driven. %(prog)s will always attempt to make the working copy
-*exactly* match what is in the externals file when modifying the
-working copy of a repository.
-
-If %(prog)s is not doing what you expected, double check the contents
-of the externals description file or examine the output of
-./manage_externals/%(prog)s --status
+  * Lines begining with '#' or ';' are comments and will be ignored.
 
 '''
 
@@ -255,10 +238,6 @@ of the externals description file or examine the output of
     #
     # user options
     #
-    parser.add_argument("components", nargs="*",
-                        help="Specific component(s) to checkout. By default, "
-                        "all required externals are checked out.")
-
     parser.add_argument('-e', '--externals', nargs='?',
                         default='Externals.cfg',
                         help='The externals description filename. '
@@ -270,22 +249,15 @@ of the externals description file or examine the output of
                         'optional externals.')
 
     parser.add_argument('-S', '--status', action='store_true', default=False,
-                        help='Output the status of the repositories managed by '
+                        help='Output status of the repositories managed by '
                         '%(prog)s. By default only summary information '
-                        'is provided. Use the verbose option to see details.')
+                        'is provided. Use verbose output to see details.')
 
     parser.add_argument('-v', '--verbose', action='count', default=0,
                         help='Output additional information to '
                         'the screen and log file. This flag can be '
                         'used up to two times, increasing the '
                         'verbosity level each time.')
-
-    parser.add_argument('--svn-ignore-ancestry', action='store_true', default=False,
-                        help='By default, subversion will abort if a component is '
-                        'already checked out and there is no common ancestry with '
-                        'the new URL. This flag passes the "--ignore-ancestry" flag '
-                        'to the svn switch call. (This is not recommended unless '
-                        'you are sure about what you are doing.)')
 
     #
     # developer options
@@ -298,15 +270,8 @@ of the externals description file or examine the output of
                         help='DEVELOPER: output additional debugging '
                         'information to the screen and log file.')
 
-    logging_group = parser.add_mutually_exclusive_group()
-
-    logging_group.add_argument('--logging', dest='do_logging',
-                               action='store_true',
-                               help='DEVELOPER: enable logging.')
-    logging_group.add_argument('--no-logging', dest='do_logging',
-                               action='store_false', default=False,
-                               help='DEVELOPER: disable logging '
-                               '(this is the default)')
+    parser.add_argument('--no-logging', action='store_true',
+                        help='DEVELOPER: disable logging.')
 
     if args:
         options = parser.parse_args(args)
@@ -325,13 +290,8 @@ def main(args):
     Function to call when module is called from the command line.
     Parse externals file and load required repositories or all repositories if
     the --all option is passed.
-
-    Returns a tuple (overall_status, tree_status). overall_status is 0
-    on success, non-zero on failure. tree_status gives the full status
-    *before* executing the checkout command - i.e., the status that it
-    used to determine if it's safe to proceed with the checkout.
     """
-    if args.do_logging:
+    if not args.no_logging:
         logging.basicConfig(filename=LOG_FILE_NAME,
                             format='%(levelname)s : %(asctime)s : %(message)s',
                             datefmt='%Y-%m-%d %H:%M:%S',
@@ -346,16 +306,9 @@ def main(args):
 
     root_dir = os.path.abspath(os.getcwd())
     external_data = read_externals_description_file(root_dir, args.externals)
-    external = create_externals_description(
-        external_data, components=args.components)
+    external = create_externals_description(external_data)
 
-    for comp in args.components:
-        if comp not in external.keys():
-            fatal_error(
-                "No component {} found in {}".format(
-                    comp, args.externals))
-
-    source_tree = SourceTree(root_dir, external, svn_ignore_ancestry=args.svn_ignore_ancestry)
+    source_tree = SourceTree(root_dir, external)
     printlog('Checking status of externals: ', end='')
     tree_status = source_tree.status()
     printlog('')
@@ -385,23 +338,13 @@ The following are two options for how to proceed:
 (2) Alternatively, you do not have to rely on {program_name}. Instead, you
     can manually update out-of-sync externals (labeled with 's' above)
     as described in the configuration file {config_file}.
-
-
-The external repositories labeled with '?' above are not under version
-control using the expected protocol. If you are sure you want to switch
-protocols, and you don't have any work you need to save from this
-directory, then run "rm -rf [directory]" before re-running the
-checkout_externals tool.
 """.format(program_name=program_name, config_file=args.externals)
 
             printlog('-' * 70)
             printlog(msg)
             printlog('-' * 70)
         else:
-            if not args.components:
-                source_tree.checkout(args.verbose, load_all)
-            for comp in args.components:
-                source_tree.checkout(args.verbose, load_all, load_comp=comp)
+            source_tree.checkout(args.verbose, load_all)
             printlog('')
 
     logging.info('%s completed without exceptions.', program_name)
