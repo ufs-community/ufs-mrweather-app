@@ -1,7 +1,7 @@
 """Public API for the manage_externals library
 """
 
-from manic import checkout
+import manic.checkout as checkout
 from manic.utils import printlog
 
 __all__ = [
