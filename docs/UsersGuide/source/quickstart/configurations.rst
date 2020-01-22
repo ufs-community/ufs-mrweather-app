@@ -53,19 +53,13 @@ grids that are supported, call you could call following command
     cd $SRCROOT/cime/scripts
     ./query_config --grids
 
-
-This should show a list of available grids, as following:
-
-.. code-block:: console
-
-   Needs to add output of the command once CIME #3360 issue is fixed!
-
 Supported platforms and compilers
 =================================
 
 To see the list of supported out of the box platforms, issue the following commands:
 
 .. code-block:: console
+
     cd $SRCROOT/cime/scripts
     ./query_config --machines
 

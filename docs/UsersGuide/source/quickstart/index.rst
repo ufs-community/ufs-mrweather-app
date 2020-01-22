@@ -9,9 +9,10 @@ Quickstart Guide
    :maxdepth: 2
 
    overview.rst
+   workflow_overview.rst
    downloading.rst
    configurations.rst
    quickstart.rst
+   testing.rst
+   faq.rst
    cime_overview.rst
-
-.. workflow_overview.rst
