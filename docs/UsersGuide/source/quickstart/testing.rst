@@ -29,6 +29,8 @@ where:
          | Do an 11 day initial test - write a restart at day 6.    (file suffix: base)
          | Do a 5 day restart test, starting from restart at day 6. (file suffix: rest)
          | Compare component history files '.base' and '.rest' at day 11. They should be identical.
+  * PET: Modified threading OPENMP bit for bit test (default 5 days)
+         | Do an initial run where all components are threaded by default. (file suffix: base) Do another initial run with NTHRDS=1 for all components. (file suffix: single_thread) Compare base and single_thread.
 
 - ``MODIFIERS`` changes to the default settings for the test.
 - ``GRID`` The model grid (can be an alias). Currently, ``C96``, ``C192``, ``C384`` and ``C768`` are supported.
@@ -70,12 +72,20 @@ In this case, the C96 resolution model case with CCPP suit version v15p2 is crea
 To run a test with baseline comparisons against baseline name 'master'::
 
     cd $SRCROOT/cime/scripts
-   ./create_test SMS_D_Lh5.C96.GFSv15p2 --workflow ufs-mrweather_wo_post --test-id try -c -b master
+    ./create_test SMS_Lh5.C96.GFSv15p2 --workflow ufs-mrweather_wo_post --test-id try --compare master --baseline-root $BASELINE_ROOT
 
 To run a Exact restart test::
 
     cd $SRCROOT/cime/scripts
-   ./create_test ERS_Lh11.C96.GFSv15p2 --workflow ufs-mrweather_wo_post --test-id try
+    ./create_test ERS_Lh11.C96.GFSv15p2 --workflow ufs-mrweather_wo_post --test-id try
 
 This will build and run the test that includes two runs, first an 11 hour initial run (cold start) with a restart written at hour 6 and then a restart run (warm start) starting from hour 6 and compare the outputs written at hour 11. The output of the runs must be same.  
 
+To run a threaded test::
+
+    cd $SRCROOT/cime/scripts
+    ./create_test PET_Lh11.C96.GFSv15p2 --workflow ufs-mrweather_wo_post --test-id try
+
+.. note::
+
+    The baseline directory for supported platforms is placed under ``$BASELINE_ROOT`` directory. This can be queried using ``./xmlquery -p BASELINE_ROOT`` command once the test is created using ``./create.test`` command.
