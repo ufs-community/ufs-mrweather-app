@@ -12,5 +12,4 @@ Table of contents
    :numbered:
    :maxdepth: 3
 
-   Introduction
    quickstart/index.rst

@@ -4,9 +4,10 @@
 Model Workflow Quick Start
 ==========================
 
-The following quick start guide is for versions of the `UFS Medium-Range Weather Application 
-<https://github.com/ufs-community/ufs-mrweather-app>`_ that have already been ported to the local 
-target machine. The workflow for building and running the application is built on the CIME
+The following quick start guide is for versions of the `UFS Medium-Range Weather Application
+<https://github.com/ufs-community/ufs-mrweather-app>`_ that are on a supported machine (:ref:`platforms`).
+
+The workflow for building and running the application is built on the CIME
 (Common Infrastructure for Modeling Earth) framework.  Please refer to
 the `CIME Porting Documentation <http://esmci.github.io/cime/users_guide/porting-cime.html>`_ if CIME
 has not yet been ported to the target machine.
@@ -17,17 +18,16 @@ If you are new to CIME, please consider reading the
 This is the procedure for quickly setting up and running a case of UFS Medium-Range Weather Application.
 
 * Download the UFS Medium-Range Weather Application
-* Create a case: Details of available component sets and resolutions are available from the ``query_config`` tool located in the ``ufs-mrweather-app/cime/scripts`` directory 
+* Create a case: Details of available component sets and resolutions are available from the ``query_config`` tool located in the ``ufs-mrweather-app/cime/scripts`` directory
 
 .. code-block:: console
 
     cd ufs-mrweather-app/cime/scripts
     ./query_config --help
 
-
 See the `supported component sets <https://ufs-mrapp.readthedocs.io/en/latest/quickstart/configurations.html#supported-component-sets>`_,
 `supported model resolutions <https://ufs-mrapp.readthedocs.io/en/latest/quickstart/configurations.html#supported-grids>`_ and `supported
-machines <https://ufs-mrapp.readthedocs.io/en/latest/quickstart/configurations.html#supported-platforms-and-compilers>`_ for a complete 
+machines <https://ufs-mrapp.readthedocs.io/en/latest/quickstart/configurations.html#supported-platforms-and-compilers>`_ for a complete
 list of UFS Medium-Range Weather Application supported component sets, grids and computational platforms.
 
 .. note::
@@ -48,7 +48,7 @@ used to clone the application and download its components such as CIME and `UFS 
 
     git clone https://github.com/ufs-community/ufs-mrweather-app.git
     cd ufs-mrweather-app
-    ./manage_externals/checkout_externals 
+    ./manage_externals/checkout_externals
 
 Create a case
 ==============
@@ -81,17 +81,17 @@ where:
   directory is created in the directory where you executed create_newcase. If ``CASENAME``
   is a relative or absolute path, the case directory is created there, and the name of the
   case will be the last component of the path. The full path to the case directory will be
-  stored in the ``$CASEROOT`` XML variable. 
+  stored in the ``$CASEROOT`` XML variable.
 
 - ``COMPSET`` is the component set and can be ``GFSv15p2`` or ``GFSv16beta``, which are only
   supported Common Community Physics Package (CCPP) suites. If you would like to learn more about CCPP
-  please consider reading the `CCPP Overview <https://ccpp-techdoc.readthedocs.io/en/latest/Overview.html>`.  
+  please consider reading the `CCPP Overview <https://ccpp-techdoc.readthedocs.io/en/latest/Overview.html>`.
 
 - ``GRID`` is the model resolution, which can be ``C96``, ``C192``, ``C384`` and ``C768``.
 
 - ``WORKFLOW`` is the workflow and can be set as ``ufs-mrweather`` or ``ufs-mrweather_wo_post``. The
-  ``ufs-mrweather`` includes both pre- and post-processing steps, while ``ufs-mrweather_wo_post`` includes 
-  only pre-processing step. In the current version of the UFS Medium-Range Weather Application, the 
+  ``ufs-mrweather`` includes both pre- and post-processing steps, while ``ufs-mrweather_wo_post`` includes
+  only pre-processing step. In the current version of the UFS Medium-Range Weather Application, the
   pre-processing step need to be run to generate initial conditions for the UFS Medium-Range Weather Model.
   In this case, the raw input files are provided by `NOAA Operational Model Archive and Distribution System
   (NOMADS) <https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod>`_ and please be aware that the NOMADS
@@ -109,7 +109,7 @@ Setting up the case run script
 
 Issuing the `case.setup`_ command creates scripts needed to run the model
 along with namelist ``user_nl_xxx`` files, where xxx denotes the set of components
-for the given case configuration such as ``ufsatm`` and ``cpl``. 
+for the given case configuration such as ``ufsatm`` and ``cpl``.
 
 cd to the case directory. Following the example from above:
 
@@ -117,12 +117,12 @@ cd to the case directory. Following the example from above:
 
     cd /glade/scratch/$USER/cases/ufs-mrweather-app-workflow.c96
 
-Before invoking **case.setup**, you could modify the ``env_mach_pes.xml`` file in the case directory 
+Before invoking **case.setup**, you could modify the ``env_mach_pes.xml`` file in the case directory
 using the `xmlchange`_ command as needed for the experiment (optional). (Note: To edit any of
 the env xml files, use the `xmlchange`_ command. **xmlchange --help** can be used for help.)
 
 Please also be aware that you need to provide consistent ``layout``, ``write_tasks_per_group`` and
-``write_groups`` namelist options to the model when total number of PEs are changed. 
+``write_groups`` namelist options to the model when total number of PEs are changed.
 
 Invoke the **case.setup** command.
 
@@ -213,7 +213,7 @@ Submit the job to the batch queue using the **case.submit** command.
 
 Based on the selected workflow (``ufs-mrweather`` or ``ufs-mrweather_wo_post``), the ``case.submit``
 command submits a chain of jobs that their dependency is automatically set. For example, ``ufs-mrweather``
-workflow submit a job array with three seperate job that will run in an order: pre-processing, simulation 
+workflow submit a job array with three seperate job that will run in an order: pre-processing, simulation
 and post-processing.
 
 When the jobs are complete, most output will *NOT* be written under the case directory, but
@@ -229,8 +229,8 @@ comma separated names and no spaces):
 - ``$RUNDIR``
 
   This directory is set in the ``env_run.xml`` file. This is the
-  location where UFS Medium-Range Weather Application was run. There should be log files for the model 
-  component (i.e. of the form ufs.log.yymmdd-hhmmss) if ``$DOUT_S == FALSE``. To check that a run 
+  location where UFS Medium-Range Weather Application was run. There should be log files for the model
+  component (i.e. of the form ufs.log.yymmdd-hhmmss) if ``$DOUT_S == FALSE``. To check that a run
   completed successfully, check the last several lines of the ufs.log file for the string "PROGRAM nems
   HAS ENDED" and "RESOURCE STATISTICS".
 
