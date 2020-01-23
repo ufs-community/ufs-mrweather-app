@@ -118,7 +118,7 @@ Access to the code requires git. You will need access to the command line client
 (v1.8 or greater). You can download the latest version of the release
 code:
 
-.. code-block::
+.. code-block:: console
 
     git clone -b release-ufs.1.0 https://github.com/ufs-community/ufs-mrweather-app.git my_ufs_sandbox
     cd my_ufs_sandbox
