@@ -86,6 +86,13 @@ To run a threaded test::
     cd $SRCROOT/cime/scripts
     ./create_test PET_Lh11.C96.GFSv15p2 --workflow ufs-mrweather_wo_post --test-id try
 
+To run entire test suite::
+
+    cd $SRCROOT/cime/scripts
+    ./create_test --xml-testlist ../../src/model/FV3/cime/cime_config/testlist.xml --xml-machine MACHINE --generate GENERATE --baseline-root BASELINE_ROOT 
+
+This will run entire test suite on specified machine ``MACHINE`` such as Stampede2 and generates the baseline under ``BASELINE_ROOT`` directory with a name of ``GENERATE``. 
+
 .. note::
 
     The baseline directory for supported platforms is placed under ``$BASELINE_ROOT`` directory. This can be queried using ``./xmlquery -p BASELINE_ROOT`` command once the test is created using ``./create.test`` command.
