@@ -4,8 +4,8 @@
 Model Workflow Quick Start
 ==========================
 
-The following quick start guide is for versions of the `UFS Medium-Range Weather Application
-<https://github.com/ufs-community/ufs-mrweather-app>`_ that are on a supported machine (:ref:`platforms`).
+The following quick start guide is applicable to versions of the `UFS Medium-Range Weather Application
+<https://github.com/ufs-community/ufs-mrweather-app>`_ that are on a preconfigured machine (:ref:`platforms`).
 
 The workflow for building and running the application is built on the CIME
 (Common Infrastructure for Modeling Earth) framework.  Please refer to
@@ -25,15 +25,14 @@ This is the procedure for quickly setting up and running a case of UFS Medium-Ra
     cd ufs-mrweather-app/cime/scripts
     ./query_config --help
 
-See the `supported component sets <https://ufs-mrapp.readthedocs.io/en/latest/quickstart/configurations.html#supported-component-sets>`_,
-`supported model resolutions <https://ufs-mrapp.readthedocs.io/en/latest/quickstart/configurations.html#supported-grids>`_ and `supported
-machines <https://ufs-mrapp.readthedocs.io/en/latest/quickstart/configurations.html#supported-platforms-and-compilers>`_ for a complete
-list of UFS Medium-Range Weather Application supported component sets, grids and computational platforms.
+See the :ref:`platforms` , :ref:`supported-compsets`, and
+:ref:`supported-grids` for currently pre-configured platforms, model
+configurations and resolutions of the  UFS Medium-Range Weather Application.
 
 .. note::
 
    Variables presented as ``$VAR`` in this guide typically refer to variables in XML files
-   in a case. From within a case directory, you can determine the value of such a
+   that are created in your case directory. From within a case directory, you can determine the value of such a
    variable with ``./xmlquery VAR``. In some instances, ``$VAR`` refers to a shell
    variable or some other variable; we try to make these exceptions clear.
 
@@ -66,10 +65,11 @@ If running on a supported machine, that machine will
 normally be recognized automatically and therefore it is *not* required
 to specify the ``--machine`` argument to **create_newcase**.
 
-Invoke **create_newcase** as follows:
+Invoke **create_newcase** as follows from the ``cime/scripts`` directory:
 
 .. code-block:: console
 
+    cd cime/scripts
     ./create_newcase --case CASENAME --compset COMPSET --res GRID --workflow WORKFLOW
 
 where:
@@ -78,14 +78,14 @@ where:
   is a very important piece of metadata that will be used in filenames, internal metadata
   and directory paths. **create_newcase** will create the *case directory* with the same
   name as the ``CASENAME``. If ``CASENAME`` is simply a name (not a path), the case
-  directory is created in the directory where you executed create_newcase. If ``CASENAME``
-  is a relative or absolute path, the case directory is created there, and the name of the
-  case will be the last component of the path. The full path to the case directory will be
+  directory is created in the ``cime/scripts`` directory where you executed create_newcase.
+  If ``CASENAME`` is a relative or absolute path, the case directory is created there and the name of the
+  case will be the tail path. The full path to the case directory will be
   stored in the ``$CASEROOT`` XML variable.
 
 - ``COMPSET`` is the component set and can be ``GFSv15p2`` or ``GFSv16beta``, which are only
   supported Common Community Physics Package (CCPP) suites. If you would like to learn more about CCPP
-  please consider reading the `CCPP Overview <https://ccpp-techdoc.readthedocs.io/en/latest/Overview.html>`.
+  please consider reading the `CCPP Overview <https://ccpp-techdoc.readthedocs.io/en/latest/Overview.html>`_.
 
 - ``GRID`` is the model resolution, which can be ``C96``, ``C192``, ``C384`` and ``C768``.
 
