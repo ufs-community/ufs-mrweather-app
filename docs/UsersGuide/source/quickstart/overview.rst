@@ -333,11 +333,59 @@ Supported grids
 CIME has the flexibility to support numerous out-of-the box model resolutions.
 To see the grids that are currently supported, call you could call following command
 
-The MR Weather Application currently supports four out of the box grids,
+.. code-block:: console
+
+    cd $SRCROOT/cime/scripts
+    ./query_config --grids
+
+This should show the a list of available grids for this release.
+
+.. code-block:: console
+
+    =========================================
+    GRID naming convention
+    =========================================
+    The notation for the grid longname is
+        a%name_l%name_oi%name_r%name_m%mask_g%name_w%name
+    where
+        a% => atm, l% => lnd, oi% => ocn/ice, r% => river, m% => mask, g% => glc, w% => wav
+
+    Supported out of the box grid configurations are given via alias specification in
+    the file "config_grids.xml". Each grid alias can also be associated  with the
+    following optional attributes
+
+     -------------------------------------------------------------
+            default component grids:
+
+     component         compset       value
+     -------------------------------------------------------------
+     atm      SATM              null
+     lnd      SLND              null
+     ocnice   SOCN              null
+     rof      SROF              null
+     glc      SGLC              null
+     wav      SWAV              null
+     iac      SIAC              null
+     -------------------------------------------------------------
+
+     alias: C96
+       non-default grids are: atm:C96
+
+     alias: C192
+       non-default grids are: atm:C192
+
+     alias: C384
+       non-default grids are: atm:C384
+
+     alias: C768
+       non-default grids are: atm:C768
+
+
+As can be seen, MR Weather Application currently supports four out of the box grids with the following nominal resolutions
 
 * C96 (~100km)
 * C192 (~50km),
 * C384 (~25km)
 * C768 (~13km),
 
-all with 64 vertical levels.
+and all with 64 vertical levels.
