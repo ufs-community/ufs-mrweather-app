@@ -163,14 +163,14 @@ columns of output, as in this example:
 .. code-block:: console
 
     Checking status of externals: model, stochastic_physics, fv3, ccpp/framework, atmos_cubed_sphere, ccpp/physics, fms, ww3, nems, tests/produtil/nceplibs-pyprodutil, fv3gfs_interface, nems_interface, cime,
-    s   ./cime
+        ./cime
         ./src/model
         ./src/model/FMS
         ./src/model/FV3
         ./src/model/FV3/atmos_cubed_sphere
         ./src/model/FV3/ccpp/framework
         ./src/model/FV3/ccpp/physics
-    s   ./src/model/FV3/cime
+        ./src/model/FV3/cime
         ./src/model/NEMS
         ./src/model/NEMS/cime/
         ./src/model/NEMS/tests/produtil/NCEPLIBS-pyprodutil
