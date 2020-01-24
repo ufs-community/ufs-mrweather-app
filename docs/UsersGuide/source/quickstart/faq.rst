@@ -190,3 +190,37 @@ and restart the model for 24 hours simulation:
 .. note::
 
     The restart run lenght can be changed using ``xmlchange`` command by setting **STOP_N** and **STOP_OPTION**.
+
+How do I download new initial condition from NOMADS server?
+================================================================
+
+The raw initial condition for UFS Medium-Range (MR) Weather Model is provided by NOAA Operational Model Archive and Distribution System (NOMADS).
+The Global Forecast System (GFS) output is processed using provided pre-processing tool (CHGRES) for desired model resolution and date. To download
+new raw input data, you just need to chnage the simulation date using following command:
+
+.. code-block:: console
+
+    cd $SRCROOT/cime/scripts/$CASEROOT
+    ./xmlchange RUN_STARTDATE=YYYY-MM-DD
+
+.. note::
+
+    By default the raw data will be placed under ``$DIN_LOC_ROOT`` but use can change the location of the raw input data. For example, following
+    command can be used to create a directory under ``$SRCROOT/cime/scripts/$CASEROOT`` as ``prod`` to download and place new raw input data.
+
+    .. code-block:: console
+
+        cd $SRCROOT/cime/scripts/$CASEROOT
+        ./xmlchange DIN_LOC_IC=`pwd`/prod
+        ./preview_namelist
+
+    The ``./case.build`` automatically trigger a command to download data but the download command can be triggered by issuing following command.
+
+    .. code-block:: console
+
+        cd $SRCROOT/cime/scripts/$CASEROOT
+        ./check_input_data --download
+
+.. note::
+
+    Please be aware that the NOMADS server only keeps last 10 days data.
