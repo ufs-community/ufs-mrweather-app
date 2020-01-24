@@ -50,7 +50,7 @@ extensions = [
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
-    'sphinx.ext.napoleon'
+    'sphinx.ext.napoleon',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -88,7 +88,8 @@ pygments_style = 'sphinx'
 # a list of builtin themes.
 #
 html_theme = "sphinx_rtd_theme"
-html_theme_path = ["_themes/sphinx_rtd_theme", ]
+#html_theme_path = ["_themes/sphinx_rtd_theme", ]
+html_theme_path = ["_themes", ]
 #html_theme = 'classic'
 
 # Theme options are theme-specific and customize the look and feel of a theme
