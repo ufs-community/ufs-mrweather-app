@@ -196,30 +196,30 @@ How do I download new initial condition from NOMADS server?
 
 The raw initial condition for UFS Medium-Range (MR) Weather Model is provided by NOAA Operational Model Archive and Distribution System (NOMADS).
 The Global Forecast System (GFS) output is processed using provided pre-processing tool (CHGRES) for desired model resolution and date. To download
-new raw input data, you just need to chnage the simulation date using following command:
+new raw input data, the user need to change the simulation date using following command:
 
 .. code-block:: console
 
     cd $SRCROOT/cime/scripts/$CASEROOT
     ./xmlchange RUN_STARTDATE=YYYY-MM-DD
+    ./preview_namelist
+    ./check_input_data --download
+
+.. warning::
+
+    The ``./check_input_data --download`` needs to be trigerred automatically when ``./case.submit`` is run but there is a known bug in the current version
+    of UFS Medium-Range (MR) Weather Application that prevents to download initial conditions without user interaction.
 
 .. note::
 
-    By default the raw data will be placed under ``$DIN_LOC_ROOT`` but use can change the location of the raw input data. For example, following
-    command can be used to create a directory under ``$SRCROOT/cime/scripts/$CASEROOT`` as ``prod`` to download and place new raw input data.
+    By default the raw data will be placed under ``$DIN_LOC_ROOT`` but user can change the location of the raw input data before running ``./preview_namelist``
+    and ``./check_input_data --download`` commands. For example, following command can be used to create a ``prod`` directory under ``$SRCROOT/cime/scripts/$CASEROOT``
+    to download and place new raw input data.
 
     .. code-block:: console
 
         cd $SRCROOT/cime/scripts/$CASEROOT
         ./xmlchange DIN_LOC_IC=`pwd`/prod
-        ./preview_namelist
-
-    The ``./case.build`` automatically trigger a command to download data but the download command can be triggered by issuing following command.
-
-    .. code-block:: console
-
-        cd $SRCROOT/cime/scripts/$CASEROOT
-        ./check_input_data --download
 
 .. note::
 
