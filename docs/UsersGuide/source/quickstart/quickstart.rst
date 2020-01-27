@@ -18,11 +18,10 @@ If you are new to CIME, please consider reading the
 This is the procedure for quickly setting up and running a case of UFS Medium-Range Weather Application.
 
 * Download the UFS Medium-Range Weather Application
-* Create a case: Details of available component sets and resolutions are available from the ``query_config`` tool located in the ``ufs-mrweather-app/cime/scripts`` directory
+* Create a case: Details of available component sets and resolutions are available from the ``query_config`` tool located in the ``cime/scripts`` directory
 
 .. code-block:: console
 
-    cd ufs-mrweather-app/cime/scripts
     ./query_config --help
 
 See the `supported component sets <https://ufs-mrapp.readthedocs.io/en/latest/quickstart/configurations.html#supported-component-sets>`_,
@@ -70,6 +69,7 @@ Invoke **create_newcase** as follows:
 
 .. code-block:: console
 
+    cd cime/scripts
     ./create_newcase --case CASENAME --compset COMPSET --res GRID --workflow WORKFLOW
 
 where:
@@ -102,6 +102,7 @@ set to your cheyenne login name:
 
 .. code-block:: console
 
+    cd cime/scripts
     ./create_newcase --case /glade/scratch/$USER/cases/ufs-mrweather-app-workflow.c96 --compset GFSv15p2 --res C96 --workflow ufs-mrweather
 
 Setting up the case run script
