@@ -264,6 +264,18 @@ To see the list of preconfigured  out of the box platforms, issue the following 
     cd $SRCROOT/cime/scripts
     ./query_config --machines
 
+The output will contain entries like the following:
+
+.. code-block:: console
+
+   cheyenne (current) : NCAR SGI platform, os is Linux, 36 pes/node, batch system is PBS
+   ('      os             ', 'LINUX')
+   ('      compilers      ', 'intel,gnu,pgi')
+   ('      mpilibs        ', ['mpt', 'openmpi'])
+   ('      pes/node       ', '36')
+   ('      max_tasks/node ', '36')
+
+
 Adding and porting to a new machine
 ===================================
 
