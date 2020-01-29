@@ -290,15 +290,6 @@ that a user edit the resulting xml files to fill in information required for the
 functionality is handy in accelerating the porting process and quickly
 getting a case running on a new platform.
 
-Validating your port
---------------------
-
-Although the MR Weather Application can be run out-of-the-box for a variety of resolutions,
-component combinations, and machines, MOST combinations of component
-sets, resolutions, and machines have not undergone rigorous scientific validation.
-
-  .. todo:: Define the port validation process
-
 .. _configurations:
 
 Model Configurations
