@@ -1,5 +1,5 @@
 .. _faq:
-  
+
 ===
 FAQ
 ===
@@ -7,8 +7,8 @@ FAQ
 How can I see/check the steps in my workflow?
 =============================================
 
-A good way to see what _case.submit_ will do, is to use **preview_run** command, 
-which will output the environment for your run along with the batch submit and mpirun commands. 
+A good way to see what _case.submit_ will do, is to use **preview_run** command,
+which will output the environment for your run along with the batch submit and mpirun commands.
 The following is example output for the UFS Medium-Range Weather workflow:
 
 .. code-block:: console
@@ -19,7 +19,7 @@ The following is example output for the UFS Medium-Range Weather workflow:
 How can I run an individual task in the exiting workflow?
 =========================================================
 
-The CIME-CCS allows you to run the specific task in the workflow by supplying the **--only-job** parameter to the **case.submit** command.  
+The CIME-CCS allows you to run the specific task in the workflow by supplying the **--only-job** parameter to the **case.submit** command.
 
 Following the example to run only the preprocessing utility **chgres**
 
@@ -28,7 +28,7 @@ Following the example to run only the preprocessing utility **chgres**
     cd $SRCROOT/cime/scripts/$CASEROOT
     ./case.submit --only-job case.chgres
 
-This will create the initial conditions for the model simulation using the raw input files are provided by NOAA Operational Model 
+This will create the initial conditions for the model simulation using the raw input files are provided by NOAA Operational Model
 Archive and Distribution System (NOMADS).
 
 To run the simulation:
@@ -36,7 +36,7 @@ To run the simulation:
 .. code-block:: console
 
     cd $SRCROOT/cime/scripts/$CASEROOT
-    ./case.submit --only-job case.run 
+    ./case.submit --only-job case.run
 
 If user wants to define the first job submitted in a workflow, the **--job** parameter can be pass to the **case.submit** command.
 
@@ -45,7 +45,7 @@ If user wants to define the first job submitted in a workflow, the **--job** par
     cd $SRCROOT/cime/scripts/$CASEROOT
     ./case.submit --job case.run
 
-In this case, two dpendent jobs will be submited: model simulation and post-processing. 
+In this case, two dpendent jobs will be submited: model simulation and post-processing.
 
 How can I change wall clock time for specific task in the workflow?
 ===================================================================
@@ -58,7 +58,7 @@ This can be done by using ``xmlchange`` command. For example, following can be u
     ./xmlchange JOB_WALLCLOCK_TIME=00:10:00 --subgroup case.chgres
 
 .. note::
-   
+
     without **--subgroup** option, the **xmlchange** command chnages the job wall clock time for the simulation itself (**case.run**).
 
 How can I change project account that will be used to submit jobs?
@@ -67,7 +67,7 @@ How can I change project account that will be used to submit jobs?
 There are two ways to change project account that is used to submit job:
 
 * Set **PROJECT** environment variable before creating case
-* Use ``xmlchange`` command to change project account. The following command can be used to change project account for **chgres** task (please replace PROJECT ID with an appropriate project number). 
+* Use ``xmlchange`` command to change project account. The following command can be used to change project account for **chgres** task (please replace PROJECT ID with an appropriate project number).
 
 .. code-block:: console
 
@@ -84,7 +84,7 @@ To query the default configuration of the processor layout:
 .. code-block:: console
 
     cd $SRCROOT/cime/scripts/$CASEROOT
-    ./pelayout 
+    ./pelayout
 
 and to change the default processor layout:
 
@@ -101,7 +101,7 @@ In this case, following namelist options need to be modified accordingly:
 - **layout**: Processor layout on each tile.
 - **ntiles**: Number of tiles on the domain. For the cubed sphere, this should be 6, one tile for each face of the cubed sphere.
 - **write_groups**: Number of group for I/O tasks.
-- **write_tasks_per_group**: Number of I/O tasks for each group. 
+- **write_tasks_per_group**: Number of I/O tasks for each group.
 
 The number of tasks assigned to a domain for UFS Medium-Range Weather Model needs must equal to
 
@@ -124,7 +124,7 @@ To have consistent model configuration with **NTASKS_ATM** defined above. ``user
 
 .. note::
 
-    The model resolution also need to be devided evenly with the layout pair. For the given configuration (C96 resolution), :math:`96/3 = 32` and :math:`96/8 = 12`  
+    The model resolution also need to be devided evenly with the layout pair. For the given configuration (C96 resolution), :math:`96/3 = 32` and :math:`96/8 = 12`
 
 For the high-resolution cases (i.e. C768), user also need to activate threading to reduce memory consumption for each compute node:
 
@@ -150,7 +150,7 @@ To restart the model ``xmlchange`` command can be used:
     ./xmlchange CONTINUE_RUN=TRUE
     ./case.submit
 
-In this case, CIME-CCS makes the required changes the model namelist files (``model_configure`` and ``input.nml``) and also copies the files from **RESTART** to **INPUT** directory. 
+In this case, CIME-CCS makes the required changes the model namelist files (``model_configure`` and ``input.nml``) and also copies the files from **RESTART** to **INPUT** directory.
 
 .. note::
 
@@ -165,7 +165,7 @@ The restart inteval can be also changed to 6 hourly interval as following:
     ./xmlchange REST_N=6
 
 .. note::
- 
+
     The default value of **restart_interval** namelist option is zero (0) and the model writes single restart file at the end of the simulation.
 
 The following example demostrates the 48 hours model simulation splited to 24 hours with cold start and another 24 hours simulation with warm start.
@@ -224,3 +224,29 @@ new raw input data, the user need to change the simulation date using following 
 .. note::
 
     Please be aware that the NOMADS server only keeps last 10 days data.
+
+How do I find out which platforms are preconfigured for the MR Weather App?
+===========================================================================
+
+
+Preconfigured  machines are platforms that have machine specific files and settings scripts and that should
+run the  UFS Medium-Range (MR) Weather Application **out-of-the-box** (other than potentially needing to download input files).
+Preconfigured are usually listed by their common site-specific name.
+
+To see the list of preconfigured  out of the box platforms, issue the following commands:
+
+.. code-block:: console
+
+    cd $SRCROOT/cime/scripts
+    ./query_config --machines
+
+The output will contain entries like the following:
+
+.. code-block:: console
+
+   cheyenne (current) : NCAR SGI platform, os is Linux, 36 pes/node, batch system is PBS
+   ('      os             ', 'LINUX')
+   ('      compilers      ', 'intel,gnu,pgi')
+   ('      mpilibs        ', ['mpt', 'openmpi'])
+   ('      pes/node       ', '36')
+   ('      max_tasks/node ', '36')

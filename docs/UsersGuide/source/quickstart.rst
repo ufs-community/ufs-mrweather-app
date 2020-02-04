@@ -1,8 +1,8 @@
 .. _quickstart:
 
-==========================
-Model Workflow Quick Start
-==========================
+====================
+Workflow Quick Start
+====================
 
 The following quick start guide is applicable to versions of the `UFS Medium-Range Weather Application
 <https://github.com/ufs-community/ufs-mrweather-app>`_ that are on a preconfigured machine (:ref:`platforms`).
@@ -34,6 +34,201 @@ configurations and resolutions of the  UFS Medium-Range Weather Application.
    that are created in your case directory. From within a case directory, you can determine the value of such a
    variable with ``./xmlquery VAR``. In some instances, ``$VAR`` refers to a shell
    variable or some other variable; we try to make these exceptions clear.
+
+.. _configurations:
+
+Model Configurations
+====================
+
+.. todo:: THIS SECTION WAS MOVED HERE - PLS REVIEW AND DECIDE ON OPTIMAL
+   PLACEMENT
+
+The UFS Medium-Range (MR) Weather Application can be configured at four out of the box resolutions
+with two different Common Community Physics Package (`CCPP
+<https://ccpp-techdoc.readthedocs.io/en/latest/Overview.html>`_) physics suites (``GFSv15p2`` or ``GFSv16beta``).
+
+.. _supported-compsets:
+
+Supported component sets
+------------------------
+
+The components of the modeling system can be combined in numerous ways to carry out various scientific or
+software experiments. A particular mix of components, along with component-specific configuration and/or
+namelist settings is referred to as  component set or "compset". The UFS Medium-Range (MR) Weather Application
+has a shorthand naming convention for component sets that are supported out-of-the-box.
+
+To determine what out of the box MR Weather Application compsets are available in the release, do
+the following:
+
+.. code-block:: console
+
+   cd $SRCROOT/cime/scripts
+   ./query_config --compsets
+
+This should show a list of available compsets, as following:
+
+.. code-block:: console
+
+   Active component: ufsatm
+          --------------------------------------
+          Compset Alias: Compset Long Name
+          --------------------------------------
+      GFSv15p2             : FCST_ufsatm%v15p2_SLND_SICE_SOCN_SROF_SGLC_SWAV
+      GFSv16beta           : FCST_ufsatm%v16beta_SLND_SICE_SOCN_SROF_SGLC_SWAV
+
+.. _supported-grids:
+
+Supported grids
+---------------
+
+CIME has the flexibility to support numerous out-of-the box model resolutions.
+To see the grids that are currently supported, call you could call following command
+
+.. code-block:: console
+
+   cd $SRCROOT/cime/scripts
+   ./query_config --grids
+
+This should show the a list of available grids for this release.
+
+.. code-block:: console
+
+   =========================================
+   GRID naming convention
+   =========================================
+   The notation for the grid longname is
+       a%name_l%name_oi%name_r%name_m%mask_g%name_w%name
+   where
+       a% => atm, l% => lnd, oi% => ocn/ice, r% => river, m% => mask, g% => glc, w% => wav
+
+   Supported out of the box grid configurations are given via alias specification in
+   the file "config_grids.xml". Each grid alias can also be associated  with the
+   following optional attributes
+
+    -------------------------------------------------------------
+           default component grids:
+
+    component         compset       value
+    -------------------------------------------------------------
+    atm      SATM              null
+    lnd      SLND              null
+    ocnice   SOCN              null
+    rof      SROF              null
+    glc      SGLC              null
+    wav      SWAV              null
+    iac      SIAC              null
+    -------------------------------------------------------------
+
+    alias: C96
+      non-default grids are: atm:C96
+
+    alias: C192
+      non-default grids are: atm:C192
+
+    alias: C384
+      non-default grids are: atm:C384
+
+    alias: C768
+      non-default grids are: atm:C768
+
+
+As can be seen, MR Weather Application currently supports four out of the box grids with the following nominal resolutions
+
+* C96 (~100km)
+* C192 (~50km),
+* C384 (~25km)
+* C768 (~13km),
+
+and all with 64 vertical levels.
+
+.. _downloading:
+
+Downloading the UFS Medium-Range (MR) Weather Application code and scripts
+==========================================================================
+
+.. todo:: THIS SECTION WAS MOVED HERE - PLS REVIEW AND DECIDE ON OPTIMAL
+   PLACEMENT
+
+Access to the code requires git. You will need access to the command line clients, ``git``
+(v1.8 or greater). You can download the latest version of the release
+code:
+
+.. code-block:: console
+
+    git clone -b release-ufs.1.0 https://github.com/ufs-community/ufs-mrweather-app.git my_ufs_sandbox
+    cd my_ufs_sandbox
+
+To checkout a previous version of application, first view the available versions:
+
+.. code-block:: console
+
+    git tag --list 'release-ufs*'
+
+To checkout a specific release tag type, for example 0.1:
+
+.. code-block:: console
+
+    git checkout release-ufs.0.1
+
+Finally, to checkout UFS Medium-Range (MR) Weather Model and CIME, run the **checkout_externals** script from /path/to/my_ufs_sandbox.
+
+.. code-block:: console
+
+    ./manage_externals/checkout_externals
+
+The **checkout_externals** script will read the configuration file called ``Externals.cfg`` and
+will download model and CIME into /path/to/my_ufs_sandbox.
+
+To see more details regarding the checkout_externals script from the command line, type:
+
+.. code-block:: console
+
+    ./manage_externals/checkout_externals --help
+
+To confirm a successful download of all components, you can run ``checkout_externals``
+with the status flag to show the status of the externals:
+
+.. code-block:: console
+
+    ./manage_externals/checkout_externals -S
+
+This should show a clean status for all externals, with no characters in the first two
+columns of output, as in this example:
+
+.. code-block:: console
+
+    Checking status of externals: model, stochastic_physics, fv3, ccpp/framework, atmos_cubed_sphere, ccpp/physics, fms, ww3, nems, tests/produtil/nceplibs-pyprodutil, fv3gfs_interface, nems_interface, cime,
+        ./cime
+        ./src/model
+        ./src/model/FMS
+        ./src/model/FV3
+        ./src/model/FV3/atmos_cubed_sphere
+        ./src/model/FV3/ccpp/framework
+        ./src/model/FV3/ccpp/physics
+        ./src/model/FV3/cime
+        ./src/model/NEMS
+        ./src/model/NEMS/cime/
+        ./src/model/NEMS/tests/produtil/NCEPLIBS-pyprodutil
+        ./src/model/WW3
+        ./src/model/stochastic_physics
+
+You should now have a complete copy of the source code in your /path/to/my_ufs_sandbox.
+
+If there were problems obtaining an external, you might instead see something like:
+
+.. code-block:: console
+
+    e-  ./src/model/FV3
+
+This might happen if there was an unexpected interruption while downloading.
+First try rerunning ``./manage_externals/checkout_externals``.
+If there is still a problem, try running with logging turned on using:
+
+.. code-block:: console
+
+   ./manage_externals/checkout_externals --logging
+
+Check the ``manage_externals.log`` file to see what errors are reported.
 
 Download the application and its components
 ===========================================

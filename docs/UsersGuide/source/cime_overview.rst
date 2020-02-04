@@ -4,7 +4,9 @@
 Brief CIME Overview
 ===================
 
-.. todo:: Not sure where this section belongs.
+.. todo:: Not sure where this section belongs. THIS DOES NOT SEEN TO BE
+   SPECIFIC TO THE UFS MR W APP. CONSIDER MOVING TO
+   CIME DOCUMENTATION
 
 All compiler flags are defined in
 ``cime/config/ufs/machines/config_compilers.xml``. This file contains

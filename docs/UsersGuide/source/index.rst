@@ -12,4 +12,11 @@ Table of contents
    :numbered:
    :maxdepth: 3
 
-   quickstart/index.rst
+   introduction.rst
+   quickstart.rst
+   repos_and_directories.rst
+   inputs_outputs.rst
+   config_new_platform
+   testing.rst
+   faq.rst
+   cime_overview.rst
