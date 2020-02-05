@@ -12,7 +12,7 @@ Downloading input data
 
 A set of input datasets (fixed files, initial condition etc.) are needed to run the model and
 UFS Medium-Range (MR) Weather Model input data are available through a `FTP data repository
-<https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`. Datasets can be downloaded on a case by case basis
+<https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_. Datasets can be downloaded on a case by case basis
 as needed and CIME-CCS provides tools to check and download input data automatically. The detailed
 information about the required input datasets to run UFS Medium-Range (MR) Weather Model can be
 found in here.
@@ -23,6 +23,17 @@ is set to ``$DIN_LOC_ROOT/prod`` and all the input files are stored in a hierarc
 ``$DIN_LOC_ROOT`` directory but user ia also able to store raw input data that is processed in the
 pre-processing step throuch the use of ``$DIN_LOC_IC`` variable. This will allow us to keep input data
 in the users local space.
+
+.. note::
+
+    If user wants to use exiting data, the files needs to be placed in the directory ``$DIN_LOC_IC`` with 
+    pre-defined naming convention such as ``gfs.YYYYMMDD/HH`` (YYYY: year, MM: month, DD: day and HH:hour). 
+    Then, user need to set ``RUN_STARTDATE`` and ``START_TOD`` CIME options using ``./xmlchange`` command 
+    to use the exiting initial condition. CIME will not attempt the download the raw data from NOMADS server
+    once the directory is found.
+
+    The directory must have surface ``gfs.tHHz.sfcanl.nemsio`` and atmospheric conditions 
+    ``gfs.tHHz.atmanl.nemsio`` in **nemsio** format to process with pre-processing tool.
 
 For supported machines, these variables are preset and alredy set. For generic machines,
 this variables are set via the ``--input-dir`` argument to **create_newcase**.

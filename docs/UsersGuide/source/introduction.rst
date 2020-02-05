@@ -114,7 +114,7 @@ library that enables parallelism.
 A few select computational platforms have been preconfigured for the release,
 meaning that the NCEP Libraries, along with the pre- and post-processing tools,
 have been built by the App developers and are available as modules. In
-preconfigured platforms, users can proceed directly to the using the CIME
+preconfigured platforms, users can proceed directly to the using the `CIME`_ 
 workflow, as described in the Quick Start chapter. In platforms that have not
 been preconfigured, users have to build the NCEP Libraries and pre- and
 post-processing tools first. Examples of preconfigured platforms are the NOAA
@@ -128,8 +128,8 @@ configurations and resolutions.
 
 1.1.4. Downloading the UFS Medium-R
 
-The workflow leverages the Common Infrastructure for Modeling the Earth (CIME)
-Case Control System (CCS). CIME comes with two default configurations, or
+The workflow leverages the Common Infrastructure for Modeling the Earth (`CIME`_)
+Case Control System (CCS). `CIME`_ comes with two default configurations, or
 Component Sets (CompSets), associated with the two physics suites. It provides
 ways to choose the grid resolution, as well as to change namelist options,
 such as history file frequency. It also allows for configuration of other
@@ -138,7 +138,7 @@ pre-processing, forecast model, and post-processing steps. The CIME-CCS builds
 the forecast model and the workflow itself, but not the NCEP Libraries or the
 pre- and post-processing tools.
 
-CIME supports a set of tests for the UFS MR Weather App, including the Smoke
+`CIME`_ supports a set of tests for the UFS MR Weather App, including the Smoke
 Startup Test, the Exact Restart from Startup Test, and the Modified Threading
 OPENMP bit for bit Test. These tests are described in more detail later in this
 document and are intended for users to verify the App installation in new
@@ -208,3 +208,5 @@ ad hoc order.
    in a MR Weather experimental case. From within a case directory, you can determine the value of such a
    variable with ``./xmlquery VAR``. In some instances, ``$VAR`` refers to a shell
    variable or some other variable; we try to make these exceptions clear.
+
+.. _CIME: http://esmci.github.io/cime/#
