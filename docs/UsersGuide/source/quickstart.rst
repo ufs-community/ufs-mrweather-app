@@ -18,15 +18,10 @@ If you are new to CIME, please consider reading the
 This is the procedure for quickly setting up and running a case of UFS Medium-Range Weather Application.
 
 * Download the UFS Medium-Range Weather Application
-* Create a case: Details of available component sets and resolutions are available from the ``query_config`` tool located in the ``cime/scripts`` directory
-
-.. code-block:: console
-
-    ./query_config --help
-
-See the :ref:`platforms` , :ref:`supported-compsets`, and
-:ref:`supported-grids` for currently pre-configured platforms, model
-configurations and resolutions of the  UFS Medium-Range Weather Application.
+* Create a case: ``create_newcase``
+* Setup  a case: ``case.setup``
+* Build  a case: ``case.build``
+* Run    a case: ``case.submit``
 
 .. note::
 
@@ -46,6 +41,12 @@ Model Configurations
 The UFS Medium-Range (MR) Weather Application can be configured at four out of the box resolutions
 with two different Common Community Physics Package (`CCPP
 <https://ccpp-techdoc.readthedocs.io/en/latest/Overview.html>`_) physics suites (``GFSv15p2`` or ``GFSv16beta``).
+
+* Details of available component sets and resolutions are available from the ``query_config`` tool located in the ``cime/scripts`` directory
+
+.. code-block:: console
+
+    ./query_config --help
 
 .. _supported-compsets:
 
@@ -155,20 +156,20 @@ code:
 
 .. code-block:: console
 
-    git clone -b release-ufs.1.0 https://github.com/ufs-community/ufs-mrweather-app.git my_ufs_sandbox
+    git clone -b ufs-release/public-v1 https://github.com/ufs-community/ufs-mrweather-app.git my_ufs_sandbox
     cd my_ufs_sandbox
 
 To checkout a previous version of application, first view the available versions:
 
 .. code-block:: console
 
-    git tag --list 'release-ufs*'
+    git tag --list 'release*'
 
 To checkout a specific release tag type, for example 0.1:
 
 .. code-block:: console
 
-    git checkout release-ufs.0.1
+    git checkout release/public-v0.1
 
 Finally, to checkout UFS Medium-Range (MR) Weather Model and CIME, run the **checkout_externals** script from /path/to/my_ufs_sandbox.
 
@@ -229,19 +230,6 @@ If there is still a problem, try running with logging turned on using:
    ./manage_externals/checkout_externals --logging
 
 Check the ``manage_externals.log`` file to see what errors are reported.
-
-Download the application and its components
-===========================================
-
-The UFS Medium-Range Weather Application is hosted under GitHub and following steps can be
-used to clone the application and download its components such as CIME and `UFS Medium-Range Weather Model
-<https://github.com/ufs-community/ufs-weather-model/tree/ufs_public_release>`_.
-
-.. code-block:: console
-
-    git clone https://github.com/ufs-community/ufs-mrweather-app.git
-    cd ufs-mrweather-app
-    ./manage_externals/checkout_externals
 
 Create a case
 ==============
