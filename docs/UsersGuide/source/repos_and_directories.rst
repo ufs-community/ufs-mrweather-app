@@ -62,3 +62,23 @@ or must be cloned and built on other platforms according to the instructions pro
 A Users Guide for NCEPLIBS can be found here
 
 .. todo:: add link to NCEPLIBS Users Guide
+
+Directory Structure
+-------------------
+
+The directory structure on disk for users of the MR Weather App depends on whether one is using
+a pre-configured platform. Users working on pre-configured platforms will only have the
+files associated with the ufs-mrweather-app in their disk space. The directory structure is set
+in configuration file ``Externals.cfg``, which is in the top directory where the umbrella repository
+has been cloned. A listing of the directory structure is shown :ref:`here <top_level_dir_structure>`. 
+
+The directory structures for the standalone UFS Weather Model and the UFS Weather Model included with
+the UFS MR Weather App are equal in that they contain subdirectories for FMS, FV3, NEMS, WW3 and
+stochastic_physics. However, in the UFS Weather App, subdirectories are located under ``src/model``. 
+The UFS MR Weather App also includes a directories for CIME, such as the ``src/model/FV3/cime`` and
+``src/model/NEMS/cime`` directories.
+
+Users working outside of preconfigured platforms will have additional files on disk associated with
+the libraries, pre- and post-processing.  The resulting directory structure is determined by the path
+settings in the NCEPLIBS ``.gitmodules`` file.  
+
