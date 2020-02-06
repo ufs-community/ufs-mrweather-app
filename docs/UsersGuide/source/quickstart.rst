@@ -18,15 +18,10 @@ If you are new to CIME, please consider reading the
 This is the procedure for quickly setting up and running a case of UFS Medium-Range Weather Application.
 
 * Download the UFS Medium-Range Weather Application
-* Create a case: Details of available component sets and resolutions are available from the ``query_config`` tool located in the ``cime/scripts`` directory
-
-.. code-block:: console
-
-    ./query_config --help
-
-See the :ref:`platforms` , :ref:`supported-compsets`, and
-:ref:`supported-grids` for currently pre-configured platforms, model
-configurations and resolutions of the  UFS Medium-Range Weather Application.
+* Create a case: use ``create_newcase``
+* Setup  a case: use ``case.setup``
+* Build  a case: use ``case.build``
+* Run    a case: use ``case.submit``
 
 .. note::
 
@@ -43,9 +38,15 @@ Model Configurations
 .. todo:: THIS SECTION WAS MOVED HERE - PLS REVIEW AND DECIDE ON OPTIMAL
    PLACEMENT
 
-The UFS Medium-Range (MR) Weather Application can be configured at four out of the box resolutions
+The UFS Medium-Range (MR) Weather Application can be configured at four out-of-the-box resolutions
 with two different Common Community Physics Package (`CCPP
 <https://ccpp-techdoc.readthedocs.io/en/latest/Overview.html>`_) physics suites (``GFSv15p2`` or ``GFSv16beta``).
+
+* Details of available component sets and resolutions are available from the ``query_config`` tool located in the ``cime/scripts`` directory
+
+.. code-block:: console
+
+    ./query_config --help
 
 .. _supported-compsets:
 
@@ -57,7 +58,7 @@ software experiments. A particular mix of components, along with component-speci
 namelist settings is referred to as  component set or "compset". The UFS Medium-Range (MR) Weather Application
 has a shorthand naming convention for component sets that are supported out-of-the-box.
 
-To determine what out of the box MR Weather Application compsets are available in the release, do
+To determine what out-of-the-box MR Weather Application compsets are available in the release, do
 the following:
 
 .. code-block:: console
@@ -101,7 +102,7 @@ This should show the a list of available grids for this release.
    where
        a% => atm, l% => lnd, oi% => ocn/ice, r% => river, m% => mask, g% => glc, w% => wav
 
-   Supported out of the box grid configurations are given via alias specification in
+   Supported out-of-the-box grid configurations are given via alias specification in
    the file "config_grids.xml". Each grid alias can also be associated  with the
    following optional attributes
 
@@ -132,7 +133,7 @@ This should show the a list of available grids for this release.
       non-default grids are: atm:C768
 
 
-As can be seen, MR Weather Application currently supports four out of the box grids with the following nominal resolutions
+As can be seen, MR Weather Application currently supports four out-of-the-box grids with the following nominal resolutions
 
 * C96 (~100km)
 * C192 (~50km),
@@ -155,20 +156,20 @@ code:
 
 .. code-block:: console
 
-    git clone -b release-ufs.1.0 https://github.com/ufs-community/ufs-mrweather-app.git my_ufs_sandbox
+    git clone -b ufs-release/public-v1 https://github.com/ufs-community/ufs-mrweather-app.git my_ufs_sandbox
     cd my_ufs_sandbox
 
 To checkout a previous version of application, first view the available versions:
 
 .. code-block:: console
 
-    git tag --list 'release-ufs*'
+    git tag --list 'release*'
 
 To checkout a specific release tag type, for example 0.1:
 
 .. code-block:: console
 
-    git checkout release-ufs.0.1
+    git checkout release/public-v0.1
 
 Finally, to checkout UFS Medium-Range (MR) Weather Model and CIME, run the **checkout_externals** script from /path/to/my_ufs_sandbox.
 
@@ -232,26 +233,14 @@ If there is still a problem, try running with logging turned on using:
 
 Check the ``manage_externals.log`` file to see what errors are reported.
 
-Download the application and its components
-===========================================
-
-The UFS Medium-Range Weather Application is hosted under GitHub and following steps can be
-used to clone the application and download its components such as CIME and `UFS Medium-Range Weather Model
-<https://github.com/ufs-community/ufs-weather-model/tree/ufs_public_release>`_.
-
-.. code-block:: console
-
-    git clone https://github.com/ufs-community/ufs-mrweather-app.git
-    cd ufs-mrweather-app
-    ./manage_externals/checkout_externals
-
 Create a case
 ==============
 
 The `create_newcase`_ command creates a case directory containing the scripts and XML
 files to configure a case (see below) for the requested resolution, component set, and
-machine. **create_newcase** has three required arguments: ``--case``, ``--compset``,
-``--res`` and ``--workflow`` (invoke **create_newcase --help** for help).
+machine. **create_newcase** has three required arguments: ``--case``, ``--compset`` and
+``--res``.   The ``workflow`` argument is optional, to select alternate workflow components (see below).
+(invoke **create_newcase --help** for help).
 
 On machines where a project or account code is needed, you
 must either specify the ``--project`` argument to **create_newcase** or set the

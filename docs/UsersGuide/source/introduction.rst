@@ -126,10 +126,8 @@ See the :ref:`platforms`, :ref:`supported-compsets`, and
 :ref:`supported-grids` for currently supported platforms, model
 configurations and resolutions.
 
-1.1.4. Downloading the UFS Medium-R
-
-The workflow leverages the Common Infrastructure for Modeling the Earth (`CIME`_)
-Case Control System (CCS). `CIME`_ comes with two default configurations, or
+The workflow leverages the Common Infrastructure for Modeling the Earth (CIME)
+Case Control System (CCS). CIME comes with two default configurations, or
 Component Sets (CompSets), associated with the two physics suites. It provides
 ways to choose the grid resolution, as well as to change namelist options,
 such as history file frequency. It also allows for configuration of other
