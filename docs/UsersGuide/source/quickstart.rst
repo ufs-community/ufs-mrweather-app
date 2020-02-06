@@ -18,10 +18,10 @@ If you are new to CIME, please consider reading the
 This is the procedure for quickly setting up and running a case of UFS Medium-Range Weather Application.
 
 * Download the UFS Medium-Range Weather Application
-* Create a case: ``create_newcase``
-* Setup  a case: ``case.setup``
-* Build  a case: ``case.build``
-* Run    a case: ``case.submit``
+* Create a case: use ``create_newcase``
+* Setup  a case: use ``case.setup``
+* Build  a case: use ``case.build``
+* Run    a case: use ``case.submit``
 
 .. note::
 
@@ -38,7 +38,7 @@ Model Configurations
 .. todo:: THIS SECTION WAS MOVED HERE - PLS REVIEW AND DECIDE ON OPTIMAL
    PLACEMENT
 
-The UFS Medium-Range (MR) Weather Application can be configured at four out of the box resolutions
+The UFS Medium-Range (MR) Weather Application can be configured at four out-of-the-box resolutions
 with two different Common Community Physics Package (`CCPP
 <https://ccpp-techdoc.readthedocs.io/en/latest/Overview.html>`_) physics suites (``GFSv15p2`` or ``GFSv16beta``).
 
@@ -58,7 +58,7 @@ software experiments. A particular mix of components, along with component-speci
 namelist settings is referred to as  component set or "compset". The UFS Medium-Range (MR) Weather Application
 has a shorthand naming convention for component sets that are supported out-of-the-box.
 
-To determine what out of the box MR Weather Application compsets are available in the release, do
+To determine what out-of-the-box MR Weather Application compsets are available in the release, do
 the following:
 
 .. code-block:: console
@@ -102,7 +102,7 @@ This should show the a list of available grids for this release.
    where
        a% => atm, l% => lnd, oi% => ocn/ice, r% => river, m% => mask, g% => glc, w% => wav
 
-   Supported out of the box grid configurations are given via alias specification in
+   Supported out-of-the-box grid configurations are given via alias specification in
    the file "config_grids.xml". Each grid alias can also be associated  with the
    following optional attributes
 
@@ -133,7 +133,7 @@ This should show the a list of available grids for this release.
       non-default grids are: atm:C768
 
 
-As can be seen, MR Weather Application currently supports four out of the box grids with the following nominal resolutions
+As can be seen, MR Weather Application currently supports four out-of-the-box grids with the following nominal resolutions
 
 * C96 (~100km)
 * C192 (~50km),
@@ -236,8 +236,9 @@ Create a case
 
 The `create_newcase`_ command creates a case directory containing the scripts and XML
 files to configure a case (see below) for the requested resolution, component set, and
-machine. **create_newcase** has three required arguments: ``--case``, ``--compset``,
-``--res`` and ``--workflow`` (invoke **create_newcase --help** for help).
+machine. **create_newcase** has three required arguments: ``--case``, ``--compset`` and
+``--res``.   The ``workflow`` argument is optional, to select alternate workflow components (see below).
+(invoke **create_newcase --help** for help).
 
 On machines where a project or account code is needed, you
 must either specify the ``--project`` argument to **create_newcase** or set the
