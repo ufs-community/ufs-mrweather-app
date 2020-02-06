@@ -143,14 +143,14 @@ latex_elements = {
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',
-    #  'maketitle': r'\newcommand\sphinxbackoftitlepage{For referencing this document please use: \newline \break Schramm, J., L. Bernardet, L. Carson, G. Firl, D. Heinzeller, L. Pan, and M. Zhang, 2019. CCPP Technical Documentation Release v3.0.0. 91pp. Available at https://dtcenter.org/GMTB/v3.0/ccpp\_tech\_guide.pdf.}\sphinxmaketitle'
+    #  'maketitle': r'\newcommand\sphinxbackoftitlepage{For referencing this document please use: \newline \break Author1, Author2,, 2020. UFS Medium-Range Weather App Users Guide v1.0.0. 91pp. Available at https://ufscommunity.org.}\sphinxmaketitle'
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'CCPPtechnical.tex', 'CCPP Technical Documentation',
+    (master_doc, 'UFS-MRWeatherApp.tex', 'UFS Medium-Range Weather App Users Guide',
      author,'manual'),
 ]
 
@@ -160,7 +160,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'CCPPtechnical', 'CCPP Technical Documentation',
+    (master_doc, 'UFS-MRWeatherApp', 'UFS Medium-Range Weather App Users Guide',
      [author], 1)
 ]
 
@@ -171,8 +171,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'CCPPtechnical', 'CCPP Technical Documentation',
-     author, 'CCPPtechnical', 'One line description of project.',
+    (master_doc, 'UFS-MRWeatherApp', 'UFS Medium-Range Weather App Users Guide',
+     author, 'UFS-MRWeatherApp', 'One line description of project.',
      'Miscellaneous'),
 ]
 

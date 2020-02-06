@@ -195,6 +195,8 @@ with the status flag to show the status of the externals:
 This should show a clean status for all externals, with no characters in the first two
 columns of output, as in this example:
 
+.. _top_level_dir_structure:
+
 .. code-block:: console
 
     Checking status of externals: model, stochastic_physics, fv3, ccpp/framework, atmos_cubed_sphere, ccpp/physics, fms, ww3, nems, tests/produtil/nceplibs-pyprodutil, fv3gfs_interface, nems_interface, cime,
