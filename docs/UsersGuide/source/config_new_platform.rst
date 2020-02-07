@@ -35,8 +35,37 @@ Software stack requirements
 
 Add details of software stack requirements (compiler vendor, versions, etc.)
 
+
+Generic MacOS (homebrew) platform
+---------------------------------
+
+CIME defines a generic build for MacOS using homebrew.  You must first
+install NCEPLIBS-externals and NCEPLIBS following the `instructions
+here. <https://github.com/NOAA-EMC/NCEPLIBS-external/wiki>`_.  Then
+you will need to set the environment variable NCEPLIBS_DIR pointing to
+the install location (/usr/local/ufs-release-v1).  You will also need
+to define a root location for the model input and output data, again
+using environment variables.  The following are suggestions:
+UFS_INPUT    $HOME/projects
+UFS_SCRATCH  $HOME/projects/scratch
+
+Create these directories:
+mkdir -p $HOME/projects/scratch 
+mkdir -p $HOME/projects/ufs_inputdata
+
+You are now ready to build the ufs-mrweather-app as documented in the QuickStart guide :ref:`quickstart`.
+
+
+
+
 Everything one needs to do to configure a platform
 --------------------------------------------------
+
+
+
+
+
+
 
 Porting CIME to a new machine
 -----------------------------
