@@ -53,7 +53,7 @@ using environment variables.  The following are suggestions:
 
 Create these directories:
 
-- ``mkdir -p $HOME/projects/scratch ``
+- ``mkdir -p $HOME/projects/scratch``
 
 - ``mkdir -p $HOME/projects/ufs_inputdata``
 
