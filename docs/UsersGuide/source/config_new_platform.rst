@@ -58,8 +58,7 @@ Create these directories:
 - ``mkdir -p $HOME/projects/ufs_inputdata``
 
 You are now ready to build the ufs-mrweather-app as documented in the :ref:`quickstart`.
-
-
+Use the optional --machine argument to create_newcase and create_test with value ``homebrew``.
 
 
 Everything one needs to do to configure a platform
