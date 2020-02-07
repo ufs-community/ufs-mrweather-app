@@ -26,7 +26,7 @@ installing and running MR Weather Application.
 
 -  NCEPLIBS
 
--  `CMake 2.8.6 or newer <http://www.cmake.org/>`_
+-  `CMake 3.15  or newer <http://www.cmake.org/>`_
 
 .. _CIME: http://esmci.github.io/cime
 
@@ -46,14 +46,14 @@ you will need to set the environment variable NCEPLIBS_DIR pointing to
 the install location (/usr/local/ufs-release-v1).  You will also need
 to define a root location for the model input and output data, again
 using environment variables.  The following are suggestions:
-UFS_INPUT    $HOME/projects
-UFS_SCRATCH  $HOME/projects/scratch
+- ``UFS_INPUT    $HOME/projects``
+- ``UFS_SCRATCH  $HOME/projects/scratch``
 
 Create these directories:
-mkdir -p $HOME/projects/scratch 
-mkdir -p $HOME/projects/ufs_inputdata
+- ``mkdir -p $HOME/projects/scratch ``
+- ``mkdir -p $HOME/projects/ufs_inputdata``
 
-You are now ready to build the ufs-mrweather-app as documented in the QuickStart guide :ref:`quickstart`.
+You are now ready to build the ufs-mrweather-app as documented in the :ref:`quickstart`.
 
 
 
