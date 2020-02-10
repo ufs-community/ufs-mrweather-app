@@ -1,14 +1,90 @@
 .. _inputs_and_outputs:
 
-=========================================
+******************
 Inputs and Outputs
-=========================================
+******************
 
-Directory structure
--------------------
+This chapter provides an overview of the input and output files needed by the components
+of the UFS MR Weather App (chgres_cube, the UFS Weather Model, and UPP).  Links to more
+detailed documentation for each of the components are provided. 
 
+===========
+Input Files
+===========
+
+The UFS MR Weather App requires numerous input files.  CIME can copy/link to input files,
+run the end-to-end system and write output files to disk.  Depending on the dates requested,
+input files can be automatically retrieved by CIME or must be staged by the user.
+
+-----------
+chgres_cube
+-----------
+
+When a user runs the UFS MR Weather App as described in the quickstart guide, input data for
+chgres_cube is linked from a location on disk to your run directory via CIME. The data will
+be stored in a hierarchical way in the ``$DIN_LOC_ID`` directory
+(see :numref:`Section %s <downloading_input_data>`).  A list of the input files for chgres_cube
+can be found here (TODO: add link).
+
+-----------------
+UFS Weather Model
+-----------------
+
+The input files for the UFS MR Weather Model are located one directory up from the chgres_cube
+input files in ``$RUNDIR`` (see :numref:`Section %s <run_the_case>`).   An extensive description
+of the input files for the UFS MR Weather Model can be found in the `UFS Weather Model Users Guide
+<https://ufs-mr-weather-app.readthedocs.io/projects/ufs-weather-model/en/latest/InputsOutputs.html>`_. 
+
+.. note::
+   Due to renaming/linking by CIME, the file names listed in this section differ from the names
+   described in the UFS Weather Model Users Guide. 
+
+---------------
+UPP Input Files
+---------------
+
+Documentation for the input files for UPP are located here (TODO: add link).
+
+============
+Output Files
+============
+
+The location of the output files written to disk are determined by CIME
+(see :numref:`Section %s <run_the_case>`).
+
+-----------
+chgres_cube
+-----------
+
+The files output by chgres_cube reside in the ``$DIN_LOC_ID`` directory, and are linked by CIME to
+files that include the grid name and date in the same directory.  For example:
+
+.. code-block:: console
+
+   sfc_data.tile[1-6].nc -> C96.2019-09-09_00.sfc_data.tile[1-6].nc
+   gfs_ctrl.nc -> C96.2019-09-09_00.gfs_ctrl.nc
+   gfs_data.tile1.nc -> C96.2019-09-09_00.gfs_data.tile1.nc
+ 
+These output files are used as input for the UFS Weather Model.
+
+-----------------
+UFS Weather Model
+-----------------
+
+The output files for the UFS Weather Model are described in the `Users Guide
+<https://ufs-mr-weather-app.readthedocs.io/projects/ufs-weather-model/en/latest/InputsOutputs.html#output-files>`_.
+
+---------------
+UPP Input Files
+---------------
+
+Documentation for the Unified Post Processor (UPP) output files can be found here (TODO: add link).
+
+.. _downloading_input_data:
+
+======================
 Downloading input data
-----------------------
+======================
 
 A set of input datasets (fixed files, initial condition etc.) are needed to run the model and
 UFS Medium-Range (MR) Weather Model input data are available through a `FTP data repository

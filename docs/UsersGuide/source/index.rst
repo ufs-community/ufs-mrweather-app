@@ -6,8 +6,6 @@
 Welcome to the UFS Medium-Range Weather App Users Guide!
 ========================================================
 
-Table of contents
------------------
 .. toctree::
    :numbered:
    :maxdepth: 3

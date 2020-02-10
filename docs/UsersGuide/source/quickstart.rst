@@ -342,6 +342,8 @@ XML variable ``$EXEROOT``, which can be queried using:
 
    ./xmlquery EXEROOT
 
+.. _run_the_case:
+
 Run the case
 ============
 
