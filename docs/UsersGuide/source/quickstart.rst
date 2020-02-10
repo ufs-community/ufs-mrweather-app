@@ -159,6 +159,8 @@ code:
     git clone -b ufs-release/public-v1 https://github.com/ufs-community/ufs-mrweather-app.git my_ufs_sandbox
     cd my_ufs_sandbox
 
+.. todo:: THIS BRANCH does not YET EXIST, please check out "master" for now 2/10/20)
+
 To checkout a previous version of application, first view the available versions:
 
 .. code-block:: console
@@ -169,7 +171,7 @@ To checkout a specific release tag type, for example 0.1:
 
 .. code-block:: console
 
-    git checkout release/public-v0.1
+    git checkout ufs-release/public-v0.1
 
 Finally, to checkout UFS Medium-Range (MR) Weather Model and CIME, run the **checkout_externals** script from /path/to/my_ufs_sandbox.
 
