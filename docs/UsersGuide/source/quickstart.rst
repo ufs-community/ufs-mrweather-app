@@ -83,6 +83,43 @@ with the status flag to show the status of the externals:
 This should show a clean status for all externals, with no characters in the first two
 columns of output, as in this example:
 
+.. _top_level_dir_structure:
+
+.. code-block:: console
+
+    Checking status of externals: model, stochastic_physics, fv3, ccpp/framework, atmos_cubed_sphere, ccpp/physics, fms, ww3, nems, tests/produtil/nceplibs-pyprodutil, fv3gfs_interface, nems_interface, cime,
+        ./cime
+        ./src/model
+        ./src/model/FMS
+        ./src/model/FV3
+        ./src/model/FV3/atmos_cubed_sphere
+        ./src/model/FV3/ccpp/framework
+        ./src/model/FV3/ccpp/physics
+        ./src/model/FV3/cime
+        ./src/model/NEMS
+        ./src/model/NEMS/cime/
+        ./src/model/NEMS/tests/produtil/NCEPLIBS-pyprodutil
+        ./src/model/WW3
+        ./src/model/stochastic_physics
+
+You should now have a complete copy of the source code in your /path/to/my_ufs_sandbox.
+
+If there were problems obtaining an external, you might instead see something like:
+
+.. code-block:: console
+
+    e-  ./src/model/FV3
+
+This might happen if there was an unexpected interruption while downloading.
+First try rerunning ``./manage_externals/checkout_externals``.
+If there is still a problem, try running with logging turned on using:
+
+.. code-block:: console
+
+   ./manage_externals/checkout_externals --logging
+
+Check the ``manage_externals.log`` file to see what errors are reported.
+
 .. _configurations:
 
 Model Configurations
@@ -194,43 +231,6 @@ As can be seen, MR Weather Application currently supports four out-of-the-box gr
 * C768 (~13km),
 
 and all with 64 vertical levels.
-
-.. _top_level_dir_structure:
-
-.. code-block:: console
-
-    Checking status of externals: model, stochastic_physics, fv3, ccpp/framework, atmos_cubed_sphere, ccpp/physics, fms, ww3, nems, tests/produtil/nceplibs-pyprodutil, fv3gfs_interface, nems_interface, cime,
-        ./cime
-        ./src/model
-        ./src/model/FMS
-        ./src/model/FV3
-        ./src/model/FV3/atmos_cubed_sphere
-        ./src/model/FV3/ccpp/framework
-        ./src/model/FV3/ccpp/physics
-        ./src/model/FV3/cime
-        ./src/model/NEMS
-        ./src/model/NEMS/cime/
-        ./src/model/NEMS/tests/produtil/NCEPLIBS-pyprodutil
-        ./src/model/WW3
-        ./src/model/stochastic_physics
-
-You should now have a complete copy of the source code in your /path/to/my_ufs_sandbox.
-
-If there were problems obtaining an external, you might instead see something like:
-
-.. code-block:: console
-
-    e-  ./src/model/FV3
-
-This might happen if there was an unexpected interruption while downloading.
-First try rerunning ``./manage_externals/checkout_externals``.
-If there is still a problem, try running with logging turned on using:
-
-.. code-block:: console
-
-   ./manage_externals/checkout_externals --logging
-
-Check the ``manage_externals.log`` file to see what errors are reported.
 
 Create a case
 ==============
