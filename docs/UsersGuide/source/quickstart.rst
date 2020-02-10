@@ -30,6 +30,59 @@ This is the procedure for quickly setting up and running a case of UFS Medium-Ra
    variable with ``./xmlquery VAR``. In some instances, ``$VAR`` refers to a shell
    variable or some other variable; we try to make these exceptions clear.
 
+.. _downloading:
+
+Downloading the UFS Medium-Range (MR) Weather Application code and scripts
+==========================================================================
+
+Access to the code requires git. You will need access to the command line clients, ``git``
+(v1.8 or greater). You can download the latest version of the release
+code:
+
+.. code-block:: console
+
+    git clone -b ufs-release/public-v1 https://github.com/ufs-community/ufs-mrweather-app.git my_ufs_sandbox
+    cd my_ufs_sandbox
+
+.. todo:: THIS BRANCH does not YET EXIST, please check out "master" for now (2/10/20)
+
+To checkout a previous version of application, first view the available versions:
+
+.. code-block:: console
+
+    git tag --list '*release*'
+
+To checkout a specific release tag type, for example 0.1:
+
+.. code-block:: console
+
+    git checkout ufs-release/public-v0.1
+
+Finally, to checkout UFS Medium-Range (MR) Weather Model and CIME, run the **checkout_externals** script from /path/to/my_ufs_sandbox.
+
+.. code-block:: console
+
+    ./manage_externals/checkout_externals
+
+The **checkout_externals** script will read the configuration file called ``Externals.cfg`` and
+will download model and CIME into /path/to/my_ufs_sandbox.
+
+To see more details regarding the checkout_externals script from the command line, type:
+
+.. code-block:: console
+
+    ./manage_externals/checkout_externals --help
+
+To confirm a successful download of all components, you can run ``checkout_externals``
+with the status flag to show the status of the externals:
+
+.. code-block:: console
+
+    ./manage_externals/checkout_externals -S
+
+This should show a clean status for all externals, with no characters in the first two
+columns of output, as in this example:
+
 .. _configurations:
 
 Model Configurations
@@ -141,60 +194,6 @@ As can be seen, MR Weather Application currently supports four out-of-the-box gr
 * C768 (~13km),
 
 and all with 64 vertical levels.
-
-.. _downloading:
-
-Downloading the UFS Medium-Range (MR) Weather Application code and scripts
-==========================================================================
-
-.. todo:: THIS SECTION WAS MOVED HERE - PLS REVIEW AND DECIDE ON OPTIMAL
-   PLACEMENT
-
-Access to the code requires git. You will need access to the command line clients, ``git``
-(v1.8 or greater). You can download the latest version of the release
-code:
-
-.. code-block:: console
-
-    git clone -b ufs-release/public-v1 https://github.com/ufs-community/ufs-mrweather-app.git my_ufs_sandbox
-    cd my_ufs_sandbox
-
-To checkout a previous version of application, first view the available versions:
-
-.. code-block:: console
-
-    git tag --list 'release*'
-
-To checkout a specific release tag type, for example 0.1:
-
-.. code-block:: console
-
-    git checkout release/public-v0.1
-
-Finally, to checkout UFS Medium-Range (MR) Weather Model and CIME, run the **checkout_externals** script from /path/to/my_ufs_sandbox.
-
-.. code-block:: console
-
-    ./manage_externals/checkout_externals
-
-The **checkout_externals** script will read the configuration file called ``Externals.cfg`` and
-will download model and CIME into /path/to/my_ufs_sandbox.
-
-To see more details regarding the checkout_externals script from the command line, type:
-
-.. code-block:: console
-
-    ./manage_externals/checkout_externals --help
-
-To confirm a successful download of all components, you can run ``checkout_externals``
-with the status flag to show the status of the externals:
-
-.. code-block:: console
-
-    ./manage_externals/checkout_externals -S
-
-This should show a clean status for all externals, with no characters in the first two
-columns of output, as in this example:
 
 .. _top_level_dir_structure:
 
