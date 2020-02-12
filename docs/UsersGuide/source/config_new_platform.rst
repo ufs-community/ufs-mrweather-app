@@ -81,15 +81,22 @@ Steps for porting
 Porting CIME involves several steps. To add a new machine, batch, run, environment, and compiler 
 information must be added in the CIME directly ``$SRCROOT/cime/config/ufs/machines directory``.
 
-- The first step is to define your machine. 
+- cprnc tool need to be build. 
 
-  You can edit **$CIMEROOT/config/ufs/machines/config_machines.xml** and add an appropriate section 
-  for your machine. For more details `see the config_machines.xml file 
+  .. code-block:: console
+
+      cd $CIMEROOT/tools/cprnc
+      CIMEROOT=../.. ../configure --macros-format=Makefile --mpilib=mpi-serial
+      CIMEROOT=../.. source ./.env_mach_specific.sh && make
+
+  Finally, put the resulting executable in CCSM_CPRNC that will be defined in new section of config_machines.xml
+
+- Then, new platform/machine need to be defined 
+
+  You can edit **$CIMEROOT/config/ufs/machines/config_machines.xml** and add a new entry 
+  for your machine. In this case, the exiting platforms in the **config_machines.xml** can be used as a starting
+  point or reference. For more details `see the config_machines.xml file 
   <http://esmci.github.io/cime/users_guide/machine.html#machinefile>`_.
-
-  The machine name "userdefined" refers to any machine that the user defines and requires
-  that a user edit the resulting xml files to fill in information required for the target platform. This
-  functionality is handy in accelerating the porting process and quickly getting a case running on a new platform.
 
   Check to ensure that your **config_machines.xml** file conforms to the CIME schema definition by doing the 
 
@@ -102,31 +109,20 @@ information must be added in the CIME directly ``$SRCROOT/cime/config/ufs/machin
   file. For more details `see the config_batch.xml file 
   <http://esmci.github.io/cime/users_guide/machine.html#config-batch-xml-batch-directives>`_.
 
+  .. code-block:: console
+
+      cd $CIMEROOT
+      xmllint --noout --schema config/xml_schemas/config_batch.xsd config/ufs/machines/config_batch.xml
+
 - Once you have defined a basic configuration for your machine in your machine and batch xml files, run
   following test to test both CIME and CIME-driven UFS MR-Weather Model.
 
   .. code-block:: console
 
+      cd $CIMEROOT/scripts
       ./create_test SMS_Lh5.C96.GFSv15p2 --workflow ufs-mrweather --machine $MACHINE
 
   The **$MACHINE** is the name of the machine that is added to the **config_machines.xml**.
-
-  .. note::
-
-      If `NCEPLIBS <https://github.com/NOAA-EMC/NCEPLIBS>`_ and `NCEPLIBS-external <https://github.com/NOAA-EMC/NCEPLIBS-external>`_
-      are installed to the different locations, then user might need edit **$CIMEROOT/config/ufs/machines/config_machines.xml**
-      file and modify ``$ESMFMKFILE`` and ``$NETCDF`` to point **NCEPLIBS-external** installation diretory.
-
-      If ``$ESMFMKFILE`` and ``$NETCDF`` environment variables are already defined then following modification need to be
-      done **$CIMEROOT/config/ufs/machines/config_machines.xml** file. 
-
-      .. code-block:: console
-
-          ...
-          <env name="ESMFMKFILE">$ENV{ESMFMKFILE}/lib/esmf.mk</env>
-          <env name="NETCDF">$ENV{NETCDF}</env>
-          ...
-
 
   This will test the end-to-end workflow including pre-processing, forward model and post-processing. The detailed 
   information on testing can be found in the `Testing Section <https://ufs-mrapp.readthedocs.io/en/latest/testing.html>`_.
