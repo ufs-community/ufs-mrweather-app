@@ -232,6 +232,14 @@ As can be seen, MR Weather Application currently supports four out-of-the-box gr
 
 and all with 64 vertical levels.
 
+Setup the environment
+=====================
+
+A number of environment variables must be set before you can create a case.  A script is provided with NCEPlibs 
+to set most of the required variables - before you create a case set up your environment by sourcing the file
+$NCEPLIBS_DIR/bin/setenv_nceplibs.sh (or .csh depending on your shell).  On some systems users may also need to set
+environment variables to identify model input and scratch directories - these are $UFS_INPUT and $UFS_SCRATCH.
+
 Create a case
 ==============
 
