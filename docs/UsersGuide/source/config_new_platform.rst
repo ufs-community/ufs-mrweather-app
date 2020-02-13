@@ -90,7 +90,7 @@ To build "cprnc" use these steps:
       CIMEROOT=../.. ../configure --macros-format=Makefile --mpilib=mpi-serial
       CIMEROOT=../.. source ./.env_mach_specific.sh && make
 
-You should now have a cprnc executable. Remember the path to this tool as it will be added to the
+You should now have a _cprnc_ executable. Remember the path to this tool as it will be added to the
 `config_machines.xml` file in the next step, in the `CCSM_CPRNC` variable.
 
 Add the new machine description to config_machines.xml
@@ -147,8 +147,8 @@ the new machine to which you are porting CIME.  An example entry looks like this
         <modules mpilib="impi">
           <command name="load">netcdf/4.7.0</command>
           <command name="load">impi/2018.0.4</command>
-	        <command name="use">/scratch1/BMC/gmtb/software/modulefiles/intel-18.0.5.274/impi-2018.0.4</command>
-	        <command name="load">NCEPlibs/1.0.0alpha01</command>
+	  <command name="use">/scratch1/BMC/gmtb/software/modulefiles/intel-18.0.5.274/impi-2018.0.4</command>
+	  <command name="load">NCEPlibs/1.0.0alpha01</command>
         </modules>
         <modules>
           <command name="use">/scratch1/BMC/gmtb/software/modulefiles/generic</command>
@@ -172,18 +172,45 @@ When finished, verify that your **config_machines.xml** file conforms to its sch
       xmllint --noout --schema config/xml_schemas/config_machines.xsd config/ufs/machines/config_machines.xml
 
 
+Add the batch system to config_batch.xml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- If you have a batch system, you may also need to create a **$CIMEROOT/config/$model/machines/config_batch.xml**
-  file. For more details `see the config_batch.xml file 
-  <http://esmci.github.io/cime/users_guide/machine.html#config-batch-xml-batch-directives>`_.
+Edit the file **$CIMEROOT/config/ufs/machines/config_batch.xml** and add a `<batch_system/>` element 
+describing the batch system on the new machine.  Again, this can be done by copying an existing element
+and making any needed modifications.  Here is an example batch description:
+
+.. code-block:: 
+
+    <batch_system MACH="hera" type="slurm">
+      <batch_submit>sbatch</batch_submit>
+      <submit_args>
+        <arg flag="--time" name="$JOB_WALLCLOCK_TIME"/>
+        <arg flag="-q" name="$JOB_QUEUE"/>
+        <arg flag="--account" name="$PROJECT"/>
+      </submit_args>
+      <directives>
+        <directive>--partition=hera</directive>
+      </directives>
+      <queues>
+        <queue walltimemax="08:00:00" nodemin="1" nodemax="210">batch</queue>
+        <queue default="true" walltimemax="00:30:00" nodemin="1" nodemax="210">debug</queue>
+      </queues>
+    </batch_system>
+
+For more details `see the config_batch.xml file 
+<http://esmci.github.io/cime/users_guide/machine.html#config-batch-xml-batch-directives>`_.
+
+To verify correctness of the config_batch.xml file, use the command:
 
   .. code-block:: console
-
       cd $CIMEROOT
       xmllint --noout --schema config/xml_schemas/config_batch.xsd config/ufs/machines/config_batch.xml
 
-- Once you have defined a basic configuration for your machine in your machine and batch xml files, run
-  following test to test both CIME and CIME-driven UFS MR-Weather Model.
+Verify that the port is working by running a simple test
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Once you have completed the above steps, run the following test to see if you are able to
+build and run a basic workflow with the UFS MR Weather application.
 
   .. code-block:: console
 
@@ -192,5 +219,4 @@ When finished, verify that your **config_machines.xml** file conforms to its sch
 
   The **$MACHINE** is the name of the machine that is added to the **config_machines.xml**.
 
-  This will test the end-to-end workflow including pre-processing, forward model and post-processing. The detailed 
-  information on testing can be found in the `Testing Section <https://ufs-mrapp.readthedocs.io/en/latest/testing.html>`_.
+  This will test the end-to-end workflow including pre-processing, model forecast and post-processing. 
