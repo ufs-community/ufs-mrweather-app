@@ -218,6 +218,6 @@ build and run a basic workflow with the UFS MR Weather application.
       cd $CIMEROOT/scripts
       ./create_test SMS_Lh5.C96.GFSv15p2 --workflow ufs-mrweather --machine $MACHINE
 
-  The **$MACHINE** is the name of the machine that you added to the **config_machines.xml**.
+The **$MACHINE** is the name of the machine that you added to the **config_machines.xml**.
 
-  This will attempt to run the full end-to-end workflow including pre-processing, model forecast and post-processing. 
+This will attempt to run the full end-to-end workflow including pre-processing, model forecast and post-processing. 
