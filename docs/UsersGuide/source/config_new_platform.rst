@@ -72,7 +72,7 @@ Everything one needs to do to configure a platform
 Porting CIME to a new machine
 -----------------------------
 
-This section described the steps needed to port the CIME workflow to a new platform.  
+This section describes the steps needed to port the CIME workflow to a new platform.  
 
 Build and install the "cprnc" tool
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -90,9 +90,10 @@ To build "cprnc" use these steps:
       CIMEROOT=../.. ../configure --macros-format=Makefile --mpilib=mpi-serial
       CIMEROOT=../.. source ./.env_mach_specific.sh && make
 
-You should now have a _cprnc_ executable. Remember the path to this tool as it will be added to the
-`config_machines.xml` file in the next step, in the `CCSM_CPRNC` variable.
-
+You should now have a "cprnc" executable. Remember the path to this tool as it will be added to the
+`config_machines.xml` file in the next step, in the `CCSM_CPRNC` variable.  Ideally, this executable
+will be moved to a shared location so that all users on the platform have access to the tool.
+  
 Add the new machine description to config_machines.xml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -161,15 +162,14 @@ the new machine to which you are porting CIME.  An example entry looks like this
       </environment_variables>
     </machine>
 
-Many of the XML elements above are self-explanatory.  For details about individual elements `see the config_machines.xml file 
-<http://esmci.github.io/cime/users_guide/machine.html#machinefile>`_.
+Many of the XML elements above are self-explanatory.  For details about individual elements `see the config_machines.xml file section in the CIME documentation <http://esmci.github.io/cime/users_guide/machine.html#machinefile>`_.
 
 When finished, verify that your **config_machines.xml** file conforms to its schema definition: 
 
-  .. code-block:: console
+.. code-block:: console
 
-      cd $CIMEROOT
-      xmllint --noout --schema config/xml_schemas/config_machines.xsd config/ufs/machines/config_machines.xml
+    cd $CIMEROOT
+    xmllint --noout --schema config/xml_schemas/config_machines.xsd config/ufs/machines/config_machines.xml
 
 
 Add the batch system to config_batch.xml
@@ -197,14 +197,15 @@ and making any needed modifications.  Here is an example batch description:
       </queues>
     </batch_system>
 
-For more details `see the config_batch.xml file 
+For more details `see the config_batch.xml file description in the CIME documentation
 <http://esmci.github.io/cime/users_guide/machine.html#config-batch-xml-batch-directives>`_.
 
 To verify correctness of the config_batch.xml file, use the command:
 
-  .. code-block:: console
-      cd $CIMEROOT
-      xmllint --noout --schema config/xml_schemas/config_batch.xsd config/ufs/machines/config_batch.xml
+.. code-block:: console
+
+    cd $CIMEROOT
+    xmllint --noout --schema config/xml_schemas/config_batch.xsd config/ufs/machines/config_batch.xml
 
 Verify that the port is working by running a simple test
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -217,6 +218,6 @@ build and run a basic workflow with the UFS MR Weather application.
       cd $CIMEROOT/scripts
       ./create_test SMS_Lh5.C96.GFSv15p2 --workflow ufs-mrweather --machine $MACHINE
 
-  The **$MACHINE** is the name of the machine that is added to the **config_machines.xml**.
+  The **$MACHINE** is the name of the machine that you added to the **config_machines.xml**.
 
-  This will test the end-to-end workflow including pre-processing, model forecast and post-processing. 
+  This will attempt to run the full end-to-end workflow including pre-processing, model forecast and post-processing. 
