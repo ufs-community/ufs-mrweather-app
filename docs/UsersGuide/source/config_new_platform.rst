@@ -72,38 +72,106 @@ Everything one needs to do to configure a platform
 Porting CIME to a new machine
 -----------------------------
 
-One of the first steps for many users is getting CIME-based models running on their local machine.
-This section describes that process.
+This section described the steps needed to port the CIME workflow to a new platform.  
 
-Steps for porting 
-^^^^^^^^^^^^^^^^^
+Build and install the "cprnc" tool
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Porting CIME involves several steps. To add a new machine, batch, run, environment, and compiler 
-information must be added in the CIME directly ``$SRCROOT/cime/config/ufs/machines directory``.
+The CIME testing system uses a tool called "cprnc" to compare NetCDF files. This tool
+must be available on the local system in order for the testing system to work properly.
+The source code is included with CIME, but it must be compiled and installed one time
+on each new platform.
 
-- cprnc tool need to be build. 
+To build "cprnc" use these steps:
 
-  .. code-block:: console
+.. code-block:: console
 
       cd $CIMEROOT/tools/cprnc
       CIMEROOT=../.. ../configure --macros-format=Makefile --mpilib=mpi-serial
       CIMEROOT=../.. source ./.env_mach_specific.sh && make
 
-  Finally, put the resulting executable in CCSM_CPRNC that will be defined in new section of config_machines.xml
+You should now have a cprnc executable. Remember the path to this tool as it will be added to the
+`config_machines.xml` file in the next step, in the `CCSM_CPRNC` variable.
 
-- Then, new platform/machine need to be defined 
+Add the new machine description to config_machines.xml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-  You can edit **$CIMEROOT/config/ufs/machines/config_machines.xml** and add a new entry 
-  for your machine. In this case, the exiting platforms in the **config_machines.xml** can be used as a starting
-  point or reference. For more details `see the config_machines.xml file 
-  <http://esmci.github.io/cime/users_guide/machine.html#machinefile>`_.
+Edit the file **$CIMEROOT/config/ufs/machines/config_machines.xml** and add a new `<machine/>` entry
+under the root XML element. 
+A good approach to this is to copy an existing `<machine/>` description and modify it to match
+the new machine to which you are porting CIME.  An example entry looks like this:
 
-  Check to ensure that your **config_machines.xml** file conforms to the CIME schema definition by doing the 
+.. code-block::
+
+    <machine MACH="hera">
+      <DESC>NOAA hera system</DESC>
+      <NODENAME_REGEX>hfe</NODENAME_REGEX>
+      <OS>LINUX</OS>
+      <COMPILERS>intel</COMPILERS>
+      <MPILIBS>impi</MPILIBS>
+      <PROJECT>nems</PROJECT>
+      <SAVE_TIMING_DIR/>
+      <CIME_OUTPUT_ROOT>/scratch1/NCEPDEV/nems/$USER</CIME_OUTPUT_ROOT>
+      <DIN_LOC_ROOT>/scratch1/NCEPDEV/nems/Rocky.Dunlap/INPUTDATA</DIN_LOC_ROOT>
+      <DIN_LOC_ROOT_CLMFORC>/scratch1/NCEPDEV/nems/Rocky.Dunlap/INPUTDATA/atm/datm7</DIN_LOC_ROOT_CLMFORC>
+      <DOUT_S_ROOT>$CIME_OUTPUT_ROOT/archive/$CASE</DOUT_S_ROOT>
+      <BASELINE_ROOT>/scratch1/NCEPDEV/nems/Rocky.Dunlap/BASELINES</BASELINE_ROOT>
+      <CCSM_CPRNC>/home/Rocky.Dunlap/bin/cprnc</CCSM_CPRNC>
+      <GMAKE>make</GMAKE>
+      <GMAKE_J>8</GMAKE_J>
+      <BATCH_SYSTEM>slurm</BATCH_SYSTEM>
+      <SUPPORTED_BY>NCEP</SUPPORTED_BY>
+      <MAX_TASKS_PER_NODE>80</MAX_TASKS_PER_NODE>
+      <MAX_MPITASKS_PER_NODE>40</MAX_MPITASKS_PER_NODE>
+      <PROJECT_REQUIRED>TRUE</PROJECT_REQUIRED>
+      <mpirun mpilib="default">
+        <executable>srun</executable>
+        <arguments>
+          <arg name="num_tasks">-n $TOTALPES</arg>
+        </arguments>
+      </mpirun>
+      <mpirun mpilib="mpi-serial">
+        <executable></executable>
+      </mpirun>
+      <module_system type="module">
+        <init_path lang="sh">/apps/lmod/lmod/init/sh</init_path>
+        <init_path lang="csh">/apps/lmod/lmod/init/csh</init_path>
+        <init_path lang="python">/apps/lmod/lmod/init/env_modules_python.py</init_path>
+        <cmd_path lang="sh">module</cmd_path>
+        <cmd_path lang="csh">module</cmd_path>
+        <cmd_path lang="python">/apps/lmod/lmod/libexec/lmod python</cmd_path>
+        <modules compiler="intel">
+          <command name="purge"/>
+          <command name="load">intel/18.0.5.274</command>
+        </modules>
+        <modules mpilib="impi">
+          <command name="load">netcdf/4.7.0</command>
+          <command name="load">impi/2018.0.4</command>
+	        <command name="use">/scratch1/BMC/gmtb/software/modulefiles/intel-18.0.5.274/impi-2018.0.4</command>
+	        <command name="load">NCEPlibs/1.0.0alpha01</command>
+        </modules>
+        <modules>
+          <command name="use">/scratch1/BMC/gmtb/software/modulefiles/generic</command>
+          <command name="load">cmake/3.16.3</command>
+        </modules>
+      </module_system>
+      <environment_variables comp_interface="nuopc">
+        <env name="ESMF_RUNTIME_PROFILE">ON</env>
+        <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
+      </environment_variables>
+    </machine>
+
+Many of the XML elements above are self-explanatory.  For details about individual elements `see the config_machines.xml file 
+<http://esmci.github.io/cime/users_guide/machine.html#machinefile>`_.
+
+When finished, verify that your **config_machines.xml** file conforms to its schema definition: 
 
   .. code-block:: console
 
       cd $CIMEROOT
       xmllint --noout --schema config/xml_schemas/config_machines.xsd config/ufs/machines/config_machines.xml
+
+
 
 - If you have a batch system, you may also need to create a **$CIMEROOT/config/$model/machines/config_batch.xml**
   file. For more details `see the config_batch.xml file 
