@@ -147,28 +147,28 @@ the distributed documentation, summarized here for ease of use.
 
 .. table::  Centralized list of documentation
 
-   +----------------------------+---------------------------------------------------------+
-   | **Documentation**          | **Location**                                            |
-   +============================+=========================================================+
-   | UFS MR Weather App v1.0    | https://ufs-mrapp.readthedocs.io/en/latest/             |
-   | User's Guide               |                                                         |
-   +----------------------------+---------------------------------------------------------+
-   | chgres_cube User's Guide   |                                                         |
-   +----------------------------+---------------------------------------------------------+
+   +----------------------------+---------------------------------------------------------------------------------+
+   | **Documentation**          | **Location**                                                                    |
+   +============================+=================================================================================+
+   | UFS MR Weather App v1.0    | https://ufs-mrapp.readthedocs.io/en/latest/                                     |
+   | User's Guide               |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | chgres_cube User's Guide   |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
    | UFS Weather Model v1.0     | https://ufs-mr-weather-app.readthedocs.io/projects/ufs-weather-model/en/latest/ |
-   | User's Guide               |                                                         |
-   +----------------------------+---------------------------------------------------------+
-   | FV3 Documentation          |                                                         |
-   +----------------------------+---------------------------------------------------------+
-   | CCPP Scientific            | https://dtcenter.org/GMTB/UFS/sci_doc/                  |
-   | Documentation              |                                                         |
-   +----------------------------+---------------------------------------------------------+
-   | CCPP Technical             | https://ccpp-techdoc.readthedocs.io/en/latest/          |
-   | Documentation              |                                                         |
-   +----------------------------+---------------------------------------------------------+
-   | Stochastic Physics         | https://stochastic-physics.readthedocs.io/en/ufs_public_release/ |
-   | User's Guide               |                                                         |
-   +----------------------------+---------------------------------------------------------+
+   | User's Guide               |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | FV3 Documentation          |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | CCPP Scientific            | https://dtcenter.org/GMTB/UFS/sci_doc/                                          |
+   | Documentation              |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | CCPP Technical             | https://ccpp-techdoc.readthedocs.io/en/latest/                                  |
+   | Documentation              |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | Stochastic Physics         | https://stochastic-physics.readthedocs.io/en/ufs_public_release/                |
+   | User's Guide               |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
 
 The UFS community is encouraged to contribute to the UFS development effort.
 Issues can be posted in the GitHub repository for the App or the relevant
