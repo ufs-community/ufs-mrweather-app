@@ -34,8 +34,8 @@ input to the model, which is six tiles in NetCDF format. Additional information
 about chgres_cube can be found in the chgres_cube User’s Guide (under
 development).
 
-GFS analyses for initializing the MR Weather App can be in Gridded Binary v1
-(GRIB1) or v2 (GRIB2) format, and can be in 25o, 0.50, or 1.0o grid spacing.
+GFS analyses for initializing the MR Weather App are in Gridded Binary
+v2 (GRIB2) format, and can be in 25o, 0.50, or 1.0o grid spacing.
 Initialization from dates starting on January 1, 2018 are supported. Dates
 before that may work, but are not guaranteed. GFS public archives can be
 accessible through the NOAA National Center for Environmental Information (NCEI)
@@ -66,7 +66,7 @@ https://www.gfdl.noaa.gov/fv3.  Additional information about the FV3 dynamical
 core is at https://noaa-emc.github.io/FV3_Dycore/html/.
 Interoperable atmospheric physics, along with the Noah land surface model, are
 supported through the use of the Common Community Physics Package (CCPP;
-described at https://dtcenter.org/community-code/common-community-physics-package-ccpp). There are two physics suites supported for the release. The first is an updated version of the physics suite used in the operational GFS v15, and the second is an experimental suite that includes a subset of the developments for the next version of GFS, GFS v16. A scientific description of the parameterization and suites can be found at https://dtcenter.org/GMTB/v4.0/sci_doc/, and technical documentation about the CCPP is at https://readthedocs.org/projects/ccpp-techdoc/.
+described at https://dtcenter.org/community-code/common-community-physics-package-ccpp). There are two physics suites supported for the release. The first is an updated version of the physics suite used in the operational GFS v15, and the second is an experimental suite that includes a subset of the developments for the next version of GFS, GFS v16. A scientific description of the parameterization and suites can be found at https://dtcenter.org/GMTB/UFS/sci_doc/, and technical documentation about the CCPP is at https://ccpp-techdoc.readthedocs.io/en/latest.
 The model namelists for the two physics suites differ in ways that go beyond
 the physics to optimize various aspects of the model for use with each of the
 suites.
@@ -121,11 +121,6 @@ post-processing tools first. Examples of preconfigured platforms are the NOAA
 research Hera system, the National Center for Atmospheric Research (NCAR)
 Cheyenne system, and the National Science Foundation Stampede2 system.
 
-CONSIDER MOVING THIS ELSEWHERE
-See the :ref:`platforms`, :ref:`supported-compsets`, and
-:ref:`supported-grids` for currently supported platforms, model
-configurations and resolutions.
-
 The workflow leverages the Common Infrastructure for Modeling the Earth (CIME)
 Case Control System (CCS). CIME comes with two default configurations, or
 Component Sets (CompSets), associated with the two physics suites. It provides
@@ -150,15 +145,30 @@ A forum-based online support system with topical sections
 developers to post questions and exchange information. The forum complements
 the distributed documentation, summarized here for ease of use.
 
-Centralized list of documentation
-UFS MR Weather App v1.0 User’s Guide: https://ufs-mrapp.readthedocs.io/en/latest/
-chgres_cube User's Guide
-UFS Weather Model v1.0 User’s Guide: https://ufs-mr-weather-app.readthedocs.io/projects/ufs-weather-model/en/latest/
-FV3 Documentation
-CCPP Scientific Documentation
-CCPP Technical Documentation: https://ccpp-techdoc.readthedocs.io/en/latest/
-Stochastic Physics User’s Guide: https://stochastic-physics.readthedocs.io/en/ufs_public_release/
-UPP User’s Guide
+.. table::  Centralized list of documentation
+
+   +----------------------------+---------------------------------------------------------------------------------+
+   | **Documentation**          | **Location**                                                                    |
+   +============================+=================================================================================+
+   | UFS MR Weather App v1.0    | https://ufs-mrapp.readthedocs.io/en/latest/                                     |
+   | User's Guide               |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | chgres_cube User's Guide   |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | UFS Weather Model v1.0     | https://ufs-mr-weather-app.readthedocs.io/projects/ufs-weather-model/en/latest/ |
+   | User's Guide               |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | FV3 Documentation          |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | CCPP Scientific            | https://dtcenter.org/GMTB/UFS/sci_doc/                                          |
+   | Documentation              |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | CCPP Technical             | https://ccpp-techdoc.readthedocs.io/en/latest/                                  |
+   | Documentation              |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | Stochastic Physics         | https://stochastic-physics.readthedocs.io/en/ufs_public_release/                |
+   | User's Guide               |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
 
 The UFS community is encouraged to contribute to the UFS development effort.
 Issues can be posted in the GitHub repository for the App or the relevant
