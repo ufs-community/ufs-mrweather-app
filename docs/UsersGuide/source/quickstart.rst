@@ -41,24 +41,11 @@ code:
 
 .. code-block:: console
 
-    git clone -b ufs-release/public-v1 https://github.com/ufs-community/ufs-mrweather-app.git my_ufs_sandbox
+    git clone -b ufs-v1.0.0.alpha02 https://github.com/ufs-community/ufs-mrweather-app.git my_ufs_sandbox
     cd my_ufs_sandbox
 
-.. todo:: THIS BRANCH does not YET EXIST, please check out "master" for now (2/10/20)
 
-To checkout a previous version of application, first view the available versions:
-
-.. code-block:: console
-
-    git tag --list '*release*'
-
-To checkout a specific release tag type, for example 0.1:
-
-.. code-block:: console
-
-    git checkout ufs-release/public-v0.1
-
-Finally, to checkout UFS Medium-Range (MR) Weather Model and CIME, run the **checkout_externals** script from /path/to/my_ufs_sandbox.
+To checkout UFS Medium-Range (MR) Weather Model and CIME, run the **checkout_externals** script from /path/to/my_ufs_sandbox.
 
 .. code-block:: console
 
@@ -99,7 +86,6 @@ columns of output, as in this example:
         ./src/model/NEMS
         ./src/model/NEMS/cime/
         ./src/model/NEMS/tests/produtil/NCEPLIBS-pyprodutil
-        ./src/model/WW3
         ./src/model/stochastic_physics
 
 You should now have a complete copy of the source code in your /path/to/my_ufs_sandbox.
