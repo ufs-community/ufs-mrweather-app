@@ -159,7 +159,6 @@ the distributed documentation, summarized here for ease of use.
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
    | FV3 Documentation          | https://noaa-emc.github.io/FV3_Dycore_v1.0/html/index.html                      |
-   |                            | https://www.gfdl.noaa.gov/fv3                                                   |
    +----------------------------+---------------------------------------------------------------------------------+
    | CCPP Scientific            | https://dtcenter.org/GMTB/UFS/sci_doc/                                          |
    | Documentation              |                                                                                 |
