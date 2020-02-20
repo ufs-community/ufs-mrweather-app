@@ -63,7 +63,7 @@ resolutions of C96 (~100km), C192 (~50km), C384 (~25km), and C768 (~13km),
 all with 64 vertical levels. The Geophysical Fluid Dynamics Laboratory website
 provides more information about FV3 and its grids here:
 https://www.gfdl.noaa.gov/fv3.  Additional information about the FV3 dynamical
-core is at https://noaa-emc.github.io/FV3_Dycore/html/.
+core is at https://noaa-emc.github.io/FV3_Dycore_v1.0/html/index.html. 
 Interoperable atmospheric physics, along with the Noah land surface model, are
 supported through the use of the Common Community Physics Package (CCPP;
 described at https://dtcenter.org/community-code/common-community-physics-package-ccpp). There are two physics suites supported for the release. The first is an updated version of the physics suite used in the operational GFS v15, and the second is an experimental suite that includes a subset of the developments for the next version of GFS, GFS v16. A scientific description of the parameterization and suites can be found at https://dtcenter.org/GMTB/UFS/sci_doc/, and technical documentation about the CCPP is at https://ccpp-techdoc.readthedocs.io/en/latest.
@@ -158,7 +158,8 @@ the distributed documentation, summarized here for ease of use.
    | UFS Weather Model v1.0     | https://ufs-mr-weather-app.readthedocs.io/projects/ufs-weather-model/en/latest/ |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | FV3 Documentation          |                                                                                 |
+   | FV3 Documentation          | https://noaa-emc.github.io/FV3_Dycore_v1.0/html/index.html                      |
+   |                            | https://www.gfdl.noaa.gov/fv3                                                   |
    +----------------------------+---------------------------------------------------------------------------------+
    | CCPP Scientific            | https://dtcenter.org/GMTB/UFS/sci_doc/                                          |
    | Documentation              |                                                                                 |
