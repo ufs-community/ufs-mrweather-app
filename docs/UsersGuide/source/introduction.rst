@@ -117,9 +117,19 @@ have been built by the App developers and are available as modules. In
 preconfigured platforms, users can proceed directly to the using the `CIME`_ 
 workflow, as described in the Quick Start chapter. In platforms that have not
 been preconfigured, users have to build the NCEP Libraries and pre- and
-post-processing tools first. Examples of preconfigured platforms are the NOAA
-research Hera system, the National Center for Atmospheric Research (NCAR)
-Cheyenne system, and the National Science Foundation Stampede2 system.
+post-processing tools first. 
+
+.. table::  Pre-configured platforms
+
+   +-----------------------+---------------------------------------------------+
+   | **Platform name**     | **Organization**                                  |
+   +=======================+===================================================+
+   | hera                  | NOAA R&D HPC                                      |
+   +-----------------------+---------------------------------------------------+
+   | cheyenne              | National Center for Atmospheric Research (NCAR)   |
+   +-----------------------+---------------------------------------------------+
+   | stampede2             | National Science Foundation                       |
+   +-----------------------+---------------------------------------------------+
 
 The workflow leverages the Common Infrastructure for Modeling the Earth (CIME)
 Case Control System (CCS). CIME comes with two default configurations, or
