@@ -45,7 +45,7 @@ code:
     cd my_ufs_sandbox
 
 
-To checkout UFS Medium-Range (MR) Weather Model and CIME, run the **checkout_externals** script from /path/to/my_ufs_sandbox.
+To checkout UFS Medium-Range (MR) Weather Model components, including CIME, run the **checkout_externals** script from /path/to/my_ufs_sandbox.
 
 .. code-block:: console
 
