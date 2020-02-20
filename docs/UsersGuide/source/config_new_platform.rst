@@ -74,26 +74,6 @@ Porting CIME to a new machine
 
 This section describes the steps needed to port the CIME workflow to a new platform.  
 
-Build and install the "cprnc" tool
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The CIME testing system uses a tool called "cprnc" to compare NetCDF files. This tool
-must be available on the local system in order for the testing system to work properly.
-The source code is included with CIME, but it must be compiled and installed one time
-on each new platform.
-
-To build "cprnc" use these steps:
-
-.. code-block:: console
-
-      cd $CIMEROOT/tools/cprnc
-      CIMEROOT=../.. ../configure --macros-format=Makefile --mpilib=mpi-serial
-      CIMEROOT=../.. source ./.env_mach_specific.sh && make
-
-You should now have a "cprnc" executable. Remember the path to this tool as it will be added to the
-`config_machines.xml` file in the next step, in the `CCSM_CPRNC` variable.  Ideally, this executable
-will be moved to a shared location so that all users on the platform have access to the tool.
-  
 Add the new machine description to config_machines.xml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -164,6 +144,8 @@ the new machine to which you are porting CIME.  An example entry looks like this
 
 Many of the XML elements above are self-explanatory.  For details about individual elements `see the config_machines.xml file section in the CIME documentation <http://esmci.github.io/cime/users_guide/machine.html#machinefile>`_.
 
+The value of `CCSM_CPRNC` will be set in the step below after the "cprnc" is installed on the system.
+
 When finished, verify that your **config_machines.xml** file conforms to its schema definition: 
 
 .. code-block:: console
@@ -206,6 +188,28 @@ To verify correctness of the config_batch.xml file, use the command:
 
     cd $CIMEROOT
     xmllint --noout --schema config/xml_schemas/config_batch.xsd config/ufs/machines/config_batch.xml
+
+Build and install the "cprnc" tool
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The CIME testing system uses a tool called "cprnc" to compare NetCDF files. This tool
+must be available on the local system in order for the testing system to work properly.
+The source code is included with CIME, but it must be compiled and installed one time
+on each new platform.
+
+To build "cprnc" use these steps:
+
+.. code-block:: console
+
+      cd $CIMEROOT/tools/cprnc
+      CIMEROOT=../.. ../configure --macros-format=Makefile --mpilib=mpi-serial
+      CIMEROOT=../.. source ./.env_mach_specific.sh && make
+
+You should now have a "cprnc" executable. Ideally, this executable
+will be moved to a shared location so that all users on the platform have access to the tool.
+Update **$CIMEROOT/config/ufs/machines/config_machines.xml**
+and set `CCSM_CPRNC` to the path of the "cprnc" executable.  
+
 
 Verify that the port is working by running a simple test
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
