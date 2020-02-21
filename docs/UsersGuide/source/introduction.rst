@@ -74,7 +74,8 @@ The use of stochastic processes to represent model uncertainty is an option
 in this release, although the option is off by default in both of the
 supported physics suites. Three methods are supported for use separately or in
 combination: Stochastic Kinetic Energy Backscatter (SKEB), Stochastically
-Perturbed Physics Tendencies (SPPT), and Specific Humidity perturbations (SHUM). A User’s Guide for the use of stochastic physics is at https://stochastic-physics.readthedocs.io/en/latest.
+Perturbed Physics Tendencies (SPPT), and Specific Humidity perturbations (SHUM). 
+A User’s Guide for the use of stochastic physics is at https://stochastic-physics.readthedocs.io/en/latest.
 The UFS Weather Model ingests files produced by chgres_cube and outputs files
 in NetCDF format on a Gaussian grid in the horizontal and model levels in the
 vertical.
@@ -91,8 +92,9 @@ onto a regular latitude-longitude grid for these GRIB2 files.
 
 These output formats can be used with visualization, plotting and verification
 packages, or for further downstream post-processing, e.g. statistical
-post-processing techniques. More information about UPP can be found here and
-the wgrib utility is described at
+post-processing techniques. More information about UPP can be found here 
+https://release-public-v8.readthedocs.io/en/latest/ 
+and the wgrib utility is described at
 https://www.cpc.ncep.noaa.gov/products/wesley/wgrib2/.
 
 Verification and Examples
@@ -178,6 +180,8 @@ the distributed documentation, summarized here for ease of use.
    +----------------------------+---------------------------------------------------------------------------------+
    | Stochastic Physics         | https://stochastic-physics.readthedocs.io/en/ufs_public_release/                |
    | User's Guide               |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | Unified Post Processor     | https://release-public-v8.readthedocs.io/en/latest/                             |
    +----------------------------+---------------------------------------------------------------------------------+
 
 The UFS community is encouraged to contribute to the UFS development effort.

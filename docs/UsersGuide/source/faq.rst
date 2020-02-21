@@ -16,7 +16,7 @@ The following is example output for the UFS Medium-Range Weather workflow:
     cd $SRCROOT/cime/scripts/$CASEROOT
     ./preview_run
 
-How can I run an individual task in the exiting workflow?
+How can I run an individual task in the existing workflow?
 =========================================================
 
 The CIME-CCS allows you to run the specific task in the workflow by supplying the **--only-job** parameter to the **case.submit** command.
