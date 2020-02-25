@@ -24,9 +24,18 @@ installing and running MR Weather Application.
 
 -  MPI
 
--  NCEPLIBS
+-  `NCEPLIBS-externals <https://github.com/NOAA-EMC/NCEPLIBS-external>`_ (includes ESMF)
+
+-  `NCEPLIBS <https://github.com/NOAA-EMC/NCEPLIBS>`_
 
 -  `CMake 3.15  or newer <http://www.cmake.org/>`_
+
+Note that NCEPLIBS-externals and NCEPLIBS reside in separate GitHub repositories.  NCEPLIBS-externals
+is a collection of third-party libraries required to build NCEPLIBS, which contains the NCEP library
+source code and utilities required for CHGRES, the UFS Weather Model, and UPP.  NCEPLIBS-externals must
+be installed before building the NCEPLIBS, and both are a pre-requesite for porting CIME to a new platform.
+The NCEPLIBS-externals and NCEPLIBS repositories each contain a wiki page with instructions. More details
+are in :numref:`Section %s <genericMacOS>`.
 
 .. _CIME: http://esmci.github.io/cime
 
@@ -35,6 +44,7 @@ Software stack requirements
 
 Add details of software stack requirements (compiler vendor, versions, etc.)
 
+.. _genericMacOS:
 
 Generic MacOS (homebrew) platform
 ---------------------------------

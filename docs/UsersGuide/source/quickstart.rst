@@ -5,7 +5,8 @@ Workflow Quick Start
 ====================
 
 The following quick start guide is applicable to versions of the `UFS Medium-Range Weather Application
-<https://github.com/ufs-community/ufs-mrweather-app>`_ that are on a preconfigured machine (:ref:`platforms`).
+<https://github.com/ufs-community/ufs-mrweather-app>`_ that are on a preconfigured machine
+(see :numref:`Table %s <platforms>`).
 
 The workflow for building and running the application is built on the CIME
 (Common Infrastructure for Modeling Earth) framework.  Please refer to
@@ -44,7 +45,10 @@ code:
     git clone -b ufs-v1.0.0.alpha02 https://github.com/ufs-community/ufs-mrweather-app.git my_ufs_sandbox
     cd my_ufs_sandbox
 
-
+.. note::
+    When cloning the ufs-mrweather-app repository on Hera, the connection to github may time out.  In this
+    case, resubmit the ``git clone`` command.
+    
 To checkout UFS Medium-Range (MR) Weather Model components, including CIME, run the **checkout_externals** script from /path/to/my_ufs_sandbox.
 
 .. code-block:: console
@@ -74,7 +78,7 @@ columns of output, as in this example:
 
 .. code-block:: console
 
-    Checking status of externals: model, stochastic_physics, fv3, ccpp/framework, atmos_cubed_sphere, ccpp/physics, fms, ww3, nems, tests/produtil/nceplibs-pyprodutil, fv3gfs_interface, nems_interface, cime,
+    Checking status of externals: model, stochastic_physics, fv3, ccpp/framework, atmos_cubed_sphere, ccpp/physics, fms, nems, tests/produtil/nceplibs-pyprodutil, fv3gfs_interface, nems_interface, cime,
         ./cime
         ./src/model
         ./src/model/FMS
@@ -124,6 +128,8 @@ with two different Common Community Physics Package (`CCPP
 
    cd $SRCROOT/cime/scripts
    ./query_config --help
+
+where ``$SRCROOT`` is the top directory of the ufs-mrweather-app.
 
 .. _supported-compsets:
 
@@ -240,8 +246,9 @@ machine. **create_newcase** has three required arguments: ``--case``, ``--compse
 (invoke **create_newcase --help** for help).
 
 On machines where a project or account code is needed, you
-must either specify the ``--project`` argument to **create_newcase** or set the
-``$PROJECT`` variable in your shell environment.
+must either specify the ``--project $PROJECT`` argument in the **create_newcase** command, or set the
+``$PROJECT`` variable in your shell environment.  If this argument is not set, the error message
+``ERROR: PROJECT_REQUIRED`` will be reported.
 
 If running on a supported machine, that machine will
 normally be recognized automatically and therefore it is *not* required

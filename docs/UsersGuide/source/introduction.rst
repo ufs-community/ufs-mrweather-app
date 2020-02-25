@@ -121,6 +121,8 @@ workflow, as described in the Quick Start chapter. In platforms that have not
 been preconfigured, users have to build the NCEP Libraries and pre- and
 post-processing tools first. 
 
+.. _platforms:
+
 .. table::  Pre-configured platforms
 
    +-----------------------+---------------------------------------------------+

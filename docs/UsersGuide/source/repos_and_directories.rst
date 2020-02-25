@@ -73,7 +73,7 @@ in configuration file ``Externals.cfg``, which is in the top directory where the
 has been cloned. A listing of the directory structure is shown :ref:`here <top_level_dir_structure>`. 
 
 The directory structures for the standalone UFS Weather Model and the UFS Weather Model included with
-the UFS MR Weather App are equal in that they contain subdirectories for FMS, FV3, NEMS, WW3 and
+the UFS MR Weather App are equal in that they contain subdirectories for FMS, FV3, NEMS and
 stochastic_physics. However, in the UFS Weather App, subdirectories are located under ``src/model``. 
 The UFS MR Weather App also includes a directories for CIME, such as the ``src/model/FV3/cime`` and
 ``src/model/NEMS/cime`` directories.
