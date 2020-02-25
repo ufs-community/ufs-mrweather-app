@@ -63,7 +63,7 @@ resolutions of C96 (~100km), C192 (~50km), C384 (~25km), and C768 (~13km),
 all with 64 vertical levels. The Geophysical Fluid Dynamics Laboratory website
 provides more information about FV3 and its grids here:
 https://www.gfdl.noaa.gov/fv3.  Additional information about the FV3 dynamical
-core is at https://noaa-emc.github.io/FV3_Dycore/html/.
+core is at https://noaa-emc.github.io/FV3_Dycore_v1.0/html/index.html. 
 Interoperable atmospheric physics, along with the Noah land surface model, are
 supported through the use of the Common Community Physics Package (CCPP;
 described at https://dtcenter.org/community-code/common-community-physics-package-ccpp). There are two physics suites supported for the release. The first is an updated version of the physics suite used in the operational GFS v15, and the second is an experimental suite that includes a subset of the developments for the next version of GFS, GFS v16. A scientific description of the parameterization and suites can be found at https://dtcenter.org/GMTB/UFS/sci_doc/, and technical documentation about the CCPP is at https://ccpp-techdoc.readthedocs.io/en/latest.
@@ -74,7 +74,8 @@ The use of stochastic processes to represent model uncertainty is an option
 in this release, although the option is off by default in both of the
 supported physics suites. Three methods are supported for use separately or in
 combination: Stochastic Kinetic Energy Backscatter (SKEB), Stochastically
-Perturbed Physics Tendencies (SPPT), and Specific Humidity perturbations (SHUM). A User’s Guide for the use of stochastic physics is at https://stochastic-physics.readthedocs.io/en/latest.
+Perturbed Physics Tendencies (SPPT), and Specific Humidity perturbations (SHUM). 
+A User’s Guide for the use of stochastic physics is at https://stochastic-physics.readthedocs.io/en/latest.
 The UFS Weather Model ingests files produced by chgres_cube and outputs files
 in NetCDF format on a Gaussian grid in the horizontal and model levels in the
 vertical.
@@ -91,8 +92,9 @@ onto a regular latitude-longitude grid for these GRIB2 files.
 
 These output formats can be used with visualization, plotting and verification
 packages, or for further downstream post-processing, e.g. statistical
-post-processing techniques. More information about UPP can be found here and
-the wgrib utility is described at
+post-processing techniques. More information about UPP can be found here 
+https://release-public-v8.readthedocs.io/en/latest/ 
+and the wgrib2 utility is described at
 https://www.cpc.ncep.noaa.gov/products/wesley/wgrib2/.
 
 Verification and Examples
@@ -117,9 +119,19 @@ have been built by the App developers and are available as modules. In
 preconfigured platforms, users can proceed directly to the using the `CIME`_ 
 workflow, as described in the Quick Start chapter. In platforms that have not
 been preconfigured, users have to build the NCEP Libraries and pre- and
-post-processing tools first. Examples of preconfigured platforms are the NOAA
-research Hera system, the National Center for Atmospheric Research (NCAR)
-Cheyenne system, and the National Science Foundation Stampede2 system.
+post-processing tools first. 
+
+.. table::  Pre-configured platforms
+
+   +-----------------------+---------------------------------------------------+
+   | **Platform name**     | **Organization**                                  |
+   +=======================+===================================================+
+   | hera                  | NOAA R&D HPC                                      |
+   +-----------------------+---------------------------------------------------+
+   | cheyenne              | National Center for Atmospheric Research (NCAR)   |
+   +-----------------------+---------------------------------------------------+
+   | stampede2             | National Science Foundation                       |
+   +-----------------------+---------------------------------------------------+
 
 The workflow leverages the Common Infrastructure for Modeling the Earth (CIME)
 Case Control System (CCS). CIME comes with two default configurations, or
@@ -158,7 +170,7 @@ the distributed documentation, summarized here for ease of use.
    | UFS Weather Model v1.0     | https://ufs-mr-weather-app.readthedocs.io/projects/ufs-weather-model/en/latest/ |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | FV3 Documentation          |                                                                                 |
+   | FV3 Documentation          | https://noaa-emc.github.io/FV3_Dycore_v1.0/html/index.html                      |
    +----------------------------+---------------------------------------------------------------------------------+
    | CCPP Scientific            | https://dtcenter.org/GMTB/UFS/sci_doc/                                          |
    | Documentation              |                                                                                 |
@@ -168,6 +180,8 @@ the distributed documentation, summarized here for ease of use.
    +----------------------------+---------------------------------------------------------------------------------+
    | Stochastic Physics         | https://stochastic-physics.readthedocs.io/en/ufs_public_release/                |
    | User's Guide               |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | Unified Post Processor     | https://release-public-v8.readthedocs.io/en/latest/                             |
    +----------------------------+---------------------------------------------------------------------------------+
 
 The UFS community is encouraged to contribute to the UFS development effort.

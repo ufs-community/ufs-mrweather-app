@@ -60,14 +60,6 @@ Create these directories:
 You are now ready to build the ufs-mrweather-app as documented in the :ref:`quickstart`.
 Use the optional --machine argument to create_newcase and create_test with value ``homebrew``.
 
-Everything one needs to do to configure a platform
---------------------------------------------------
-
-
-
-
-
-
 
 Porting CIME to a new machine
 -----------------------------

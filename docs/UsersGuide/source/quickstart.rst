@@ -122,7 +122,8 @@ with two different Common Community Physics Package (`CCPP
 
 .. code-block:: console
 
-    ./query_config --help
+   cd $SRCROOT/cime/scripts
+   ./query_config --help
 
 .. _supported-compsets:
 
@@ -225,6 +226,9 @@ A number of environment variables must be set before you can create a case.  A s
 to set most of the required variables - before you create a case set up your environment by sourcing the file
 $NCEPLIBS_DIR/bin/setenv_nceplibs.sh (or .csh depending on your shell).  On some systems users may also need to set
 environment variables to identify model input and scratch directories - these are $UFS_INPUT and $UFS_SCRATCH.
+
+.. note::
+     On pre-configured platforms, this setup is already in place.  See the list of pre-configured platforms `here <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`..
 
 Create a case
 ==============
