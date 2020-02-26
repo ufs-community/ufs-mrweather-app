@@ -34,19 +34,16 @@ input to the model, which is six tiles in NetCDF format. Additional information
 about chgres_cube can be found in the chgres_cube User’s Guide (under
 development).
 
-GFS analyses for initializing the MR Weather App are in Gridded Binary
-v2 (GRIB2) format, and can be in 25o, 0.50, or 1.0o grid spacing.
+GFS analyses for initializing the MR Weather App can be in Gridded Binary
+v2 (GRIB2) format (in 25o, 0.50, or 1.0o grid spacing) or in the NOAA Environmental
+Modeling SYstem (NEMS) Input/Output (NEMSIO) format. 
 Initialization from dates starting on January 1, 2018 are supported. Dates
 before that may work, but are not guaranteed. GFS public archives can be
-accessible through the NOAA National Center for Environmental Information (NCEI)
-at https://www.ncdc.noaa.gov/data-access. The NOAA Operational Model Archive and
-Distribution System (NOMADS) offers 0.5o GRIB2 datasets dating back to January
-1, 2019, while older datasets can be requested  from the NCDC archives at
-https://www.ncdc.noaa.gov/has/HAS.FileAppRouter?datasetname=GFSGRB24&subqueryby=STATION&applname=&outdest=FILE.
-
-The ICs may be pre-staged on disk by the user. Alternatively, the ICs may be
-automatically downloaded by the workflow from the NOMADS data server if
-available for the date specified.
+accessed through the NOAA National Center for Environmental Information (NCEI)
+at https://www.ncdc.noaa.gov/data-access and through the NOAA Operational Model Archive and
+Distribution System (NOMADS) at https://nomads.ncdc.noaa.gov/data/gfs4.
+The ICs may be pre-staged on disk by the user or 
+automatically downloaded by the workflow. 
 
 Forecast model
 ==============
@@ -113,27 +110,27 @@ compilers. There is a small set of system libraries that are assumed to be
 present on the target computer, including CMake, a compiler, and the MPI
 library that enables parallelism.
 
-A few select computational platforms have been preconfigured for the release,
-meaning that the NCEP Libraries, along with the pre- and post-processing tools,
-have been built by the App developers and are available as modules. In
-preconfigured platforms, users can proceed directly to the using the `CIME`_ 
-workflow, as described in the Quick Start chapter. In platforms that have not
-been preconfigured, users have to build the NCEP Libraries and pre- and
-post-processing tools first. 
+A few select computational platforms have been preconfigured for the release
+with all the required libraries for building community releases of 
+UFS models and applications available in a central place. That means 
+bundled libraries (NCEPLIBS) and third-party libraries (NCEP-external) 
+have both been built. Applications and models are expected to build and run out of the box.
+In preconfigured platforms, users can proceed directly to the using the `CIME`_ 
+workflow, as described in the Quick Start chapter. 
 
-.. _platforms:
+A few additional computational platforms are considered configurable for the release.
+Configurable platforms are platforms where all of the required libraries for 
+building community releases of UFS models and applications are expected to 
+install successfully, but are not available in a central place. Applications and 
+models are expected to build and run once the required bundled libraries 
+(NCEPLIBS) and third-party libraries (NCEP-external) are built. 
 
-.. table::  Pre-configured platforms
-
-   +-----------------------+---------------------------------------------------+
-   | **Platform name**     | **Organization**                                  |
-   +=======================+===================================================+
-   | hera                  | NOAA R&D HPC                                      |
-   +-----------------------+---------------------------------------------------+
-   | cheyenne              | National Center for Atmospheric Research (NCAR)   |
-   +-----------------------+---------------------------------------------------+
-   | stampede2             | National Science Foundation                       |
-   +-----------------------+---------------------------------------------------+
+Limited-test and Build-Only computational platforms are those in which the developers 
+have built the code but little or no 
+pre-release testing has been conducted, respectively. 
+A complete description of the levels of support, along with a list of preconfigured 
+and configurable platforms can be found at
+https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers.
 
 The workflow leverages the Common Infrastructure for Modeling the Earth (CIME)
 Case Control System (CCS). CIME comes with two default configurations, or
