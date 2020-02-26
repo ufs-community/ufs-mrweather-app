@@ -152,7 +152,7 @@ allow us to keep input data in the users local space.
     to use the exiting initial condition. CIME will not attempt the download the raw data from NOMADS server
     once the directory is found.
 
-    The directory needs to have the **00 hour** (HH: hour) analysis file,
+    The directory needs to have the analysis file,
 
     - **NEMSIO**
       
@@ -165,16 +165,6 @@ allow us to keep input data in the users local space.
 
     The directory could have both GRIB2 and NEMSIO files as well as different hours. The CIME-CCS is
     able to generate correct namelist file for CHGRES.
-
-.. note::
-
-    If user wants to start the model from 06 hour forecast file rather than starting from 00 hour (analysis),
-    the **START_TOD** need to be set as following,
-
-    .. code-block:: console
-
-      cd $SRCROOT/cime/scripts/$CASE 
-      ./xmlchange START_TOD=21600
 
 For supported machines, these variables are preset and alredy set. For generic machines,
 this variables are set via the ``--input-dir`` argument to **create_newcase**.
