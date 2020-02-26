@@ -5,8 +5,8 @@ Workflow Quick Start
 ====================
 
 The following quick start guide is applicable to versions of the `UFS Medium-Range Weather Application
-<https://github.com/ufs-community/ufs-mrweather-app>`_ that are on a preconfigured machine
-(see :numref:`Table %s <platforms>`).
+<https://github.com/ufs-community/ufs-mrweather-app>`_ that are on a preconfigured machine, listed
+`here <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_.
 
 The workflow for building and running the application is built on the CIME
 (Common Infrastructure for Modeling Earth) framework.  Please refer to
@@ -236,7 +236,8 @@ environment variables to identify model input and scratch directories - these ar
 model output data.
 
 .. note::
-     On pre-configured platforms, this setup is already in place.  See the list of pre-configured platforms `here <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`..
+    On pre-configured platforms, this setup is already in place.  See the list of pre-configured platforms
+    `here <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_.
 
 Create a case
 ==============

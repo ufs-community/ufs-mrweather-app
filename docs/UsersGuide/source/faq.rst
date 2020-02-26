@@ -48,7 +48,7 @@ If user wants to define the first job submitted in a workflow, the **--job** par
 In this case, two dpendent jobs will be submited: model simulation and post-processing.
 
 How can I change wall clock time/queue for specific task in the workflow?
-===================================================================
+=========================================================================
 
 These can be done by using ``xmlchange`` command.
 
@@ -62,6 +62,7 @@ For example, following can be used to set job wall clock time to 10 minutes for 
 The following command will change the job queue as **bigmem** for **chgres** 
 
 .. code-block:: console
+
     cd $CASEROOT
     ./xmlchange JOB_QUEUE=bigmem --subgroup case.chgres
 
