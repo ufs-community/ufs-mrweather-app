@@ -25,7 +25,7 @@ chgres_cube
 
 When a user runs the UFS MR Weather App as described in the quickstart guide, input data for
 chgres_cube is linked from a location on disk to your run directory via CIME. The data will
-be stored in a hierarchical way in the ``$DIN_LOC_ID`` directory
+be stored in a hierarchical way in the ``$DIN_LOC_IC`` directory
 (see :numref:`Section %s <downloading_input_data>`). A list of the input files for chgres_cube
 can be found here (TODO: add link).
 
@@ -59,7 +59,7 @@ The location of the output files written to disk are determined by CIME
 chgres_cube
 -----------
 
-The files output by chgres_cube reside in the ``$DIN_LOC_ID`` directory, and are linked by CIME to
+The files output by chgres_cube reside in the ``$DIN_LOC_IC`` directory, and are linked by CIME to
 files that include the grid name and date in the same directory.  For example:
 
 .. code-block:: console
@@ -152,7 +152,7 @@ allow us to keep input data in the users local space.
     to use the exiting initial condition. CIME will not attempt the download the raw data from NOMADS server
     once the directory is found.
 
-    The directory must have (HH: hour),
+    The directory needs to have the **00 hour** (HH: hour) analysis file,
 
     - **NEMSIO**
       
@@ -165,6 +165,16 @@ allow us to keep input data in the users local space.
 
     The directory could have both GRIB2 and NEMSIO files as well as different hours. The CIME-CCS is
     able to generate correct namelist file for CHGRES.
+
+.. note::
+
+    If user wants to start the model from 06 hour forecast file rather than starting from 00 hour (analysis),
+    the **START_TOD** need to be set as following,
+
+    .. code-block:: console
+
+      cd $SRCROOT/cime/scripts/$CASE 
+      ./xmlchange START_TOD=21600
 
 For supported machines, these variables are preset and alredy set. For generic machines,
 this variables are set via the ``--input-dir`` argument to **create_newcase**.
