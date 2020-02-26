@@ -13,7 +13,7 @@ The following is example output for the UFS Medium-Range Weather workflow:
 
 .. code-block:: console
 
-    cd $SRCROOT/cime/scripts/$CASEROOT
+    cd $CASEROOT
     ./preview_run
 
 How can I run an individual task in the existing workflow?
@@ -25,7 +25,7 @@ Following the example to run only the preprocessing utility **chgres**
 
 .. code-block:: console
 
-    cd $SRCROOT/cime/scripts/$CASEROOT
+    cd $CASEROOT
     ./case.submit --only-job case.chgres
 
 This will create the initial conditions for the model simulation using the raw input files are provided by NOAA Operational Model
@@ -35,27 +35,35 @@ To run the simulation:
 
 .. code-block:: console
 
-    cd $SRCROOT/cime/scripts/$CASEROOT
+    cd $CASEROOT
     ./case.submit --only-job case.run
 
 If user wants to define the first job submitted in a workflow, the **--job** parameter can be pass to the **case.submit** command.
 
 .. code-block:: console
 
-    cd $SRCROOT/cime/scripts/$CASEROOT
+    cd $CASEROOT
     ./case.submit --job case.run
 
 In this case, two dpendent jobs will be submited: model simulation and post-processing.
 
-How can I change wall clock time for specific task in the workflow?
+How can I change wall clock time/queue for specific task in the workflow?
 ===================================================================
 
-This can be done by using ``xmlchange`` command. For example, following can be used to set job wall clock time to 10 minutes for **chgres**
+These can be done by using ``xmlchange`` command.
+
+For example, following can be used to set job wall clock time to 10 minutes for **chgres**
 
 .. code-block:: console
 
-    cd $SRCROOT/cime/scripts/$CASEROOT
+    cd $CASEROOT
     ./xmlchange JOB_WALLCLOCK_TIME=00:10:00 --subgroup case.chgres
+
+The following command will change the job queue as **bigmem** for **chgres** 
+
+.. code-block:: console
+    cd $CASEROOT
+    ./xmlchange JOB_QUEUE=bigmem --subgroup case.chgres
 
 .. note::
 
@@ -71,7 +79,7 @@ There are two ways to change project account that is used to submit job:
 
 .. code-block:: console
 
-    cd $SRCROOT/cime/scripts/$CASEROOT
+    cd $CASEROOT
     ./xmlchange CHARGE_ACCOUNT=[PROJECT ID] --subgroup case.chgres
 
 How do I change the processor layout?
@@ -83,14 +91,14 @@ To query the default configuration of the processor layout:
 
 .. code-block:: console
 
-    cd $SRCROOT/cime/scripts/$CASEROOT
+    cd $CASEROOT
     ./pelayout
 
 and to change the default processor layout:
 
 .. code-block:: console
 
-    cd $SRCROOT/cime/scripts/$CASEROOT
+    cd $CASEROOT
     ./xmlchange NTASKS_ATM=150
 
 This will set the total number of processor to 150 but the model configuration files (**model_configure** and **input.nml**) need to be changed to be
@@ -151,7 +159,7 @@ For the high-resolution cases (i.e. C768), user also need to activate threading 
 
 .. code-block:: console
 
-    cd $SRCROOT/cime/scripts/$CASEROOT
+    cd $CASEROOT
     ./xmlchange BUILD_THREADED=TRUE
     ./xmlchange NTHRDS_ATM=2
 
@@ -167,7 +175,7 @@ To restart the model ``xmlchange`` command can be used:
 
 .. code-block:: console
 
-    cd $SRCROOT/cime/scripts/$CASEROOT
+    cd $CASEROOT
     ./xmlchange CONTINUE_RUN=TRUE
     ./case.submit
 
@@ -181,7 +189,7 @@ The restart inteval can be also changed to 6 hourly interval as following:
 
 .. code-block:: console
 
-    cd $SRCROOT/cime/scripts/$CASEROOT
+    cd $CASEROOT
     ./xmlchange REST_OPTION=nhours
     ./xmlchange REST_N=6
 
@@ -195,7 +203,7 @@ The initial 24 hours simulation:
 
 .. code-block:: console
 
-    cd $SRCROOT/cime/scripts/$CASEROOT
+    cd $CASEROOT
     ./xmlchange STOP_OPTION=nhours
     ./xmlchange STOP_N=24
     ./case.submit
@@ -204,7 +212,7 @@ and restart the model for 24 hours simulation:
 
 .. code-block:: console
 
-    cd $SRCROOT/cime/scripts/$CASEROOT
+    cd $CASEROOT
     ./xmlchange CONTINUE_RUN=TRUE
     ./case.submit
 
@@ -222,7 +230,7 @@ new raw GRIB2 input data, the user need to change the simulation date using foll
 
 .. code-block:: console
 
-    cd $SRCROOT/cime/scripts/$CASEROOT
+    cd $CASEROOT
     ./xmlchange RUN_STARTDATE=YYYY-MM-DD
     ./preview_namelist
     ./check_input_data --download
@@ -235,7 +243,7 @@ new raw GRIB2 input data, the user need to change the simulation date using foll
 
     .. code-block:: console
 
-        cd $SRCROOT/cime/scripts/$CASEROOT
+        cd $CASEROOT
         ./xmlchange DIN_LOC_IC=`pwd`/icfiles
 
 .. note::
@@ -314,7 +322,7 @@ To change the values set automatically by CIME-CSS, ``xmlchange`` command can be
 
 .. code-block:: console
 
-    cd $SRCROOT/cime/scripts/$CASEROOT
+    cd $CASEROOT
     ./xmlchange task_count=72 --subgroup case.chgres
 
 This command will change the number of task used by CHGRES to 72. If user wants to change number of
