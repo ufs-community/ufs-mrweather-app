@@ -238,7 +238,9 @@ the case and add the change(s) as name-value pairs.
 
 For example:
 
-do_skeb = T
+.. code-block:: console
+
+    do_skeb = T
 
 Then run ``./case.submit`` this will update the namelist and submit the job.
 
@@ -320,6 +322,8 @@ has both GRIB2 and NEMSIO files for same date, then CIME-CSS
 will use GRIB2 dataset to process with chgres. To change the default
 behavior and process NEMSIO files instead of GRIB2, edit file ``user_nl_ufsatm``
 and add
+
+.. code-block:: console
 
     input_type = "gaussian"
 
