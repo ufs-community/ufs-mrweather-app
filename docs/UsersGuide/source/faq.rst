@@ -155,13 +155,16 @@ To have consistent model configuration with **NTASKS_ATM** defined above. ``user
     - regional@chgres
     - regional@fv_core_nml
 
-For the high-resolution cases (i.e. C768), user also need to activate threading to reduce memory consumption for each compute node:
+How do I chnage the number of OPENMP threads?
+===========================
+
+User might need to change the number of threads to reduce memory consumption for each compute node expecially for high-resolution cases, which is already set by CIME-CSS for C768. This can be done by using following command:
 
 .. code-block:: console
 
     cd $CASEROOT
     ./xmlchange BUILD_THREADED=TRUE
-    ./xmlchange NTHRDS_ATM=2
+    ./xmlchange NTHRDS_ATM=4
 
 .. note::
 
