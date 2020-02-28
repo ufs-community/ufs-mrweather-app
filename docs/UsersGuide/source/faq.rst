@@ -48,7 +48,7 @@ If user wants to define the first job submitted in a workflow, the **--job** par
 In this case, two dependent jobs will be submitted: model simulation and post-processing.
 
 How can I change wall clock time/queue for specific task in the workflow?
-===================================================================
+==========================================================================
 
 These can be done by using ``xmlchange`` command.
 
@@ -62,6 +62,7 @@ For example, following can be used to set job wall clock time to 10 minutes for 
 The following command will change the job queue as **bigmem** for **chgres**
 
 .. code-block:: console
+
     cd $CASEROOT
     ./xmlchange JOB_QUEUE=bigmem --subgroup case.chgres
 
@@ -135,7 +136,7 @@ To have consistent model configuration with **NTASKS_ATM** defined above. ``user
     The model resolution also need to be divided evenly with the layout pair. For the given configuration (C96 resolution), :math:`96/3 = 32` and :math:`96/8 = 12`
 
 How do I chnage the number of OPENMP threads?
-===========================
+=============================================
 
 User might need to change the number of threads to reduce memory consumption for each compute node expecially for high-resolution cases, which is already set by CIME-CSS for C768. This can be done by using following command:
 
@@ -284,7 +285,7 @@ variables or levels output by UPP.
 How do I download new initial condition from NCDC server?
 ===========================================================
 
-The raw initial condition in GRIB2 format for UFS Medium-Range (MR) Weather Model is provided by National 
+The raw initial condition in GRIB2 format for UFS Medium-Range (MR) Weather Model is provided by National
 Climatic Data Center (NCDC). In this case, The Global Forecast System (GFS) output is processed using
 provided pre-processing tool (CHGRES) for desired model resolution and date. To download
 new raw GRIB2 input data, the user need to change the simulation date using following command:
@@ -293,7 +294,7 @@ new raw GRIB2 input data, the user need to change the simulation date using foll
 
     cd $CASEROOT
     ./xmlchange RUN_STARTDATE=YYYY-MM-DD
-    
+
 The data will be retrieved from the server when ``case.submit`` command is issued. Optionally, user might use follwing command to download the data:
 
 .. code-block:: console
@@ -415,7 +416,7 @@ task for NCEP-Post, the subgroup option need to set to ``case.gfs_post``.
 How to change the filenames for input to CHGRES?
 ================================================
 
-By default, CIME-CSS uses `pre-defined convention <https://ufs-mrapp.readthedocs.io/en/latest/inputs_outputs.html#downloading-input-data>`_ to define folder and file names for raw input to CHGRES. In this case, 0.5-degree data in GRIB2 format is used from `NCDC - Global Forecast System <https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`_. 
+By default, CIME-CSS uses `pre-defined convention <https://ufs-mrapp.readthedocs.io/en/latest/inputs_outputs.html#downloading-input-data>`_ to define folder and file names for raw input to CHGRES. In this case, 0.5-degree data in GRIB2 format is used from `NCDC - Global Forecast System <https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`_.
 
 In case of using 1.0-degree GRIB2 format data (with gfs_3_YYYYMMDD_00HH_000.grb2 naming convention), user need to download file manuallay and placed under ``$DIN_LOC_IC/YYYYMM/YYYYMMDD```. Then, ``grib2_file_input_grid`` CHGRES namelist variable need to be modified by editing ``user_nl_ufsatm`` file (resides in the ``$CASEROOT``) as following (for Dorian case):
 
@@ -459,7 +460,7 @@ In case of using 1.0-degree GRIB2 format data (with gfs_3_YYYYMMDD_00HH_000.grb2
 .. note::
 
     Please be aware that tests were not done with the AVN, MRF or analysis data.
-    
+
 .. note::
 
     Please be aware that the date used in the directory naming must match with the data used in file name.
