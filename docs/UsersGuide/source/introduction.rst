@@ -101,7 +101,9 @@ The MR Weather App is distributed with two post-processing tools, the Unified
 Post Processor (UPP) and wgrib2. The Unified Post Processor (UPP) converts the
 native NetCDF output from the model to the GRIB2 format on standard isobaric
 coordinates in the vertical. The UPP can also be used to compute a variety of
-useful diagnostic fields. The wgrib2 utility performs horizontal interpolation
+useful diagnostic fields. 
+
+The wgrib2 utility can be used to perform horizontal interpolation
 onto a regular latitude-longitude grid for these GRIB2 files.
 
 These output formats can be used with visualization, plotting and verification
@@ -116,7 +118,11 @@ Verification and Examples
 
 A comprehensive example is provided, including output data sets. It is possible
 to do a visual check to verify that the application is set up correctly and
-producing correct results.
+producing reasonable results.
+
+ftp://ftp.emc.ncep.noaa.gov/EIB/UFS/visualization_example/
+
+contains a README file describing the plotting scripts and example plots.
 
 Workflow and Build System
 =========================
