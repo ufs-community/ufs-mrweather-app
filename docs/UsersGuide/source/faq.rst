@@ -316,12 +316,6 @@ The data will be retrieved from the server when ``case.submit`` command is issue
 .. note::
 
     Note that the higher resolution GFS data, which is in NEMSIO format needs to be retrieved manually from NOMADS (NOAA National Operational Model Archive and Distribution System) server. Please be aware that the NOMADS server only keeps last 10 days data.
-    
-    
-
-
-NOAA Operational
-Model Archive and Distribution System (NOMADS). 
 
 How do I find out which platforms are preconfigured for the MR Weather App?
 ===========================================================================
