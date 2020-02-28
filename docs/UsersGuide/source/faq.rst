@@ -134,27 +134,6 @@ To have consistent model configuration with **NTASKS_ATM** defined above. ``user
 
     The model resolution also need to be divided evenly with the layout pair. For the given configuration (C96 resolution), :math:`96/3 = 32` and :math:`96/8 = 12`
 
-.. warning::
-
-    The ``user_nl_ufsatm`` file is also used to control namelist options for CHGRES and NCEP-Post and different namelist groups in model namelist and pre-, post-processing tools could have same namelist variable. In this case, just using namelist variable name causes failure in automated namelist generation. The following is the list of namelist variables that needs to be used along with their group name.
-
-    - alpha@nam_physics_nml
-    - alpha@test_case_nml
-    - avg_max_length@atmos_model_nml
-    - avg_max_length@gfs_physics_nml
-    - debug@atmos_model_nml
-    - debug@gfs_physics_nml
-    - icliq_sw@gfs_physics_nml
-    - icliq_sw@nam_physics_nml
-    - iospec_ieee32@fms_nml
-    - iospec_ieee32@fms_io_nml
-    - ntiles@fv_core_nml
-    - ntiles@nest_nml
-    - read_all_pe@fms_io_nml
-    - read_all_pe@fms_nml
-    - regional@chgres
-    - regional@fv_core_nml
-
 How do I chnage the number of OPENMP threads?
 ===========================
 
@@ -226,20 +205,43 @@ and restart the model for 24 hours simulation:
 How do I change a model namelist option?
 ================================================================
 To set a model namelist options in CIME, edit file ``user_nl_ufsatm`` in
-the case and add the change(s) as name-value pairs.
+the case and add the change(s) as name-value pairs. For example:
 
 .. code-block:: console
 
     !----------------------------------------------------------------------------------
-    ! Users should add all user specific namelist changes in the form of
-    !   namelist_var = new_namelist_value
-    ! Note that it does not matter what namelist group the namelist_var belongs to.
+    ! This file can be used to change namelist options for:
+    ! - Chgres
+    ! - UFS MR-Weather Model
+    ! - NCEP Post
+    !
+    ! Users should add all user-specific namelist changes below in the form of
+    !  namelist_var = new_namelist_value
+    !
+    ! To change the namelist variables that are defined as multiple times under
+    ! different namelist groups
+    !  namelist_var@namelist_group = new_namelist_value
+    !
+    ! Following is the list of namelist variables that need to be accessed by
+    ! specifying the namelist groups:
+    !
+    ! alpha@nam_physics_nml
+    ! alpha@test_case_nml
+    ! avg_max_length@atmos_model_nml
+    ! avg_max_length@gfs_physics_nml
+    ! debug@atmos_model_nml
+    ! debug@gfs_physics_nml
+    ! icliq_sw@gfs_physics_nml
+    ! icliq_sw@nam_physics_nml
+    ! iospec_ieee32@fms_nml
+    ! iospec_ieee32@fms_io_nml
+    ! ntiles@fv_core_nml
+    ! ntiles@nest_nml
+    ! read_all_pe@fms_io_nml
+    ! read_all_pe@fms_nml
+    ! regional@chgres
+    ! regional@fv_core_nml
     !----------------------------------------------------------------------------------
-
-For example:
-
-.. code-block:: console
-
     do_skeb = T
 
 Then run ``./case.submit`` this will update the namelist and submit the job.
@@ -251,6 +253,27 @@ or the case subdirectory CaseDocs/.
 Some variables are tied to xml in the case and can only be changed via the
 ``xmlchange`` command. Attempting to change them by editing file
 ``user_nl_ufsatm`` skeb generate an error.
+
+.. warning::
+
+    The ``user_nl_ufsatm`` file is also used to control namelist options for CHGRES and NCEP-Post and different namelist groups in model namelist and pre-, post-processing tools could have same namelist variable. In this case, just using namelist variable name causes failure in automated namelist generation. The following is the list of namelist variables that needs to be used along with their group name.
+
+    - alpha@nam_physics_nml
+    - alpha@test_case_nml
+    - avg_max_length@atmos_model_nml
+    - avg_max_length@gfs_physics_nml
+    - debug@atmos_model_nml
+    - debug@gfs_physics_nml
+    - icliq_sw@gfs_physics_nml
+    - icliq_sw@nam_physics_nml
+    - iospec_ieee32@fms_nml
+    - iospec_ieee32@fms_io_nml
+    - ntiles@fv_core_nml
+    - ntiles@nest_nml
+    - read_all_pe@fms_io_nml
+    - read_all_pe@fms_nml
+    - regional@chgres
+    - regional@fv_core_nml
 
 Can I customize the UPP output?
 ================================================================
