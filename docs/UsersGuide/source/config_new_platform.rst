@@ -12,11 +12,11 @@ installing and running MR Weather Application.
 
 -  UNIX style operating system such as CNL, AIX, Linux, Mac
 
--  python >= 2.7
+-  Python = 2.7
 
--  perl 5
+-  Perl 5
 
--  git client (1.8 or greater)
+-  Git client (1.8 or greater)
 
 -  Fortran compiler with support for Fortran 2003
 
@@ -32,7 +32,7 @@ installing and running MR Weather Application.
 
 Note that NCEPLIBS-externals and NCEPLIBS reside in separate GitHub repositories.  NCEPLIBS-externals
 is a collection of third-party libraries required to build NCEPLIBS, which contains the NCEP library
-source code and utilities required for CHGRES, the UFS Weather Model, and UPP.  NCEPLIBS-externals must
+source code and utilities required for chgres_cube, the UFS Weather Model, and UPP.  NCEPLIBS-externals must
 be installed before building the NCEPLIBS, and both are a pre-requesite for porting CIME to a new platform.
 The NCEPLIBS-externals and NCEPLIBS repositories each contain a wiki page with instructions. More details
 are in :numref:`Section %s <genericMacOS>`.
@@ -74,13 +74,13 @@ Use the optional --machine argument to create_newcase and create_test with value
 Porting CIME to a new machine
 -----------------------------
 
-This section describes the steps needed to port the CIME workflow to a new platform.  
+This section describes the steps needed to port the CIME workflow to a new platform.
 
 Add the new machine description to config_machines.xml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Edit the file **$CIMEROOT/config/ufs/machines/config_machines.xml** and add a new `<machine/>` entry
-under the root XML element. 
+under the root XML element.
 A good approach to this is to copy an existing `<machine/>` description and modify it to match
 the new machine to which you are porting CIME.  An example entry looks like this:
 
@@ -144,11 +144,11 @@ the new machine to which you are porting CIME.  An example entry looks like this
       </environment_variables>
     </machine>
 
-Many of the XML elements above are self-explanatory.  For details about individual elements `see the config_machines.xml file section in the CIME documentation <http://esmci.github.io/cime/users_guide/machine.html#machinefile>`_.
+Many of the XML elements above are self-explanatory.  For details about individual elements see the `config_machines.xml file section in the CIME documentation <http://esmci.github.io/cime/users_guide/machine.html#machinefile>`_.
 
-The value of `CCSM_CPRNC` will be set in the step below after the "cprnc" is installed on the system.
+The value of ``CCSM_CPRNC`` will be set in the step below after the "cprnc" is installed on the system.
 
-When finished, verify that your **config_machines.xml** file conforms to its schema definition: 
+When finished, verify that your **config_machines.xml** file conforms to its schema definition:
 
 .. code-block:: console
 
@@ -159,11 +159,11 @@ When finished, verify that your **config_machines.xml** file conforms to its sch
 Add the batch system to config_batch.xml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Edit the file **$CIMEROOT/config/ufs/machines/config_batch.xml** and add a `<batch_system/>` element 
+Edit file **$CIMEROOT/config/ufs/machines/config_batch.xml** and add a `<batch_system/>` element
 describing the batch system on the new machine.  Again, this can be done by copying an existing element
 and making any needed modifications.  Here is an example batch description:
 
-.. code-block:: 
+.. code-block::
 
     <batch_system MACH="hera" type="slurm">
       <batch_submit>sbatch</batch_submit>
@@ -181,7 +181,7 @@ and making any needed modifications.  Here is an example batch description:
       </queues>
     </batch_system>
 
-For more details `see the config_batch.xml file description in the CIME documentation
+For more details see the `config_batch.xml file description in the CIME documentation
 <http://esmci.github.io/cime/users_guide/machine.html#config-batch-xml-batch-directives>`_.
 
 To verify correctness of the config_batch.xml file, use the command:
@@ -194,12 +194,12 @@ To verify correctness of the config_batch.xml file, use the command:
 Build and install the "cprnc" tool
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The CIME testing system uses a tool called "cprnc" to compare NetCDF files. This tool
+The CIME testing system uses a tool called ``cprnc`` to compare NetCDF files. This tool
 must be available on the local system in order for the testing system to work properly.
 The source code is included with CIME, but it must be compiled and installed one time
 on each new platform.
 
-To build "cprnc" use these steps:
+To build ``cprnc`` use these steps:
 
 .. code-block:: console
 
@@ -207,17 +207,17 @@ To build "cprnc" use these steps:
       CIMEROOT=../.. ../configure --macros-format=Makefile --mpilib=mpi-serial
       CIMEROOT=../.. source ./.env_mach_specific.sh && make
 
-You should now have a "cprnc" executable. Ideally, this executable
+You should now have a ``cprnc`` executable. Ideally, this executable
 will be moved to a shared location so that all users on the platform have access to the tool.
 Update **$CIMEROOT/config/ufs/machines/config_machines.xml**
-and set `CCSM_CPRNC` to the path of the "cprnc" executable.  
+and set ``CCSM_CPRNC`` to the path of the ``cprnc`` executable.
 
 
 Verify that the port is working by running a simple test
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Once you have completed the above steps, run the following test to see if you are able to
-build and run a basic workflow with the UFS MR Weather application.
+build and run a basic workflow with the UFS MR Weather App.
 
   .. code-block:: console
 
@@ -226,4 +226,4 @@ build and run a basic workflow with the UFS MR Weather application.
 
 The **$MACHINE** is the name of the machine that you added to the **config_machines.xml**.
 
-This will attempt to run the full end-to-end workflow including pre-processing, model forecast and post-processing. 
+This will attempt to run the full end-to-end workflow including pre-processing, model forecast, and post-processing.
