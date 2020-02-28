@@ -94,14 +94,16 @@ The UFS Weather Model ingests files produced by chgres_cube and outputs files
 in NetCDF format on a Gaussian grid in the horizontal and model levels in the
 vertical.
 
-Post-processor and visualization
+Post-processor
 ================================
 
 The MR Weather App is distributed with two post-processing tools, the Unified
 Post Processor (UPP) and wgrib2. The Unified Post Processor (UPP) converts the
 native NetCDF output from the model to the GRIB2 format on standard isobaric
 coordinates in the vertical. The UPP can also be used to compute a variety of
-useful diagnostic fields. The wgrib2 utility performs horizontal interpolation
+useful diagnostic fields. 
+
+The wgrib2 utility can be used to perform horizontal interpolation
 onto a regular latitude-longitude grid for these GRIB2 files.
 
 These output formats can be used with visualization, plotting and verification
@@ -111,12 +113,18 @@ https://release-public-v8.readthedocs.io/en/latest/
 and the wgrib2 utility is described at
 https://www.cpc.ncep.noaa.gov/products/wesley/wgrib2/.
 
-Verification and Examples
+Visualization Example
 =========================
 
-A comprehensive example is provided, including output data sets. It is possible
-to do a visual check to verify that the application is set up correctly and
-producing correct results.
+This release does not include support for model verification or visualization. Currently, 
+only a basic NCL script is provided to create a basic visualization of model output.  
+This is provided only as an example for users familiar with NCL, and may be used to
+do a visual check to verify that the application is set up correctly and
+producing reasonable results.
+
+ftp://ftp.emc.ncep.noaa.gov/EIB/UFS/visualization_example/
+
+contains a README file describing the plotting scripts and example plots.
 
 Workflow and Build System
 =========================
@@ -151,7 +159,7 @@ https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers.
 
 The workflow leverages the Common Infrastructure for Modeling the Earth (CIME)
 Case Control System (CCS). CIME comes with two default configurations, or
-Component Sets (CompSets). One CompSet is used to evoke the physics suite
+Component Sets (compsets). One compset is used to evoke the physics suite
 used in the operational GFS v15, while the other is used to evoke the
 experimental GFS v16 physics. Based on the type of initial conditions, the
 workflow determines whether the to employ the variant with constant or predicted

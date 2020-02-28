@@ -4,11 +4,13 @@
 Workflow Quick Start
 ====================
 
+
 The following quick start guide is applicable to versions of the `UFS Medium-Range Weather Application
 <https://github.com/ufs-community/ufs-mrweather-app>`_ that are on a preconfigured machine, listed
 `here <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_.
 
-The workflow for building and running the application is built on the CIME
+
+The workflow for building and running the App is built on the CIME
 (Common Infrastructure for Modeling Earth) framework.  Please refer to
 the `CIME Porting Documentation <http://esmci.github.io/cime/users_guide/porting-cime.html>`_ if CIME
 has not yet been ported to the target machine.
@@ -16,9 +18,9 @@ has not yet been ported to the target machine.
 If you are new to CIME, please consider reading the
 `CIME Case Control System Part 1: Basic Usage <https://esmci.github.io/cime/users_guide/index.html#case-control-system-part-1-basic-usage>`_ first.
 
-This is the procedure for quickly setting up and running a case of UFS Medium-Range Weather Application.
+This is the procedure for quickly setting up and running a case of UFS MR Weather App.
 
-* Download the UFS Medium-Range Weather Application
+* Download the UFS MR Weather App
 * Create a case: use ``create_newcase``
 * Setup  a case: use ``case.setup``
 * Build  a case: use ``case.build``
@@ -33,7 +35,7 @@ This is the procedure for quickly setting up and running a case of UFS Medium-Ra
 
 .. _downloading:
 
-Downloading the UFS Medium-Range (MR) Weather Application code and scripts
+Downloading the UFS MR Weather App code and scripts
 ==========================================================================
 
 Access to the code requires git. You will need access to the command line clients, ``git``
@@ -48,8 +50,8 @@ code:
 .. note::
     When cloning the ufs-mrweather-app repository on Hera, the connection to github may time out.  In this
     case, resubmit the ``git clone`` command.
-    
-To checkout UFS Medium-Range (MR) Weather Model components, including CIME, run the **checkout_externals** script from /path/to/my_ufs_sandbox.
+
+To checkout UFS MR Weather Model components, including CIME, run the **checkout_externals** script from /path/to/my_ufs_sandbox.
 
 .. code-block:: console
 
@@ -115,12 +117,13 @@ Check the ``manage_externals.log`` file to see what errors are reported.
 Model Configurations
 ====================
 
-.. todo:: THIS SECTION WAS MOVED HERE - PLS REVIEW AND DECIDE ON OPTIMAL
-   PLACEMENT
-
-The UFS Medium-Range (MR) Weather Application can be configured at four out-of-the-box resolutions
-with two different Common Community Physics Package (`CCPP
-<https://ccpp-techdoc.readthedocs.io/en/latest/Overview.html>`_) physics suites (``GFSv15p2`` or ``GFSv16beta``).
+The UFS MR Weather App can be configured at four out-of-the-box resolutions
+with two different compsets, ``GFSv15p2`` or ``GFSv16beta``. 
+Those compsets
+evoke suites that use or not an ocean-evolving parameterization depending on the 
+initial data provided. See the Introduction for more information on the
+physics suites provided with the release and see the frequently-asked questions (FAQ) section
+for more information on compsets, physics suites, and initial datasets.
 
 * Details of available component sets and resolutions are available from the ``query_config`` tool located in the ``cime/scripts`` directory
 
@@ -138,10 +141,10 @@ Supported component sets
 
 The components of the modeling system can be combined in numerous ways to carry out various scientific or
 software experiments. A particular mix of components, along with component-specific configuration and/or
-namelist settings is referred to as  component set or "compset". The UFS Medium-Range (MR) Weather Application
+namelist settings is referred to as  component set or "compset". The UFS MR Weather App
 has a shorthand naming convention for component sets that are supported out-of-the-box.
 
-To determine what out-of-the-box MR Weather Application compsets are available in the release, do
+To determine what out-of-the-box MR Weather App compsets are available in the release, do
 the following:
 
 .. code-block:: console
@@ -216,7 +219,7 @@ This should show the a list of available grids for this release.
       non-default grids are: atm:C768
 
 
-As can be seen, MR Weather Application currently supports four out-of-the-box grids with the following nominal resolutions
+As can be seen, MR Weather App currently supports four out-of-the-box grids with the following nominal resolutions
 
 * C96 (~100km)
 * C192 (~50km),
@@ -228,16 +231,27 @@ and all with 64 vertical levels.
 Setup the environment
 =====================
 
-A number of environment variables must be set before you can create a case.  A script is provided with NCEPlibs 
-to set most of the required variables - before you create a case set up your environment by sourcing the file
-``$NCEPLIBS_DIR/bin/setenv_nceplibs.sh`` (or ``.csh`` depending on your shell).  On some systems users may also need to set
-environment variables to identify model input and scratch directories - these are ``$UFS_INPUT`` and ``$UFS_SCRATCH``.
-``$UFS_SCRATCH`` should be set to a directory where the user has write permission and sufficient space to stage
-model output data.
+Two environment variables need to be set prior to running the CIME workflow:
 
-.. note::
-    On pre-configured platforms, this setup is already in place.  See the list of pre-configured platforms
-    `here <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_.
+.. code-block:: console
+
+     export UFS_INPUT=/path/to/inputs
+     export UFS_SCRATCH=/path/to/outputs
+
+``UFS_INPUT`` should be set to the location of a folder where input data will be accessed.  There should be a folder named ``ufs_inputdata`` underneath this folder.  The folder ``$UFS_INPUT/ufs_inputdata`` should exist before running the CIME workflow. This is often a shared location on a platform so that all users on that platform can access data from the same location.
+  
+``UFS_SCRATCH`` should be set to the location of a writeable folder where output will be written for each case.  This is typically a user scratch space or temporary location with a large allocation available.
+
+On `platforms that are not pre-configured <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_ a script needs to be executed to define a set of environment variables related to the location of NCEPLIBS dependencies.
+
+.. code-block:: console
+
+     # SH or BASH shells
+     source $NCEPLIBS_DIR/bin/setenv_nceplibs.sh
+
+     # CSH
+     source $NCEPLIBS_DIR/bin/setenv_nceplibs.csh
+     
 
 Create a case
 ==============
@@ -275,7 +289,7 @@ where:
   case will be the tail path. The full path to the case directory will be
   stored in the ``$CASEROOT`` XML variable.
 
-- ``COMPSET`` is the component set and can be ``GFSv15p2`` or ``GFSv16beta``, which are only
+- ``COMPSET`` is the component set and can be ``GFSv15p2`` or ``GFSv16beta``, which trigger 
   supported Common Community Physics Package (CCPP) suites. If you would like to learn more about CCPP
   please consider reading the `CCPP Overview <https://ccpp-techdoc.readthedocs.io/en/latest/Overview.html>`_.
 
@@ -283,11 +297,8 @@ where:
 
 - ``WORKFLOW`` is the workflow and can be set as ``ufs-mrweather`` or ``ufs-mrweather_wo_post``. The
   ``ufs-mrweather`` includes both pre- and post-processing steps, while ``ufs-mrweather_wo_post`` includes
-  only pre-processing step. In the current version of the UFS Medium-Range Weather Application, the
-  pre-processing step need to be run to generate initial conditions for the UFS Medium-Range Weather Model.
-  In this case, the raw input files are provided by `NOAA Operational Model Archive and Distribution System
-  (NOMADS) <https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod>`_ and please be aware that the NOMADS
-  server only keeps last 10 days data.
+  only pre-processing step. In the current version of the UFS MR Weather App, the
+  pre-processing step need to be run to generate initial conditions for the UFS Weather Model.
 
 Here is an example on NCAR machine Cheyenne with the ``$USER`` shell environment variable
 set to your cheyenne login name:
@@ -303,6 +314,7 @@ Setting up the case run script
 Issuing the `case.setup`_ command creates scripts needed to run the model
 along with namelist ``user_nl_xxx`` files, where xxx denotes the set of components
 for the given case configuration such as ``ufsatm`` and ``cpl``.
+Selected namelist entries can be customized by editing ``user_nl_xxx``, see FAQ.
 
 cd to the case directory. Following the example from above:
 
@@ -336,13 +348,13 @@ Run the build script.
 
 Users of the NCAR cheyenne system should consider using
 `qcmd <https://www2.cisl.ucar.edu/resources/computational-systems/cheyenne/running-jobs/submitting-jobs-pbs>`_
-to compile UFS Medium-Range Weather Model on a compute node as follows:
+to compile UFS Weather Model on a compute node as follows:
 
 .. code-block:: console
 
     qcmd -- ./case.build
 
-The UFS Medium-Range Weather Model executable (named as ``ufs.exe``) will appear in the directory given by the
+The UFS Weather Model executable (named as ``ufs.exe``) will appear in the directory given by the
 XML variable ``$EXEROOT``, which can be queried using:
 
 .. code-block:: console
@@ -368,7 +380,7 @@ now are:
    <http://esmci.github.io/cime/users_guide/troubleshooting.html>`_ runtime problems
    before submitting for a longer time or a production runs. For example, following setting can be used to
    set the simulation lenght to 36-hours. Please, also be aware that ``nyears``, ``nmonths`` and ``nsteps``
-   options for ``STOP_OPTION`` are not supported in the UFS Medium-Range Weather Application.
+   options for ``STOP_OPTION`` are not supported in the UFS MR Weather App.
 
    .. code-block:: console
 
@@ -388,7 +400,7 @@ now are:
       ./xmlchange JOB_WALLCLOCK_TIME=00:30:00
       ./xmlchange USER_REQUESTED_WALLTIME=00:30:00
 
-4. The default start date (2019-09-09, 00 UTC) can be also changed by following commands
+4. The default start date (2019-08-29, 00 UTC) can be also changed by following commands
 
    .. code-block:: console
 
@@ -424,7 +436,7 @@ comma separated names and no spaces):
 - ``$RUNDIR``
 
   This directory is set in the ``env_run.xml`` file. This is the
-  location where UFS Medium-Range Weather Application was run. There should be log files for the model
+  location where UFS MR Weather App was run. There should be log files for the model
   component (i.e. of the form ufs.log.yymmdd-hhmmss) if ``$DOUT_S == FALSE``. To check that a run
   completed successfully, check the last several lines of the ufs.log file for the string "PROGRAM nems
   HAS ENDED" and "RESOURCE STATISTICS".
