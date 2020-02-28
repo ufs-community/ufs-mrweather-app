@@ -237,10 +237,9 @@ Setup the environment
 
 Two environment variables need to be set prior to running the CIME workflow:
 
-```
-$ export UFS_INPUT=/path/to/inputs
-$ export UFS_SCRATCH=/path/to/outputs
-```
+.. code-block:: console
+   $ export UFS_INPUT=/path/to/inputs
+   $ export UFS_SCRATCH=/path/to/outputs
 
 `UFS_INPUT` should be set to the location of a folder where input data will be accessed.  There should be a folder named `CIME_UFSINPUT` underneath this folder.  The folder `$UFS_INPUT/CIME_UFSINPUT` should exist _before_ running the CIME workflow. This is often a shared location on a platform so that all users on that platform can access data from the same location.
   
@@ -248,9 +247,9 @@ $ export UFS_SCRATCH=/path/to/outputs
 
 On _`platforms that are not pre-configured <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_ a script needs to be executed to define a set of environment variables related to the location of NCEPLIBS dependencies.
 
-```
-$ source $NCEPLIBS_DIR/bin/setenv_nceplibs.sh
-```
+.. code-block:: console
+   $ source $NCEPLIBS_DIR/bin/setenv_nceplibs.sh
+
 
 Create a case
 ==============
