@@ -235,22 +235,6 @@ and all with 64 vertical levels.
 Setup the environment
 =====================
 
-Two environment variables need to be set prior to running the CIME workflow:
-
-.. code-block:: console
-   export UFS_INPUT=/path/to/inputs
-   export UFS_SCRATCH=/path/to/outputs
-
-``UFS_INPUT`` should be set to the location of a folder where input data will be accessed.  There should be a folder named ``CIME_UFSINPUT`` underneath this folder.  The folder ``$UFS_INPUT/CIME_UFSINPUT`` should exist _before_ running the CIME workflow. This is often a shared location on a platform so that all users on that platform can access data from the same location.
-  
-``UFS_SCRATCH`` should be set to the location of a writeable folder where output will be written for each case.  This is typically a user scratch space or temporary location with a large allocation available.
-
-On `platforms that are not pre-configured <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_ a script needs to be executed to define a set of environment variables related to the location of NCEPLIBS dependencies.
-
-.. code-block:: console
-   source $NCEPLIBS_DIR/bin/setenv_nceplibs.sh
-
-
 Create a case
 ==============
 
