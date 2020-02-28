@@ -4,9 +4,11 @@
 Workflow Quick Start
 ====================
 
-The following quick start guide is applicable to versions of the `UFS MR Weather App
-<https://github.com/ufs-community/ufs-mrweather->`_ that are on a preconfigured machine
-(see https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers).
+
+The following quick start guide is applicable to versions of the `UFS Medium-Range Weather Application
+<https://github.com/ufs-community/ufs-mrweather-app>`_ that are on a preconfigured machine, listed
+`here <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_.
+
 
 The workflow for building and running the App is built on the CIME
 (Common Infrastructure for Modeling Earth) framework.  Please refer to
