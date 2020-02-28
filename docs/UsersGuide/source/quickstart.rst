@@ -235,14 +235,23 @@ and all with 64 vertical levels.
 Setup the environment
 =====================
 
-A number of environment variables must be set before you can create a case.  A script is provided with NCEPLIBS
-to set most of the required variables - before you create a case set up your environment by sourcing the file
-$NCEPLIBS_DIR/bin/setenv_nceplibs.sh (or .csh depending on your shell).  On some systems users may also need to set
-environment variables to identify model input and scratch directories - these are $UFS_INPUT and $UFS_SCRATCH.
+Two environment variables need to be set prior to running the CIME workflow:
 
-.. note::
-     On pre-configured platforms, this setup is already in place.  See the list
-     of pre-configured platforms `here <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_.
+.. code-block:: console
+
+     export UFS_INPUT=/path/to/inputs
+     export UFS_SCRATCH=/path/to/outputs
+
+``UFS_INPUT`` should be set to the location of a folder where input data will be accessed.  There should be a folder named ``CIME_UFSINPUT`` underneath this folder.  The folder ``$UFS_INPUT/CIME_UFSINPUT`` should exist before running the CIME workflow. This is often a shared location on a platform so that all users on that platform can access data from the same location.
+  
+``UFS_SCRATCH`` should be set to the location of a writeable folder where output will be written for each case.  This is typically a user scratch space or temporary location with a large allocation available.
+
+On `platforms that are not pre-configured <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_ a script needs to be executed to define a set of environment variables related to the location of NCEPLIBS dependencies.
+
+.. code-block:: console
+
+     source $NCEPLIBS_DIR/bin/setenv_nceplibs.sh
+
 
 Create a case
 ==============
