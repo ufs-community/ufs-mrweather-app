@@ -116,8 +116,10 @@ https://www.cpc.ncep.noaa.gov/products/wesley/wgrib2/.
 Verification and Examples
 =========================
 
-A comprehensive example is provided, including output data sets. It is possible
-to do a visual check to verify that the application is set up correctly and
+This release does not include support for model verification or visualization. Currently, 
+only a basic NCL script is provided to create a basic visualization of model output.  
+This is provided only as an example for users familiar with NCL, and may be used to
+do a visual check to verify that the application is set up correctly and
 producing reasonable results.
 
 ftp://ftp.emc.ncep.noaa.gov/EIB/UFS/visualization_example/
