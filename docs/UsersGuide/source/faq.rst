@@ -405,3 +405,57 @@ To change the values set automatically by CIME-CSS, ``xmlchange`` command can be
 
 This command will change the number of task used by CHGRES to 72. If user wants to change number of
 task for NCEP-Post, the subgroup option need to set to ``case.gfs_post``.
+
+How to change the filenames for input to CHGRES?
+================================================
+
+By default, CIME-CSS uses `pre-defined convention <https://ufs-mrapp.readthedocs.io/en/latest/inputs_outputs.html#downloading-input-data>` to define folder and file names for raw input to CHGRES. In this case, 0.5-degree data in GRIB2 format is used from `NCDC - Global Forecast System <https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`. 
+
+In case of using 1.0-degree GRIB2 format data (with gfs_3_YYYYMMDD_00HH_000.grb2 naming convention), user need to download file manuallay and placed under ``$DIN_LOC_IC/YYYYMM/YYYYMMDD```. Then, ``grib2_file_input_grid`` CHGRES namelist variable need to be modified by editing ``user_nl_ufsatm`` file (resides in the ``$CASEROOT``) as following (for Dorian case):
+
+.. code-block:: console
+
+    !----------------------------------------------------------------------------------
+    ! This file can be used to change namelist options for:
+    ! - Chgres
+    ! - UFS MR-Weather Model
+    ! - NCEP Post
+    !
+    ! Users should add all user-specific namelist changes below in the form of
+    !  namelist_var = new_namelist_value
+    !
+    ! To change the namelist variables that are defined as multiple times under
+    ! different namelist groups
+    !  namelist_var@namelist_group = new_namelist_value
+    !
+    ! Following is the list of namelist variables that need to be accessed by
+    ! specifying the namelist groups:
+    !
+    ! alpha@nam_physics_nml
+    ! alpha@test_case_nml
+    ! avg_max_length@atmos_model_nml
+    ! avg_max_length@gfs_physics_nml
+    ! debug@atmos_model_nml
+    ! debug@gfs_physics_nml
+    ! icliq_sw@gfs_physics_nml
+    ! icliq_sw@nam_physics_nml
+    ! iospec_ieee32@fms_nml
+    ! iospec_ieee32@fms_io_nml
+    ! ntiles@fv_core_nml
+    ! ntiles@nest_nml
+    ! read_all_pe@fms_io_nml
+    ! read_all_pe@fms_nml
+    ! regional@chgres
+    ! regional@fv_core_nml
+    !----------------------------------------------------------------------------------
+    grib2_file_input_grid = gfs_3_20190829_0000_000.grb2
+
+.. note::
+
+    Please be aware that tests were not done with the AVN, MRF or analysis data.
+    
+.. note::
+
+    Please be aware that the date used in the directory naming must match with the data used in file name.   
+
+
