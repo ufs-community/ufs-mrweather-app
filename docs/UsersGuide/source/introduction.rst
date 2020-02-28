@@ -94,7 +94,7 @@ The UFS Weather Model ingests files produced by chgres_cube and outputs files
 in NetCDF format on a Gaussian grid in the horizontal and model levels in the
 vertical.
 
-Post-processor and visualization
+Post-processor
 ================================
 
 The MR Weather App is distributed with two post-processing tools, the Unified
@@ -113,7 +113,7 @@ https://release-public-v8.readthedocs.io/en/latest/
 and the wgrib2 utility is described at
 https://www.cpc.ncep.noaa.gov/products/wesley/wgrib2/.
 
-Verification and Examples
+Visualization Example
 =========================
 
 This release does not include support for model verification or visualization. Currently, 
@@ -159,7 +159,7 @@ https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers.
 
 The workflow leverages the Common Infrastructure for Modeling the Earth (CIME)
 Case Control System (CCS). CIME comes with two default configurations, or
-Component Sets (CompSets). One CompSet is used to evoke the physics suite
+Component Sets (compsets). One compset is used to evoke the physics suite
 used in the operational GFS v15, while the other is used to evoke the
 experimental GFS v16 physics. Based on the type of initial conditions, the
 workflow determines whether the to employ the variant with constant or predicted

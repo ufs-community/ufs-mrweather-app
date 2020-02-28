@@ -39,17 +39,12 @@ are in :numref:`Section %s <genericMacOS>`.
 
 .. _CIME: http://esmci.github.io/cime
 
-Software stack requirements
----------------------------
-
-Add details of software stack requirements (compiler vendor, versions, etc.)
-
 .. _genericMacOS:
 
-Generic MacOS (homebrew) platform
----------------------------------
+Generic MacOS or Linux platforms
+------------------------------------------
 
-CIME defines a generic build for MacOS using homebrew.  You must first
+CIME defines a generic build for MacOS using homebrewi and generic Linux machines.  You must first
 install NCEPLIBS-externals and NCEPLIBS following the `instructions
 here. <https://github.com/NOAA-EMC/NCEPLIBS-external/wiki>`_.  Then
 you will need to set the environment variable NCEPLIBS_DIR pointing to
@@ -68,7 +63,8 @@ Create these directories:
 - ``mkdir -p $HOME/projects/ufs_inputdata``
 
 You are now ready to build the ufs-mrweather-app as documented in the :ref:`quickstart`.
-Use the optional --machine argument to create_newcase and create_test with value ``homebrew``.
+Use the optional --machine argument to create_newcase and create_test with value 
+``macos`` or ``linux``.
 
 
 Porting CIME to a new machine
