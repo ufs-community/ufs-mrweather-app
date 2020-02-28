@@ -165,7 +165,7 @@ In this case, CIME-CCS makes the required changes the model namelist files (``mo
 
 .. note::
 
-    If there are restarts files belongs to multiple time snapshots (i.e. 20190909.060000., 20190909.120000. prefixes if it is written in every 6-hours), CIME-CCS gets the latest one (the files with **20190909.120000.** prefix) automatically.
+    If there are restarts files belongs to multiple time snapshots (i.e. 20190829.060000., 20190829.120000. prefixes if it is written in every 6-hours), CIME-CCS gets the latest one (the files with **20190829.120000.** prefix) automatically.
 
 The restart interval can be also changed to 6 hourly interval as following:
 
@@ -281,11 +281,11 @@ Can I customize the UPP output?
 At this time the CIME workflow does not support the customization of the
 variables or levels output by UPP.
 
-How do I download new initial condition from NOMADS server?
-================================================================
+How do I download new initial condition from NCDC server?
+===========================================================
 
-The raw initial condition for UFS Medium-Range (MR) Weather Model is provided by NOAA Operational
-Model Archive and Distribution System (NOMADS). The Global Forecast System (GFS) output is processed using
+The raw initial condition in GRIB2 format for UFS Medium-Range (MR) Weather Model is provided by National 
+Climatic Data Center (NCDC). In this case, The Global Forecast System (GFS) output is processed using
 provided pre-processing tool (CHGRES) for desired model resolution and date. To download
 new raw GRIB2 input data, the user need to change the simulation date using following command:
 
@@ -293,6 +293,12 @@ new raw GRIB2 input data, the user need to change the simulation date using foll
 
     cd $CASEROOT
     ./xmlchange RUN_STARTDATE=YYYY-MM-DD
+    
+The data will be retrieved from the server when ``case.submit`` command is issued. Optionally, user might use follwing command to download the data:
+
+.. code-block:: console
+
+    cd $CASEROOT
     ./preview_namelist
     ./check_input_data --download
 
@@ -309,7 +315,13 @@ new raw GRIB2 input data, the user need to change the simulation date using foll
 
 .. note::
 
-    Please be aware that the NOMADS server only keeps last 10 days data.
+    Note that the higher resolution GFS data, which is in NEMSIO format needs to be retrieved manually from NOMADS (NOAA National Operational Model Archive and Distribution System) server. Please be aware that the NOMADS server only keeps last 10 days data.
+    
+    
+
+
+NOAA Operational
+Model Archive and Distribution System (NOMADS). 
 
 How do I find out which platforms are preconfigured for the MR Weather App?
 ===========================================================================
@@ -409,7 +421,7 @@ task for NCEP-Post, the subgroup option need to set to ``case.gfs_post``.
 How to change the filenames for input to CHGRES?
 ================================================
 
-By default, CIME-CSS uses `pre-defined convention <https://ufs-mrapp.readthedocs.io/en/latest/inputs_outputs.html#downloading-input-data>` to define folder and file names for raw input to CHGRES. In this case, 0.5-degree data in GRIB2 format is used from `NCDC - Global Forecast System <https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`. 
+By default, CIME-CSS uses `pre-defined convention <https://ufs-mrapp.readthedocs.io/en/latest/inputs_outputs.html#downloading-input-data>`_ to define folder and file names for raw input to CHGRES. In this case, 0.5-degree data in GRIB2 format is used from `NCDC - Global Forecast System <https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`_. 
 
 In case of using 1.0-degree GRIB2 format data (with gfs_3_YYYYMMDD_00HH_000.grb2 naming convention), user need to download file manuallay and placed under ``$DIN_LOC_IC/YYYYMM/YYYYMMDD```. Then, ``grib2_file_input_grid`` CHGRES namelist variable need to be modified by editing ``user_nl_ufsatm`` file (resides in the ``$CASEROOT``) as following (for Dorian case):
 
@@ -456,6 +468,4 @@ In case of using 1.0-degree GRIB2 format data (with gfs_3_YYYYMMDD_00HH_000.grb2
     
 .. note::
 
-    Please be aware that the date used in the directory naming must match with the data used in file name.   
-
-
+    Please be aware that the date used in the directory naming must match with the data used in file name.
