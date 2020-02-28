@@ -220,8 +220,8 @@ and restart the model for 24 hours simulation:
 
     The restart run length can be changed using ``xmlchange`` command by setting **STOP_N** and **STOP_OPTION**.
 
-How do I change a model namelist option?
-================================================================
+How do I change a namelist option for chgres_cube or the model?
+======================================================================
 To set a model namelist options in CIME, edit file ``user_nl_ufsatm`` in
 the case and add the change(s) as name-value pairs.
 

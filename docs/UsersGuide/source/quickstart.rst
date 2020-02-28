@@ -115,19 +115,13 @@ Check the ``manage_externals.log`` file to see what errors are reported.
 Model Configurations
 ====================
 
-.. todo:: THIS SECTION WAS MOVED HERE - PLS REVIEW AND DECIDE ON OPTIMAL
-   PLACEMENT
-
 The UFS MR Weather App can be configured at four out-of-the-box resolutions
-with two different compsets, ``GFSv15p2`` or ``GFSv16beta``. Those compsets
-evoke four physics suites from the
-Common Community Physics Package (`CCPP
-<https://ccpp-techdoc.readthedocs.io/en/latest/Overview.html>`_). Compset
-``GFSv15p2`` evokes either the ``GFSv15p2`` suite or the ``GFSv15p2_no_nsst``
-suite, while CompSet
-``GFSv16beta`` evokes either the ``GFSv16beta`` suite or the ``GFSv16beta_no_nsst``
-suite. The choice is made based on the format with the initial conditions, as explained in the
-frequently-asked questions (FAQ) section.
+with two different compsets, ``GFSv15p2`` or ``GFSv16beta``. 
+Those compsets
+evoke suites that use or not an ocean-evolving parameterization depending on the 
+initial data provided. See the Introduction for more information on the
+physics suites provided with the release and see the frequently-asked questions (FAQ) section
+for more information on compsets, physics suites, and initial datasets.
 
 * Details of available component sets and resolutions are available from the ``query_config`` tool located in the ``cime/scripts`` directory
 
@@ -280,7 +274,7 @@ where:
   case will be the tail path. The full path to the case directory will be
   stored in the ``$CASEROOT`` XML variable.
 
-- ``COMPSET`` is the component set and can be ``GFSv15p2`` or ``GFSv16beta``, which are only
+- ``COMPSET`` is the component set and can be ``GFSv15p2`` or ``GFSv16beta``, which trigger 
   supported Common Community Physics Package (CCPP) suites. If you would like to learn more about CCPP
   please consider reading the `CCPP Overview <https://ccpp-techdoc.readthedocs.io/en/latest/Overview.html>`_.
 
@@ -290,9 +284,6 @@ where:
   ``ufs-mrweather`` includes both pre- and post-processing steps, while ``ufs-mrweather_wo_post`` includes
   only pre-processing step. In the current version of the UFS MR Weather App, the
   pre-processing step need to be run to generate initial conditions for the UFS Weather Model.
-  In this case, the raw input files are provided by `NOAA Operational Model Archive and Distribution System
-  (NOMADS) <https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod>`_ and please be aware that the NOMADS
-  server only keeps last 10 days data.
 
 Here is an example on NCAR machine Cheyenne with the ``$USER`` shell environment variable
 set to your cheyenne login name:
@@ -308,6 +299,7 @@ Setting up the case run script
 Issuing the `case.setup`_ command creates scripts needed to run the model
 along with namelist ``user_nl_xxx`` files, where xxx denotes the set of components
 for the given case configuration such as ``ufsatm`` and ``cpl``.
+Selected namelist entries can be customized by editing ``user_nl_xxx``, see FAQ.
 
 cd to the case directory. Following the example from above:
 
@@ -393,7 +385,7 @@ now are:
       ./xmlchange JOB_WALLCLOCK_TIME=00:30:00
       ./xmlchange USER_REQUESTED_WALLTIME=00:30:00
 
-4. The default start date (2019-09-09, 00 UTC) can be also changed by following commands
+4. The default start date (2019-08-29, 00 UTC) can be also changed by following commands
 
    .. code-block:: console
 
