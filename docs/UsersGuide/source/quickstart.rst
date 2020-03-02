@@ -251,7 +251,7 @@ The following settings are recommended on the pre-configured platforms:
    +=====================+=========================================+===============================+
    | NCAR cheyenne       | $CESMDATAROOT                           | /glade/scratch/$USER          |
    +---------------------+-----------------------------------------+-------------------------------+
-   | NOAA hera           | /scratch1/NCEPDEV/stmp2/CIME_UFSINPUT/  | <my-project-dir>/$USER        |
+   | NOAA hera           | /scratch1/NCEPDEV/stmp2/CIME_UFS        | <my-project-dir>/$USER        |
    +---------------------+-----------------------------------------+-------------------------------+
 
 
@@ -319,7 +319,7 @@ set to your cheyenne login name:
 .. code-block:: console
 
     cd cime/scripts
-    ./create_newcase --case /glade/scratch/$USER/cases/ufs-mrweather-app-workflow.c96 --compset GFSv15p2 --res C96 --workflow ufs-mrweather
+    ./create_newcase --case $UFS_SCRATCH/ufs-mrweather-app-workflow.c96 --compset GFSv15p2 --res C96 --workflow ufs-mrweather
 
 Setting up the case run script
 ==============================
