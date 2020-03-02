@@ -10,12 +10,12 @@ The following quick start guide is applicable to versions of the `UFS Medium-Ran
 `here <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_.
 
 
-The workflow for building and running the App is built on the CIME
+The workflow for building and running the App is built on the :term:`CIME`
 (Common Infrastructure for Modeling Earth) framework.  Please refer to
 the `CIME Porting Documentation <http://esmci.github.io/cime/users_guide/porting-cime.html>`_ if CIME
 has not yet been ported to the target machine.
 
-If you are new to CIME, please consider reading the
+If you are new to :term:`CIME`, please consider reading the
 `CIME Case Control System Part 1: Basic Usage <https://esmci.github.io/cime/users_guide/index.html#case-control-system-part-1-basic-usage>`_ first.
 
 This is the procedure for quickly setting up and running a case of UFS MR Weather App.
@@ -122,7 +122,7 @@ with two different compsets, ``GFSv15p2`` or ``GFSv16beta``.
 Those compsets
 invoke physics suites that use or not an ocean-evolving parameterization depending on the 
 initial data provided. See the Introduction for more information on the
-physics suites provided with the release and see the frequently-asked questions (FAQ) section
+physics suites provided with the release and see the frequently-asked questions (:ref:`FAQ <faq>`) section
 for more information on compsets, physics suites, and initial datasets.
 
 * Details of available component sets and resolutions are available from the ``query_config`` tool located in the ``cime/scripts`` directory
@@ -168,7 +168,7 @@ This should show a list of available compsets:
 Supported grids
 ---------------
 
-CIME has the flexibility to support numerous out-of-the box model resolutions.
+:term:`CIME` has the flexibility to support numerous out-of-the box model resolutions.
 To see the grids that are currently supported, use the following command
 
 .. code-block:: console
@@ -314,7 +314,7 @@ where:
   pre-processing step need to be run to generate initial conditions for the UFS Weather Model.
 
 Here is an example on NCAR machine Cheyenne with the ``$USER`` shell environment variable
-set to your cheyenne login name:
+set to your Cheyenne login name:
 
 .. code-block:: console
 
