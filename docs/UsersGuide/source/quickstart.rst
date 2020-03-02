@@ -246,12 +246,11 @@ The following settings are recommended on the pre-configured platforms:
 .. table::  Centralized list of documentation
 
    +---------------------+-----------------------------------------+-------------------------------+
-   | **Platform**        | **UFS_INPUT**                           |   **UFS_SCRATCH**             |
+   | **Platform**        | **$UFS_INPUT**                          |   **$UFS_SCRATCH**            |
    +=====================+=========================================+===============================+
    | NCAR cheyenne       | $CESMDATAROOT                           | /glade/scratch/$USER          |
    +---------------------+-----------------------------------------+-------------------------------+
    | NOAA hera           | /scratch1/NCEPDEV/stmp2/CIME_UFSINPUT/  | <my-project-dir>/$USER        |
-   |                     |                                         | i.e. /scratch1/BMC/gmtb/$USER |
    +---------------------+-----------------------------------------+-------------------------------+
 
 
