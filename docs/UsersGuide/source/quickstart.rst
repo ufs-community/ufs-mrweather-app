@@ -243,6 +243,7 @@ Two environment variables need to be set prior to running the CIME workflow:
 ``UFS_SCRATCH`` should be set to the location of a writeable folder where output will be written for each case.  This is typically a user scratch space or temporary location with a large allocation available.
 
 The following settings are recommended on the pre-configured platforms:
+
 .. table::  Centralized list of documentation
 
    +---------------------+-----------------------------------------+-------------------------------+
