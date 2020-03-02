@@ -109,7 +109,7 @@ onto a regular latitude-longitude grid for these GRIB2 files.
 These output formats can be used with visualization, plotting and verification
 packages, or for further downstream post-processing, e.g. statistical
 post-processing techniques. More information about UPP can be found here
-https://release-public-v8.readthedocs.io/en/latest/
+https://upp.readthedocs.io/en/latest/
 and the wgrib2 utility is described at
 https://www.cpc.ncep.noaa.gov/products/wesley/wgrib2/.
 
