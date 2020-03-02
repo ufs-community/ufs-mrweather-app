@@ -251,7 +251,7 @@ The following settings are recommended on the pre-configured platforms:
    +=====================+=========================================+===============================+
    | NCAR cheyenne       | $CESMDATAROOT                           | /glade/scratch/$USER          |
    +---------------------+-----------------------------------------+-------------------------------+
-   | NOAA hera           | /scratch1/NCEPDEV/stmp2/CIME_UFS        | <my-project-dir>/$USER        |
+   | NOAA hera           | <my-project-dir>/$USER                  | <my-project-dir>/$USER        |
    +---------------------+-----------------------------------------+-------------------------------+
 
 
