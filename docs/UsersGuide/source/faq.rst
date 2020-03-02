@@ -348,7 +348,7 @@ How can I change input data type for chgres_cube?
 
 The current version of UFS MR Weather Application supports GRIB2 (default) and
 NEMSIO format for the initial conditions. If the input directory ``$DIN_LOC_IC``
-has both GRIB2 and NEMSIO files for same date, then CIME-CSS
+has both GRIB2 and :term:`NEMSIO` files for same date, then CIME-CSS
 will use GRIB2 dataset to process with chgres. To change the default
 behavior and process NEMSIO files instead of GRIB2, edit file ``user_nl_ufsatm``
 and add
@@ -380,7 +380,7 @@ needed to initialize the operational NSST parameterization.
 How can I change number of task used by CHGRES or UPP (NCEP-Post)?
 ==================================================================
 
-By default, CIME-CCS automatically sets number of tasks used by CHGRES and NCEP-Post based on the
+By default, CIME-CCS automatically sets number of tasks used by CHGRES and NCEP-Post (:term:`UPP`) based on the
 resolution of the created case using following logic:
 
 - **CHGRES**

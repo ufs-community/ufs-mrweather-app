@@ -5,19 +5,19 @@ Inputs and Outputs
 ******************
 
 This chapter provides an overview of the input and output files needed by the components
-of the UFS MR Weather App (chgres_cube, the UFS Weather Model, and UPP).  Links to more
+of the UFS MR Weather App (:term:`chgres_cube`, the UFS :term:`Weather Model`, and :term:`UPP`).  Links to more
 detailed documentation for each of the components are provided. 
 
 ===========
 Input Files
 ===========
 
-The UFS MR Weather App requires numerous input files. CIME can copy/link to input files,
+The :term:`UFS` MR Weather App requires numerous input files. :term:`CIME` can copy/link to input files,
 run the end-to-end system and write output files to disk. Depending on the dates and format
 (`GRIB2 <https://www.nco.ncep.noaa.gov/pmb/docs/grib2/>`_ and 
 `NEMSIO <https://github.com/NOAA-EMC/NCEPLIBS-nemsio/wiki/Home-NEMSIO>`_)  
 requested, input files can be automatically retrieved by CIME (GRIB2) or must be staged by
-the user (NEMSIO).
+the user (:term:`NEMSIO`).
 
 -----------
 chgres_cube
