@@ -70,8 +70,8 @@ The following command will change the job queue as **bigmem** for **chgres**
 
     without **--subgroup** option, the **xmlchange** command changes the job wall clock time for the simulation itself (**case.run**).
 
-How can I change project account that will be used to submit jobs?
-==================================================================
+How can I change the project account that will be used to submit jobs?
+======================================================================
 
 There are two ways to change project account that is used to submit job:
 
