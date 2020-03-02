@@ -120,7 +120,7 @@ Model Configurations
 The UFS MR Weather App can be configured at four out-of-the-box resolutions
 with two different compsets, ``GFSv15p2`` or ``GFSv16beta``. 
 Those compsets
-evoke suites that use or not an ocean-evolving parameterization depending on the 
+invoke physics suites that use or not an ocean-evolving parameterization depending on the 
 initial data provided. See the Introduction for more information on the
 physics suites provided with the release and see the frequently-asked questions (FAQ) section
 for more information on compsets, physics suites, and initial datasets.
@@ -144,15 +144,15 @@ software experiments. A particular mix of components, along with component-speci
 namelist settings is referred to as  component set or "compset". The UFS MR Weather App
 has a shorthand naming convention for component sets that are supported out-of-the-box.
 
-To determine what out-of-the-box MR Weather App compsets are available in the release, do
-the following:
+To determine what out-of-the-box MR Weather App compsets are available in the release, use
+the following command:
 
 .. code-block:: console
 
    cd $SRCROOT/cime/scripts
    ./query_config --compsets
 
-This should show a list of available compsets, as following:
+This should show a list of available compsets:
 
 .. code-block:: console
 
@@ -169,7 +169,7 @@ Supported grids
 ---------------
 
 CIME has the flexibility to support numerous out-of-the box model resolutions.
-To see the grids that are currently supported, call you could call following command
+To see the grids that are currently supported, use the following command
 
 .. code-block:: console
 
@@ -241,6 +241,19 @@ Two environment variables need to be set prior to running the CIME workflow:
 ``UFS_INPUT`` should be set to the location of a folder where input data will be accessed.  There should be a folder named ``ufs_inputdata`` underneath this folder.  The folder ``$UFS_INPUT/ufs_inputdata`` should exist before running the CIME workflow. This is often a shared location on a platform so that all users on that platform can access data from the same location.
   
 ``UFS_SCRATCH`` should be set to the location of a writeable folder where output will be written for each case.  This is typically a user scratch space or temporary location with a large allocation available.
+
+The following settings are recommended on the pre-configured platforms:
+
+.. table::  Centralized list of documentation
+
+   +---------------------+-----------------------------------------+-------------------------------+
+   | **Platform**        | **$UFS_INPUT**                          |   **$UFS_SCRATCH**            |
+   +=====================+=========================================+===============================+
+   | NCAR cheyenne       | $CESMDATAROOT                           | /glade/scratch/$USER          |
+   +---------------------+-----------------------------------------+-------------------------------+
+   | NOAA hera           | /scratch1/NCEPDEV/stmp2/CIME_UFSINPUT/  | <my-project-dir>/$USER        |
+   +---------------------+-----------------------------------------+-------------------------------+
+
 
 On `platforms that are not pre-configured <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_ a script needs to be executed to define a set of environment variables related to the location of NCEPLIBS dependencies.
 
