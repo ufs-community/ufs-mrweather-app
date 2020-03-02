@@ -44,7 +44,7 @@ code:
 
 .. code-block:: console
 
-    git clone -b ufs-v1.0.0.alpha02 https://github.com/ufs-community/ufs-mrweather-app.git my_ufs_sandbox
+    git clone https://github.com/ufs-community/ufs-mrweather-app.git my_ufs_sandbox 
     cd my_ufs_sandbox
 
 .. note::
