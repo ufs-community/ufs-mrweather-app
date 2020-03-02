@@ -53,7 +53,7 @@ of the UFS Weather Model, which employs the Finite-Volume Cubed-Sphere (FV3)
 dynamical core. The atmospheric model in this release is an updated version
 of the atmospheric model that is being used in the operational GFS v15.
 A User’s Guide for the UFS Weather Model is here:
-https://ufs-mr-weather-app.readthedocs.io/projects/ufs-weather-model/en/latest/.
+https://ufs-weather-model.readthedocs.io/en/release-public-v1/
 
 Supported grid configurations for this release are the global meshes with
 resolutions of C96 (~100km), C192 (~50km), C384 (~25km), and C768 (~13km),
@@ -79,7 +79,7 @@ physical parameterization to forecast the temporal variation in SST due to the
 diurnal cycle.
 
 A scientific description of the parameterization and suites can be found at
-https://dtcenter.org/GMTB/UFS/sci_doc/, and technical documentation about the
+https://dtcenter.org/GMTB/v4.0/sci_doc/, and technical documentation about the
 CCPP is at https://ccpp-techdoc.readthedocs.io/en/latest.
 The model namelists for the physics suites differ in ways that go beyond
 the physics to optimize various aspects of the model for use with each of the
@@ -109,7 +109,7 @@ onto a regular latitude-longitude grid for these GRIB2 files.
 These output formats can be used with visualization, plotting and verification
 packages, or for further downstream post-processing, e.g. statistical
 post-processing techniques. More information about UPP can be found here
-https://release-public-v8.readthedocs.io/en/latest/
+https://upp.readthedocs.io/en/latest/
 and the wgrib2 utility is described at
 https://www.cpc.ncep.noaa.gov/products/wesley/wgrib2/.
 
@@ -190,12 +190,12 @@ the distributed documentation, summarized here for ease of use.
    +----------------------------+---------------------------------------------------------------------------------+
    | **Documentation**          | **Location**                                                                    |
    +============================+=================================================================================+
-   | UFS MR Weather App v1.0    | https://ufs-mrapp.readthedocs.io/en/latest/                                     |
+   | UFS MR Weather App v1.0    | https://ufs-mrweather-app.readthedocs.io/en/latest/                             |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | chgres_cube User's Guide   |                                                                                 |
+   | chgres_cube User's Guide   | https://prototype-chgres-cube.readthedocs.io/en/latest/                         |
    +----------------------------+---------------------------------------------------------------------------------+
-   | UFS Weather Model v1.0     | https://ufs-mr-weather-app.readthedocs.io/projects/ufs-weather-model/en/latest/ |
+   | UFS Weather Model v1.0     | https://ufs-weather-model.readthedocs.io/en/release-public-v1                   |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
    | FV3 Documentation          | https://noaa-emc.github.io/FV3_Dycore_v1.0/html/index.html                      |
@@ -209,7 +209,7 @@ the distributed documentation, summarized here for ease of use.
    | Stochastic Physics         | https://stochastic-physics.readthedocs.io/en/ufs_public_release/                |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | Unified Post Processor     | https://release-public-v8.readthedocs.io/en/latest/                             |
+   | Unified Post Processor     | https://upp.readthedocs.io/en/latest/                                           |
    +----------------------------+---------------------------------------------------------------------------------+
 
 The UFS community is encouraged to contribute to the UFS development effort.
