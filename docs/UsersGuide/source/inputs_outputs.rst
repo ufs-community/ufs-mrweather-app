@@ -109,7 +109,7 @@ for the Hurricane Dorian initialization in 29-08-2019. In all other platforms,
 the user must set ``$DIN_LOC_ROOT`` by using the
 ``--input-dir`` argument to **create_newcase**.
 
-Similarly, users can customize ``$DIN_LOC_IC``after creating the case using the commands below.
+Similarly, users can customize ``$DIN_LOC_IC`` after creating the case using the commands below.
 
 .. code-block:: console
 
@@ -214,7 +214,7 @@ Default initial conditions
 
 All supported CompSets use the Hurricane Dorian initialization of 29-08-2019.
 In preconfigured platforms, the 29-08-2019 initial conditions are pre-staged in
-``$DIN_LOC_IC`. Those are GRIB2 files with 0.5 deg resolution.
+``$DIN_LOC_IC``. Those are GRIB2 files with 0.5 deg resolution.
 
 The default input data for the Hurricane Dorian initialization of 29-08-2019 is also available
 on `NOAA EMC's FTP data repository <https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/canned_winds/201908/20190829/>`_.
@@ -271,7 +271,7 @@ The data should be placed in ``$DIN_LOC_IC``.
      The following example script, ``get.sh`` can be used as a
      reference to download the NEMSIO file from the NOMADS server for
      a sample date, which in this case is 24-12-2018. **Note that NEMSIO
-     files in NOMADS are only available for the last 10-days.
+     files in NOMADS are only available for the last 10-days.**
 
      .. code-block:: console
 
@@ -295,14 +295,12 @@ The data should be placed in ``$DIN_LOC_IC``.
          wget -c https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$yyyymmdd/$hh/gfs.t${hh}z.sfcanl.nemsio
          cd -
 
-     Script ``get.sh``should be placed in **$CASEROOT**) and used as follows:
+     Script ``get.sh`` should be placed in **$CASEROOT** and used as follows:
 
      .. code-block:: console
 
          chmod 755 get.sh
          ./get.sh 20191224 12
-
-.. note::
 
 -------------------
 Order of operations
@@ -314,7 +312,7 @@ If you want to download the input data manually, you should do it before you bui
 Coexistence of multiple files for the same date
 -----------------------------------------------
 
-Directory ```$DIN_LOC_IC/YYMMMM/YYYYMMDD`` can have both GRIB2 and NEMSIO files for
+Directory `$DIN_LOC_IC/YYMMMM/YYYYMMDD`` can have both GRIB2 and NEMSIO files for
 a given initialization hour and can have files for multiple initialization hours
 (00, 06, 12, and 18 UTC).
 
