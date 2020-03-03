@@ -105,9 +105,9 @@ Variable ``$DIN_LOC_ROOT`` is already set in preconfigured platforms and points
 to a centralized location where the fix files are staged.
 Similarly, variable $DIN_LOC_IC is by default set to $DIN_LOC_ROOT/icfiles and
 points to the directory with initial conditions for the Hurricane Dorian
-initialization in 08-29-2019. In all other platforms,
-the user must set ``$DIN_LOC_ROOT`` by using the
-``--input-dir`` argument to **create_newcase**.
+initialization in 08-29-2019. In all other platforms, users can customize the
+location of the fix files by setting `$UFS_INPUT` to a writable directory and
+creating a subdirectory $UFS_INPUT/ufs_inputdata.
 
 A customized location for ``$DIN_LOC_IC`` is necessary when users need to stage new
 initial condition files and do not have write permission to ``$DIN_LOC_ROOT``.
