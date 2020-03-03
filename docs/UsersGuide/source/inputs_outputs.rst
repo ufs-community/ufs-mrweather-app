@@ -27,7 +27,7 @@ When a user runs the UFS MR Weather App as described in the quickstart guide, in
 chgres_cube is linked from a location on disk to your run directory via CIME. The data
 is stored in a hierarchical way in the ``$DIN_LOC_IC`` directory
 (see :numref:`Section %s <downloading_input_data>`). A list of the input files for chgres_cube
-can be found here (TODO: add link).
+can be found `here <https://ufs-utils.readthedocs.io/en/latest/CHGRES_CUBE.html#program-inputs-and-outputs>`_.
 
 -----------------
 UFS Weather Model
@@ -36,7 +36,7 @@ UFS Weather Model
 The input files for the UFS MR Weather Model are located one directory up from the chgres_cube
 input files in ``$RUNDIR`` (see :numref:`Section %s <run_the_case>`). An extensive description
 of the input files for the UFS MR Weather Model can be found in the `UFS Weather Model Users Guide
-<https://ufs-mr-weather-app.readthedocs.io/projects/ufs-weather-model/en/latest/InputsOutputs.html>`_.
+<https://ufs-weather-model.readthedocs.io/en/latest/InputsOutputs.html>`_.
 
 .. note::
    Due to renaming/linking by CIME, the file names used in the UFS MR Weather App
@@ -79,7 +79,7 @@ UFS Weather Model
 -----------------
 
 The output files for the UFS Weather Model are described in the `Users Guide
-<https://ufs-mr-weather-app.readthedocs.io/projects/ufs-weather-model/en/latest/InputsOutputs.html#output-files>`_.
+<https://ufs-weather-model.readthedocs.io/en/latest/InputsOutputs.html>`_.
 
 ---------------
 UPP input files
@@ -134,7 +134,7 @@ Initial condition formats and source
 The UFS MR Weather App currently only supports the use of Global Forecast System
 (GFS) data as raw initial conditions (that is, MRF, AVN, ERA5 etc. are not supported).
 The GFS data can be provided in two formats: NEMSIO or GRIB2. Both types of files can be obtained
-from the `Global Forecast System (GFS) site <https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`_.`
+from the `Global Forecast System (GFS) site <https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`_.
 
 - **NEMSIO**
 
