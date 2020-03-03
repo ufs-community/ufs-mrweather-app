@@ -4,14 +4,14 @@
 Introduction
 ============
 
-The Unified Forecast System (UFS) is a community-based, coupled, comprehensive
+The Unified Forecast System (:term:`UFS`) is a community-based, coupled, comprehensive
 Earth modeling system with applications that span local to global domains and
 predictive time scales. It is designed to be the source system for NOAA’s
 operational numerical weather prediction applications while enabling both
 research and capabilities for the broader weather enterprise. For more
 information about the UFS, visit the UFS Portal at https://ufscommunity.org/.
 
-The Unified Forecast System (UFS) can be configured into multiple applications
+The Unified Forecast System (:term:`UFS`) can be configured into multiple applications
 (see a complete list at https://ufscommunity.org/#/science/aboutapps).
 The first of these to be released to the community is the UFS Medium-Range
 (MR) Weather Application (App), which targets predictions of atmospheric
@@ -28,7 +28,7 @@ support.
 
 Pre-processor and initial conditions
 ====================================
-The MR Weather App is distributed with the chgres_cube pre-processing software.
+The MR Weather App is distributed with the :term:`chgres_cube` pre-processing software.
 It converts the Global Forecast System (GFS) analyses to the format needed as
 input to the model, which is six tiles in NetCDF format. Additional information
 about chgres_cube can be found in the chgres_cube User’s Guide (under
@@ -36,24 +36,24 @@ development).
 
 GFS analyses for initializing the MR Weather App can be in Gridded Binary
 v2 (GRIB2) format (in 25o, 0.50, or 1.0o grid spacing) or in the NOAA Environmental
-Modeling SYstem (NEMS) Input/Output (NEMSIO) format.
+Modeling System (:term:`NEMS`) Input/Output (:term:`NEMSIO`) format.
 Initialization from dates starting on January 1, 2018 are supported. Dates
 before that may work, but are not guaranteed. GFS public archives can be
 accessed through the NOAA National Center for Environmental Information (NCEI)
 at https://www.ncdc.noaa.gov/data-access and through the NOAA Operational Model Archive and
 Distribution System (NOMADS) at https://nomads.ncdc.noaa.gov/data/gfs4.
-The ICs may be pre-staged on disk by the user or
+The initial conditions may be pre-staged on disk by the user or
 automatically downloaded by the workflow.
 
 Forecast model
 ==============
 
 The prognostic model in the UFS MR Weather App is the atmospheric component
-of the UFS Weather Model, which employs the Finite-Volume Cubed-Sphere (FV3)
+of the UFS Weather Model, which employs the Finite-Volume Cubed-Sphere (:term:`FV3`)
 dynamical core. The atmospheric model in this release is an updated version
 of the atmospheric model that is being used in the operational GFS v15.
 A User’s Guide for the UFS Weather Model is here:
-https://ufs-mr-weather-app.readthedocs.io/projects/ufs-weather-model/en/latest/.
+https://ufs-weather-model.readthedocs.io/en/release-public-v1/
 
 Supported grid configurations for this release are the global meshes with
 resolutions of C96 (~100km), C192 (~50km), C384 (~25km), and C768 (~13km),
@@ -62,29 +62,29 @@ provides more information about FV3 and its grids here:
 https://www.gfdl.noaa.gov/fv3.  Additional information about the FV3 dynamical
 core is at https://noaa-emc.github.io/FV3_Dycore_v1.0/html/index.html.
 Interoperable atmospheric physics, along with the Noah land surface model, are
-supported through the use of the Common Community Physics Package (CCPP;
+supported through the use of the Common Community Physics Package (:term:`CCPP`;
 described at https://dtcenter.org/community-code/common-community-physics-package-ccpp).
 There are four physics suites supported for the release.
-Two of them are variations of an updated version of the physics suite used in
+Two of them are variations of an updated version of the physics :term:`suite` used in
 the operational GFS v15, while the other two are variations of an experimental
 suite that includes a subset of the developments for the next version of GFS,
 GFS v16. The variations pertain to how the sea surface temperature (SST) is
 initialized and parameterized to evolve, and are chosen depending on the type
 of initial conditions for the App. Initial conditions in GRIB2 format have a
 single two-dimensional field to initialize the SST, which must be kept constant
-throughout the forecast. Initial conditions in NEMSIO format have two two-dimensional
+throughout the forecast. Initial conditions in :term:`NEMSIO` format have two two-dimensional
 fields that describe the baseline SST and its near-surface perturbation related
 to the diurnal cycle, enabling the use of the near-sea-surface-temperature (NSST)
 physical parameterization to forecast the temporal variation in SST due to the
 diurnal cycle.
 
 A scientific description of the parameterization and suites can be found at
-https://dtcenter.org/GMTB/UFS/sci_doc/, and technical documentation about the
-CCPP is at https://ccpp-techdoc.readthedocs.io/en/latest.
+https://dtcenter.org/GMTB/v4.0/sci_doc/, and technical documentation about the
+:term:`CCPP` is at https://ccpp-techdoc.readthedocs.io/en/latest.
 The model namelists for the physics suites differ in ways that go beyond
 the physics to optimize various aspects of the model for use with each of the
 suites.
-The use of stochastic processes to represent model uncertainty is an option
+The use of :term:`stochastic<Stochastic physics>` processes to represent model uncertainty is an option
 in this release, although the option is off by default in both of the
 supported physics suites. Three methods are supported for use separately or in
 combination: Stochastic Kinetic Energy Backscatter (SKEB), Stochastically
@@ -109,7 +109,7 @@ onto a regular latitude-longitude grid for these GRIB2 files.
 These output formats can be used with visualization, plotting and verification
 packages, or for further downstream post-processing, e.g. statistical
 post-processing techniques. More information about UPP can be found here
-https://release-public-v8.readthedocs.io/en/latest/
+https://upp.readthedocs.io/en/latest/
 and the wgrib2 utility is described at
 https://www.cpc.ncep.noaa.gov/products/wesley/wgrib2/.
 
@@ -118,7 +118,7 @@ Visualization Example
 
 This release does not include support for model verification or visualization. Currently, 
 only a basic NCL script is provided to create a basic visualization of model output.  
-This is provided only as an example for users familiar with NCL, and may be used to
+This is provided only as an example for users familiar with :term:`NCL`, and may be used to
 do a visual check to verify that the application is set up correctly and
 producing reasonable results.
 
@@ -138,17 +138,17 @@ library that enables parallelism.
 A few select computational platforms have been preconfigured for the release
 with all the required libraries for building community releases of
 UFS models and applications available in a central place. That means
-bundled libraries (NCEPLIBS) and third-party libraries (NCEP-external)
+bundled libraries (:term:`NCEPLIBS`) and third-party libraries (:term:`NCEPLIBS-external`)
 have both been built. Applications and models are expected to build and run out of the box.
 In preconfigured platforms, users can proceed directly to the using the `CIME`_
-workflow, as described in the Quick Start chapter.
+workflow, as described in the :ref:`Quick Start chapter <quickstart>`.
 
 A few additional computational platforms are considered configurable for the release.
 Configurable platforms are platforms where all of the required libraries for
 building community releases of UFS models and applications are expected to
 install successfully, but are not available in a central place. Applications and
 models are expected to build and run once the required bundled libraries
-(NCEPLIBS) and third-party libraries (NCEP-external) are built.
+(:term:`NCEPLIBS`) and third-party libraries (:term:`NCEPLIBS-external`) are built.
 
 Limited-test and Build-Only computational platforms are those in which the developers
 have built the code but little or no
@@ -157,9 +157,9 @@ A complete description of the levels of support, along with a list of preconfigu
 and configurable platforms can be found at
 https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers.
 
-The workflow leverages the Common Infrastructure for Modeling the Earth (CIME)
+The workflow leverages the Common Infrastructure for Modeling the Earth (:term:`CIME`)
 Case Control System (CCS). CIME comes with two default configurations, or
-Component Sets (compsets). One compset is used to evoke the physics suite
+Component Sets (compsets). One compset is used to evoke the physics :term:`suite`
 used in the operational GFS v15, while the other is used to evoke the
 experimental GFS v16 physics. Based on the type of initial conditions, the
 workflow determines whether the to employ the variant with constant or predicted
@@ -190,12 +190,12 @@ the distributed documentation, summarized here for ease of use.
    +----------------------------+---------------------------------------------------------------------------------+
    | **Documentation**          | **Location**                                                                    |
    +============================+=================================================================================+
-   | UFS MR Weather App v1.0    | https://ufs-mrapp.readthedocs.io/en/latest/                                     |
+   | UFS MR Weather App v1.0    | https://ufs-mrweather-app.readthedocs.io/en/latest/                             |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | chgres_cube User's Guide   |                                                                                 |
+   | chgres_cube User's Guide   | https://prototype-chgres-cube.readthedocs.io/en/latest/                         |
    +----------------------------+---------------------------------------------------------------------------------+
-   | UFS Weather Model v1.0     | https://ufs-mr-weather-app.readthedocs.io/projects/ufs-weather-model/en/latest/ |
+   | UFS Weather Model v1.0     | https://ufs-weather-model.readthedocs.io/en/release-public-v1                   |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
    | FV3 Documentation          | https://noaa-emc.github.io/FV3_Dycore_v1.0/html/index.html                      |
@@ -209,7 +209,7 @@ the distributed documentation, summarized here for ease of use.
    | Stochastic Physics         | https://stochastic-physics.readthedocs.io/en/ufs_public_release/                |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | Unified Post Processor     | https://release-public-v8.readthedocs.io/en/latest/                             |
+   | Unified Post Processor     | https://upp.readthedocs.io/en/latest/                                           |
    +----------------------------+---------------------------------------------------------------------------------+
 
 The UFS community is encouraged to contribute to the UFS development effort.

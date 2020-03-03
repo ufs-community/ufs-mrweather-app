@@ -24,17 +24,17 @@ installing and running MR Weather Application.
 
 -  MPI
 
--  `NCEPLIBS-externals <https://github.com/NOAA-EMC/NCEPLIBS-external>`_ (includes ESMF)
+-  `NCEPLIBS-external <https://github.com/NOAA-EMC/NCEPLIBS-external>`_ (includes ESMF)
 
 -  `NCEPLIBS <https://github.com/NOAA-EMC/NCEPLIBS>`_
 
 -  `CMake 3.15  or newer <http://www.cmake.org/>`_
 
-Note that NCEPLIBS-externals and NCEPLIBS reside in separate GitHub repositories.  NCEPLIBS-externals
+Note that :term:`NCEPLIBS-external` and :term:`NCEPLIBS` reside in separate GitHub repositories.  NCEPLIBS-external
 is a collection of third-party libraries required to build NCEPLIBS, which contains the NCEP library
-source code and utilities required for chgres_cube, the UFS Weather Model, and UPP.  NCEPLIBS-externals must
+source code and utilities required for chgres_cube, the UFS Weather Model, and UPP.  NCEPLIBS-external must
 be installed before building the NCEPLIBS, and both are a pre-requesite for porting CIME to a new platform.
-The NCEPLIBS-externals and NCEPLIBS repositories each contain a wiki page with instructions. More details
+The :term:`NCEPLIBS-external` and :term:`NCEPLIBS` repositories each contain a wiki page with instructions. More details
 are in :numref:`Section %s <genericMacOS>`.
 
 .. _CIME: http://esmci.github.io/cime
@@ -44,8 +44,8 @@ are in :numref:`Section %s <genericMacOS>`.
 Generic MacOS or Linux platforms
 ------------------------------------------
 
-CIME defines a generic build for MacOS using homebrewi and generic Linux machines.  You must first
-install NCEPLIBS-externals and NCEPLIBS following the `instructions
+:term:`CIME` defines a generic build for MacOS using homebrewi and generic Linux machines.  You must first
+install NCEPLIBS-external and NCEPLIBS following the `instructions
 here. <https://github.com/NOAA-EMC/NCEPLIBS-external/wiki>`_.  Then
 you will need to set the environment variable NCEPLIBS_DIR pointing to
 the install location (/usr/local/ufs-release-v1).  You will also need

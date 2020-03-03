@@ -10,12 +10,12 @@ The following quick start guide is applicable to versions of the `UFS Medium-Ran
 `here <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_.
 
 
-The workflow for building and running the App is built on the CIME
+The workflow for building and running the App is built on the :term:`CIME`
 (Common Infrastructure for Modeling Earth) framework.  Please refer to
 the `CIME Porting Documentation <http://esmci.github.io/cime/users_guide/porting-cime.html>`_ if CIME
 has not yet been ported to the target machine.
 
-If you are new to CIME, please consider reading the
+If you are new to :term:`CIME`, please consider reading the
 `CIME Case Control System Part 1: Basic Usage <https://esmci.github.io/cime/users_guide/index.html#case-control-system-part-1-basic-usage>`_ first.
 
 This is the procedure for quickly setting up and running a case of UFS MR Weather App.
@@ -44,7 +44,7 @@ code:
 
 .. code-block:: console
 
-    git clone -b ufs-v1.0.0.alpha02 https://github.com/ufs-community/ufs-mrweather-app.git my_ufs_sandbox
+    git clone https://github.com/ufs-community/ufs-mrweather-app.git my_ufs_sandbox 
     cd my_ufs_sandbox
 
 .. note::
@@ -120,9 +120,9 @@ Model Configurations
 The UFS MR Weather App can be configured at four out-of-the-box resolutions
 with two different compsets, ``GFSv15p2`` or ``GFSv16beta``. 
 Those compsets
-evoke suites that use or not an ocean-evolving parameterization depending on the 
+invoke physics suites that use or not an ocean-evolving parameterization depending on the 
 initial data provided. See the Introduction for more information on the
-physics suites provided with the release and see the frequently-asked questions (FAQ) section
+physics suites provided with the release and see the frequently-asked questions (:ref:`FAQ <faq>`) section
 for more information on compsets, physics suites, and initial datasets.
 
 * Details of available component sets and resolutions are available from the ``query_config`` tool located in the ``cime/scripts`` directory
@@ -144,15 +144,15 @@ software experiments. A particular mix of components, along with component-speci
 namelist settings is referred to as  component set or "compset". The UFS MR Weather App
 has a shorthand naming convention for component sets that are supported out-of-the-box.
 
-To determine what out-of-the-box MR Weather App compsets are available in the release, do
-the following:
+To determine what out-of-the-box MR Weather App compsets are available in the release, use
+the following command:
 
 .. code-block:: console
 
    cd $SRCROOT/cime/scripts
    ./query_config --compsets
 
-This should show a list of available compsets, as following:
+This should show a list of available compsets:
 
 .. code-block:: console
 
@@ -168,8 +168,8 @@ This should show a list of available compsets, as following:
 Supported grids
 ---------------
 
-CIME has the flexibility to support numerous out-of-the box model resolutions.
-To see the grids that are currently supported, call you could call following command
+:term:`CIME` has the flexibility to support numerous out-of-the box model resolutions.
+To see the grids that are currently supported, use the following command
 
 .. code-block:: console
 
@@ -242,6 +242,19 @@ Two environment variables need to be set prior to running the CIME workflow:
   
 ``UFS_SCRATCH`` should be set to the location of a writeable folder where output will be written for each case.  This is typically a user scratch space or temporary location with a large allocation available.
 
+The following settings are recommended on the pre-configured platforms:
+
+.. table::  Centralized list of documentation
+
+   +---------------------+-----------------------------------------+-------------------------------+
+   | **Platform**        | **$UFS_INPUT**                          |   **$UFS_SCRATCH**            |
+   +=====================+=========================================+===============================+
+   | NCAR cheyenne       | $CESMDATAROOT                           | /glade/scratch/$USER          |
+   +---------------------+-----------------------------------------+-------------------------------+
+   | NOAA hera           | <my-project-dir>/$USER                  | <my-project-dir>/$USER        |
+   +---------------------+-----------------------------------------+-------------------------------+
+
+
 On `platforms that are not pre-configured <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_ a script needs to be executed to define a set of environment variables related to the location of NCEPLIBS dependencies.
 
 .. code-block:: console
@@ -301,12 +314,12 @@ where:
   pre-processing step need to be run to generate initial conditions for the UFS Weather Model.
 
 Here is an example on NCAR machine Cheyenne with the ``$USER`` shell environment variable
-set to your cheyenne login name:
+set to your Cheyenne login name:
 
 .. code-block:: console
 
     cd cime/scripts
-    ./create_newcase --case /glade/scratch/$USER/cases/ufs-mrweather-app-workflow.c96 --compset GFSv15p2 --res C96 --workflow ufs-mrweather
+    ./create_newcase --case $UFS_SCRATCH/ufs-mrweather-app-workflow.c96 --compset GFSv15p2 --res C96 --workflow ufs-mrweather
 
 Setting up the case run script
 ==============================

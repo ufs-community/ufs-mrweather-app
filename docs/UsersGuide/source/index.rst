@@ -18,3 +18,4 @@ Welcome to the UFS Medium-Range Weather App Users Guide!
    testing.rst
    faq.rst
    cime_overview.rst
+   glossary

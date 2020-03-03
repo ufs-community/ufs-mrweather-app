@@ -67,7 +67,7 @@ To run a Smoke startup test::
 This will build and run the test in ``/glade/scratch/$USER/SMS_D_Lh5.C96.GFSv15p2.cheyenne_intel.try`` and this directory 
 is called as **CASEROOT**. The run directory is in **CASEROOT/run** and the build is in **CASEROOT/bld**.
 
-In this case, the C96 resolution model case with CCPP suit version v15p2 is created and runs 5 hours (**Lh5**) without post-processing step.
+In this case, the C96 resolution model case with CCPP suite version v15p2 is created and runs 5 hours (**Lh5**) without post-processing step.
 
 To run a test with baseline comparisons against baseline name 'master'::
 
