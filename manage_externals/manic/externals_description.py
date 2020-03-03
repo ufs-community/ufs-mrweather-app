@@ -180,9 +180,6 @@ def parse_submodules_desc_section(section_items, file_path):
             path = item[1].strip()
         elif name == 'url':
             url = item[1].strip()
-        elif name == 'branch':
-            # we do not need branch since we have hash
-            pass
         else:
             msg = 'WARNING: Ignoring unknown {} property, in {}'
             msg = msg.format(item[0], file_path) # fool pylint
