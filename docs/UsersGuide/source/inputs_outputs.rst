@@ -97,27 +97,26 @@ Downloading and staging input data
 A set of input files, including static (fix) data and raw initial conditions, are needed to run the UFS MR
 Weather App. There are two variables that describe the location of the static and initial condition files:
 ``$DIN_LOC_ROOT`` is the directory where the static files are located and ``$DIN_LOC_IC`` is the
-directory where the initial conditions are located. By default, ``$DIN_LOC_IC``
-is set to ``$DIN_LOC_ROOT/icfiles``. In this directory, the initial conditions
-are located in subdirectories named ``YYYYMM/YYYYMMDD`` (YYYY: year, MM: month, DD: day).
+directory where the initial conditions are located. By default, ``$DIN_LOC_ROOT`` is set to
+$UFS_INPUT/ufs_inputdata and ``$DIN_LOC_IC`` is set to ``$DIN_LOC_ROOT/icfiles``.
+In this directory, the initial conditions are located in subdirectories named ``YYYYMM/YYYYMMDD`` (YYYY: year, MM: month, DD: day).
 
 Variable ``$DIN_LOC_ROOT`` is already set in preconfigured platforms and points
-to a centralized location where the fix files ``$DIN_LOC_IC`` are staged.
-Similarly, in preconfigured platforms variable ``$DIN_LOC_IC`` is already set to
-``$DIN_LOC_ROOT/icfiles`` and points to the directory with initial conditions
-for the Hurricane Dorian initialization in 29-08-2019. In all other platforms,
+to a centralized location where the fix files are staged.
+Similarly, variable $DIN_LOC_IC is by default set to $DIN_LOC_ROOT/icfiles and
+points to the directory with initial conditions for the Hurricane Dorian
+initialization in 08-29-2019. In all other platforms,
 the user must set ``$DIN_LOC_ROOT`` by using the
 ``--input-dir`` argument to **create_newcase**.
 
-Similarly, users can customize ``$DIN_LOC_IC`` after creating the case using the commands below.
+A customized location for ``$DIN_LOC_IC`` is necessary when users need to stage new
+initial condition files and do not have write permission to ``$DIN_LOC_ROOT``.
+Users can customize ``$DIN_LOC_IC`` after creating the case using the commands below.
 
 .. code-block:: console
 
    cd $CASEROOT
    ./xmlchange DIN_LOC_IC=/path/to/directory
-
-Note that variable ``$DIN_LOC_ROOT`` also describes the location of the chgres_cube
-output.
 
 ---------------
 Static files
@@ -169,7 +168,7 @@ The default naming convention for the initial conditions files is described belo
   needs to change variable ``grib2_file_input_grid`` in the chgres_cube namelist.
   This is done by editing file ``user_nl_ufsatm``, which resides in the ``$CASEROOT``
   directory as follows. The example below is for the Dorian case initialized on
-  29-08-2019.
+  08-29-2019.
 
   .. code-block:: console
 
@@ -212,11 +211,11 @@ The default naming convention for the initial conditions files is described belo
 Default initial conditions
 --------------------------
 
-All supported CompSets use the Hurricane Dorian initialization of 29-08-2019.
-In preconfigured platforms, the 29-08-2019 initial conditions are pre-staged in
+All supported CompSets use the Hurricane Dorian initialization of 08-29-2019.
+In preconfigured platforms, the 08-29-2019 initial conditions are pre-staged in
 ``$DIN_LOC_IC``. Those are GRIB2 files with 0.5 deg resolution.
 
-The default input data for the Hurricane Dorian initialization of 29-08-2019 is also available
+The default input data for the Hurricane Dorian initialization of 08-29-2019 is also available
 on `NOAA EMC's FTP data repository <https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/canned_winds/201908/20190829/>`_.
 
 -----------------------------------
@@ -224,7 +223,7 @@ Running the App for different dates
 -----------------------------------
 
 If users want to
-run the MR Weather App for dates other than 29-08-2019, they need to make a change in the case to
+run the MR Weather App for dates other than 08-29-2019, they need to make a change in the case to
 specify the desired data.  This is done by setting the ``RUN_STARTDATE`` and
 ``START_TOD`` CIME options using ``./xmlchange``.
 

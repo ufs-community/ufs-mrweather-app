@@ -21,7 +21,7 @@ How can I run an individual task in the existing workflow?
 
 The CIME-CCS allows you to run the specific task in the workflow by supplying the **--only-job** parameter to the **case.submit** command.
 
-Following the example to run only the preprocessing utility **chgres**
+Following the example to run only the preprocessing utility **chgres_cube**
 
 .. code-block:: console
 
@@ -52,14 +52,14 @@ How can I change wall clock time/queue for specific task in the workflow?
 
 These can be done by using ``xmlchange`` command.
 
-For example, following can be used to set job wall clock time to 10 minutes for **chgres**
+For example, following can be used to set job wall clock time to 10 minutes for **chgres_cube**
 
 .. code-block:: console
 
     cd $CASEROOT
     ./xmlchange JOB_WALLCLOCK_TIME=00:10:00 --subgroup case.chgres
 
-The following command will change the job queue as **bigmem** for **chgres**
+The following command will change the job queue as **bigmem** for **chgres_cube**
 
 .. code-block:: console
 
@@ -76,7 +76,7 @@ How can I change the project account that will be used to submit jobs?
 There are two ways to change project account that is used to submit job:
 
 * Set **PROJECT** environment variable before creating case
-* Use ``xmlchange`` command to change project account. The following command can be used to change project account for **chgres** task (please replace PROJECT ID with an appropriate project number).
+* Use ``xmlchange`` command to change project account. The following command can be used to change project account for **chgres_cube** task (please replace PROJECT ID with an appropriate project number).
 
 .. code-block:: console
 
@@ -135,7 +135,7 @@ To have consistent model configuration with **NTASKS_ATM** defined above. ``user
 
     The model resolution also need to be divided evenly with the layout pair. For the given configuration (C96 resolution), :math:`96/3 = 32` and :math:`96/8 = 12`
 
-How do I chnage the number of OPENMP threads?
+How do I change the number of OPENMP threads?
 =============================================
 
 User might need to change the number of threads to reduce memory consumption for each compute node expecially for high-resolution cases, which is already set by CIME-CSS for C768. This can be done by using following command:
@@ -257,7 +257,7 @@ Some variables are tied to xml in the case and can only be changed via the
 
 .. warning::
 
-    The ``user_nl_ufsatm`` file is also used to control namelist options for CHGRES and NCEP-Post and different namelist groups in model namelist and pre-, post-processing tools could have same namelist variable. In this case, just using namelist variable name causes failure in automated namelist generation. The following is the list of namelist variables that needs to be used along with their group name.
+    The ``user_nl_ufsatm`` file is also used to control namelist options for chgres_cube and NCEP-Post and different namelist groups in model namelist and pre-, post-processing tools could have same namelist variable. In this case, just using namelist variable name causes failure in automated namelist generation. The following is the list of namelist variables that needs to be used along with their group name.
 
     - alpha@nam_physics_nml
     - alpha@test_case_nml
@@ -281,42 +281,6 @@ Can I customize the UPP output?
 
 At this time the CIME workflow does not support the customization of the
 variables or levels output by UPP.
-
-How do I download new initial condition from NCDC server?
-===========================================================
-
-The raw initial condition in GRIB2 format for UFS Medium-Range (MR) Weather Model is provided by National
-Climatic Data Center (NCDC). In this case, The Global Forecast System (GFS) output is processed using
-provided pre-processing tool (CHGRES) for desired model resolution and date. To download
-new raw GRIB2 input data, the user need to change the simulation date using following command:
-
-.. code-block:: console
-
-    cd $CASEROOT
-    ./xmlchange RUN_STARTDATE=YYYY-MM-DD
-
-The data will be retrieved from the server when ``case.submit`` command is issued. Optionally, user might use follwing command to download the data:
-
-.. code-block:: console
-
-    cd $CASEROOT
-    ./preview_namelist
-    ./check_input_data --download
-
-.. note::
-
-    By default the raw data will be placed under ``$DIN_LOC_ROOT`` but user can change the location of the raw input data before running ``./preview_namelist``
-    and ``./check_input_data --download`` commands. For example, following command can be used to create a ``icfiles`` directory under ``$SRCROOT/cime/scripts/$CASEROOT``
-    to download and place new raw input data.
-
-    .. code-block:: console
-
-        cd $CASEROOT
-        ./xmlchange DIN_LOC_IC=`pwd`/icfiles
-
-.. note::
-
-    Note that the higher resolution GFS data, which is in NEMSIO format needs to be retrieved manually from NOMADS (NOAA National Operational Model Archive and Distribution System) server. Please be aware that the NOMADS server only keeps last 10 days data.
 
 How do I find out which platforms are preconfigured for the MR Weather App?
 ===========================================================================
@@ -343,20 +307,6 @@ The output will contain entries like the following:
    ('      pes/node       ', '36')
    ('      max_tasks/node ', '36')
 
-How can I change input data type for chgres_cube?
-==================================================
-
-The current version of UFS MR Weather Application supports GRIB2 (default) and
-NEMSIO format for the initial conditions. If the input directory ``$DIN_LOC_IC``
-has both GRIB2 and :term:`NEMSIO` files for same date, then CIME-CSS
-will use GRIB2 dataset to process with chgres. To change the default
-behavior and process NEMSIO files instead of GRIB2, edit file ``user_nl_ufsatm``
-and add
-
-.. code-block:: console
-
-    input_type = "gaussian"
-
 What are the CompSets and physics suites supported in this release?
 ====================================================================
 
@@ -377,15 +327,15 @@ These differences are needed because the GRIB2 files do not have all the fields
 needed to initialize the operational NSST parameterization.
 
 
-How can I change number of task used by CHGRES or UPP (NCEP-Post)?
-==================================================================
+How can I change number of task used by chgres_cube or UPP (NCEP-Post)?
+=======================================================================
 
-By default, CIME-CCS automatically sets number of tasks used by CHGRES and NCEP-Post (:term:`UPP`) based on the
+By default, CIME-CCS automatically sets number of tasks used by chgres_cube and NCEP-Post (:term:`UPP`) based on the
 resolution of the created case using following logic:
 
-- **CHGRES**
+- **chgres_cube**
 
-  It requires that number of task used by CHGRES need to be divided evenly with the number of tiles (6).
+  It requires that number of task used by chgres_cube need to be divided evenly with the number of tiles (6).
 
   - C96: closest number of task to tasks_per_node, which can be divided by 6
   - C192: closest number of task to tasks_per_node, which can be divided by 6
@@ -410,15 +360,15 @@ To change the values set automatically by CIME-CSS, ``xmlchange`` command can be
     cd $CASEROOT
     ./xmlchange task_count=72 --subgroup case.chgres
 
-This command will change the number of task used by CHGRES to 72. If user wants to change number of
+This command will change the number of task used by chgres_cube to 72. If user wants to change number of
 task for NCEP-Post, the subgroup option need to set to ``case.gfs_post``.
 
-How to change the filenames for input to CHGRES?
-================================================
+How to change the filenames for input to chgres_cube?
+=====================================================
 
-By default, CIME-CSS uses `pre-defined convention <https://ufs-mrweather-app.readthedocs.io/en/latest/inputs_outputs.html>`_ to define folder and file names for raw input to CHGRES. In this case, 0.5-degree data in GRIB2 format is used from `NCDC - Global Forecast System <https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`_.
+By default, CIME-CSS uses `pre-defined convention <https://ufs-mrweather-app.readthedocs.io/en/latest/inputs_outputs.html>`_ to define folder and file names for raw input to chgres_cube. In this case, 0.5-degree data in GRIB2 format is used from `NCDC - Global Forecast System <https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`_.
 
-In case of using 1.0-degree GRIB2 format data (with gfs_3_YYYYMMDD_00HH_000.grb2 naming convention), user need to download file manuallay and placed under ``$DIN_LOC_IC/YYYYMM/YYYYMMDD```. Then, ``grib2_file_input_grid`` CHGRES namelist variable need to be modified by editing ``user_nl_ufsatm`` file (resides in the ``$CASEROOT``) as following (for Dorian case):
+In case of using 1.0-degree GRIB2 format data (with gfs_3_YYYYMMDD_00HH_000.grb2 naming convention), user need to download file manuallay and placed under ``$DIN_LOC_IC/YYYYMM/YYYYMMDD```. Then, ``grib2_file_input_grid`` chgres_cube namelist variable need to be modified by editing ``user_nl_ufsatm`` file (resides in the ``$CASEROOT``) as following (for Dorian case):
 
 .. code-block:: console
 
