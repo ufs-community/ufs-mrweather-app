@@ -265,11 +265,11 @@ On `platforms that are not pre-configured <https://github.com/ufs-community/ufs/
      # CSH
      source $NCEPLIBS_DIR/bin/setenv_nceplibs.csh
 
-.. warning::
+The recommended best practice to set the ``$UFS_SCRATCH`` and ``$UFS_INPUT`` environment variables and source the NCEPLIBS provided shell script ``setenv_nceplibs.sh|.csh`` is to add the above commands to a startup script such as ``$HOME/.bashrc`` (Bash shell) or ``$HOME/.tcshrc`` (Tcsh shell). These files are executed automatically when you start a new shell so that you do not need to re-define them during each login.
 
-     The best practice to set the ``$UFS_SCRATCH`` and ``$UFS_INPUT`` environment variables and source the NCEPLIBS provided shell script ``setenv_nceplibs.sh|.csh`` is to add the above commands to a startup script such as ``$HOME/.bashrc`` (Bash shell) or ``$HOME/.tcshrc`` (Tcsh shell). These files are executed automatically when you start a new shell so that you do not need to re-define them during each login.
-
-     On some platforms, such as Stampede2, this practice is **required** to ensure the environment variables are properly set on compute nodes accessed by the workflow.   
+.. important::
+     On some platforms, such as Stampede2, this practice is **required** to ensure the 
+     environment variables are properly set on compute nodes accessed by the workflow.   
 
 Create a case
 ==============
