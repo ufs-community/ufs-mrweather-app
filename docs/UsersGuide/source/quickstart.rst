@@ -264,7 +264,16 @@ On `platforms that are not pre-configured <https://github.com/ufs-community/ufs/
 
      # CSH
      source $NCEPLIBS_DIR/bin/setenv_nceplibs.csh
-     
+
+.. warning::
+
+     The best practice to set environment variables (``$UFS_SCRATCH`` and ``$UFS_INPUT``) and source NCEPLIBS provided shell script (``setenv_nceplibs.sh|.csh``) 
+     is to put them into the ``$HOME/.bashrc`` (Bash shell) or ``$HOME/.tcshrc`` (Tcsh shell) files. These files are executed when user opens a new shell or 
+     logins to the server (incl. compute nodes) so that their environment is set correctly.
+
+     Due to the implemenation way of some platforms such as TACC systems (Stampede2 etc.), user must follow the best practice to make enviromnet variables
+     available also on compute nodes to run pre- and post-processing steps that look for ``$NCEPLIBS_DIR`` environment variable to link required executables
+     (**chgres_cube.exe** and **ncep_post**) to case build directory (**bld/**) without any problem. 
 
 Create a case
 ==============

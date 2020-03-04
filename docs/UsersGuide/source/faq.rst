@@ -4,6 +4,31 @@
 FAQ
 ===
 
+How can I set required environment variables?
+=====================================================================
+
+The best practice to set environment variables (``UFS_SCRATCH`` and ``UFS_INPUT``) and source NCEPLIBS provided shell script (``setenv_nceplibs.sh|.csh``) is
+ to put them into the ``.bashrc`` (Bash shell) or ``.tcshrc`` (Tcsh shell) files. These files are executed when user opens a new shell or logins to the server
+ (incl. compute nodes) so that their environment is set correctly.
+
+**BASH (edit ~/.bashrc): **
+.. code-block:: console
+
+    export UFS_INPUT=/path/to/inputs
+    export UFS_SCRATCH=/path/to/outputs
+    source /path/to/nceplibs/bin/setenv_nceplibs.sh 
+
+**BASH (edit ~/.tcshrc): **
+.. code-block:: console
+
+    setenv UFS_INPUT /path/to/inputs
+    setenv UFS_SCRATCH /path/to/outputs
+    source /path/to/nceplibs/bin/setenv_nceplibs.csh
+
+.. note::
+
+    The user might need to create ``~/.bashrc`` or ``~/.tcshrc`` file.
+
 How can I see/check the steps in my workflow?
 =============================================
 
