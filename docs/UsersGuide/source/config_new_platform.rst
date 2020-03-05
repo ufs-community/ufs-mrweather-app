@@ -187,15 +187,14 @@ To verify correctness of the config_batch.xml file, use the command:
     cd $CIMEROOT
     xmllint --noout --schema config/xml_schemas/config_batch.xsd config/ufs/machines/config_batch.xml
 
-Build and install the "cprnc" tool
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Optional) Build and install the "cprnc" tool
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The CIME testing system uses a tool called ``cprnc`` to compare NetCDF files. This tool
-must be available on the local system in order for the testing system to work properly.
-The source code is included with CIME, but it must be compiled and installed one time
-on each new platform.
+can either be built one time on a system and referenced from the **config_machines.xml** file
+or it will be built automatically by CIME if not found.
 
-To build ``cprnc`` use these steps:
+If you choose to build ``cprnc`` use these steps:
 
 .. code-block:: console
 
