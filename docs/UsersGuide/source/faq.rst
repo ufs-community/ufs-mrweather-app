@@ -18,7 +18,7 @@ These files are executed when a user opens a new shell or logs in to the server
 
     export UFS_INPUT=/path/to/inputs
     export UFS_SCRATCH=/path/to/outputs
-    source /path/to/nceplibs/bin/setenv_nceplibs.sh 
+    source /path/to/nceplibs/bin/setenv_nceplibs.sh
 
 **BASH (edit ~/.tcshrc):**
 
@@ -37,7 +37,7 @@ How can I see/check the steps in my workflow?
 
 A good way to see what ``case.submit`` will do, is to use the ``preview_run`` command,
 which will output the environment for your run along with the batch submit and mpirun commands.
-The following is example output for the UFS Medium-Range Weather workflow:
+The following is example output for the UFS MR Weather App workflow:
 
 .. code-block:: console
 
@@ -47,7 +47,7 @@ The following is example output for the UFS Medium-Range Weather workflow:
 How can I run an individual task in the existing workflow?
 ==========================================================
 
-The CIME-CCS allows you to run the specific task in the workflow by supplying the ``--only-job``
+The CIME allows you to run the specific task in the workflow by supplying the ``--only-job``
 parameter to the ``case.submit`` command.
 
 The following example will run only the preprocessing utility ``chgres_cube``:
@@ -76,8 +76,8 @@ If the user wants to define the first job submitted in a workflow, the ``--job``
 
 In this case, two dependent jobs will be submitted: model simulation and post-processing.
 
-How can I change wall clock time/queue for specific task in the workflow?
-================================================================================
+How can I change the wall clock time and queue for specific tasks in the workflow?
+==================================================================================
 
 These can be done by using the ``xmlchange`` command.
 
@@ -114,10 +114,10 @@ There are two ways to change project account that is used to submit job:
     cd $CASEROOT
     ./xmlchange CHARGE_ACCOUNT=[PROJECT ID] --subgroup case.chgres
 
-How do I change the processor layout?
-=====================================
+How do I change the processor layout for the UFS Weather Model?
+===============================================================
 
-The total number of processor used by the UFS Medium-Range Weather Model can be modified by using ``xmlchange`` command and editing ``user_nl_ufsatm`` file.
+The total number of processor used by the UFS Weather Model can be modified by using ``xmlchange`` command and editing ``user_nl_ufsatm`` file.
 
 To query the default configuration of the processor layout:
 
@@ -195,11 +195,11 @@ To restart the model the ``xmlchange`` command can be used:
     ./xmlchange CONTINUE_RUN=TRUE
     ./case.submit
 
-In this case, CIME-CCS makes the required changes to the model namelist files (``model_configure`` and ``input.nml``) and also copies the files from the ``RESTART`` to the ``INPUT`` directory.
+In this case, CIME makes the required changes to the model namelist files (``model_configure`` and ``input.nml``) and also copies the files from the ``RESTART`` to the ``INPUT`` directory.
 
 .. note::
 
-    If there are restart files belonging to multiple time snapshots (i.e. with 20190829.060000., 20190829.120000. prefixes if it is written every 6-hours), CIME-CCS gets the latest one (the files with ``20190829.120000.`` prefix) automatically.
+    If there are restart files belonging to multiple time snapshots (i.e. with 20190829.060000., 20190829.120000. prefixes if it is written every 6-hours), CIME gets the latest one (the files with ``20190829.120000.`` prefix) automatically.
 
 The restart interval can also be changed to a 6 hourly interval as following:
 
@@ -309,6 +309,22 @@ Some variables are tied to xml in the case and can only be changed via the
     - regional@chgres
     - regional@fv_core_nml
 
+How do I turn on stochastic physics?
+====================================
+
+There are three types of stochastic physics supported with this release: SPPT, SHUM, and SKEB.
+They can be used together or separately, and their use is controlled by setting model namelist options
+DO_SPPT, DO_SHUM, DO_SKEB to true or false. These options are set to false by default for all
+supported compsets and physics suites.
+
+In addition to the namelist variables that turn stochastic physics on or off, there
+are several variables that control the behavior of the physics. Those are explained
+in the `Stochastic Physics User's Guide <https://stochastic-physics.readthedocs.io/en/ufs-v1.0.0/namelist_options.html>`_.
+
+In order to set variables DO_SPPT, DO_SHUM, DO_SKEB to true in the model namelist,
+as well as to set the values of the variables that customize the stochastic physics,
+please see  FAQ entry `How do I change a namelist option for chgres_cube or the model?`
+
 Can I customize the UPP output?
 ===============================
 
@@ -319,7 +335,7 @@ How do I find out which platforms are preconfigured for the MR Weather App?
 ===========================================================================
 
 Preconfigured machines are platforms that have machine specific files and settings scripts and should
-run the UFS Medium-Range (MR) Weather Application **out-of-the-box** (other than potentially needing to download input files).
+run the UFS MR Weather Application **out-of-the-box** (other than potentially needing to download input files).
 Preconfigured platforms are usually listed by their common site-specific name.
 
 To see the list of preconfigured, out of the box platforms, issue the following commands:
@@ -340,10 +356,10 @@ The output will contain entries like the following:
    ('      pes/node       ', '36')
    ('      max_tasks/node ', '36')
 
-What are the CompSets and physics suites supported in this release?
+What are the compsets and physics suites supported in this release?
 ====================================================================
 
-There are two CompSets supported in this release: GFSv15p2 and GFSv16beta,
+There are two compsets supported in this release: GFSv15p2 and GFSv16beta,
 corresponding to the physics suites associated with the operational GFS v15 model
 and with the developmental physics for the future implementation of GFS v16.
 However, there are four physics suites supported for this release: GFSv15p2,
@@ -351,8 +367,8 @@ GFSv15p2_no_nsst, GFSv16beta, and GFSv16beta_no_nsst. The difference between a
 suite and its no_nsst counterpart is that the no_nsst suites do not include the
 Near Sea Surface Temperature (NSST) ocean parameterization. Instead, they
 employ a simple ocean scheme (sfc_ocean) that keeps the sea surface temperature constant
-throughout the forecast. CompSet GFSv15p2 can use either the GFSv15p2 suite or
-the GFSv15p2_no_nsst suite. Similarly, CompSet GFSv16beta can use either the
+throughout the forecast. Compset GFSv15p2 can use either the GFSv15p2 suite or
+the GFSv15p2_no_nsst suite. Similarly, Compset GFSv16beta can use either the
 GFSv16beta suite or the GFSv16beta_no_nsst suite. The choice is made based on the
 format of the initial conditions file. When GRIB2 format is chosen, the non_nsst
 suites are used. When NEMSIO format is chosen, the suites with NSST are chosen.
@@ -363,7 +379,7 @@ needed to initialize the operational NSST parameterization.
 How can I change number of task used by chgres_cube or UPP (NCEP-Post)?
 =======================================================================
 
-By default, CIME-CCS automatically sets number of tasks used by ``chgres_cube`` and NCEP-Post (:term:`UPP`) based on the
+By default, CIME automatically sets number of tasks used by ``chgres_cube`` and NCEP-Post (:term:`UPP`) based on the
 resolution of the created case using following logic:
 
 - **chgres_cube**
@@ -448,3 +464,22 @@ the user needs to download the file manually and place it under ``$DIN_LOC_IC/YY
     Please be aware that:
       - Tests were not done with the AVN, MRF or analysis data.
       - The date used in the directory naming must match the date used in file name.
+
+How can I run the UFS MR Weather App for another date without overriding my previous run?
+==========================================================================================
+
+Before running the App for a second date, you should save your previous run in
+another directory by moving that directory to a different location.
+
+From the case directory do:
+
+.. code-block:: console
+
+   RUNDIR = ` ./xmlquery RUNDIR --value`
+   mv $RUNDIR $RUNDIR.forecastdate
+
+How do I diagnose a failure with a high-resolution run?
+=======================================================
+
+One possible source of failure with high-resolution runs is lack of memory. To
+diagnose if this is the problem, try a low resolution run first.

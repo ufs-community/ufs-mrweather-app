@@ -1,12 +1,8 @@
 .. _cime_overview:
 
-===================
-Brief CIME Overview
-===================
-
-.. todo:: Not sure where this section belongs. THIS DOES NOT SEEN TO BE
-   SPECIFIC TO THE UFS MR W APP. CONSIDER MOVING TO
-   CIME DOCUMENTATION
+=================================
+Additional information about CIME
+=================================
 
 All compiler flags are defined in
 ``cime/config/ufs/machines/config_compilers.xml``. This file contains
@@ -53,9 +49,3 @@ will use the file in ``SourceMods/src.fv3gfs`` instead of the matching
 file in your checked out code sandbox.  If a file is removed from
 ``SourceMods/src.fv3gfs`` then the next build will again use the
 original file your checked out code base.
-
-.. todo::
-   We should create a test to compare the cime build to the cmake
-   standalone build on those systems where both are supported, making
-   sure that all of the switches allowed by the cmake build are working
-   correctly in cime.
