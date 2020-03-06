@@ -77,7 +77,7 @@ If the user wants to define the first job submitted in a workflow, the ``--job``
 In this case, two dependent jobs will be submitted: model simulation and post-processing.
 
 How can I change the wall clock time and queue for specific tasks in the workflow?
-================================================================================
+==================================================================================
 
 These can be done by using the ``xmlchange`` command.
 
