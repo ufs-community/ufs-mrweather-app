@@ -450,8 +450,8 @@ and post-processing.  The first ten characters of the job names will be ``chgres
 ``gfs_post.u``, respectively.
 
 When the jobs are complete, most output will *NOT* be written under the case directory, but
-instead under some other directories (on NCAR's cheyenne machine, these other directories
-will be in ``/glade/scratch/$USER``). Review the following directories and files, whose
+instead under some other directories (defined by $UFS_SCRATCH).
+Review the following directories and files, whose
 locations can be found with ``xmlquery`` (note: ``xmlquery`` can be run with a list of
 comma separated names and no spaces):
 
@@ -462,10 +462,19 @@ comma separated names and no spaces):
 - ``$RUNDIR``
 
   This directory is set in the ``env_run.xml`` file. This is the
-  location where UFS MR Weather App was run. There should be log files for the model
-  component (i.e. of the form ufs.log.yymmdd-hhmmss) if ``$DOUT_S == FALSE``. To check that a run
-  completed successfully, check the last several lines of the ufs.log file for the string "PROGRAM nems
-  HAS ENDED" and "RESOURCE STATISTICS".
+  location where UFS MR Weather App was run. Log files for each stage of the workflow can be found here.
+
+.. table::  Log files
+
+   +---------------------+--------------------------------------+----------------------------------+
+   | **Component**       | **File Name**                        |   **Look for...**                |
+   +=====================+======================================+==================================+
+   | chgres.ufs          | chgres_cube.yymmdd-hhmmss.log        | "DONE"                           |
+   +---------------------+--------------------------------------+----------------------------------+
+   | run.ufs-mr          | ufs.log.<jobid>.yymmdd-hhmmss        | "PROGRAM nems HAS ENDED"         |
+   +---------------------+--------------------------------------+----------------------------------+
+   | gfs_post.ufs        | oi.hhh                               | "PROGRAM UNIFIED_POST HAS ENDED" |
+   +---------------------+--------------------------------------+----------------------------------+
 
 - ``$DOUT_S_ROOT/$CASE``
 
