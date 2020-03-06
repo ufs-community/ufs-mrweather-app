@@ -37,7 +37,6 @@ How can I see/check the steps in my workflow?
 
 A good way to see what ``case.submit`` will do, is to use the ``preview_run`` command,
 which will output the environment for your run along with the batch submit and mpirun commands.
-The following is example output for the UFS MR Weather App workflow:
 
 .. code-block:: console
 
@@ -47,7 +46,7 @@ The following is example output for the UFS MR Weather App workflow:
 How can I run an individual task in the existing workflow?
 ==========================================================
 
-The CIME allows you to run the specific task in the workflow by supplying the ``--only-job``
+The CIME allows you to run a specific task in the workflow by supplying the ``--only-job``
 parameter to the ``case.submit`` command.
 
 The following example will run only the preprocessing utility ``chgres_cube``:
@@ -97,8 +96,8 @@ The following command will change the job queue to ``bigmem`` for ``chgres_cube`
 
 .. note::
 
-    Without the ``--subgroup`` option, the ``xmlchange`` command changes the job wall clock time for the
-    simulation itself (``case.run``).
+    Without the ``--subgroup`` option, the ``xmlchange`` command changes the job wall clock time for all
+    submitted jobs.
 
 How can I change the project account that will be used to submit jobs?
 ======================================================================
@@ -106,18 +105,23 @@ How can I change the project account that will be used to submit jobs?
 There are two ways to change project account that is used to submit job:
 
 * Set ``PROJECT`` environment variable before creating case
-* Use the ``xmlchange`` command to change the project account. The following command can be used to change the project
-  account for the ``chgres_cube`` task (please replace PROJECT ID with an appropriate project number).
+* Use the ``xmlchange`` command to change the project account (please
+  replace PROJECT ID with an appropriate project number).
 
 .. code-block:: console
 
     cd $CASEROOT
-    ./xmlchange CHARGE_ACCOUNT=[PROJECT ID] --subgroup case.chgres
+    ./xmlchange PROJECT=[PROJECT ID]
+
+.. note::
+
+   A PROJECT environment variable setting will take precident over the case XML setting.
+
 
 How do I change the processor layout for the UFS Weather Model?
 ===============================================================
 
-The total number of processor used by the UFS Weather Model can be modified by using ``xmlchange`` command and editing ``user_nl_ufsatm`` file.
+The total number of processor used by the UFS Weather Model can be modified by using ``xmlchange`` command and editing the ``user_nl_ufsatm`` file.
 
 To query the default configuration of the processor layout:
 
@@ -133,7 +137,7 @@ and to change the default processor layout:
     cd $CASEROOT
     ./xmlchange NTASKS_ATM=150
 
-This will set the total number of processor to 150, but the model configuration files (``model_configure`` and ``input.nml``) must be changed to be
+This will set the total number of processors to 150, but the model configuration files (``model_configure`` and ``input.nml``) must be changed to be
 consistent with the total number of processors set by the ``xmlchange`` command.
 
 In this case, the following namelist options need to be modified accordingly:
@@ -170,18 +174,20 @@ How do I change the number of OPENMP threads?
 =============================================
 
 The user may need to change the number of threads to reduce memory consumption for each compute node. This is
-especially true for high-resolution cases, which is already set by CIME-CSS for C768. This can be done
+especially true for high-resolution cases, and is already set by CIME for C768. This can be done
 using the following command:
 
 .. code-block:: console
 
     cd $CASEROOT
-    ./xmlchange BUILD_THREADED=TRUE
     ./xmlchange NTHRDS_ATM=4
+    ./case.setup --reset
+    ./case.build --clean-all
+    ./case.build
 
 .. note::
 
-    The model needs to be built again if threading is changed. Setting **NTHRDS_ATM** does not require changes in the model
+    The model needs to be built again if threading is changed from 1. Setting **NTHRDS_ATM** does not require changes in the model
     configuration files. The job submission scripts handle it automatically and submit jobs using more compute nodes.
 
 How do I restart the model?
@@ -199,9 +205,9 @@ In this case, CIME makes the required changes to the model namelist files (``mod
 
 .. note::
 
-    If there are restart files belonging to multiple time snapshots (i.e. with 20190829.060000., 20190829.120000. prefixes if it is written every 6-hours), CIME gets the latest one (the files with ``20190829.120000.`` prefix) automatically.
+    If there are restart files belonging to multiple time snapshots (i.e. with 20190829.060000., 20190829.120000. prefixes if written every 6-hours), CIME gets the latest one (the files with ``20190829.120000.`` prefix) automatically.
 
-The restart interval can also be changed to a 6 hourly interval as following:
+The restart interval can also be changed to a 6 hourly interval as follows:
 
 .. code-block:: console
 
@@ -415,7 +421,7 @@ task for NCEP-Post, the subgroup option needs to set to ``case.gfs_post``.
 How to change the filenames for input to chgres_cube?
 =====================================================
 
-By default, CIME-CSS uses `pre-defined convention <https://ufs-mrweather-app.readthedocs.io/en/latest/inputs_outputs.html>`_ to define directory and file names for raw input to ``chgres_cube``. In this case, 0.5-degree data in GRIB2 format is used from `NCDC - Global Forecast System <https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`_.
+By default, CIME uses `pre-defined convention <https://ufs-mrweather-app.readthedocs.io/en/latest/inputs_outputs.html>`_ to define directory and file names for raw input to ``chgres_cube``. In this case, 0.5-degree data in GRIB2 format is used from `NCDC - Global Forecast System <https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`_.
 
 In the case of using 1.0-degree GRIB2 format data (with ``gfs_3_YYYYMMDD_00HH_000.grb2`` naming convention),
 the user needs to download the file manually and place it under ``$DIN_LOC_IC/YYYYMM/YYYYMMDD```. Then, the
@@ -463,7 +469,7 @@ the user needs to download the file manually and place it under ``$DIN_LOC_IC/YY
 
     Please be aware that:
       - Tests were not done with the AVN, MRF or analysis data.
-      - The date used in the directory naming must match the date used in file name.
+      - The date used in the directory naming must match the date used in file name and the RUN_STARTDATE in the case.
 
 How can I run the UFS MR Weather App for another date without overriding my previous run?
 ==========================================================================================

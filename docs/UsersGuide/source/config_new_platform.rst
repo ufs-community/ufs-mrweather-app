@@ -33,7 +33,7 @@ installing and running MR Weather Application.
 Note that :term:`NCEPLIBS-external` and :term:`NCEPLIBS` reside in separate GitHub repositories.  NCEPLIBS-external
 is a collection of third-party libraries required to build NCEPLIBS, which contains the NCEP library
 source code and utilities required for chgres_cube, the UFS Weather Model, and UPP.  NCEPLIBS-external must
-be installed before building the NCEPLIBS, and both are a pre-requesite for porting CIME to a new platform.
+be installed before building the NCEPLIBS, and both are a prerequesite for porting CIME to a new platform.
 The :term:`NCEPLIBS-external` and :term:`NCEPLIBS` repositories each contain a wiki page with instructions. More details
 are in :numref:`Section %s <genericMacOS>`.
 
@@ -63,7 +63,7 @@ Create these directories:
 - ``mkdir -p $HOME/projects/ufs_inputdata``
 
 You are now ready to build the ufs-mrweather-app as documented in the :ref:`quickstart`.
-Use the optional --machine argument to create_newcase and create_test with value 
+Use the optional --machine argument to create_newcase and create_test with value
 ``macos`` or ``linux``.
 
 
