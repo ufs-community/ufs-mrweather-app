@@ -184,7 +184,7 @@ the distributed documentation, summarized here for ease of use.
    +----------------------------+---------------------------------------------------------------------------------+
    | **Documentation**          | **Location**                                                                    |
    +============================+=================================================================================+
-   | UFS MR Weather App v1.0    | https://ufs-weather-model.readthedocs.io/en/ufs-v1.0.0                          |
+   | UFS MR Weather App v1.0    | https://ufs-mrweather-app.readthedocs.io/en/ufs-v1.0.0                          |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
    | chgres_cube User's Guide   | https://ufs-utils.readthedocs.io/en/ufs-v1.0.0                                  |
