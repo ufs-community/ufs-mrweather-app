@@ -21,7 +21,7 @@ Glossary
 
    FMS
       The Flexible Modeling System (FMS) is a software framework for supporting the efficient
-      development, construction, execution, and scientific interpretation of atmospheric, 
+      development, construction, execution, and scientific interpretation of atmospheric,
       oceanic, and climate system models.
 
    FV3
@@ -29,25 +29,25 @@ Glossary
       core capable of both hydrostatic and non-hydrostatic atmospheric simulations.
 
    NCEP
-      National Centers for Environmental Prediction, an arm of the National Weather Service. 
+      National Centers for Environmental Prediction, an arm of the National Weather Service.
 
    NCEPLIBS
       The NCEP library source code and utilities required for chgres_cube, the UFS Weather Model, and UPP.
 
    NCEPLIBS-external
-      A collection of third-party libraries required to build NCEPLIBS.
-       
+      A collection of third-party libraries required to build NCEPLIBS, chgres_cube, the UFS Weather Model, and UPP.
+
    NCL
       An interpreted language designed specifically for scientific data analysis and visualization.
       More information can be found at https://www.ncl.ucar.edu.
 
    NEMS
-      The NOAA Environmental Modeling System - a software infrastructure that supports 
+      The NOAA Environmental Modeling System - a software infrastructure that supports
       NCEP/EMC’s forecast products.
 
    NEMSIO
       A binary format for atmospheric model output on the native gaussian grid.
-   
+
    Stochastic physics
       A package of stochastic schemes used to represent model uncertainty:  SKEB (Stochastic
       Kinetic Energy Backscatter), SPPT (Stochastically Perturbed Physics Tendencies), and SHUM
@@ -70,7 +70,6 @@ Glossary
       models, including FV3.
 
    Weather Model
-      A prognostic model that can be used for short- and medium-range research and 
+      A prognostic model that can be used for short- and medium-range research and
       operational forecasts. It can be an atmosphere-only model or be an atmospheric
       model coupled with one or more additional components, such as a wave or ocean model.
-
