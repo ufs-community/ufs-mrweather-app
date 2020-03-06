@@ -12,11 +12,11 @@ The following quick start guide is applicable to versions of the `UFS Medium-Ran
 
 The workflow for building and running the App is built on the CIME
 (Common Infrastructure for Modeling Earth) framework.  Please refer to
-the `CIME Porting Documentation <http://esmci.github.io/cime/users_guide/porting-cime.html>`_ if CIME
+the `CIME Porting Documentation <http://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/porting-cime.html>`_ if CIME
 has not yet been ported to the target machine.
 
 If you are new to CIME, please consider reading the `CIME Case Control System Part 1: Basic Usage
-<https://esmci.github.io/cime/users_guide/index.html#case-control-system-part-1-basic-usage>`_ 
+<https://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/index.html#case-control-system-part-1-basic-usage>`_ 
 *after downloading the code*.  The CIME Users Guide will be easier to follow after the
 directory structure has been created by the `git clone` command.
 
@@ -402,7 +402,7 @@ now are:
       ./xmlquery STOP_OPTION,STOP_N
 
    These default settings can be useful in `troubleshooting
-   <http://esmci.github.io/cime/users_guide/troubleshooting.html>`_ runtime problems
+   <http://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/troubleshooting.html>`_ runtime problems
    before submitting for a longer time or a production runs. For example, following setting can be used to
    set the simulation lenght to 36-hours. Please, also be aware that ``nyears``, ``nmonths`` and ``nsteps``
    options for ``STOP_OPTION`` are not supported in the UFS MR Weather App.
@@ -501,8 +501,8 @@ comma separated names and no spaces):
   The case namelist files are copied into this directory from the ``$RUNDIR``.
 
 .. _CIME: http://esmci.github.io/cime
-.. _porting: http://esmci.github.io/cime/users_guide/porting-cime
-.. _query_config: http://esmci.github.io/cime/users_guide/introduction-and-overview.html#discovering-available-cases-with-query-config
-.. _create_newcase: http://esmci.github.io/cime/users_guide/create-a-case.html
-.. _xmlchange: http://esmci.github.io/cime/Tools_user/xmlchange.html
-.. _case.setup: http://esmci.github.io/cime/users_guide/setting-up-a-case.html
+.. _porting: http://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/porting-cime
+.. _query_config: http://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/introduction-and-overview.html#discovering-available-cases-with-query-config
+.. _create_newcase: http://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/create-a-case.html
+.. _xmlchange: http://esmci.github.io/cime/versions/ufs_release_v1.0/html/Tools_user/xmlchange.html
+.. _case.setup: http://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/setting-up-a-case.html
