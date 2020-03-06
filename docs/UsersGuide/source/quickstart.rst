@@ -280,6 +280,7 @@ The `create_newcase`_ command creates a case directory containing the scripts an
 files to configure a case (see below) for the requested resolution, component set, and
 machine. ``create_newcase`` has three required arguments: ``--case``, ``--compset`` and
 ``--res``.   The ``workflow`` argument is optional, to select alternate workflow components (see below).
+The ``project`` argument is optional, to set the batch system project account (see below).  
 (invoke ``create_newcase --help`` for help).
 
 On machines where a project or account code is needed, you
@@ -320,6 +321,10 @@ where:
   only pre-processing step. In the current version of the UFS MR Weather App, the
   pre-processing step need to be run to generate initial conditions for the UFS Weather Model.
 
+- ``PROJECT`` is the project or account code needed to run batch jobs. You
+  may either specify the ``--project $PROJECT`` argument in the ``create_newcase`` command, or set the
+  ``$PROJECT`` variable in your shell environment. 
+
 Here is an example on NCAR machine Cheyenne with the ``$USER`` shell environment variable
 set to your Cheyenne login name:
 
@@ -357,8 +362,8 @@ Invoke the ``case.setup`` command.
 
 .. note::
 
-   The CIME commands ``./xmlquery``, ``./case.setup``, ``./case.build``, ``./case.submit`` reside in the
-   directory specified by ``--case`` when the ``./create_newcase`` is run.
+   The CIME commands ``./xmlquery``, ``./case.setup``, ``./case.build``, ``./case.submit`` examine and modify
+   the CIME case, and so, are linked into the directory specified by ``--case`` when the ``./create_newcase`` is run.  They should be run from this case directory.
 
 Build the executable using the case.build command
 =================================================
