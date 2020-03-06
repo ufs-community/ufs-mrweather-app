@@ -9,7 +9,7 @@ It can be used as an easy way to run a single basic test or an entire suite of t
 `create_test <../Tools_user/create_test.html>`_ runs a test suite in parallel for improved performance.  
 It is the driver behind the automated nightly testing of cime-driven models.
 
-More information about CIME testing can be found on `CIME: Testing <https://esmci.github.io/cime/users_guide/testing.html>`_.
+More information about CIME testing can be found on `CIME: Testing <https://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/testing.html>`_.
 
 Testname syntax
 ===============

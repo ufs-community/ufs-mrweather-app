@@ -151,7 +151,7 @@ A complete description of the levels of support, along with a list of preconfigu
 and configurable platforms can be found `here <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_.
 
 The workflow leverages the Common Infrastructure for Modeling the Earth (:term:`CIME`)
-Case Control System (CCS). As described in the `CIME documentation <http://esmci.github.io/cime/#>`_,
+Case Control System (CCS). As described in the `CIME documentation <http://esmci.github.io/cime/versions/ufs_release_v1.0/html/index.html>`_,
 it comes with two default configurations, or
 Component Sets (compsets). One compset is used to evoke the physics :term:`suite`
 used in the operational GFS v15, while the other is used to evoke the
@@ -161,7 +161,7 @@ SST. The workflow provides
 ways to choose the grid resolution, as well as to change namelist options,
 such as history file frequency. It also allows for configuration of other
 elements of the workflow; for example, whether to run some or all of the
-pre-processing, forecast model, and post-processing steps. The CIME-CCS builds
+pre-processing, forecast model, and post-processing steps. The CIME builds
 the forecast model and the workflow itself, but not the :term:`NCEP` Libraries or the
 pre- and post-processing tools.
 
@@ -205,7 +205,7 @@ the distributed documentation, summarized here for ease of use.
    +----------------------------+---------------------------------------------------------------------------------+
    | ESMF manual                | http://www.earthsystemmodeling.org/esmf_releases/public/ESMF_8_0_0/ESMF_refdoc  |
    +----------------------------+---------------------------------------------------------------------------------+
-   | Common Infrastructure for  | http://esmci.github.io/cime/#                                                   |
+   | Common Infrastructure for  | http://esmci.github.io/cime/versions/ufs_release_v1.0/html/index.html           |
    | Modeling the Earth         |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
    | Unified Post Processor     | https://upp.readthedocs.io/en/ufs-v1.0.0                                        |
@@ -258,4 +258,4 @@ ad hoc order.
    variable with ``./xmlquery VAR``. In some instances, ``$VAR`` refers to a shell
    variable or some other variable; we try to make these exceptions clear.
 
-.. _CIME: http://esmci.github.io/cime/#
+.. _CIME: http://esmci.github.io/cime/versions/ufs_release_v1.0/html/index.html
