@@ -6,17 +6,17 @@ Workflow Quick Start
 
 
 The following quick start guide is applicable to versions of the `UFS Medium-Range Weather Application
-<https://github.com/ufs-community/ufs-mrweather-app>`_ that are on a preconfigured machine, listed
+<https://github.com/ufs-community/ufs-mrweather-app>`_ that are on preconfigured machines as listed
 `here <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_.
 
 
 The workflow for building and running the App is built on the CIME
 (Common Infrastructure for Modeling Earth) framework.  Please refer to
-the `CIME Porting Documentation <http://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/porting-cime.html>`_ if CIME
-has not yet been ported to the target machine.
+the `CIME Porting Documentation <http://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/porting-cime.html>`_
+if CIME has not yet been ported to the target machine.
 
 If you are new to CIME, please consider reading the `CIME Case Control System Part 1: Basic Usage
-<https://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/index.html#case-control-system-part-1-basic-usage>`_ 
+<https://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/index.html#case-control-system-part-1-basic-usage>`_
 *after downloading the code*.  The CIME Users Guide will be easier to follow after the
 directory structure has been created by the `git clone` command.
 
@@ -46,11 +46,11 @@ code:
 
 .. code-block:: console
 
-    git clone https://github.com/ufs-community/ufs-mrweather-app.git my_ufs_sandbox 
+    git clone https://github.com/ufs-community/ufs-mrweather-app.git my_ufs_sandbox
     cd my_ufs_sandbox
 
 .. note::
-    When cloning the ufs-mrweather-app repository on Hera, the connection to github may time out.  In this
+    When cloning the ufs-mrweather-app repository, the connection to github may time out.  In this
     case, resubmit the ``git clone`` command.
 
 To checkout UFS MR Weather Model components, including CIME, run the ``checkout_externals`` script from /path/to/my_ufs_sandbox.
@@ -59,8 +59,8 @@ To checkout UFS MR Weather Model components, including CIME, run the ``checkout_
 
     ./manage_externals/checkout_externals
 
-The ``checkout_externals`` script will read the configuration file called ``Externals.cfg`` and
-will download model and CIME into /path/to/my_ufs_sandbox.
+The ``checkout_externals`` script will read the configuration file ``Externals.cfg`` and
+will download the model source and CIME into /path/to/my_ufs_sandbox.
 
 To see more details regarding the checkout_externals script from the command line, type:
 
@@ -119,13 +119,14 @@ Check the ``manage_externals.log`` file to see what errors are reported.
 Model Configurations
 ====================
 
-The UFS MR Weather App can be configured at four out-of-the-box resolutions
-with two different compsets, ``GFSv15p2`` or ``GFSv16beta``. 
-Those compsets
-invoke physics suites that use or not an ocean-evolving parameterization depending on the 
-initial data provided. See the Introduction for more information on the
-physics suites provided with the release and see the frequently-asked questions (:ref:`FAQ <faq>`) section
-for more information on compsets, physics suites, and initial datasets.
+The UFS MR Weather App can be configured at four out-of-the-box
+resolutions with two different compsets, ``GFSv15p2`` or
+``GFSv16beta``.  These compsets invoke physics suites that use or not
+an ocean-evolving parameterization depending on the initial data
+provided. See the Introduction for more information on the physics
+suites provided with the release and see the frequently-asked
+questions (:ref:`FAQ <faq>`) section for more information on compsets,
+physics suites, and initial datasets.
 
 * Details of available component sets and resolutions are available from the ``query_config`` tool located in the ``cime/scripts`` directory
 
@@ -146,7 +147,7 @@ software experiments. A particular mix of components, along with component-speci
 namelist settings is referred to as  component set or "compset". The UFS MR Weather App
 has a shorthand naming convention for component sets that are supported out-of-the-box.
 
-To determine what out-of-the-box MR Weather App compsets are available in the release, use
+To determine what MR Weather App compsets are available in the release, use
 the following command:
 
 .. code-block:: console
@@ -170,7 +171,7 @@ This should show a list of available compsets:
 Supported grids
 ---------------
 
-:term:`CIME` has the flexibility to support numerous out-of-the box model resolutions.
+:term:`CIME` has the flexibility to support numerous model resolutions.
 To see the grids that are currently supported, use the following command
 
 .. code-block:: console
@@ -190,7 +191,7 @@ This should show the a list of available grids for this release.
    where
        a% => atm, l% => lnd, oi% => ocn/ice, r% => river, m% => mask, g% => glc, w% => wav
 
-   Supported out-of-the-box grid configurations are given via alias specification in
+   Supported grid configurations are given via alias specification in
    the file "config_grids.xml". Each grid alias can also be associated  with the
    following optional attributes
 
@@ -221,7 +222,7 @@ This should show the a list of available grids for this release.
       non-default grids are: atm:C768
 
 
-As can be seen, MR Weather App currently supports four out-of-the-box grids with the following nominal resolutions
+As can be seen, MR Weather App currently supports four grids with the following nominal resolutions
 
 * C96 (~100km)
 * C192 (~50km),
@@ -240,9 +241,16 @@ Two environment variables need to be set prior to running the CIME workflow:
      export UFS_INPUT=/path/to/inputs
      export UFS_SCRATCH=/path/to/outputs
 
-``UFS_INPUT`` should be set to the location of a folder where input data will be accessed.  There should be a folder named ``ufs_inputdata`` underneath this folder.  The folder ``$UFS_INPUT/ufs_inputdata`` should exist before running the CIME workflow. This is often a shared location on a platform so that all users on that platform can access data from the same location.
-  
-``UFS_SCRATCH`` should be set to the location of a writeable folder where output will be written for each case.  This is typically a user scratch space or temporary location with a large allocation available.
+``UFS_INPUT`` should be set to the location of a folder where input
+data will be accessed.  There should be a folder named
+``ufs_inputdata`` underneath this folder.  The folder
+``$UFS_INPUT/ufs_inputdata`` should exist before running the CIME
+workflow. This is often a shared location on a platform so that all
+users on that platform can access data from the same location.
+
+``UFS_SCRATCH`` should be set to the location of a writeable folder
+where output will be written for each case.  This is typically a user
+scratch space or temporary location with a large allocation available.
 
 The following settings are recommended on the pre-configured platforms:
 
@@ -264,14 +272,20 @@ On `platforms that are not pre-configured <https://github.com/ufs-community/ufs/
      # SH or BASH shells
      source $NCEPLIBS_DIR/bin/setenv_nceplibs.sh
 
-     # CSH
+     # CSH or TCSH shells
      source $NCEPLIBS_DIR/bin/setenv_nceplibs.csh
 
-The recommended best practice to set the ``$UFS_SCRATCH`` and ``$UFS_INPUT`` environment variables and source the NCEPLIBS provided shell script ``setenv_nceplibs.sh|.csh`` is to add the above commands to a startup script such as ``$HOME/.bashrc`` (Bash shell) or ``$HOME/.tcshrc`` (Tcsh shell). These files are executed automatically when you start a new shell so that you do not need to re-define them during each login.
+The recommended best practice to set the ``$UFS_SCRATCH`` and
+``$UFS_INPUT`` environment variables and source the NCEPLIBS provided
+shell script ``setenv_nceplibs.sh|.csh`` is to add the above commands
+to a startup script such as ``$HOME/.bashrc`` (Bash shell) or
+``$HOME/.tcshrc`` (Tcsh shell). These files are executed automatically
+when you start a new shell so that you do not need to re-define them
+during each login.
 
 .. important::
-     On some platforms, such as Stampede2, this practice is **required** to ensure the 
-     environment variables are properly set on compute nodes accessed by the workflow.   
+     On some platforms (in particular Stampede2) this practice is **required** to ensure the
+     environment variables are properly set on compute nodes accessed by the workflow.
 
 Create a case
 ==============
@@ -280,7 +294,7 @@ The `create_newcase`_ command creates a case directory containing the scripts an
 files to configure a case (see below) for the requested resolution, component set, and
 machine. ``create_newcase`` has three required arguments: ``--case``, ``--compset`` and
 ``--res``.   The ``workflow`` argument is optional, to select alternate workflow components (see below).
-The ``project`` argument is optional, to set the batch system project account (see below).  
+The ``project`` argument is optional, to set the batch system project account (see below).
 (invoke ``create_newcase --help`` for help).
 
 On machines where a project or account code is needed, you
@@ -288,9 +302,10 @@ must either specify the ``--project $PROJECT`` argument in the ``create_newcase`
 ``$PROJECT`` variable in your shell environment.  If this argument is not set, the error message
 ``ERROR: PROJECT_REQUIRED`` will be reported.
 
-If running on a supported machine, that machine will
-normally be recognized automatically and therefore it is *not* required
-to specify the ``--machine`` argument to ``create_newcase``.
+If running on a supported machine, that machine will normally be
+recognized automatically and therefore it is *not* required to specify
+the ``--machine`` argument to ``create_newcase``.  Generic linux and
+macos systems will require the ``--machine`` argument to be used.
 
 Invoke ``create_newcase`` as follows from the ``cime/scripts`` directory:
 
@@ -310,7 +325,7 @@ where:
   case will be the tail path. The full path to the case directory will be
   stored in the ``$CASEROOT`` XML variable.
 
-- ``COMPSET`` is the component set and can be ``GFSv15p2`` or ``GFSv16beta``, which trigger 
+- ``COMPSET`` is the component set and can be ``GFSv15p2`` or ``GFSv16beta``, which trigger
   supported Common Community Physics Package (CCPP) suites. If you would like to learn more about CCPP
   please consider reading the `CCPP Overview <https://ccpp-techdoc.readthedocs.io/en/latest/Overview.html>`_.
 
@@ -323,7 +338,7 @@ where:
 
 - ``PROJECT`` is the project or account code needed to run batch jobs. You
   may either specify the ``--project $PROJECT`` argument in the ``create_newcase`` command, or set the
-  ``$PROJECT`` variable in your shell environment. 
+  ``$PROJECT`` variable in your shell environment.
 
 Here is an example on NCAR machine Cheyenne with the ``$USER`` shell environment variable
 set to your Cheyenne login name:
@@ -339,7 +354,7 @@ Setting up the case run script
 Issuing the `case.setup`_ command creates scripts needed to run the model
 along with namelist ``user_nl_xxx`` files, where xxx denotes the set of components
 for the given case configuration such as ``ufsatm`` and ``cpl``.
-Selected namelist entries can be customized by editing ``user_nl_xxx``, see FAQ.
+Selected namelist entries can be customized by editing ``user_nl_xxx``, see :ref:`FAQ <faq>`.
 
 cd to the case directory ``$UFS_SCRATCH/ufs-mrweather-app-workflow.c96`` as shown above:
 
