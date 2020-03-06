@@ -161,7 +161,7 @@ SST. The workflow provides
 ways to choose the grid resolution, as well as to change namelist options,
 such as history file frequency. It also allows for configuration of other
 elements of the workflow; for example, whether to run some or all of the
-pre-processing, forecast model, and post-processing steps. The CIME-CCS builds
+pre-processing, forecast model, and post-processing steps. The CIME builds
 the forecast model and the workflow itself, but not the :term:`NCEP` Libraries or the
 pre- and post-processing tools.
 
