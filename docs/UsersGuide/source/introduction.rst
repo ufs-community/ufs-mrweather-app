@@ -156,7 +156,7 @@ it comes with two default configurations, or
 Component Sets (compsets). One compset is used to evoke the physics :term:`suite`
 used in the operational GFS v15, while the other is used to evoke the
 experimental GFS v16 physics. Based on the type of initial conditions, the
-workflow determines whether the to employ the variant with constant or predicted
+workflow determines whether the to employ the variant with simple or more complex 
 SST. The workflow provides
 ways to choose the grid resolution, as well as to change namelist options,
 such as history file frequency. It also allows for configuration of other
