@@ -31,17 +31,16 @@ Pre-processor and initial conditions
 The MR Weather App is distributed with the :term:`chgres_cube` pre-processing software.
 It converts the Global Forecast System (GFS) analyses to the format needed as
 input to the model, which is six tiles in NetCDF format. Additional information
-about chgres_cube can be found in the chgres_cube User’s Guide (under
-development).
+about chgres_cube can be found in the `chgres_cube User’s Guide <https://ufs-utils.readthedocs.io/en/ufs-v1.0.0/>`_.
 
 GFS analyses for initializing the MR Weather App can be in Gridded Binary
-v2 (GRIB2) format (in 25o, 0.50, or 1.0o grid spacing) or in the NOAA Environmental
+v2 (GRIB2) format (in 0.25 , 0.50, or 1.0 degree grid spacing) or in the NOAA Environmental
 Modeling System (:term:`NEMS`) Input/Output (:term:`NEMSIO`) format.
 Initialization from dates starting on January 1, 2018 are supported. Dates
 before that may work, but are not guaranteed. GFS public archives can be
-accessed through the NOAA National Center for Environmental Information (NCEI)
-at https://www.ncdc.noaa.gov/data-access and through the NOAA Operational Model Archive and
-Distribution System (NOMADS) at https://nomads.ncdc.noaa.gov/data/gfs4.
+accessed through the `National Centers for Environmental Information (NCEI)
+<https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`_
+or through the `NOAA Operational Model Archive and Distribution System (NOMADS) <https://nomads.ncep.noaa.gov/>`_ .
 The initial conditions may be pre-staged on disk by the user or
 automatically downloaded by the workflow.
 
@@ -52,18 +51,16 @@ The prognostic model in the UFS MR Weather App is the atmospheric component
 of the UFS Weather Model, which employs the Finite-Volume Cubed-Sphere (:term:`FV3`)
 dynamical core. The atmospheric model in this release is an updated version
 of the atmospheric model that is being used in the operational GFS v15.
-A User’s Guide for the UFS Weather Model is here:
-https://ufs-weather-model.readthedocs.io/en/release-public-v1/
+A User’s Guide for the UFS Weather Model is `here <https://ufs-weather-model.readthedocs.io/en/release-public-v1>`_.
 
 Supported grid configurations for this release are the global meshes with
-resolutions of C96 (~100km), C192 (~50km), C384 (~25km), and C768 (~13km),
-all with 64 vertical levels. The Geophysical Fluid Dynamics Laboratory website
-provides more information about FV3 and its grids here:
-https://www.gfdl.noaa.gov/fv3.  Additional information about the FV3 dynamical
-core is at https://noaa-emc.github.io/FV3_Dycore_v1.0/html/index.html.
+resolutions of C96 (~100 km), C192 (~50 km), C384 (~25 km), and C768 (~13 km),
+all with 64 vertical levels. The `NOAA Geophysical Fluid Dynamics Laboratory website <https://www.gfdl.noaa.gov/fv3>`_
+provides more information about FV3 and its grids. Additional information about the FV3 dynamical
+core is at `here <https://noaa-emc.github.io/FV3_Dycore_ufs-v1.0.0/html/index.html>`_.
 Interoperable atmospheric physics, along with the Noah land surface model, are
 supported through the use of the Common Community Physics Package (:term:`CCPP`;
-described at https://dtcenter.org/community-code/common-community-physics-package-ccpp).
+described `here <https://dtcenter.org/community-code/common-community-physics-package-ccpp)>`_.
 There are four physics suites supported for the release.
 Two of them are variations of an updated version of the physics :term:`suite` used in
 the operational GFS v15, while the other two are variations of an experimental
@@ -78,9 +75,9 @@ to the diurnal cycle, enabling the use of the near-sea-surface-temperature (NSST
 physical parameterization to forecast the temporal variation in SST due to the
 diurnal cycle.
 
-A scientific description of the parameterization and suites can be found at
-https://dtcenter.org/GMTB/v4.0/sci_doc/, and technical documentation about the
-:term:`CCPP` is at https://ccpp-techdoc.readthedocs.io/en/latest.
+A scientific description of the CCPP parameterizations and suites can be found in the
+`CCPP Scientific Documentation <https://dtcenter.org/GMTB/v4.0/sci_doc>`_, and
+CCPP technical aspects are described in the `CCPP Technical Documentation <https://ccpp-techdoc.readthedocs.io/en/latest>`_.
 The model namelists for the physics suites differ in ways that go beyond
 the physics to optimize various aspects of the model for use with each of the
 suites.
@@ -89,7 +86,8 @@ in this release, although the option is off by default in both of the
 supported physics suites. Three methods are supported for use separately or in
 combination: Stochastic Kinetic Energy Backscatter (SKEB), Stochastically
 Perturbed Physics Tendencies (SPPT), and Specific Humidity perturbations (SHUM).
-A User’s Guide for the use of stochastic physics is at https://stochastic-physics.readthedocs.io/en/latest.
+A `User’s Guide for the use of stochastic physics <https://stochastic-physics.readthedocs.io/en/ufs-v1.0.0>`_ is provided.
+
 The UFS Weather Model ingests files produced by chgres_cube and outputs files
 in NetCDF format on a Gaussian grid in the horizontal and model levels in the
 vertical.
@@ -97,34 +95,29 @@ vertical.
 Post-processor
 ================================
 
-The MR Weather App is distributed with two post-processing tools, the Unified
-Post Processor (UPP) and wgrib2. The Unified Post Processor (UPP) converts the
+The MR Weather App is distributed with a post-processing tools, the Unified
+Post Processor (UPP). The Unified Post Processor (UPP) converts the
 native NetCDF output from the model to the GRIB2 format on standard isobaric
 coordinates in the vertical. The UPP can also be used to compute a variety of
-useful diagnostic fields. 
+useful diagnostic fields, as described in the `UPP user's guide <https://upp.readthedocs.io/en/ufs-v1.0.0>`_.
 
-The wgrib2 utility can be used to perform horizontal interpolation
-onto a regular latitude-longitude grid for these GRIB2 files.
-
-These output formats can be used with visualization, plotting and verification
+The UPP output can be used with visualization, plotting and verification
 packages, or for further downstream post-processing, e.g. statistical
-post-processing techniques. More information about UPP can be found here
-https://upp.readthedocs.io/en/latest/
-and the wgrib2 utility is described at
-https://www.cpc.ncep.noaa.gov/products/wesley/wgrib2/.
+post-processing techniques.
 
 Visualization Example
 =========================
 
-This release does not include support for model verification or visualization. Currently, 
-only a basic NCL script is provided to create a basic visualization of model output.  
-This is provided only as an example for users familiar with :term:`NCL`, and may be used to
-do a visual check to verify that the application is set up correctly and
+This release does not include support for model verification or visualization. Currently,
+only four basic NCAR Command Language (:term:`NCL`) scripts are provided to create a basic visualization of model output.
+This capability is provided only as an example for users familiar with NCL, and may be used to
+do a visual check to verify that the application is
 producing reasonable results.
 
-ftp://ftp.emc.ncep.noaa.gov/EIB/UFS/visualization_example/
-
-contains a README file describing the plotting scripts and example plots.
+The scripts are available in the ftp site ftp://ftp.emc.ncep.noaa.gov/EIB/UFS/visualization_example/.
+File visualization_README describes the plotting scripts. Example plots are provided
+for the C96 5-day forecasts initialized on 8/29/2019 00 UTC using GRIB2 and NEMSIO
+files as input datasets.
 
 Workflow and Build System
 =========================
@@ -138,9 +131,10 @@ library that enables parallelism.
 A few select computational platforms have been preconfigured for the release
 with all the required libraries for building community releases of
 UFS models and applications available in a central place. That means
-bundled libraries (:term:`NCEPLIBS`) and third-party libraries (:term:`NCEPLIBS-external`)
+bundled libraries (:term:`NCEPLIBS`) and third-party libraries (:term:`NCEPLIBS-external`),
+including the Earth System Modeling Framework (ESMF)
 have both been built. Applications and models are expected to build and run out of the box.
-In preconfigured platforms, users can proceed directly to the using the `CIME`_
+In preconfigured platforms, users can proceed directly to the using the
 workflow, as described in the :ref:`Quick Start chapter <quickstart>`.
 
 A few additional computational platforms are considered configurable for the release.
@@ -154,21 +148,21 @@ Limited-test and Build-Only computational platforms are those in which the devel
 have built the code but little or no
 pre-release testing has been conducted, respectively.
 A complete description of the levels of support, along with a list of preconfigured
-and configurable platforms can be found at
-https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers.
+and configurable platforms can be found `here <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_.
 
 The workflow leverages the Common Infrastructure for Modeling the Earth (:term:`CIME`)
-Case Control System (CCS). CIME comes with two default configurations, or
+Case Control System (CCS). As described in the `CIME documentation <http://esmci.github.io/cime/versions/ufs_release_v1.0/html/index.html>`_,
+it comes with two default configurations, or
 Component Sets (compsets). One compset is used to evoke the physics :term:`suite`
 used in the operational GFS v15, while the other is used to evoke the
 experimental GFS v16 physics. Based on the type of initial conditions, the
-workflow determines whether the to employ the variant with constant or predicted
+workflow determines whether the to employ the variant with simple or more complex 
 SST. The workflow provides
 ways to choose the grid resolution, as well as to change namelist options,
 such as history file frequency. It also allows for configuration of other
 elements of the workflow; for example, whether to run some or all of the
-pre-processing, forecast model, and post-processing steps. The CIME-CCS builds
-the forecast model and the workflow itself, but not the NCEP Libraries or the
+pre-processing, forecast model, and post-processing steps. The CIME builds
+the forecast model and the workflow itself, but not the :term:`NCEP` Libraries or the
 pre- and post-processing tools.
 
 `CIME`_ supports a set of tests for the UFS MR Weather App, including the Smoke
@@ -180,8 +174,8 @@ they modify the source code.
 
 User Support, Documentation, and Contributing Development
 =========================================================
-A forum-based online support system with topical sections
-(forums.ufscommunity.org) provides a centralized location for UFS users and
+A `forum-based online support system <forums.ufscommunity.org>`_ with topical sections
+provides a centralized location for UFS users and
 developers to post questions and exchange information. The forum complements
 the distributed documentation, summarized here for ease of use.
 
@@ -190,26 +184,31 @@ the distributed documentation, summarized here for ease of use.
    +----------------------------+---------------------------------------------------------------------------------+
    | **Documentation**          | **Location**                                                                    |
    +============================+=================================================================================+
-   | UFS MR Weather App v1.0    | https://ufs-mrweather-app.readthedocs.io/en/latest/                             |
+   | UFS MR Weather App v1.0    | https://ufs-mrweather-app.readthedocs.io/en/ufs-v1.0.0                          |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | chgres_cube User's Guide   | https://prototype-chgres-cube.readthedocs.io/en/latest/                         |
+   | chgres_cube User's Guide   | https://ufs-utils.readthedocs.io/en/ufs-v1.0.0                                  |
    +----------------------------+---------------------------------------------------------------------------------+
-   | UFS Weather Model v1.0     | https://ufs-weather-model.readthedocs.io/en/release-public-v1                   |
+   | UFS Weather Model v1.0     | https://ufs-weather-model.readthedocs.io/en/ufs-v1.0.0                          |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | FV3 Documentation          | https://noaa-emc.github.io/FV3_Dycore_v1.0/html/index.html                      |
+   | FV3 Documentation          | https://noaa-emc.github.io/FV3_Dycore_ufs-v1.0.0/html/index.html                |
    +----------------------------+---------------------------------------------------------------------------------+
-   | CCPP Scientific            | https://dtcenter.org/GMTB/UFS/sci_doc/                                          |
+   | CCPP Scientific            | https://dtcenter.org/GMTB/v4.0/sci_doc                                          |
    | Documentation              |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | CCPP Technical             | https://ccpp-techdoc.readthedocs.io/en/latest/                                  |
+   | CCPP Technical             | https://ccpp-techdoc.readthedocs.io/en/v4.0                                     |
    | Documentation              |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | Stochastic Physics         | https://stochastic-physics.readthedocs.io/en/ufs_public_release/                |
+   | Stochastic Physics         | https://stochastic-physics.readthedocs.io/en/ufs-v1.0.0                         |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | Unified Post Processor     | https://upp.readthedocs.io/en/latest/                                           |
+   | ESMF manual                | http://www.earthsystemmodeling.org/esmf_releases/public/ESMF_8_0_0/ESMF_refdoc  |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | Common Infrastructure for  | http://esmci.github.io/cime/versions/ufs_release_v1.0/html/index.html           |
+   | Modeling the Earth         |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | Unified Post Processor     | https://upp.readthedocs.io/en/ufs-v1.0.0                                        |
    +----------------------------+---------------------------------------------------------------------------------+
 
 The UFS community is encouraged to contribute to the UFS development effort.
@@ -255,8 +254,8 @@ ad hoc order.
 .. note::
 
    Variables presented as ``$VAR`` in this guide typically refer to variables in XML files
-   in a MR Weather experimental case. From within a case directory, you can determine the value of such a
+   in a UFS MR Weather App experimental case. From within a case directory, you can determine the value of such a
    variable with ``./xmlquery VAR``. In some instances, ``$VAR`` refers to a shell
    variable or some other variable; we try to make these exceptions clear.
 
-.. _CIME: http://esmci.github.io/cime/#
+.. _CIME: http://esmci.github.io/cime/versions/ufs_release_v1.0/html/index.html

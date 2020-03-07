@@ -33,7 +33,7 @@ installing and running MR Weather Application.
 Note that :term:`NCEPLIBS-external` and :term:`NCEPLIBS` reside in separate GitHub repositories.  NCEPLIBS-external
 is a collection of third-party libraries required to build NCEPLIBS, which contains the NCEP library
 source code and utilities required for chgres_cube, the UFS Weather Model, and UPP.  NCEPLIBS-external must
-be installed before building the NCEPLIBS, and both are a pre-requesite for porting CIME to a new platform.
+be installed before building the NCEPLIBS, and both are a prerequesite for porting CIME to a new platform.
 The :term:`NCEPLIBS-external` and :term:`NCEPLIBS` repositories each contain a wiki page with instructions. More details
 are in :numref:`Section %s <genericMacOS>`.
 
@@ -63,7 +63,7 @@ Create these directories:
 - ``mkdir -p $HOME/projects/ufs_inputdata``
 
 You are now ready to build the ufs-mrweather-app as documented in the :ref:`quickstart`.
-Use the optional --machine argument to create_newcase and create_test with value 
+Use the optional --machine argument to create_newcase and create_test with value
 ``macos`` or ``linux``.
 
 
@@ -140,7 +140,7 @@ the new machine to which you are porting CIME.  An example entry looks like this
       </environment_variables>
     </machine>
 
-Many of the XML elements above are self-explanatory.  For details about individual elements see the `config_machines.xml file section in the CIME documentation <http://esmci.github.io/cime/users_guide/machine.html#machinefile>`_.
+Many of the XML elements above are self-explanatory.  For details about individual elements see the `config_machines.xml file section in the CIME documentation <http://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/machine.html#machinefile>`_.
 
 The value of ``CCSM_CPRNC`` will be set in the step below after the "cprnc" is installed on the system.
 
@@ -178,7 +178,7 @@ and making any needed modifications.  Here is an example batch description:
     </batch_system>
 
 For more details see the `config_batch.xml file description in the CIME documentation
-<http://esmci.github.io/cime/users_guide/machine.html#config-batch-xml-batch-directives>`_.
+<http://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/machine.html#config-batch-xml-batch-directives>`_.
 
 To verify correctness of the config_batch.xml file, use the command:
 
@@ -187,15 +187,14 @@ To verify correctness of the config_batch.xml file, use the command:
     cd $CIMEROOT
     xmllint --noout --schema config/xml_schemas/config_batch.xsd config/ufs/machines/config_batch.xml
 
-Build and install the "cprnc" tool
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Optional) Build and install the "cprnc" tool
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The CIME testing system uses a tool called ``cprnc`` to compare NetCDF files. This tool
-must be available on the local system in order for the testing system to work properly.
-The source code is included with CIME, but it must be compiled and installed one time
-on each new platform.
+can either be built one time on a system and referenced from the **config_machines.xml** file
+or it will be built automatically by CIME if not found.
 
-To build ``cprnc`` use these steps:
+If you choose to build ``cprnc`` use these steps:
 
 .. code-block:: console
 
