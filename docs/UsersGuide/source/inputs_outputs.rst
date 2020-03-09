@@ -36,7 +36,7 @@ UFS Weather Model
 The input files for the UFS MR Weather Model are located one directory up from the chgres_cube
 input files in ``$RUNDIR`` (see :numref:`Section %s <run_the_case>`). An extensive description
 of the input files for the UFS MR Weather Model can be found in the `UFS Weather Model Users Guide
-<https://ufs-weather-model.readthedocs.io/en/release-public-v1/InputsOutputs.html>`_.
+<https://ufs-weather-model.readthedocs.io/en/ufs-v1.0.0>`_.
 
 .. note::
    Due to renaming/linking by CIME, the file names used in the UFS MR Weather App
