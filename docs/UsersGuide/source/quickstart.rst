@@ -6,7 +6,7 @@ Workflow Quick Start
 
 
 The following quick start guide is applicable to versions of the `UFS Medium-Range Weather Application
-<https://github.com/ufs-community/ufs-mrweather-app>`_ that are on preconfigured machines as listed
+<https://github.com/ufs-community/ufs-mrweather-app>`_ that are on preconfigured or configurable machines as listed
 `here <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_.
 
 
