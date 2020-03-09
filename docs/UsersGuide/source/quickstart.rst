@@ -302,9 +302,9 @@ must either specify the ``--project $PROJECT`` argument in the ``create_newcase`
 ``$PROJECT`` variable in your shell environment.  If this argument is not set, the error message
 ``ERROR: PROJECT_REQUIRED`` will be reported.
 
-If running on a supported machine, that machine will normally be
-recognized automatically and therefore it is *not* required to specify
-the ``--machine`` argument to ``create_newcase``.  Generic linux and
+If running on a preconfigured or configurable machine, that machine
+will normally be recognized automatically and therefore it is not
+required to specify the --machine argument to create_newcase. Generic linux and
 macos systems will require the ``--machine`` argument to be used.
 
 Invoke ``create_newcase`` as follows from the ``cime/scripts`` directory:
