@@ -51,7 +51,7 @@ The prognostic model in the UFS MR Weather App is the atmospheric component
 of the UFS Weather Model, which employs the Finite-Volume Cubed-Sphere (:term:`FV3`)
 dynamical core. The atmospheric model in this release is an updated version
 of the atmospheric model that is being used in the operational GFS v15.
-A User’s Guide for the UFS Weather Model is `here <https://ufs-weather-model.readthedocs.io/en/release-public-v1>`_.
+A User’s Guide for the UFS Weather Model is `here <https://ufs-weather-model.readthedocs.io/en/ufs-v1.0.0>`_.
 
 Supported grid configurations for this release are the global meshes with
 resolutions of C96 (~100 km), C192 (~50 km), C384 (~25 km), and C768 (~13 km),
