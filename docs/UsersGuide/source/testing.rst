@@ -4,9 +4,9 @@
 Testing
 =======
 
-`create_test <../Tools_user/create_test.html>`_ is the tool that is used to test both CIME and CIME-driven models.
+`create_test <https://esmci.github.io/cime/versions/ufs_release_v1.0/html/Tools_user/create_test.html>`_ is the tool that is used to test both CIME and CIME-driven models.
 It can be used as an easy way to run a single basic test or an entire suite of tests.  
-`create_test <../Tools_user/create_test.html>`_ runs a test suite in parallel for improved performance.  
+`create_test <https://esmci.github.io/cime/versions/ufs_release_v1.0/html/Tools_user/create_test.html>`_ runs a test suite in parallel for improved performance.  
 It is the driver behind the automated nightly testing of cime-driven models.
 
 More information about CIME testing can be found on `CIME: Testing <https://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/testing.html>`_.
@@ -35,7 +35,7 @@ where:
 - ``MODIFIERS`` changes to the default settings for the test.
 - ``GRID`` The model grid (can be an alias). Currently, ``C96``, ``C192``, ``C384`` and ``C768`` are supported.
 - ``COMPSET`` alias of the compset, or long name, if no ``--xml`` arguments are used. It can be ``GFSv15p2`` or ``GFSv16beta``.
-- ``MACHINE`` This is optional; if this value is not supplied, `create_test <../Tools_user/create_test.html>`_ will probe the underlying machine.
+- ``MACHINE`` This is optional; if this value is not supplied, `create_test <https://esmci.github.io/cime/versions/ufs_release_v1.0/html/Tools_user/create_test.html>`_ will probe the underlying machine.
 - ``COMPILER`` If this value is not supplied, use the default compiler for ``MACHINE``.
 - ``GROUP-TESTMODS`` This is optional. This points to a directory with  ``user_nl_xxx`` files or a ``shell_commands`` that can be used to make namelist and ``XML`` modifications prior to running a test.
 

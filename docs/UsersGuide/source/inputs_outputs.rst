@@ -79,7 +79,7 @@ UFS Weather Model
 -----------------
 
 The output files for the UFS Weather Model are described in the `Users Guide
-<https://ufs-weather-model.readthedocs.io/en/release-public-v1/InputsOutputs.html>`_.
+<https://ufs-weather-model.readthedocs.io/en/ufs-v1.0.0/InputsOutputs.html>`_.
 
 ---------------
 UPP input files
@@ -216,7 +216,7 @@ In preconfigured platforms, the 08-29-2019 initial conditions are pre-staged in
 ``$DIN_LOC_IC``. Those are GRIB2 files with 0.5 deg resolution.
 
 The default input data for the Hurricane Dorian initialization of 08-29-2019 is also available
-on `NOAA EMC's FTP data repository <https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/canned_winds/201908/20190829/>`_.
+on `NOAA EMC's FTP data repository <https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/201908/20190829/>`_.
 
 -----------------------------------
 Running the App for different dates
