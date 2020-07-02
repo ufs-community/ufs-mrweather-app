@@ -244,6 +244,18 @@ and restart the model for 24 hours simulation:
 
 How do I change a namelist option for chgres_cube or the model?
 ===============================================================
+From the case directory running ./preview_namelists will generate the namelists for the run.  This is normally run by case.submit, but you can also run it from the command line after running the command case.setup.   Run it once before editing user_nl_ufsatm and examine input.nml to see the default value, then edit user_nl_ufsatm and run it again to see the change.
+
+Typical usage of preview_namelists is simply:
+./preview_namelists
+
+The input.nml will be generated under the directory CaseDocs,
+
+.. code-block:: console
+
+    ls CaseDocs
+    atm_in  config.nml  input.nml  itag.tmp  model_configure
+
 To set model namelist options in CIME, edit the file ``user_nl_ufsatm`` in
 the case and add the change(s) as name-value pairs. For example:
 
