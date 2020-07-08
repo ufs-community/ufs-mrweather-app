@@ -15,7 +15,7 @@ The Unified Forecast System (:term:`UFS`) can be configured into multiple applic
 (see a complete list at https://ufscommunity.org/#/science/aboutapps).
 The first of these to be released to the community is the UFS Medium-Range
 (MR) Weather Application (App), which targets predictions of atmospheric
-behavior out to about two weeks. The MR Weather App v1.0 includes a prognostic
+behavior out to about two weeks. The MR Weather App v1.1 includes a prognostic
 atmospheric model, pre- and post-processing tools, and a community workflow
 The release is available on GitHub and is designed to be a code that the
 community can run and improve. It is portable to a set of commonly used
@@ -34,7 +34,7 @@ input to the model, which is six tiles in NetCDF format. Additional information
 about chgres_cube can be found in the `chgres_cube User’s Guide <https://ufs-utils.readthedocs.io/en/ufs-v1.0.0/>`_.
 
 GFS analyses for initializing the MR Weather App can be in Gridded Binary
-v2 (GRIB2) format (in 0.25 , 0.50, or 1.0 degree grid spacing) or in the NOAA Environmental
+v2 (GRIB2) format (in 0.25 , 0.50, or 1.1 degree grid spacing) or in the NOAA Environmental
 Modeling System (:term:`NEMS`) Input/Output (:term:`NEMSIO`) format.
 Initialization from dates starting on January 1, 2018 are supported. Dates
 before that may work, but are not guaranteed. GFS public archives can be
@@ -151,7 +151,7 @@ A complete description of the levels of support, along with a list of preconfigu
 and configurable platforms can be found `here <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_.
 
 The workflow leverages the Common Infrastructure for Modeling the Earth (:term:`CIME`)
-Case Control System (CCS). As described in the `CIME documentation <http://esmci.github.io/cime/versions/ufs_release_v1.0/html/index.html>`_,
+Case Control System (CCS). As described in the `CIME documentation <http://esmci.github.io/cime/versions/ufs_release_v1.1/html/index.html>`_,
 it comes with two default configurations, or
 Component Sets (compsets). One compset is used to evoke the physics :term:`suite`
 used in the operational GFS v15, while the other is used to evoke the
@@ -184,12 +184,12 @@ the distributed documentation, summarized here for ease of use.
    +----------------------------+---------------------------------------------------------------------------------+
    | **Documentation**          | **Location**                                                                    |
    +============================+=================================================================================+
-   | UFS MR Weather App v1.0    | https://ufs-mrweather-app.readthedocs.io/en/ufs-v1.0.0                          |
+   | UFS MR Weather App v1.1    | https://ufs-mrweather-app.readthedocs.io/en/ufs-v1.0.0                          |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
    | chgres_cube User's Guide   | https://ufs-utils.readthedocs.io/en/ufs-v1.0.0                                  |
    +----------------------------+---------------------------------------------------------------------------------+
-   | UFS Weather Model v1.0     | https://ufs-weather-model.readthedocs.io/en/ufs-v1.0.0                          |
+   | UFS Weather Model v1.1     | https://ufs-weather-model.readthedocs.io/en/ufs-v1.0.0                          |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
    | FV3 Documentation          | https://noaa-emc.github.io/FV3_Dycore_ufs-v1.0.0/html/index.html                |
@@ -258,4 +258,4 @@ ad hoc order.
    variable with ``./xmlquery VAR``. In some instances, ``$VAR`` refers to a shell
    variable or some other variable; we try to make these exceptions clear.
 
-.. _CIME: http://esmci.github.io/cime/versions/ufs_release_v1.0/html/index.html
+.. _CIME: http://esmci.github.io/cime/versions/ufs_release_v1.1/html/index.html

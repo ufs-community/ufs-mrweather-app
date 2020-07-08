@@ -35,7 +35,7 @@ numfig = True
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #
-# needs_sphinx = '1.0'
+# needs_sphinx = '1.1'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -143,7 +143,7 @@ latex_elements = {
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',
-    #  'maketitle': r'\newcommand\sphinxbackoftitlepage{For referencing this document please use: \newline \break Author1, Author2,, 2020. UFS Medium-Range Weather App Users Guide v1.0.0. 91pp. Available at https://ufscommunity.org.}\sphinxmaketitle'
+    #  'maketitle': r'\newcommand\sphinxbackoftitlepage{For referencing this document please use: \newline \break Author1, Author2,, 2020. UFS Medium-Range Weather App Users Guide v1.1.0. 91pp. Available at https://ufscommunity.org.}\sphinxmaketitle'
 }
 
 # Grouping the document tree into LaTeX files. List of tuples

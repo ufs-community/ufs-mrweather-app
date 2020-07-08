@@ -79,14 +79,14 @@ UFS Weather Model
 -----------------
 
 The output files for the UFS Weather Model are described in the `Users Guide
-<https://ufs-weather-model.readthedocs.io/en/ufs-v1.0.0/InputsOutputs.html>`_.
+<https://ufs-weather-model.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html>`_.
 
 ---------------
 UPP input files
 ---------------
 
 Documentation for the Unified Post Processor (UPP) output files can be found
-`here <https://upp.readthedocs.io/en/ufs-v1.0.0/InputsOutputs.html>`_.
+`here <https://upp.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html>`_.
 
 .. _downloading_input_data:
 
@@ -322,7 +322,7 @@ and add
 
 .. code-block:: console
 
-    input_type = "gaussian"
+    input_type = "nemsio"
 
 ---------------------------------------------------------------
 Best practices for conserving disk space and keeping files safe
