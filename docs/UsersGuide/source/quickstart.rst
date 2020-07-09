@@ -356,7 +356,7 @@ along with namelist ``user_nl_xxx`` files, where xxx denotes the set of componen
 for the given case configuration such as ``ufsatm`` and ``cpl``.
 Selected namelist entries can be customized by editing ``user_nl_xxx``, see :ref:`FAQ <faq>`.
 
-cd to the case directory ``$UFS_SCRATCH/ufs-mrweather-app-workflow.c96`` as shown above:
+cd to the case directory or case root (``$CASEROOT``) ``$UFS_SCRATCH/ufs-mrweather-app-workflow.c96`` as shown above:
 
 .. code-block:: console
 
