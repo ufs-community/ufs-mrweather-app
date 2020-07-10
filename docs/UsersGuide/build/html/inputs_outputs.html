@@ -1,0 +1,533 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4. Inputs and outputs &mdash; UFS Medium-Range Weather App Users Guide  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Configuring a new platform" href="config_new_platform.html" />
+    <link rel="prev" title="3. Code repositories and directory structure" href="repos_and_directories.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> UFS Medium-Range Weather App Users Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">2. Workflow Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repos_and_directories.html">3. Code repositories and directory structure</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Inputs and outputs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#input-files">4.1. Input files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#chgres-cube">4.1.1. chgres_cube</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ufs-weather-model">4.1.2. UFS Weather Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#upp-input-files">4.1.3. UPP input files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#output-files">4.2. Output files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">4.2.1. chgres_cube</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">4.2.2. UFS Weather Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">4.2.3. UPP input files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#downloading-and-staging-input-data">4.3. Downloading and staging input data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#static-files">4.3.1. Static files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initial-condition-formats-and-source">4.3.2. Initial condition formats and source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initial-conditions-naming-convention">4.3.3. Initial conditions naming convention</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#default-initial-conditions">4.3.4. Default initial conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-app-for-different-dates">4.3.5. Running the App for different dates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#about-the-automatic-stating-of-initial-conditions-by-cime">4.3.6. About the automatic stating of initial conditions by CIME</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#staging-initial-conditions-manually-using-cime">4.3.7. Staging initial conditions manually using CIME</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#staging-initial-conditions-manually-without-cime">4.3.8. Staging initial conditions manually without CIME</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#order-of-operations">4.3.9. Order of operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#coexistence-of-multiple-files-for-the-same-date">4.3.10. Coexistence of multiple files for the same date</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#best-practices-for-conserving-disk-space-and-keeping-files-safe">4.3.11. Best practices for conserving disk space and keeping files safe</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="config_new_platform.html">5. Configuring a new platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">6. Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">7. FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cime_overview.html">8. Additional information about CIME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">9. Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UFS Medium-Range Weather App Users Guide</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><span class="section-number">4. </span>Inputs and outputs</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/inputs_outputs.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="inputs-and-outputs">
+<span id="id1"></span><h1><span class="section-number">4. </span>Inputs and outputs<a class="headerlink" href="#inputs-and-outputs" title="Permalink to this headline">¶</a></h1>
+<p>This chapter provides an overview of the input and output files needed by the components
+of the UFS MR Weather App (<a class="reference internal" href="glossary.html#term-chgres_cube"><span class="xref std std-term">chgres_cube</span></a>, the UFS <a class="reference internal" href="glossary.html#term-Weather-Model"><span class="xref std std-term">Weather Model</span></a>, and <a class="reference internal" href="glossary.html#term-UPP"><span class="xref std std-term">UPP</span></a>).  Links to more
+detailed documentation for each of the components are provided.</p>
+<div class="section" id="input-files">
+<h2><span class="section-number">4.1. </span>Input files<a class="headerlink" href="#input-files" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="glossary.html#term-UFS"><span class="xref std std-term">UFS</span></a> MR Weather App requires numerous input files. <a class="reference internal" href="glossary.html#term-CIME"><span class="xref std std-term">CIME</span></a> can copy/link to input files,
+run the end-to-end system and write output files to disk. Depending on the dates and format
+(<a class="reference external" href="https://www.nco.ncep.noaa.gov/pmb/docs/grib2/">GRIB2</a> and
+<a class="reference external" href="https://github.com/NOAA-EMC/NCEPLIBS-nemsio/wiki/Home-NEMSIO">NEMSIO</a>)
+requested, input files can be automatically retrieved by CIME (GRIB2) or must be staged by
+the user (<a class="reference internal" href="glossary.html#term-NEMSIO"><span class="xref std std-term">NEMSIO</span></a>).</p>
+<div class="section" id="chgres-cube">
+<h3><span class="section-number">4.1.1. </span>chgres_cube<a class="headerlink" href="#chgres-cube" title="Permalink to this headline">¶</a></h3>
+<p>When a user runs the UFS MR Weather App as described in the quickstart guide, input data for
+chgres_cube is linked from a location on disk to your run directory via CIME. The data
+is stored in a hierarchical way in the <code class="docutils literal notranslate"><span class="pre">$DIN_LOC_IC</span></code> directory
+(see <a class="reference internal" href="#downloading-input-data"><span class="std std-numref">Section 4.3</span></a>). A list of the input files for chgres_cube
+can be found <a class="reference external" href="https://ufs-utils.readthedocs.io/en/ufs-v1.0.0/chgres_cube.html#program-inputs-and-outputs">here</a>.</p>
+</div>
+<div class="section" id="ufs-weather-model">
+<h3><span class="section-number">4.1.2. </span>UFS Weather Model<a class="headerlink" href="#ufs-weather-model" title="Permalink to this headline">¶</a></h3>
+<p>The input files for the UFS MR Weather Model are located one directory up from the chgres_cube
+input files in <code class="docutils literal notranslate"><span class="pre">$RUNDIR</span></code> (see <a class="reference internal" href="quickstart.html#run-the-case"><span class="std std-numref">Section 2.7</span></a>). An extensive description
+of the input files for the UFS MR Weather Model can be found in the <a class="reference external" href="https://ufs-weather-model.readthedocs.io/en/ufs-v1.0.0">UFS Weather Model Users Guide</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Due to renaming/linking by CIME, the file names used in the UFS MR Weather App
+differ from the names described in the UFS Weather Model User’s Guide.</p>
+</div>
+</div>
+<div class="section" id="upp-input-files">
+<h3><span class="section-number">4.1.3. </span>UPP input files<a class="headerlink" href="#upp-input-files" title="Permalink to this headline">¶</a></h3>
+<p>Documentation for the input files for UPP are located <a class="reference external" href="https://upp.readthedocs.io/en/ufs-v1.0.0/InputsOutputs.html">here</a>.</p>
+</div>
+</div>
+<div class="section" id="output-files">
+<h2><span class="section-number">4.2. </span>Output files<a class="headerlink" href="#output-files" title="Permalink to this headline">¶</a></h2>
+<p>The location of the output files written to disk is determined by CIME
+(see <a class="reference internal" href="quickstart.html#run-the-case"><span class="std std-numref">Section 2.7</span></a>).</p>
+<div class="section" id="id3">
+<h3><span class="section-number">4.2.1. </span>chgres_cube<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>The files output by chgres_cube reside in the <code class="docutils literal notranslate"><span class="pre">$DIN_LOC_IC</span></code> directory, and are linked by CIME to
+files that include the grid name and date in the same directory.  For example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sfc_data.tile[1-6].nc -&gt; C96.2019-08-28_00.sfc_data.tile[1-6].nc</span>
+<span class="go">gfs_ctrl.nc -&gt; C96.2019-08-28_00.gfs_ctrl.nc</span>
+<span class="go">gfs_data.tile1.nc -&gt; C96.2019-08-28_00.gfs_data.tile1.nc</span>
+</pre></div>
+</div>
+<p>These output files are used as input for the UFS Weather Model.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The same input directory could have multiple pre-processed input files for different dates and
+once the run date is changed, CIME is able to link the correct files with the names that model expects.</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h3><span class="section-number">4.2.2. </span>UFS Weather Model<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>The output files for the UFS Weather Model are described in the <a class="reference external" href="https://ufs-weather-model.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html">Users Guide</a>.</p>
+</div>
+<div class="section" id="id5">
+<h3><span class="section-number">4.2.3. </span>UPP input files<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>Documentation for the Unified Post Processor (UPP) output files can be found
+<a class="reference external" href="https://upp.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html">here</a>.</p>
+</div>
+</div>
+<div class="section" id="downloading-and-staging-input-data">
+<span id="downloading-input-data"></span><h2><span class="section-number">4.3. </span>Downloading and staging input data<a class="headerlink" href="#downloading-and-staging-input-data" title="Permalink to this headline">¶</a></h2>
+<p>A set of input files, including static (fix) data and raw initial conditions, are needed to run the UFS MR
+Weather App. There are two variables that describe the location of the static and initial condition files:
+<code class="docutils literal notranslate"><span class="pre">$DIN_LOC_ROOT</span></code> is the directory where the static files are located and <code class="docutils literal notranslate"><span class="pre">$DIN_LOC_IC</span></code> is the
+directory where the initial conditions are located. By default, <code class="docutils literal notranslate"><span class="pre">$DIN_LOC_ROOT</span></code> is set to
+$UFS_INPUT/ufs_inputdata and <code class="docutils literal notranslate"><span class="pre">$DIN_LOC_IC</span></code> is set to <code class="docutils literal notranslate"><span class="pre">$DIN_LOC_ROOT/icfiles</span></code>.
+In this directory, the initial conditions are located in subdirectories named <code class="docutils literal notranslate"><span class="pre">YYYYMM/YYYYMMDD</span></code> (YYYY: year, MM: month, DD: day).</p>
+<p>Variable <code class="docutils literal notranslate"><span class="pre">$DIN_LOC_ROOT</span></code> is already set in preconfigured platforms and points
+to a centralized location where the fix files are staged.
+Similarly, variable $DIN_LOC_IC is by default set to $DIN_LOC_ROOT/icfiles and
+points to the directory with initial conditions for the Hurricane Dorian
+initialization in 08-29-2019. In all other platforms, users can customize the
+location of the fix files by setting <cite>$UFS_INPUT</cite> to a writable directory and
+creating a subdirectory $UFS_INPUT/ufs_inputdata.</p>
+<p>A customized location for <code class="docutils literal notranslate"><span class="pre">$DIN_LOC_IC</span></code> is necessary when users need to stage new
+initial condition files and do not have write permission to <code class="docutils literal notranslate"><span class="pre">$DIN_LOC_ROOT</span></code>.
+Users can customize <code class="docutils literal notranslate"><span class="pre">$DIN_LOC_IC</span></code> after creating the case using the commands below.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd $CASEROOT</span>
+<span class="go">./xmlchange DIN_LOC_IC=/path/to/directory</span>
+</pre></div>
+</div>
+<div class="section" id="static-files">
+<h3><span class="section-number">4.3.1. </span>Static files<a class="headerlink" href="#static-files" title="Permalink to this headline">¶</a></h3>
+<p>The user does not need to stage the fix files manually because CIME retrieves
+the fix files from from <code class="docutils literal notranslate"><span class="pre">$DIN_LOC_ROOT</span></code> (if available) or from a
+<a class="reference external" href="https://ftp.emc.ncep.noaa.gov/EIB/UFS/">FTP data repository</a>. When CIME retrieves
+the files from the ftp site, it places them in <code class="docutils literal notranslate"><span class="pre">$DIN_LOC_ROOT</span></code>.</p>
+<p>The static files and prestaged initial conditions re available on the pre-configured platforms (e.g., Hera and Cheyenne).</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Hera: /scratch1/NCEPDEV/stmp2/CIME_UFS</span>
+<span class="go">Cheyenne: /glade/p/cesmdata/cseg/</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="initial-condition-formats-and-source">
+<h3><span class="section-number">4.3.2. </span>Initial condition formats and source<a class="headerlink" href="#initial-condition-formats-and-source" title="Permalink to this headline">¶</a></h3>
+<p>The UFS MR Weather App currently only supports the use of Global Forecast System
+(GFS) data as raw initial conditions (that is, MRF, AVN, ERA5 etc. are not supported).
+The GFS data can be provided in two formats: NEMSIO or GRIB2. Both types of files can be obtained
+from the <a class="reference external" href="https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs">NCEI website</a>.</p>
+<ul>
+<li><p><strong>NEMSIO</strong></p>
+<p>These files cover the entire globe down to a horizontal resolution of 13 km and
+can be found at <a class="reference external" href="https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/">https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/</a>.</p>
+</li>
+<li><p><strong>GRIB2</strong></p>
+<p>These files cover the entire globe and resolutions of 0.5, or 1.0 degree are supported.</p>
+<ul class="simple">
+<li><p>0.5 deg files are available at <a class="reference external" href="https://nomads.ncdc.noaa.gov/data/gfs4/">https://nomads.ncdc.noaa.gov/data/gfs4/</a></p></li>
+<li><p>1.0 deg files can be requested from <a class="reference external" href="https://www.ncdc.noaa.gov/has/HAS.FileAppRouter?datasetname=GFS3&amp;subqueryby=STATION&amp;applname=&amp;outdest=FILE">https://www.ncdc.noaa.gov/has/HAS.FileAppRouter?datasetname=GFS3&amp;subqueryby=STATION&amp;applname=&amp;outdest=FILE</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="initial-conditions-naming-convention">
+<h3><span class="section-number">4.3.3. </span>Initial conditions naming convention<a class="headerlink" href="#initial-conditions-naming-convention" title="Permalink to this headline">¶</a></h3>
+<p>The default naming convention for the initial conditions files is described below.</p>
+<ul>
+<li><p><strong>NEMSIO</strong></p>
+<ul class="simple">
+<li><p>Two-dimensional surface variables <code class="docutils literal notranslate"><span class="pre">gfs.tHHz.sfcanl.nemsio</span></code></p></li>
+<li><p>Three-dimensional atmosphere state <code class="docutils literal notranslate"><span class="pre">gfs.tHHz.atmanl.nemsio</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>GRIB2</strong></p>
+<ul class="simple">
+<li><p>Surface variables and atmosphere state <code class="docutils literal notranslate"><span class="pre">gfsanl_4_YYYYMMDD_HH00_000.grb2</span></code></p></li>
+</ul>
+<p>If the user is initializing from 1.0-degree GRIB2 format data, which on
+NOMADS uses the gfs_3_YYYYMMDD_00HH_000.grb2 naming convention, the user
+needs to change variable <code class="docutils literal notranslate"><span class="pre">grib2_file_input_grid</span></code> in the chgres_cube namelist.
+This is done by editing file <code class="docutils literal notranslate"><span class="pre">user_nl_ufsatm</span></code>, which resides in the <code class="docutils literal notranslate"><span class="pre">$CASEROOT</span></code>
+directory as follows. The example below is for the Dorian case initialized on
+08-29-2019.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">!----------------------------------------------------------------------------------</span>
+<span class="go">! This file can be used to change namelist options for:</span>
+<span class="go">! - Chgres</span>
+<span class="go">! - UFS MR-Weather Model</span>
+<span class="go">! - NCEP Post</span>
+<span class="go">!</span>
+<span class="go">! Users should add all user-specific namelist changes below in the form of</span>
+<span class="go">!  namelist_var = new_namelist_value</span>
+<span class="go">!</span>
+<span class="go">! To change the namelist variables that are defined as multiple times under</span>
+<span class="go">! different namelist groups</span>
+<span class="go">!  namelist_var@namelist_group = new_namelist_value</span>
+<span class="go">!</span>
+<span class="go">! Following is the list of namelist variables that need to be accessed by</span>
+<span class="go">! specifying the namelist groups:</span>
+<span class="go">!</span>
+<span class="go">! alpha@nam_physics_nml</span>
+<span class="go">! alpha@test_case_nml</span>
+<span class="go">! avg_max_length@atmos_model_nml</span>
+<span class="go">! avg_max_length@gfs_physics_nml</span>
+<span class="go">! debug@atmos_model_nml</span>
+<span class="go">! debug@gfs_physics_nml</span>
+<span class="go">! icliq_sw@gfs_physics_nml</span>
+<span class="go">! icliq_sw@nam_physics_nml</span>
+<span class="go">! iospec_ieee32@fms_nml</span>
+<span class="go">! iospec_ieee32@fms_io_nml</span>
+<span class="go">! ntiles@fv_core_nml</span>
+<span class="go">! ntiles@nest_nml</span>
+<span class="go">! read_all_pe@fms_io_nml</span>
+<span class="go">! read_all_pe@fms_nml</span>
+<span class="go">! regional@chgres</span>
+<span class="go">! regional@fv_core_nml</span>
+<span class="go">!----------------------------------------------------------------------------------</span>
+<span class="go">grib2_file_input_grid = gfs_3_20190829_0000_000.grb2</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="default-initial-conditions">
+<h3><span class="section-number">4.3.4. </span>Default initial conditions<a class="headerlink" href="#default-initial-conditions" title="Permalink to this headline">¶</a></h3>
+<p>All supported CompSets use the Hurricane Dorian initialization of 08-29-2019.
+In preconfigured platforms, the 08-29-2019 initial conditions are pre-staged in
+<code class="docutils literal notranslate"><span class="pre">$DIN_LOC_IC</span></code>. Those are GRIB2 files with 0.5 deg resolution.</p>
+<p>The default input data for the Hurricane Dorian initialization of 08-29-2019 is also available
+on <a class="reference external" href="https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/201908/20190829/">NOAA EMC’s FTP data repository</a>.</p>
+</div>
+<div class="section" id="running-the-app-for-different-dates">
+<h3><span class="section-number">4.3.5. </span>Running the App for different dates<a class="headerlink" href="#running-the-app-for-different-dates" title="Permalink to this headline">¶</a></h3>
+<p>If users want to
+run the MR Weather App for dates other than 08-29-2019, they need to make a change in the case to
+specify the desired data.  This is done by setting the <code class="docutils literal notranslate"><span class="pre">RUN_STARTDATE</span></code> and
+<code class="docutils literal notranslate"><span class="pre">START_TOD</span></code> CIME options using <code class="docutils literal notranslate"><span class="pre">./xmlchange</span></code>.</p>
+<p>CIME will look for the following directory containing initial conditions: <code class="docutils literal notranslate"><span class="pre">$DIN_LOC_IC/YYMMMM/YYYYMMDD</span></code>.
+If the directory is not found, CIME will attempt to retrieve the initial conditions from NOMADS.</p>
+</div>
+<div class="section" id="about-the-automatic-stating-of-initial-conditions-by-cime">
+<h3><span class="section-number">4.3.6. </span>About the automatic stating of initial conditions by CIME<a class="headerlink" href="#about-the-automatic-stating-of-initial-conditions-by-cime" title="Permalink to this headline">¶</a></h3>
+<p>CIME can be used to automatically download GRIB2 initial conditions in 0.5 deg format for the dates
+available in the NOMADS server at <a class="reference external" href="https://nomads.ncdc.noaa.gov/data/gfs4/">https://nomads.ncdc.noaa.gov/data/gfs4/</a>.
+NOMADS has GFS 0.5 deg GRIB2 datasets for the last twelve months. The data will be
+retrieved from the server when case.submit command is issued.
+Therefore, if users want to start the model from the 0.5 deg GRIB2 data available through
+NOMADS, the users do not need to stage the data manually.</p>
+<p>As part of the process of generating the UFS MR Weather App executable,
+CIME calls the utility <strong>check_input_data</strong> located in each case directory
+to attempt to locate all required input data for the
+case based upon file lists generated by components. If the required
+static data is not found on local disk in <code class="docutils literal notranslate"><span class="pre">$DIN_LOC_ROOT</span></code> and raw initial conditions are not found in <code class="docutils literal notranslate"><span class="pre">$DIN_LOC_IC</span></code>,
+then CIME will attempt to download the data.</p>
+</div>
+<div class="section" id="staging-initial-conditions-manually-using-cime">
+<h3><span class="section-number">4.3.7. </span>Staging initial conditions manually using CIME<a class="headerlink" href="#staging-initial-conditions-manually-using-cime" title="Permalink to this headline">¶</a></h3>
+<p>GRIB2 data available in the NOMADS server can be automatically downloaded by CIME
+when running the case. Conversely, the user can download the data in advance by
+invoking script <strong>check_input_data</strong> with the <code class="docutils literal notranslate"><span class="pre">--download</span></code> argument.</p>
+</div>
+<div class="section" id="staging-initial-conditions-manually-without-cime">
+<h3><span class="section-number">4.3.8. </span>Staging initial conditions manually without CIME<a class="headerlink" href="#staging-initial-conditions-manually-without-cime" title="Permalink to this headline">¶</a></h3>
+<p>If users want to run the UFS MR Weather App with initial conditions other than
+0.5 deg GRIB2 data available through NOMADS, they need to stage the data manually.
+The data should be placed in <code class="docutils literal notranslate"><span class="pre">$DIN_LOC_IC</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following example script, <code class="docutils literal notranslate"><span class="pre">get.sh</span></code> can be used as a
+reference to download the NEMSIO file from the NOMADS server for
+a sample date, which in this case is 24-12-2018. <strong>Note that NEMSIO
+files in NOMADS are only available for the last 10-days.</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span>!/bin/bash
+
+<span class="gp">#</span> Command line arguments
+<span class="go">if [ -z &quot;$1&quot; -o -z &quot;$2&quot; ]; then</span>
+<span class="go">   echo &quot;Usage: $0 yyyymmdd hh&quot;</span>
+<span class="go">   exit</span>
+<span class="go">fi</span>
+<span class="go">yyyymmdd=$1 #i.e. &quot;20191224&quot;</span>
+<span class="go">hh=$2 #i.e. &quot;12&quot;</span>
+
+<span class="gp">#</span> Get the data <span class="o">(</span><span class="k">do</span> not need to edit anything after this point!<span class="o">)</span>
+<span class="go">yyyymm=$((yyyymmdd/100))</span>
+<span class="go">din_loc_ic=`./xmlquery DIN_LOC_IC --value`</span>
+<span class="go">mkdir -p $din_loc_ic/$yyyymm/$yyyymmdd</span>
+<span class="go">echo &quot;Download files to $din_loc_ic/$yyyymm/$yyyymmdd ...&quot;</span>
+<span class="go">cd $din_loc_ic/$yyyymm/$yyyymmdd</span>
+<span class="go">wget -c https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$yyyymmdd/$hh/gfs.t${hh}z.atmanl.nemsio</span>
+<span class="go">wget -c https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.$yyyymmdd/$hh/gfs.t${hh}z.sfcanl.nemsio</span>
+<span class="go">cd -</span>
+</pre></div>
+</div>
+<p>Script <code class="docutils literal notranslate"><span class="pre">get.sh</span></code> should be placed in <strong>$CASEROOT</strong> and used as follows:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">chmod 755 get.sh</span>
+<span class="go">./get.sh 20191224 12</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="order-of-operations">
+<h3><span class="section-number">4.3.9. </span>Order of operations<a class="headerlink" href="#order-of-operations" title="Permalink to this headline">¶</a></h3>
+<p>If you want to download the input data manually, you should do it before you build the UFS MR Weather App.</p>
+</div>
+<div class="section" id="coexistence-of-multiple-files-for-the-same-date">
+<h3><span class="section-number">4.3.10. </span>Coexistence of multiple files for the same date<a class="headerlink" href="#coexistence-of-multiple-files-for-the-same-date" title="Permalink to this headline">¶</a></h3>
+<p>Directory <cite>$DIN_LOC_IC/YYMMMM/YYYYMMDD`</cite> can have both GRIB2 and NEMSIO files for
+a given initialization hour and can have files for multiple initialization hours
+(00, 06, 12, and 18 UTC).</p>
+<p>If a directory has both GRIB2 and NEMSIO files for the same initialization date and time,
+CIME will use the GRIB2 files. If the user wants to change this behavior so CIME uses the
+NEMSIO files, the user should edit file <code class="docutils literal notranslate"><span class="pre">user_nl_ufsatm</span></code>
+and add</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">input_type = &quot;nemsio&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="best-practices-for-conserving-disk-space-and-keeping-files-safe">
+<h3><span class="section-number">4.3.11. </span>Best practices for conserving disk space and keeping files safe<a class="headerlink" href="#best-practices-for-conserving-disk-space-and-keeping-files-safe" title="Permalink to this headline">¶</a></h3>
+<p>Initial condition files are large and can occupy a significant amount of disk space.
+If various users will employ a common file system to conduct runs, it is
+recommended that these users share the same <code class="docutils literal notranslate"><span class="pre">$DIN_LOC_ROOT</span></code>. That way, if
+initial conditions are already on disk for a given date, they do not needed to be replicated.</p>
+<p>The files in the subdirectories of <code class="docutils literal notranslate"><span class="pre">$DIN_LOC_ROOT</span></code> should be write-protected. This prevents these files
+from being accidentally modified or deleted. The directories in <code class="docutils literal notranslate"><span class="pre">$DIN_LOC_ROOT</span></code> should generally
+be group writable, so the directory can be shared among multiple users.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="config_new_platform.html" class="btn btn-neutral float-right" title="5. Configuring a new platform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="repos_and_directories.html" class="btn btn-neutral float-left" title="3. Code repositories and directory structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

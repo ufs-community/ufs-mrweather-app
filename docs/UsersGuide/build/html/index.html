@@ -1,0 +1,322 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Welcome to the UFS Medium-Range Weather App Users Guide! &mdash; UFS Medium-Range Weather App Users Guide  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. Introduction" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home" alt="Documentation Home"> UFS Medium-Range Weather App Users Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">2. Workflow Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repos_and_directories.html">3. Code repositories and directory structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inputs_outputs.html">4. Inputs and outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config_new_platform.html">5. Configuring a new platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">6. Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">7. FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cime_overview.html">8. Additional information about CIME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">9. Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">UFS Medium-Range Weather App Users Guide</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Welcome to the UFS Medium-Range Weather App Users Guide!</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="welcome-to-the-ufs-medium-range-weather-app-users-guide">
+<h1>Welcome to the UFS Medium-Range Weather App Users Guide!<a class="headerlink" href="#welcome-to-the-ufs-medium-range-weather-app-users-guide" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#pre-processor-and-initial-conditions">1.1. Pre-processor and initial conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#forecast-model">1.2. Forecast model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#post-processor">1.3. Post-processor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#visualization-example">1.4. Visualization Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#workflow-and-build-system">1.5. Workflow and Build System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#user-support-documentation-and-contributing-development">1.6. User Support, Documentation, and Contributing Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#future-direction">1.7. Future Direction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#how-to-use-this-document">1.8. How To Use This Document</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">2. Workflow Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#downloading-the-ufs-mr-weather-app-code-and-scripts">2.1. Downloading the UFS MR Weather App code and scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#model-configurations">2.2. Model Configurations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#supported-component-sets">2.2.1. Supported component sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#supported-grids">2.2.2. Supported grids</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#setup-the-environment">2.3. Setup the environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#create-a-case">2.4. Create a case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#setting-up-the-case-run-script">2.5. Setting up the case run script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#build-the-executable-using-the-case-build-command">2.6. Build the executable using the case.build command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#run-the-case">2.7. Run the case</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="repos_and_directories.html">3. Code repositories and directory structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="repos_and_directories.html#hierarchical-repository-structure">3.1. Hierarchical Repository Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repos_and_directories.html#directory-structure">3.2. Directory Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inputs_outputs.html">4. Inputs and outputs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inputs_outputs.html#input-files">4.1. Input files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="inputs_outputs.html#chgres-cube">4.1.1. chgres_cube</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inputs_outputs.html#ufs-weather-model">4.1.2. UFS Weather Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inputs_outputs.html#upp-input-files">4.1.3. UPP input files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="inputs_outputs.html#output-files">4.2. Output files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="inputs_outputs.html#id3">4.2.1. chgres_cube</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inputs_outputs.html#id4">4.2.2. UFS Weather Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inputs_outputs.html#id5">4.2.3. UPP input files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="inputs_outputs.html#downloading-and-staging-input-data">4.3. Downloading and staging input data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="inputs_outputs.html#static-files">4.3.1. Static files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inputs_outputs.html#initial-condition-formats-and-source">4.3.2. Initial condition formats and source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inputs_outputs.html#initial-conditions-naming-convention">4.3.3. Initial conditions naming convention</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inputs_outputs.html#default-initial-conditions">4.3.4. Default initial conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inputs_outputs.html#running-the-app-for-different-dates">4.3.5. Running the App for different dates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inputs_outputs.html#about-the-automatic-stating-of-initial-conditions-by-cime">4.3.6. About the automatic stating of initial conditions by CIME</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inputs_outputs.html#staging-initial-conditions-manually-using-cime">4.3.7. Staging initial conditions manually using CIME</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inputs_outputs.html#staging-initial-conditions-manually-without-cime">4.3.8. Staging initial conditions manually without CIME</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inputs_outputs.html#order-of-operations">4.3.9. Order of operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inputs_outputs.html#coexistence-of-multiple-files-for-the-same-date">4.3.10. Coexistence of multiple files for the same date</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inputs_outputs.html#best-practices-for-conserving-disk-space-and-keeping-files-safe">4.3.11. Best practices for conserving disk space and keeping files safe</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="config_new_platform.html">5. Configuring a new platform</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="config_new_platform.html#software-operating-system-prerequisites">5.1. Software/Operating System Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_new_platform.html#generic-macos-or-linux-platforms">5.2. Generic MacOS or Linux platforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_new_platform.html#porting-cime-to-a-new-machine">5.3. Porting CIME to a new machine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config_new_platform.html#add-the-new-machine-description-to-config-machines-xml">5.3.1. Add the new machine description to config_machines.xml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config_new_platform.html#add-the-batch-system-to-config-batch-xml">5.3.2. Add the batch system to config_batch.xml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config_new_platform.html#optional-build-and-install-the-cprnc-tool">5.3.3. (Optional) Build and install the “cprnc” tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config_new_platform.html#verify-that-the-port-is-working-by-running-a-simple-test">5.3.4. Verify that the port is working by running a simple test</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">6. Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#testname-syntax">6.1. Testname syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#query-list-of-supported-tests">6.2. Query list of supported tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#using-create-test-ufsatm">6.3. Using <strong>create_test</strong> (UFSATM)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">7. FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-can-i-set-required-environment-variables">7.1. How can I set required environment variables?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-can-i-see-check-the-steps-in-my-workflow">7.2. How can I see/check the steps in my workflow?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-can-i-run-an-individual-task-in-the-existing-workflow">7.3. How can I run an individual task in the existing workflow?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-can-i-change-the-wall-clock-time-and-queue-for-specific-tasks-in-the-workflow">7.4. How can I change the wall clock time and queue for specific tasks in the workflow?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-can-i-change-the-project-account-that-will-be-used-to-submit-jobs">7.5. How can I change the project account that will be used to submit jobs?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-do-i-change-the-processor-layout-for-the-ufs-weather-model">7.6. How do I change the processor layout for the UFS Weather Model?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-do-i-change-the-number-of-openmp-threads">7.7. How do I change the number of OPENMP threads?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-do-i-restart-the-model">7.8. How do I restart the model?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-do-i-change-a-namelist-option-for-chgres-cube-or-the-model">7.9. How do I change a namelist option for chgres_cube or the model?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-do-i-turn-on-stochastic-physics">7.10. How do I turn on stochastic physics?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#can-i-customize-the-upp-output">7.11. Can I customize the UPP output?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-do-i-find-out-which-platforms-are-preconfigured-for-the-mr-weather-app">7.12. How do I find out which platforms are preconfigured for the MR Weather App?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#what-are-the-compsets-and-physics-suites-supported-in-this-release">7.13. What are the compsets and physics suites supported in this release?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-can-i-change-number-of-task-used-by-chgres-cube-or-upp-ncep-post">7.14. How can I change number of task used by chgres_cube or UPP (NCEP-Post)?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-to-change-the-filenames-for-input-to-chgres-cube">7.15. How to change the filenames for input to chgres_cube?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-can-i-run-the-ufs-mr-weather-app-for-another-date-without-overriding-my-previous-run">7.16. How can I run the UFS MR Weather App for another date without overriding my previous run?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-do-i-diagnose-a-failure-with-a-high-resolution-run">7.17. How do I diagnose a failure with a high-resolution run?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cime_overview.html">8. Additional information about CIME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">9. Glossary</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="introduction.html" class="btn btn-neutral float-right" title="1. Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,671 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7. FAQ &mdash; UFS Medium-Range Weather App Users Guide  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="8. Additional information about CIME" href="cime_overview.html" />
+    <link rel="prev" title="6. Testing" href="testing.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> UFS Medium-Range Weather App Users Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">2. Workflow Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repos_and_directories.html">3. Code repositories and directory structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inputs_outputs.html">4. Inputs and outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config_new_platform.html">5. Configuring a new platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">6. Testing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-can-i-set-required-environment-variables">7.1. How can I set required environment variables?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-can-i-see-check-the-steps-in-my-workflow">7.2. How can I see/check the steps in my workflow?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-can-i-run-an-individual-task-in-the-existing-workflow">7.3. How can I run an individual task in the existing workflow?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-can-i-change-the-wall-clock-time-and-queue-for-specific-tasks-in-the-workflow">7.4. How can I change the wall clock time and queue for specific tasks in the workflow?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-can-i-change-the-project-account-that-will-be-used-to-submit-jobs">7.5. How can I change the project account that will be used to submit jobs?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-change-the-processor-layout-for-the-ufs-weather-model">7.6. How do I change the processor layout for the UFS Weather Model?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-change-the-number-of-openmp-threads">7.7. How do I change the number of OPENMP threads?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-restart-the-model">7.8. How do I restart the model?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-change-a-namelist-option-for-chgres-cube-or-the-model">7.9. How do I change a namelist option for chgres_cube or the model?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-turn-on-stochastic-physics">7.10. How do I turn on stochastic physics?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#can-i-customize-the-upp-output">7.11. Can I customize the UPP output?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-find-out-which-platforms-are-preconfigured-for-the-mr-weather-app">7.12. How do I find out which platforms are preconfigured for the MR Weather App?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-are-the-compsets-and-physics-suites-supported-in-this-release">7.13. What are the compsets and physics suites supported in this release?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-can-i-change-number-of-task-used-by-chgres-cube-or-upp-ncep-post">7.14. How can I change number of task used by chgres_cube or UPP (NCEP-Post)?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-change-the-filenames-for-input-to-chgres-cube">7.15. How to change the filenames for input to chgres_cube?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-can-i-run-the-ufs-mr-weather-app-for-another-date-without-overriding-my-previous-run">7.16. How can I run the UFS MR Weather App for another date without overriding my previous run?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-diagnose-a-failure-with-a-high-resolution-run">7.17. How do I diagnose a failure with a high-resolution run?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cime_overview.html">8. Additional information about CIME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">9. Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UFS Medium-Range Weather App Users Guide</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><span class="section-number">7. </span>FAQ</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/faq.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="faq">
+<span id="id1"></span><h1><span class="section-number">7. </span>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="how-can-i-set-required-environment-variables">
+<h2><span class="section-number">7.1. </span>How can I set required environment variables?<a class="headerlink" href="#how-can-i-set-required-environment-variables" title="Permalink to this headline">¶</a></h2>
+<p>The best practice to set environment variables (<code class="docutils literal notranslate"><span class="pre">UFS_SCRATCH</span></code> and <code class="docutils literal notranslate"><span class="pre">UFS_INPUT</span></code>)
+and source the NCEPLIBS provided shell script (<code class="docutils literal notranslate"><span class="pre">setenv_nceplibs.sh|.csh</span></code>) is
+to put them into the <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> (Bash shell) or <code class="docutils literal notranslate"><span class="pre">.tcshrc</span></code> (Tcsh shell) files.
+These files are executed when a user opens a new shell or logs in to the server
+(including compute nodes) so that their environment is set correctly.</p>
+<p><strong>BASH (edit ~/.bashrc):</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export UFS_INPUT=/path/to/inputs</span>
+<span class="go">export UFS_SCRATCH=/path/to/outputs</span>
+<span class="go">source /path/to/nceplibs/bin/setenv_nceplibs.sh</span>
+</pre></div>
+</div>
+<p><strong>BASH (edit ~/.tcshrc):</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">setenv UFS_INPUT /path/to/inputs</span>
+<span class="go">setenv UFS_SCRATCH /path/to/outputs</span>
+<span class="go">source /path/to/nceplibs/bin/setenv_nceplibs.csh</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The user might need to create <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> or <code class="docutils literal notranslate"><span class="pre">~/.tcshrc</span></code> file.</p>
+</div>
+</div>
+<div class="section" id="how-can-i-see-check-the-steps-in-my-workflow">
+<h2><span class="section-number">7.2. </span>How can I see/check the steps in my workflow?<a class="headerlink" href="#how-can-i-see-check-the-steps-in-my-workflow" title="Permalink to this headline">¶</a></h2>
+<p>A good way to see what <code class="docutils literal notranslate"><span class="pre">case.submit</span></code> will do, is to use the <code class="docutils literal notranslate"><span class="pre">preview_run</span></code> command,
+which will output the environment for your run along with the batch submit and mpirun commands.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd $CASEROOT</span>
+<span class="go">./preview_run</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-can-i-run-an-individual-task-in-the-existing-workflow">
+<h2><span class="section-number">7.3. </span>How can I run an individual task in the existing workflow?<a class="headerlink" href="#how-can-i-run-an-individual-task-in-the-existing-workflow" title="Permalink to this headline">¶</a></h2>
+<p>The CIME allows you to run a specific task in the workflow by supplying the <code class="docutils literal notranslate"><span class="pre">--only-job</span></code>
+parameter to the <code class="docutils literal notranslate"><span class="pre">case.submit</span></code> command.</p>
+<p>The following example will run only the preprocessing utility <code class="docutils literal notranslate"><span class="pre">chgres_cube</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd $CASEROOT</span>
+<span class="go">./case.submit --only-job case.chgres</span>
+</pre></div>
+</div>
+<p>This will create the initial conditions for the model simulation using the raw input files that are
+provided by NOAA Operational Model Archive and Distribution System (NOMADS).</p>
+<p>To run the simulation:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd $CASEROOT</span>
+<span class="go">./case.submit --only-job case.run</span>
+</pre></div>
+</div>
+<p>If the user wants to define the first job submitted in a workflow, the <code class="docutils literal notranslate"><span class="pre">--job</span></code> parameter can be passed to the <code class="docutils literal notranslate"><span class="pre">case.submit</span></code> command.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd $CASEROOT</span>
+<span class="go">./case.submit --job case.run</span>
+</pre></div>
+</div>
+<p>In this case, two dependent jobs will be submitted: model simulation and post-processing.</p>
+</div>
+<div class="section" id="how-can-i-change-the-wall-clock-time-and-queue-for-specific-tasks-in-the-workflow">
+<h2><span class="section-number">7.4. </span>How can I change the wall clock time and queue for specific tasks in the workflow?<a class="headerlink" href="#how-can-i-change-the-wall-clock-time-and-queue-for-specific-tasks-in-the-workflow" title="Permalink to this headline">¶</a></h2>
+<p>These can be done by using the <code class="docutils literal notranslate"><span class="pre">xmlchange</span></code> command.</p>
+<p>For example, the following command can be used to set the job wall clock time to 10 minutes for <code class="docutils literal notranslate"><span class="pre">chgres_cube</span></code></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd $CASEROOT</span>
+<span class="go">./xmlchange JOB_WALLCLOCK_TIME=00:10:00 --subgroup case.chgres</span>
+</pre></div>
+</div>
+<p>The following command will change the job queue to <code class="docutils literal notranslate"><span class="pre">bigmem</span></code> for <code class="docutils literal notranslate"><span class="pre">chgres_cube</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd $CASEROOT</span>
+<span class="go">./xmlchange JOB_QUEUE=bigmem --subgroup case.chgres</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Without the <code class="docutils literal notranslate"><span class="pre">--subgroup</span></code> option, the <code class="docutils literal notranslate"><span class="pre">xmlchange</span></code> command changes the job wall clock time for all
+submitted jobs.</p>
+</div>
+</div>
+<div class="section" id="how-can-i-change-the-project-account-that-will-be-used-to-submit-jobs">
+<h2><span class="section-number">7.5. </span>How can I change the project account that will be used to submit jobs?<a class="headerlink" href="#how-can-i-change-the-project-account-that-will-be-used-to-submit-jobs" title="Permalink to this headline">¶</a></h2>
+<p>There are two ways to change project account that is used to submit job:</p>
+<ul class="simple">
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">PROJECT</span></code> environment variable before creating case</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">xmlchange</span></code> command to change the project account (please
+replace PROJECT ID with an appropriate project number).</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd $CASEROOT</span>
+<span class="go">./xmlchange PROJECT=[PROJECT ID]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A PROJECT environment variable setting will take precident over the case XML setting.</p>
+</div>
+</div>
+<div class="section" id="how-do-i-change-the-processor-layout-for-the-ufs-weather-model">
+<h2><span class="section-number">7.6. </span>How do I change the processor layout for the UFS Weather Model?<a class="headerlink" href="#how-do-i-change-the-processor-layout-for-the-ufs-weather-model" title="Permalink to this headline">¶</a></h2>
+<p>The total number of processor used by the UFS Weather Model can be modified by using <code class="docutils literal notranslate"><span class="pre">xmlchange</span></code> command and editing the <code class="docutils literal notranslate"><span class="pre">user_nl_ufsatm</span></code> file.</p>
+<p>To query the default configuration of the processor layout:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd $CASEROOT</span>
+<span class="go">./pelayout</span>
+</pre></div>
+</div>
+<p>and to change the default processor layout:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd $CASEROOT</span>
+<span class="go">./xmlchange NTASKS_ATM=150</span>
+</pre></div>
+</div>
+<p>This will set the total number of processors to 150, but the model configuration files (<code class="docutils literal notranslate"><span class="pre">model_configure</span></code> and <code class="docutils literal notranslate"><span class="pre">input.nml</span></code>) must be changed to be
+consistent with the total number of processors set by the <code class="docutils literal notranslate"><span class="pre">xmlchange</span></code> command.</p>
+<p>In this case, the following namelist options need to be modified accordingly:</p>
+<ul class="simple">
+<li><p><strong>layout</strong>: Processor layout on each tile.</p></li>
+<li><p><strong>ntiles</strong>: Number of tiles on the domain. For the cubed sphere, this should be 6, one tile for each face of the cubed sphere.</p></li>
+<li><p><strong>write_groups</strong>: Number of group for I/O tasks.</p></li>
+<li><p><strong>write_tasks_per_group</strong>: Number of I/O tasks for each group.</p></li>
+</ul>
+<p>The number of tasks assigned to a domain for UFS Medium-Range Weather Model must be equal to:</p>
+<div class="math notranslate nohighlight">
+\[NTASKS\_ATM = layout_x * layout_y * ntiles + write\_tasks\_per\_group * write\_groups\]</div>
+<p>to have consistent model configuration with <strong>NTASKS_ATM</strong> defined above. <code class="docutils literal notranslate"><span class="pre">user_nl_ufsatm</span></code> can be changed as following:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">!----------------------------------------------------------------------------------</span>
+<span class="go">! Users should add all user specific namelist changes below in the form of</span>
+<span class="go">!   namelist_var = new_namelist_value</span>
+<span class="go">! Note - that it does not matter what namelist group the namelist_var belongs to</span>
+<span class="go">!----------------------------------------------------------------------------------</span>
+<span class="go">layout = 3,8</span>
+<span class="go">write_groups = 1</span>
+<span class="go">write_tasks_per_group = 6</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The model resolution also needs to divide evenly with the layout pair. For the given configuration (C96 resolution), <span class="math notranslate nohighlight">\(96/3 = 32\)</span> and <span class="math notranslate nohighlight">\(96/8 = 12\)</span>.</p>
+</div>
+</div>
+<div class="section" id="how-do-i-change-the-number-of-openmp-threads">
+<h2><span class="section-number">7.7. </span>How do I change the number of OPENMP threads?<a class="headerlink" href="#how-do-i-change-the-number-of-openmp-threads" title="Permalink to this headline">¶</a></h2>
+<p>The user may need to change the number of threads to reduce memory consumption for each compute node. This is
+especially true for high-resolution cases, and is already set by CIME for C768. This can be done
+using the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd $CASEROOT</span>
+<span class="go">./xmlchange NTHRDS_ATM=4</span>
+<span class="go">./case.setup --reset</span>
+<span class="go">./case.build --clean-all</span>
+<span class="go">./case.build</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The model needs to be built again if threading is changed from 1. Setting <strong>NTHRDS_ATM</strong> does not require changes in the model
+configuration files. The job submission scripts handle it automatically and submit jobs using more compute nodes.</p>
+</div>
+</div>
+<div class="section" id="how-do-i-restart-the-model">
+<h2><span class="section-number">7.8. </span>How do I restart the model?<a class="headerlink" href="#how-do-i-restart-the-model" title="Permalink to this headline">¶</a></h2>
+<p>To restart the model the <code class="docutils literal notranslate"><span class="pre">xmlchange</span></code> command can be used:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd $CASEROOT</span>
+<span class="go">./xmlchange CONTINUE_RUN=TRUE</span>
+<span class="go">./case.submit</span>
+</pre></div>
+</div>
+<p>In this case, CIME makes the required changes to the model namelist files (<code class="docutils literal notranslate"><span class="pre">model_configure</span></code> and <code class="docutils literal notranslate"><span class="pre">input.nml</span></code>) and also copies the files from the <code class="docutils literal notranslate"><span class="pre">RESTART</span></code> to the <code class="docutils literal notranslate"><span class="pre">INPUT</span></code> directory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If there are restart files belonging to multiple time snapshots (i.e. with 20190829.060000., 20190829.120000. prefixes if written every 6-hours), CIME gets the latest one (the files with <code class="docutils literal notranslate"><span class="pre">20190829.120000.</span></code> prefix) automatically.</p>
+</div>
+<p>The restart interval can also be changed to a 6 hourly interval as follows:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd $CASEROOT</span>
+<span class="go">./xmlchange REST_OPTION=nhours</span>
+<span class="go">./xmlchange REST_N=6</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The default value of the <strong>restart_interval</strong> namelist option is zero (0), and the model writes a single restart file at the end of the simulation.</p>
+</div>
+<p>The following example demonstrates the 48 hour model simulation split into an initial 24-hour simulation with a cold start plus an additional 24-hour simulation with warm start.</p>
+<p>The initial 24 hours simulation:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd $CASEROOT</span>
+<span class="go">./xmlchange STOP_OPTION=nhours</span>
+<span class="go">./xmlchange STOP_N=24</span>
+<span class="go">./case.submit</span>
+</pre></div>
+</div>
+<p>and restart the model for 24 hours simulation:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd $CASEROOT</span>
+<span class="go">./xmlchange CONTINUE_RUN=TRUE</span>
+<span class="go">./case.submit</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The restart run length can be changed using the <code class="docutils literal notranslate"><span class="pre">xmlchange</span></code> command and setting <code class="docutils literal notranslate"><span class="pre">STOP_N</span></code> and <code class="docutils literal notranslate"><span class="pre">STOP_OPTION</span></code>.</p>
+</div>
+</div>
+<div class="section" id="how-do-i-change-a-namelist-option-for-chgres-cube-or-the-model">
+<h2><span class="section-number">7.9. </span>How do I change a namelist option for chgres_cube or the model?<a class="headerlink" href="#how-do-i-change-a-namelist-option-for-chgres-cube-or-the-model" title="Permalink to this headline">¶</a></h2>
+<p>From the case directory running ./preview_namelists will generate the namelists for the run.  This is normally run by case.submit, but you can also run it from the command line after running the command case.setup.   Run it once before editing user_nl_ufsatm and examine input.nml to see the default value, then edit user_nl_ufsatm and run it again to see the change.</p>
+<p>Typical usage of preview_namelists is simply:
+./preview_namelists</p>
+<p>The input.nml will be generated under the directory CaseDocs,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ls CaseDocs</span>
+<span class="go">atm_in  config.nml  input.nml  itag.tmp  model_configure</span>
+</pre></div>
+</div>
+<p>To set model namelist options in CIME, edit the file <code class="docutils literal notranslate"><span class="pre">user_nl_ufsatm</span></code> in
+the case and add the change(s) as name-value pairs. For example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">!----------------------------------------------------------------------------------</span>
+<span class="go">! This file can be used to change namelist options for:</span>
+<span class="go">! - Chgres</span>
+<span class="go">! - UFS MR-Weather Model</span>
+<span class="go">! - NCEP Post</span>
+<span class="go">!</span>
+<span class="go">! Users should add all user-specific namelist changes below in the form of</span>
+<span class="go">!  namelist_var = new_namelist_value</span>
+<span class="go">!</span>
+<span class="go">! To change the namelist variables that are defined as multiple times under</span>
+<span class="go">! different namelist groups</span>
+<span class="go">!  namelist_var@namelist_group = new_namelist_value</span>
+<span class="go">!</span>
+<span class="go">! Following is the list of namelist variables that need to be accessed by</span>
+<span class="go">! specifying the namelist groups:</span>
+<span class="go">!</span>
+<span class="go">! alpha@nam_physics_nml</span>
+<span class="go">! alpha@test_case_nml</span>
+<span class="go">! avg_max_length@atmos_model_nml</span>
+<span class="go">! avg_max_length@gfs_physics_nml</span>
+<span class="go">! debug@atmos_model_nml</span>
+<span class="go">! debug@gfs_physics_nml</span>
+<span class="go">! icliq_sw@gfs_physics_nml</span>
+<span class="go">! icliq_sw@nam_physics_nml</span>
+<span class="go">! iospec_ieee32@fms_nml</span>
+<span class="go">! iospec_ieee32@fms_io_nml</span>
+<span class="go">! ntiles@fv_core_nml</span>
+<span class="go">! ntiles@nest_nml</span>
+<span class="go">! read_all_pe@fms_io_nml</span>
+<span class="go">! read_all_pe@fms_nml</span>
+<span class="go">! regional@chgres</span>
+<span class="go">! regional@fv_core_nml</span>
+<span class="go">!----------------------------------------------------------------------------------</span>
+<span class="go">do_skeb = T</span>
+</pre></div>
+</div>
+<p>Then run <code class="docutils literal notranslate"><span class="pre">./case.submit</span></code>. This will update the namelist and submit the job.</p>
+<p>If you want to review what you have done before you submit the case, you can
+run <code class="docutils literal notranslate"><span class="pre">./preview_namelists</span></code> and then examine the namelist(s) in the run directory
+or the case subdirectory <code class="docutils literal notranslate"><span class="pre">CaseDocs/</span></code>.</p>
+<p>Some variables are tied to xml in the case and can only be changed via the
+<code class="docutils literal notranslate"><span class="pre">xmlchange</span></code> command. Attempting to change them by editing the file
+<code class="docutils literal notranslate"><span class="pre">user_nl_ufsatm</span></code> may generate an error.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">user_nl_ufsatm</span></code> file is also used to control namelist options for chgres_cube and NCEP-Post. Different namelist groups in the model namelist and the pre-, post-processing tools could have the same namelist variable. In this case, just using the namelist variable causes failures in the automated namelist generation. The following is the list of namelist variables that needs to be used along with their group name.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="mailto:alpha&#37;&#52;&#48;nam_physics_nml">alpha<span>&#64;</span>nam_physics_nml</a></p></li>
+<li><p><a class="reference external" href="mailto:alpha&#37;&#52;&#48;test_case_nml">alpha<span>&#64;</span>test_case_nml</a></p></li>
+<li><p><a class="reference external" href="mailto:avg_max_length&#37;&#52;&#48;atmos_model_nml">avg_max_length<span>&#64;</span>atmos_model_nml</a></p></li>
+<li><p><a class="reference external" href="mailto:avg_max_length&#37;&#52;&#48;gfs_physics_nml">avg_max_length<span>&#64;</span>gfs_physics_nml</a></p></li>
+<li><p><a class="reference external" href="mailto:debug&#37;&#52;&#48;atmos_model_nml">debug<span>&#64;</span>atmos_model_nml</a></p></li>
+<li><p><a class="reference external" href="mailto:debug&#37;&#52;&#48;gfs_physics_nml">debug<span>&#64;</span>gfs_physics_nml</a></p></li>
+<li><p><a class="reference external" href="mailto:icliq_sw&#37;&#52;&#48;gfs_physics_nml">icliq_sw<span>&#64;</span>gfs_physics_nml</a></p></li>
+<li><p><a class="reference external" href="mailto:icliq_sw&#37;&#52;&#48;nam_physics_nml">icliq_sw<span>&#64;</span>nam_physics_nml</a></p></li>
+<li><p><a class="reference external" href="mailto:iospec_ieee32&#37;&#52;&#48;fms_nml">iospec_ieee32<span>&#64;</span>fms_nml</a></p></li>
+<li><p><a class="reference external" href="mailto:iospec_ieee32&#37;&#52;&#48;fms_io_nml">iospec_ieee32<span>&#64;</span>fms_io_nml</a></p></li>
+<li><p><a class="reference external" href="mailto:ntiles&#37;&#52;&#48;fv_core_nml">ntiles<span>&#64;</span>fv_core_nml</a></p></li>
+<li><p><a class="reference external" href="mailto:ntiles&#37;&#52;&#48;nest_nml">ntiles<span>&#64;</span>nest_nml</a></p></li>
+<li><p><a class="reference external" href="mailto:read_all_pe&#37;&#52;&#48;fms_io_nml">read_all_pe<span>&#64;</span>fms_io_nml</a></p></li>
+<li><p><a class="reference external" href="mailto:read_all_pe&#37;&#52;&#48;fms_nml">read_all_pe<span>&#64;</span>fms_nml</a></p></li>
+<li><p><a class="reference external" href="mailto:regional&#37;&#52;&#48;chgres">regional<span>&#64;</span>chgres</a></p></li>
+<li><p><a class="reference external" href="mailto:regional&#37;&#52;&#48;fv_core_nml">regional<span>&#64;</span>fv_core_nml</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="how-do-i-turn-on-stochastic-physics">
+<h2><span class="section-number">7.10. </span>How do I turn on stochastic physics?<a class="headerlink" href="#how-do-i-turn-on-stochastic-physics" title="Permalink to this headline">¶</a></h2>
+<p>There are three types of stochastic physics supported with this release: SPPT, SHUM, and SKEB.
+They can be used together or separately, and their use is controlled by setting model namelist options
+DO_SPPT, DO_SHUM, DO_SKEB to true or false. These options are set to false by default for all
+supported compsets and physics suites.</p>
+<p>In addition to the namelist variables that turn stochastic physics on or off, there
+are several variables that control the behavior of the physics. Those are explained
+in the <a class="reference external" href="https://stochastic-physics.readthedocs.io/en/ufs-v1.0.0/namelist_options.html">Stochastic Physics User’s Guide</a>.</p>
+<p>In order to set variables DO_SPPT, DO_SHUM, DO_SKEB to true in the model namelist,
+as well as to set the values of the variables that customize the stochastic physics,
+please see  FAQ entry <cite>How do I change a namelist option for chgres_cube or the model?</cite></p>
+</div>
+<div class="section" id="can-i-customize-the-upp-output">
+<h2><span class="section-number">7.11. </span>Can I customize the UPP output?<a class="headerlink" href="#can-i-customize-the-upp-output" title="Permalink to this headline">¶</a></h2>
+<p>At this time the CIME workflow does not support the customization of the
+variables or levels output by UPP.</p>
+</div>
+<div class="section" id="how-do-i-find-out-which-platforms-are-preconfigured-for-the-mr-weather-app">
+<h2><span class="section-number">7.12. </span>How do I find out which platforms are preconfigured for the MR Weather App?<a class="headerlink" href="#how-do-i-find-out-which-platforms-are-preconfigured-for-the-mr-weather-app" title="Permalink to this headline">¶</a></h2>
+<p>Preconfigured machines are platforms that have machine specific files and settings scripts and should
+run the UFS MR Weather Application <strong>out-of-the-box</strong> (other than potentially needing to download input files).
+Preconfigured platforms are usually listed by their common site-specific name.</p>
+<p>To see the list of preconfigured, out of the box platforms, issue the following commands:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd $SRCROOT/cime/scripts</span>
+<span class="go">./query_config --machines</span>
+</pre></div>
+</div>
+<p>The output will contain entries like the following:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cheyenne (current) : NCAR SGI platform, os is Linux, 36 pes/node, batch system is PBS</span>
+<span class="gp gp-VirtualEnv">(&#39;      os             &#39;, &#39;LINUX&#39;)</span>
+<span class="gp gp-VirtualEnv">(&#39;      compilers      &#39;, &#39;intel,gnu,pgi&#39;)</span>
+<span class="gp gp-VirtualEnv">(&#39;      mpilibs        &#39;, [&#39;mpt&#39;, &#39;openmpi&#39;])</span>
+<span class="gp gp-VirtualEnv">(&#39;      pes/node       &#39;, &#39;36&#39;)</span>
+<span class="gp gp-VirtualEnv">(&#39;      max_tasks/node &#39;, &#39;36&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="what-are-the-compsets-and-physics-suites-supported-in-this-release">
+<h2><span class="section-number">7.13. </span>What are the compsets and physics suites supported in this release?<a class="headerlink" href="#what-are-the-compsets-and-physics-suites-supported-in-this-release" title="Permalink to this headline">¶</a></h2>
+<p>There are two compsets supported in this release: GFSv15p2 and GFSv16beta,
+corresponding to the physics suites associated with the operational GFS v15 model
+and with the developmental physics for the future implementation of GFS v16.
+However, there are four physics suites supported for this release: GFSv15p2,
+GFSv15p2_no_nsst, GFSv16beta, and GFSv16beta_no_nsst. The difference between a
+suite and its no_nsst counterpart is that the no_nsst suites do not include the
+Near Sea Surface Temperature (NSST) ocean parameterization. Instead, they
+employ a simple ocean scheme (sfc_ocean) that keeps the sea surface temperature constant
+throughout the forecast. Compset GFSv15p2 can use either the GFSv15p2 suite or
+the GFSv15p2_no_nsst suite. Similarly, Compset GFSv16beta can use either the
+GFSv16beta suite or the GFSv16beta_no_nsst suite. The choice is made based on the
+format of the initial conditions file. When GRIB2 format is chosen, the non_nsst
+suites are used. When NEMSIO format is chosen, the suites with NSST are chosen.
+These differences are needed because the GRIB2 files do not have all the fields
+needed to initialize the operational NSST parameterization.</p>
+</div>
+<div class="section" id="how-can-i-change-number-of-task-used-by-chgres-cube-or-upp-ncep-post">
+<h2><span class="section-number">7.14. </span>How can I change number of task used by chgres_cube or UPP (NCEP-Post)?<a class="headerlink" href="#how-can-i-change-number-of-task-used-by-chgres-cube-or-upp-ncep-post" title="Permalink to this headline">¶</a></h2>
+<p>By default, CIME automatically sets number of tasks used by <code class="docutils literal notranslate"><span class="pre">chgres_cube</span></code> and NCEP-Post (<a class="reference internal" href="glossary.html#term-UPP"><span class="xref std std-term">UPP</span></a>) based on the
+resolution of the created case using following logic:</p>
+<ul>
+<li><p><strong>chgres_cube</strong></p>
+<p>It requires that number of task used by chgres_cube need to be divided evenly with the number of tiles (6).</p>
+<ul class="simple">
+<li><p>C96: closest number of task to tasks_per_node, which can be divided by 6</p></li>
+<li><p>C192: closest number of task to tasks_per_node, which can be divided by 6</p></li>
+<li><p>C384: closest number of task to 2 * tasks_per_node, which can be divided by 6</p></li>
+<li><p>C768: closest number of task to 4 * tasks_per_node, which can be divided by 6</p></li>
+</ul>
+</li>
+<li><p><strong>UPP</strong></p>
+<ul class="simple">
+<li><p>C96: tasks_per_node</p></li>
+<li><p>C192: tasks_per_node</p></li>
+<li><p>C384: 2 * tasks_per_node</p></li>
+<li><p>C768: 4 * tasks_per_node</p></li>
+</ul>
+</li>
+</ul>
+<p>The number of tasks will increase along with the increased horizontal resolution due to the
+memory consumption of the pre-processing tool and <strong>tasks_per_node</strong> is defined for the each platform
+using <strong>MAX_MPITASKS_PER_NODE</strong> element (i.e. 36 for NCAR Cheyenne and 48 for TACC Stampede2).</p>
+<p>To change the values set automatically by CIME-CSS, the <code class="docutils literal notranslate"><span class="pre">xmlchange</span></code> command can be used:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd $CASEROOT</span>
+<span class="go">./xmlchange task_count=72 --subgroup case.chgres</span>
+</pre></div>
+</div>
+<p>This command will change the number of tasks used by chgres_cube to 72. If the user wants to change the number of
+task for NCEP-Post, the subgroup option needs to set to <code class="docutils literal notranslate"><span class="pre">case.gfs_post</span></code>.</p>
+</div>
+<div class="section" id="how-to-change-the-filenames-for-input-to-chgres-cube">
+<h2><span class="section-number">7.15. </span>How to change the filenames for input to chgres_cube?<a class="headerlink" href="#how-to-change-the-filenames-for-input-to-chgres-cube" title="Permalink to this headline">¶</a></h2>
+<p>By default, CIME uses <a class="reference external" href="https://ufs-mrweather-app.readthedocs.io/en/latest/inputs_outputs.html">pre-defined convention</a> to define directory and file names for raw input to <code class="docutils literal notranslate"><span class="pre">chgres_cube</span></code>. In this case, 0.5-degree data in GRIB2 format is used from <a class="reference external" href="https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs">NCDC - Global Forecast System</a>.</p>
+<p>In the case of using 1.0-degree GRIB2 format data (with <code class="docutils literal notranslate"><span class="pre">gfs_3_YYYYMMDD_00HH_000.grb2</span></code> naming convention),
+the user needs to download the file manually and place it under <code class="docutils literal notranslate"><span class="pre">$DIN_LOC_IC/YYYYMM/YYYYMMDD`</span></code>. Then, the
+<code class="docutils literal notranslate"><span class="pre">grib2_file_input_grid</span></code> <code class="docutils literal notranslate"><span class="pre">chgres_cube</span></code> namelist variable needs to be modified by editing the
+<code class="docutils literal notranslate"><span class="pre">user_nl_ufsatm</span></code> file, which resides in the <code class="docutils literal notranslate"><span class="pre">$CASEROOT</span></code> directory. The following example is for the Dorian case:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">!----------------------------------------------------------------------------------</span>
+<span class="go">! This file can be used to change namelist options for:</span>
+<span class="go">! - Chgres</span>
+<span class="go">! - UFS MR-Weather Model</span>
+<span class="go">! - NCEP Post</span>
+<span class="go">!</span>
+<span class="go">! Users should add all user-specific namelist changes below in the form of</span>
+<span class="go">!  namelist_var = new_namelist_value</span>
+<span class="go">!</span>
+<span class="go">! To change the namelist variables that are defined as multiple times under</span>
+<span class="go">! different namelist groups</span>
+<span class="go">!  namelist_var@namelist_group = new_namelist_value</span>
+<span class="go">!</span>
+<span class="go">! Following is the list of namelist variables that need to be accessed by</span>
+<span class="go">! specifying the namelist groups:</span>
+<span class="go">!</span>
+<span class="go">! alpha@nam_physics_nml</span>
+<span class="go">! alpha@test_case_nml</span>
+<span class="go">! avg_max_length@atmos_model_nml</span>
+<span class="go">! avg_max_length@gfs_physics_nml</span>
+<span class="go">! debug@atmos_model_nml</span>
+<span class="go">! debug@gfs_physics_nml</span>
+<span class="go">! icliq_sw@gfs_physics_nml</span>
+<span class="go">! icliq_sw@nam_physics_nml</span>
+<span class="go">! iospec_ieee32@fms_nml</span>
+<span class="go">! iospec_ieee32@fms_io_nml</span>
+<span class="go">! ntiles@fv_core_nml</span>
+<span class="go">! ntiles@nest_nml</span>
+<span class="go">! read_all_pe@fms_io_nml</span>
+<span class="go">! read_all_pe@fms_nml</span>
+<span class="go">! regional@chgres</span>
+<span class="go">! regional@fv_core_nml</span>
+<span class="go">!----------------------------------------------------------------------------------</span>
+<span class="go">grib2_file_input_grid = gfs_3_20190829_0000_000.grb2</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<dl class="simple">
+<dt>Please be aware that:</dt><dd><ul class="simple">
+<li><p>Tests were not done with the AVN, MRF or analysis data.</p></li>
+<li><p>The date used in the directory naming must match the date used in file name and the RUN_STARTDATE in the case.</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="how-can-i-run-the-ufs-mr-weather-app-for-another-date-without-overriding-my-previous-run">
+<h2><span class="section-number">7.16. </span>How can I run the UFS MR Weather App for another date without overriding my previous run?<a class="headerlink" href="#how-can-i-run-the-ufs-mr-weather-app-for-another-date-without-overriding-my-previous-run" title="Permalink to this headline">¶</a></h2>
+<p>Before running the App for a second date, you should save your previous run in
+another directory by moving that directory to a different location.</p>
+<p>From the case directory do:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">RUNDIR = ` ./xmlquery RUNDIR --value`</span>
+<span class="go">mv $RUNDIR $RUNDIR.forecastdate</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-do-i-diagnose-a-failure-with-a-high-resolution-run">
+<h2><span class="section-number">7.17. </span>How do I diagnose a failure with a high-resolution run?<a class="headerlink" href="#how-do-i-diagnose-a-failure-with-a-high-resolution-run" title="Permalink to this headline">¶</a></h2>
+<p>One possible source of failure with high-resolution runs is lack of memory. To
+diagnose if this is the problem, try a low resolution run first.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cime_overview.html" class="btn btn-neutral float-right" title="8. Additional information about CIME" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="testing.html" class="btn btn-neutral float-left" title="6. Testing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

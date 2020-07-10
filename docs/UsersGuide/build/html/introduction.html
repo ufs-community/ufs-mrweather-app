@@ -1,0 +1,483 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1. Introduction &mdash; UFS Medium-Range Weather App Users Guide  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2. Workflow Quick Start" href="quickstart.html" />
+    <link rel="prev" title="Welcome to the UFS Medium-Range Weather App Users Guide!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> UFS Medium-Range Weather App Users Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pre-processor-and-initial-conditions">1.1. Pre-processor and initial conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#forecast-model">1.2. Forecast model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#post-processor">1.3. Post-processor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visualization-example">1.4. Visualization Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#workflow-and-build-system">1.5. Workflow and Build System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user-support-documentation-and-contributing-development">1.6. User Support, Documentation, and Contributing Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#future-direction">1.7. Future Direction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-use-this-document">1.8. How To Use This Document</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">2. Workflow Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repos_and_directories.html">3. Code repositories and directory structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inputs_outputs.html">4. Inputs and outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config_new_platform.html">5. Configuring a new platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">6. Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">7. FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cime_overview.html">8. Additional information about CIME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">9. Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UFS Medium-Range Weather App Users Guide</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><span class="section-number">1. </span>Introduction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/introduction.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduction">
+<span id="id1"></span><h1><span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>The Unified Forecast System (<a class="reference internal" href="glossary.html#term-UFS"><span class="xref std std-term">UFS</span></a>) is a community-based, coupled, comprehensive
+Earth modeling system with applications that span local to global domains and
+predictive time scales. It is designed to be the source system for NOAA’s
+operational numerical weather prediction applications while enabling both
+research and capabilities for the broader weather enterprise. For more
+information about the UFS, visit the UFS Portal at <a class="reference external" href="https://ufscommunity.org/">https://ufscommunity.org/</a>.</p>
+<p>The Unified Forecast System (<a class="reference internal" href="glossary.html#term-UFS"><span class="xref std std-term">UFS</span></a>) can be configured into multiple applications
+(see a complete list at <a class="reference external" href="https://ufscommunity.org/#/science/aboutapps">https://ufscommunity.org/#/science/aboutapps</a>).
+The first of these to be released to the community is the UFS Medium-Range
+(MR) Weather Application (App), which targets predictions of atmospheric
+behavior out to about two weeks. The MR Weather App v1.1 includes a prognostic
+atmospheric model, pre- and post-processing tools, and a community workflow
+The release is available on GitHub and is designed to be a code that the
+community can run and improve. It is portable to a set of commonly used
+platforms. A limited set of configurations of the release, such as specific
+model resolutions and physics options, are documented and supported.
+This documentation provides an overview of the release components, a
+description of the supported capabilities, a quick start for running the
+application, and information on where to find more information and obtain
+support.</p>
+<div class="section" id="pre-processor-and-initial-conditions">
+<h2><span class="section-number">1.1. </span>Pre-processor and initial conditions<a class="headerlink" href="#pre-processor-and-initial-conditions" title="Permalink to this headline">¶</a></h2>
+<p>The MR Weather App is distributed with the <a class="reference internal" href="glossary.html#term-chgres_cube"><span class="xref std std-term">chgres_cube</span></a> pre-processing software.
+It converts the Global Forecast System (GFS) analyses to the format needed as
+input to the model, which is six tiles in NetCDF format. Additional information
+about chgres_cube can be found in the <a class="reference external" href="https://ufs-utils.readthedocs.io/en/ufs-v1.0.0/">chgres_cube User’s Guide</a>.</p>
+<p>GFS analyses for initializing the MR Weather App can be in Gridded Binary
+v2 (GRIB2) format (in 0.25 , 0.50, or 1.1 degree grid spacing) or in the NOAA Environmental
+Modeling System (<a class="reference internal" href="glossary.html#term-NEMS"><span class="xref std std-term">NEMS</span></a>) Input/Output (<a class="reference internal" href="glossary.html#term-NEMSIO"><span class="xref std std-term">NEMSIO</span></a>) format.
+Initialization from dates starting on January 1, 2018 are supported. Dates
+before that may work, but are not guaranteed. GFS public archives can be
+accessed through the <a class="reference external" href="https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs">National Centers for Environmental Information (NCEI)</a>
+or through the <a class="reference external" href="https://nomads.ncep.noaa.gov/">NOAA Operational Model Archive and Distribution System (NOMADS)</a> .
+The initial conditions may be pre-staged on disk by the user or
+automatically downloaded by the workflow.</p>
+</div>
+<div class="section" id="forecast-model">
+<h2><span class="section-number">1.2. </span>Forecast model<a class="headerlink" href="#forecast-model" title="Permalink to this headline">¶</a></h2>
+<p>The prognostic model in the UFS MR Weather App is the atmospheric component
+of the UFS Weather Model, which employs the Finite-Volume Cubed-Sphere (<a class="reference internal" href="glossary.html#term-FV3"><span class="xref std std-term">FV3</span></a>)
+dynamical core. The atmospheric model in this release is an updated version
+of the atmospheric model that is being used in the operational GFS v15.
+A User’s Guide for the UFS Weather Model is <a class="reference external" href="https://ufs-weather-model.readthedocs.io/en/ufs-v1.0.0">here</a>.</p>
+<p>Supported grid configurations for this release are the global meshes with
+resolutions of C96 (~100 km), C192 (~50 km), C384 (~25 km), and C768 (~13 km),
+all with 64 vertical levels. The <a class="reference external" href="https://www.gfdl.noaa.gov/fv3">NOAA Geophysical Fluid Dynamics Laboratory website</a>
+provides more information about FV3 and its grids. Additional information about the FV3 dynamical
+core is at <a class="reference external" href="https://noaa-emc.github.io/FV3_Dycore_ufs-v1.0.0/html/index.html">here</a>.
+Interoperable atmospheric physics, along with the Noah land surface model, are
+supported through the use of the Common Community Physics Package (<a class="reference internal" href="glossary.html#term-CCPP"><span class="xref std std-term">CCPP</span></a>;
+described <a class="reference external" href="https://dtcenter.org/community-code/common-community-physics-package-ccpp">here</a>.
+There are four physics suites supported for the release.
+Two of them are variations of an updated version of the physics <a class="reference internal" href="glossary.html#term-Suite"><span class="xref std std-term">suite</span></a> used in
+the operational GFS v15, while the other two are variations of an experimental
+suite that includes a subset of the developments for the next version of GFS,
+GFS v16. The variations pertain to how the sea surface temperature (SST) is
+initialized and parameterized to evolve, and are chosen depending on the type
+of initial conditions for the App. Initial conditions in GRIB2 format have a
+single two-dimensional field to initialize the SST, which must be kept constant
+throughout the forecast. Initial conditions in <a class="reference internal" href="glossary.html#term-NEMSIO"><span class="xref std std-term">NEMSIO</span></a> format have two two-dimensional
+fields that describe the baseline SST and its near-surface perturbation related
+to the diurnal cycle, enabling the use of the near-sea-surface-temperature (NSST)
+physical parameterization to forecast the temporal variation in SST due to the
+diurnal cycle.</p>
+<p>A scientific description of the CCPP parameterizations and suites can be found in the
+<a class="reference external" href="https://dtcenter.org/GMTB/v4.0/sci_doc">CCPP Scientific Documentation</a>, and
+CCPP technical aspects are described in the <a class="reference external" href="https://ccpp-techdoc.readthedocs.io/en/latest">CCPP Technical Documentation</a>.
+The model namelists for the physics suites differ in ways that go beyond
+the physics to optimize various aspects of the model for use with each of the
+suites.
+The use of <a class="reference internal" href="glossary.html#term-Stochastic-physics"><span class="xref std std-term">stochastic</span></a> processes to represent model uncertainty is an option
+in this release, although the option is off by default in both of the
+supported physics suites. Three methods are supported for use separately or in
+combination: Stochastic Kinetic Energy Backscatter (SKEB), Stochastically
+Perturbed Physics Tendencies (SPPT), and Specific Humidity perturbations (SHUM).
+A <a class="reference external" href="https://stochastic-physics.readthedocs.io/en/ufs-v1.0.0">User’s Guide for the use of stochastic physics</a> is provided.</p>
+<p>The UFS Weather Model ingests files produced by chgres_cube and outputs files
+in NetCDF format on a Gaussian grid in the horizontal and model levels in the
+vertical.</p>
+</div>
+<div class="section" id="post-processor">
+<h2><span class="section-number">1.3. </span>Post-processor<a class="headerlink" href="#post-processor" title="Permalink to this headline">¶</a></h2>
+<p>The MR Weather App is distributed with a post-processing tools, the Unified
+Post Processor (UPP). The Unified Post Processor (UPP) converts the
+native NetCDF output from the model to the GRIB2 format on standard isobaric
+coordinates in the vertical. The UPP can also be used to compute a variety of
+useful diagnostic fields, as described in the <a class="reference external" href="https://upp.readthedocs.io/en/ufs-v1.0.0">UPP user’s guide</a>.</p>
+<p>The UPP output can be used with visualization, plotting and verification
+packages, or for further downstream post-processing, e.g. statistical
+post-processing techniques.</p>
+</div>
+<div class="section" id="visualization-example">
+<h2><span class="section-number">1.4. </span>Visualization Example<a class="headerlink" href="#visualization-example" title="Permalink to this headline">¶</a></h2>
+<p>This release does not include support for model verification or visualization. Currently,
+only four basic NCAR Command Language (<a class="reference internal" href="glossary.html#term-NCL"><span class="xref std std-term">NCL</span></a>) scripts are provided to create a basic visualization of model output.
+This capability is provided only as an example for users familiar with NCL, and may be used to
+do a visual check to verify that the application is
+producing reasonable results.</p>
+<p>The scripts are available in the ftp site <a class="reference external" href="ftp://ftp.emc.ncep.noaa.gov/EIB/UFS/visualization_example/">ftp://ftp.emc.ncep.noaa.gov/EIB/UFS/visualization_example/</a>.
+File visualization_README describes the plotting scripts. Example plots are provided
+for the C96 5-day forecasts initialized on 8/29/2019 00 UTC using GRIB2 and NEMSIO
+files as input datasets.</p>
+</div>
+<div class="section" id="workflow-and-build-system">
+<h2><span class="section-number">1.5. </span>Workflow and Build System<a class="headerlink" href="#workflow-and-build-system" title="Permalink to this headline">¶</a></h2>
+<p>The MR Weather App has a user-friendly workflow and a portable build system that
+invokes the CMake build software before compiling the codes. This release is
+supported for use with Linux and Mac operating systems, with Intel and GNU
+compilers. There is a small set of system libraries that are assumed to be
+present on the target computer, including CMake, a compiler, and the MPI
+library that enables parallelism.</p>
+<p>A few select computational platforms have been preconfigured for the release
+with all the required libraries for building community releases of
+UFS models and applications available in a central place. That means
+bundled libraries (<a class="reference internal" href="glossary.html#term-NCEPLIBS"><span class="xref std std-term">NCEPLIBS</span></a>) and third-party libraries (<a class="reference internal" href="glossary.html#term-NCEPLIBS-external"><span class="xref std std-term">NCEPLIBS-external</span></a>),
+including the Earth System Modeling Framework (ESMF)
+have both been built. Applications and models are expected to build and run out of the box.
+In preconfigured platforms, users can proceed directly to the using the
+workflow, as described in the <a class="reference internal" href="quickstart.html#quickstart"><span class="std std-ref">Quick Start chapter</span></a>.</p>
+<p>A few additional computational platforms are considered configurable for the release.
+Configurable platforms are platforms where all of the required libraries for
+building community releases of UFS models and applications are expected to
+install successfully, but are not available in a central place. Applications and
+models are expected to build and run once the required bundled libraries
+(<a class="reference internal" href="glossary.html#term-NCEPLIBS"><span class="xref std std-term">NCEPLIBS</span></a>) and third-party libraries (<a class="reference internal" href="glossary.html#term-NCEPLIBS-external"><span class="xref std std-term">NCEPLIBS-external</span></a>) are built.</p>
+<p>Limited-test and Build-Only computational platforms are those in which the developers
+have built the code but little or no
+pre-release testing has been conducted, respectively.
+A complete description of the levels of support, along with a list of preconfigured
+and configurable platforms can be found <a class="reference external" href="https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers">here</a>.</p>
+<p>The workflow leverages the Common Infrastructure for Modeling the Earth (<a class="reference internal" href="glossary.html#term-CIME"><span class="xref std std-term">CIME</span></a>)
+Case Control System (CCS). As described in the <a class="reference external" href="http://esmci.github.io/cime/versions/ufs_release_v1.1/html/index.html">CIME documentation</a>,
+it comes with two default configurations, or
+Component Sets (compsets). One compset is used to evoke the physics <a class="reference internal" href="glossary.html#term-Suite"><span class="xref std std-term">suite</span></a>
+used in the operational GFS v15, while the other is used to evoke the
+experimental GFS v16 physics. Based on the type of initial conditions, the
+workflow determines whether the to employ the variant with simple or more complex
+SST. The workflow provides
+ways to choose the grid resolution, as well as to change namelist options,
+such as history file frequency. It also allows for configuration of other
+elements of the workflow; for example, whether to run some or all of the
+pre-processing, forecast model, and post-processing steps. The CIME builds
+the forecast model and the workflow itself, but not the <a class="reference internal" href="glossary.html#term-NCEP"><span class="xref std std-term">NCEP</span></a> Libraries or the
+pre- and post-processing tools.</p>
+<p><a class="reference external" href="http://esmci.github.io/cime/versions/ufs_release_v1.1/html/index.html">CIME</a> supports a set of tests for the UFS MR Weather App, including the Smoke
+Startup Test, the Exact Restart from Startup Test, and the Modified Threading
+OPENMP bit for bit Test. These tests are described in more detail later in this
+document and are intended for users to verify the App installation in new
+platforms and to test the integrity of their code in case
+they modify the source code.</p>
+</div>
+<div class="section" id="user-support-documentation-and-contributing-development">
+<h2><span class="section-number">1.6. </span>User Support, Documentation, and Contributing Development<a class="headerlink" href="#user-support-documentation-and-contributing-development" title="Permalink to this headline">¶</a></h2>
+<p>A <a class="reference external" href="https://forums.ufscommunity.org">forum-based online support system</a> with topical sections
+provides a centralized location for UFS users and
+developers to post questions and exchange information. The forum complements
+the distributed documentation, summarized here for ease of use.</p>
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-number">Table 1.1 </span><span class="caption-text">Centralized list of documentation</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 74%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Documentation</strong></p></th>
+<th class="head"><p><strong>Location</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>UFS MR Weather App v1.1
+User’s Guide</p></td>
+<td><p><a class="reference external" href="https://ufs-mrweather-app.readthedocs.io/en/ufs-v1.0.0">https://ufs-mrweather-app.readthedocs.io/en/ufs-v1.0.0</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>chgres_cube User’s Guide</p></td>
+<td><p><a class="reference external" href="https://ufs-utils.readthedocs.io/en/ufs-v1.0.0">https://ufs-utils.readthedocs.io/en/ufs-v1.0.0</a></p></td>
+</tr>
+<tr class="row-even"><td><p>UFS Weather Model v1.1
+User’s Guide</p></td>
+<td><p><a class="reference external" href="https://ufs-weather-model.readthedocs.io/en/ufs-v1.0.0">https://ufs-weather-model.readthedocs.io/en/ufs-v1.0.0</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>FV3 Documentation</p></td>
+<td><p><a class="reference external" href="https://noaa-emc.github.io/FV3_Dycore_ufs-v1.0.0/html/index.html">https://noaa-emc.github.io/FV3_Dycore_ufs-v1.0.0/html/index.html</a></p></td>
+</tr>
+<tr class="row-even"><td><p>CCPP Scientific
+Documentation</p></td>
+<td><p><a class="reference external" href="https://dtcenter.org/GMTB/v4.0/sci_doc">https://dtcenter.org/GMTB/v4.0/sci_doc</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CCPP Technical
+Documentation</p></td>
+<td><p><a class="reference external" href="https://ccpp-techdoc.readthedocs.io/en/v4.0">https://ccpp-techdoc.readthedocs.io/en/v4.0</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Stochastic Physics
+User’s Guide</p></td>
+<td><p><a class="reference external" href="https://stochastic-physics.readthedocs.io/en/ufs-v1.0.0">https://stochastic-physics.readthedocs.io/en/ufs-v1.0.0</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ESMF manual</p></td>
+<td><p><a class="reference external" href="http://www.earthsystemmodeling.org/esmf_releases/public/ESMF_8_0_0/ESMF_refdoc">http://www.earthsystemmodeling.org/esmf_releases/public/ESMF_8_0_0/ESMF_refdoc</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Common Infrastructure for
+Modeling the Earth</p></td>
+<td><p><a class="reference external" href="http://esmci.github.io/cime/versions/ufs_release_v1.0/html/index.html">http://esmci.github.io/cime/versions/ufs_release_v1.0/html/index.html</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Unified Post Processor</p></td>
+<td><p><a class="reference external" href="https://upp.readthedocs.io/en/ufs-v1.0.0">https://upp.readthedocs.io/en/ufs-v1.0.0</a></p></td>
+</tr>
+</tbody>
+</table>
+<p>The UFS community is encouraged to contribute to the UFS development effort.
+Issues can be posted in the GitHub repository for the App or the relevant
+subcomponent to report bugs or to announce upcoming contributions to the code
+base. For a code to be accepted in the authoritative repositories, the code
+management rules of each component (described in their User’s Guides) need to be
+followed. Innovations involving the UFS Weather Model need to be tested using
+the regression test described in its User’s Guide. The regression tests
+distributed with the UFS Weather Model differ from the CIME-base tests
+distributed with the UFS MR Weather App because the former are part of the
+official NOAA policy to accept innovations in its code base, while the latter
+are meant as a sanity check for users.</p>
+</div>
+<div class="section" id="future-direction">
+<h2><span class="section-number">1.7. </span>Future Direction<a class="headerlink" href="#future-direction" title="Permalink to this headline">¶</a></h2>
+<p>Users can expect to see incremental capabilities in upcoming releases of the
+UFS MR Weather App to enhance research options and support operational forecast
+implementations. Planned advancements include addition of component models for
+other Earth domains (such as oceans and sea ice), cycled data assimilation for
+model initialization, and tools for objective forecast verification. Releases
+of other UFS applications, such as the Stand-Alone Regional (SAR) application
+are also forthcoming and will be announced through the UFS Forum and the UFS
+Portal.</p>
+</div>
+<div class="section" id="how-to-use-this-document">
+<h2><span class="section-number">1.8. </span>How To Use This Document<a class="headerlink" href="#how-to-use-this-document" title="Permalink to this headline">¶</a></h2>
+<p>This guide instructs both novice and experienced users on downloading,
+building and running the MR Weather Application.</p>
+<p>If you are a new user, we recommend reading the first few sections of
+the <a class="reference external" href="http://esmci.github.io/cime/versions/ufs_release_v1.1/html/index.html">CIME</a> documentation which is written so that, as much as
+possible, individual sections stand on their own and the <a class="reference external" href="http://esmci.github.io/cime/versions/ufs_release_v1.1/html/index.html">CIME</a>
+documentation guide can be scanned and sections read in a relatively
+ad hoc order.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Throughout the guide, this presentation style indicates shell</span>
+<span class="go">commands and options, fragments of code, namelist variables, etc.</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Variables presented as <code class="docutils literal notranslate"><span class="pre">$VAR</span></code> in this guide typically refer to variables in XML files
+in a UFS MR Weather App experimental case. From within a case directory, you can determine the value of such a
+variable with <code class="docutils literal notranslate"><span class="pre">./xmlquery</span> <span class="pre">VAR</span></code>. In some instances, <code class="docutils literal notranslate"><span class="pre">$VAR</span></code> refers to a shell
+variable or some other variable; we try to make these exceptions clear.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="quickstart.html" class="btn btn-neutral float-right" title="2. Workflow Quick Start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to the UFS Medium-Range Weather App Users Guide!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

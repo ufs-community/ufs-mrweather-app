@@ -1,0 +1,273 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>8. Additional information about CIME &mdash; UFS Medium-Range Weather App Users Guide  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="9. Glossary" href="glossary.html" />
+    <link rel="prev" title="7. FAQ" href="faq.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> UFS Medium-Range Weather App Users Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">2. Workflow Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repos_and_directories.html">3. Code repositories and directory structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inputs_outputs.html">4. Inputs and outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config_new_platform.html">5. Configuring a new platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">6. Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">7. FAQ</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Additional information about CIME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">9. Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UFS Medium-Range Weather App Users Guide</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><span class="section-number">8. </span>Additional information about CIME</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/cime_overview.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="additional-information-about-cime">
+<span id="cime-overview"></span><h1><span class="section-number">8. </span>Additional information about CIME<a class="headerlink" href="#additional-information-about-cime" title="Permalink to this headline">¶</a></h1>
+<p>All compiler flags are defined in
+<code class="docutils literal notranslate"><span class="pre">cime/config/ufs/machines/config_compilers.xml</span></code>. This file contains
+all supported compilers and the specific compiler flags to be used for
+building with that
+compiler. <code class="docutils literal notranslate"><span class="pre">cime/config/ufs/machines/config_compilers.xml</span></code> contains
+compiler flags for each target compiler. In general, flags are not
+system dependent and are valid on all systems. However, there can be
+machine or OS (useful to generalize over eg MacOS or Cray systems)
+dependent flags.</p>
+<p>All environment variables and module operations are defined in
+<code class="docutils literal notranslate"><span class="pre">cime/config/ufs/machines/config_machines.xml</span></code>.  The environment
+variables are sorted by machine name and can be subset for compiler,
+mpilib, debug, etc.</p>
+<p>The following describes how the xml files in the <code class="docutils literal notranslate"><span class="pre">cime/config/ufs/machines/</span></code>
+directory are utilized in the case directory that is created for you
+when you invoke <strong>create_newcase</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is important to point out that for
+a model component to be CIME CCS compliant, it needs to have a
+directory <code class="docutils literal notranslate"><span class="pre">cime_config/</span></code> that contains a <code class="docutils literal notranslate"><span class="pre">buildlib</span></code> script that
+tells CIME how to build that component and a <code class="docutils literal notranslate"><span class="pre">buildnml</span></code> script that
+tells CIME how to generate namelists for your target component
+configuration.</p>
+</div>
+<ul class="simple">
+<li><p>CIMEs <code class="docutils literal notranslate"><span class="pre">case.setup</span> <span class="pre">script</span></code> reads the <code class="docutils literal notranslate"><span class="pre">config_compilers.xml</span></code> file and
+creates a <code class="docutils literal notranslate"><span class="pre">Macros.make</span></code> and <code class="docutils literal notranslate"><span class="pre">Macros.cmake</span></code> file in youe case directory.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Macros.cmake</span></code> file is then used by the file <code class="docutils literal notranslate"><span class="pre">FV3/cime/cime_config/buildlib</span></code> to build your model component.
+<code class="docutils literal notranslate"><span class="pre">Macros.cmake</span></code> is included by file <code class="docutils literal notranslate"><span class="pre">configure_cime.cmake</span></code> and there the compiler
+flag names are translated to those used by the FV3GFS cmake build.  If
+CCPP is used the ccpp_precompile script is called
+prior to calling the cmake for the model.  Finally gmake is called and
+all the libraries are built, verbose records of the build are written
+to the atm.bldlog.timestamp file in the case EXEROOT.</p></li>
+</ul>
+<p>When you create an MR Weather Application case, CIME will create a
+<code class="docutils literal notranslate"><span class="pre">$CASEROOT</span></code> directory for you.  It will also create a
+<code class="docutils literal notranslate"><span class="pre">$CASEROOT/SourceMods/src.fv3gfs</span></code> directory where you can put in
+modified source code that you can use for your experiment.  The CIME
+build will look in the <code class="docutils literal notranslate"><span class="pre">$CASEROOT/SourceMods/src.fv3gfs</span></code> directory
+for any source file matching the name of any source file in the
+build. (FMS, CCPP, stochastic_physics, FV3) If it finds a match it
+will use the file in <code class="docutils literal notranslate"><span class="pre">SourceMods/src.fv3gfs</span></code> instead of the matching
+file in your checked out code sandbox.  If a file is removed from
+<code class="docutils literal notranslate"><span class="pre">SourceMods/src.fv3gfs</span></code> then the next build will again use the
+original file your checked out code base.  For best interaction with
+the git repository it is recommended that you edit source files in the
+source tree and do not use the SourceMods mechanism, however keep in
+mind that source files changed in this way will affect <em>all</em> cases
+associated with the source tree.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="glossary.html" class="btn btn-neutral float-right" title="9. Glossary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="faq.html" class="btn btn-neutral float-left" title="7. FAQ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

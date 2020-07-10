@@ -1,0 +1,327 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6. Testing &mdash; UFS Medium-Range Weather App Users Guide  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="7. FAQ" href="faq.html" />
+    <link rel="prev" title="5. Configuring a new platform" href="config_new_platform.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> UFS Medium-Range Weather App Users Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">2. Workflow Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repos_and_directories.html">3. Code repositories and directory structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inputs_outputs.html">4. Inputs and outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config_new_platform.html">5. Configuring a new platform</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#testname-syntax">6.1. Testname syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#query-list-of-supported-tests">6.2. Query list of supported tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-create-test-ufsatm">6.3. Using <strong>create_test</strong> (UFSATM)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">7. FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cime_overview.html">8. Additional information about CIME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">9. Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UFS Medium-Range Weather App Users Guide</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><span class="section-number">6. </span>Testing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/testing.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="testing">
+<span id="id1"></span><h1><span class="section-number">6. </span>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://esmci.github.io/cime/versions/ufs_release_v1.1/html/Tools_user/create_test.html">create_test</a> is the tool that is used to test both CIME and CIME-driven models.
+It can be used as an easy way to run a single basic test or an entire suite of tests.
+<a class="reference external" href="https://esmci.github.io/cime/versions/ufs_release_v1.1/html/Tools_user/create_test.html">create_test</a> runs a test suite in parallel for improved performance.
+It is the driver behind the automated nightly testing of cime-driven models.</p>
+<p>More information about CIME testing can be found on <a class="reference external" href="https://esmci.github.io/cime/versions/ufs_release_v1.1/html/users_guide/testing.html">CIME: Testing</a>.</p>
+<div class="section" id="testname-syntax">
+<h2><span class="section-number">6.1. </span>Testname syntax<a class="headerlink" href="#testname-syntax" title="Permalink to this headline">¶</a></h2>
+<p>Tests must be named with the following forms, [ ]=optional:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TESTTYPE</span><span class="p">[</span><span class="n">_MODIFIERS</span><span class="p">]</span><span class="o">.</span><span class="n">GRID</span><span class="o">.</span><span class="n">COMPSET</span><span class="p">[</span><span class="o">.</span><span class="n">MACHINE_COMPILER</span><span class="p">][</span><span class="o">.</span><span class="n">GROUP</span><span class="o">-</span><span class="n">TESTMODS</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>where:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">TESTTYPE</span></code> defines the general type of test, e.g. SMS. Following is the list of tests that are supported by <a class="reference external" href="https://github.com/ufs-community/ufs-mrweather-app">UFS Medium-Range Weather Application</a>.</p>
+<ul>
+<li><dl>
+<dt>SMS: Smoke startup test (default 5 days).</dt><dd><div class="line-block">
+<div class="line">Do a 5 day initial test. (file suffix: base)</div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>ERS: Exact restart from startup (default 6 days + 5 days)</dt><dd><div class="line-block">
+<div class="line">Do an 11 day initial test - write a restart at day 6.    (file suffix: base)</div>
+<div class="line">Do a 5 day restart test, starting from restart at day 6. (file suffix: rest)</div>
+<div class="line">Compare component history files ‘.base’ and ‘.rest’ at day 11. They should be identical.</div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>PET: Modified threading OPENMP bit for bit test (default 5 days)</dt><dd><div class="line-block">
+<div class="line">Do an initial run where all components are threaded by default. (file suffix: base) Do another initial run with NTHRDS=1 for all components. (file suffix: single_thread) Compare base and single_thread.</div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MODIFIERS</span></code> changes to the default settings for the test.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GRID</span></code> The model grid (can be an alias). Currently, <code class="docutils literal notranslate"><span class="pre">C96</span></code>, <code class="docutils literal notranslate"><span class="pre">C192</span></code>, <code class="docutils literal notranslate"><span class="pre">C384</span></code> and <code class="docutils literal notranslate"><span class="pre">C768</span></code> are supported.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">COMPSET</span></code> alias of the compset, or long name, if no <code class="docutils literal notranslate"><span class="pre">--xml</span></code> arguments are used. It can be <code class="docutils literal notranslate"><span class="pre">GFSv15p2</span></code> or <code class="docutils literal notranslate"><span class="pre">GFSv16beta</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MACHINE</span></code> This is optional; if this value is not supplied, <a class="reference external" href="https://esmci.github.io/cime/versions/ufs_release_v1.1/html/Tools_user/create_test.html">create_test</a> will probe the underlying machine.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">COMPILER</span></code> If this value is not supplied, use the default compiler for <code class="docutils literal notranslate"><span class="pre">MACHINE</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GROUP-TESTMODS</span></code> This is optional. This points to a directory with  <code class="docutils literal notranslate"><span class="pre">user_nl_xxx</span></code> files or a <code class="docutils literal notranslate"><span class="pre">shell_commands</span></code> that can be used to make namelist and <code class="docutils literal notranslate"><span class="pre">XML</span></code> modifications prior to running a test.</p></li>
+</ul>
+</div>
+<div class="section" id="query-list-of-supported-tests">
+<h2><span class="section-number">6.2. </span>Query list of supported tests<a class="headerlink" href="#query-list-of-supported-tests" title="Permalink to this headline">¶</a></h2>
+<p><strong>$CIMEROOT/scripts/query_testlists</strong> gathers descriptions of the tests and testlists available
+for CESM, the components, and projects.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">--xml-{compiler,machine,category,testlist}</span></code> arguments can be used
+as in create_test (above) to focus the search.
+The ‘category’ descriptor of a test can be used to run a group of associated tests at the same time.
+The available categories, with the tests they encompass, can be listed by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd $SRCROOT/cime/scripts
+./query_testlists --define-testtypes
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--show-options</span></code> argument does the same, but displays the ‘options’ defined for the tests,
+such as queue, walltime, etc..</p>
+</div>
+<div class="section" id="using-create-test-ufsatm">
+<h2><span class="section-number">6.3. </span>Using <strong>create_test</strong> (UFSATM)<a class="headerlink" href="#using-create-test-ufsatm" title="Permalink to this headline">¶</a></h2>
+<p>To run a Smoke startup test:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd $SRCROOT/cime/scripts
+./create_test SMS_D_Lh5.C96.GFSv15p2 --workflow ufs-mrweather_wo_post --test-id try
+</pre></div>
+</div>
+<p>This will build and run the test in <code class="docutils literal notranslate"><span class="pre">/glade/scratch/$USER/SMS_D_Lh5.C96.GFSv15p2.cheyenne_intel.try</span></code> and this directory
+is called as <strong>CASEROOT</strong>. The run directory is in <strong>CASEROOT/run</strong> and the build is in <strong>CASEROOT/bld</strong>.</p>
+<p>In this case, the C96 resolution model case with CCPP suite version v15p2 is created and runs 5 hours (<strong>Lh5</strong>) without post-processing step.</p>
+<p>To run a test with baseline comparisons against baseline name ‘master’:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd $SRCROOT/cime/scripts
+./create_test SMS_Lh5.C96.GFSv15p2 --workflow ufs-mrweather_wo_post --test-id try --compare master --baseline-root $BASELINE_ROOT
+</pre></div>
+</div>
+<p>To run a Exact restart test:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd $SRCROOT/cime/scripts
+./create_test ERS_Lh11.C96.GFSv15p2 --workflow ufs-mrweather_wo_post --test-id try
+</pre></div>
+</div>
+<p>This will build and run the test that includes two runs, first an 11 hour initial run (cold start) with a restart written at hour 6 and then a restart run (warm start) starting from hour 6 and compare the outputs written at hour 11. The output of the runs must be same.</p>
+<p>To run a threaded test:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd $SRCROOT/cime/scripts
+./create_test PET_Lh11.C96.GFSv15p2 --workflow ufs-mrweather_wo_post --test-id try
+</pre></div>
+</div>
+<p>To run entire test suite:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd $SRCROOT/cime/scripts
+./create_test --xml-testlist ../../src/model/FV3/cime/cime_config/testlist.xml --xml-machine MACHINE --generate GENERATE --baseline-root BASELINE_ROOT --workflow ufs-mrweather_wo_post
+</pre></div>
+</div>
+<p>This will run entire test suite on specified machine <code class="docutils literal notranslate"><span class="pre">MACHINE</span></code> such as Stampede2 and generates the baseline under <code class="docutils literal notranslate"><span class="pre">BASELINE_ROOT</span></code> directory with a name of <code class="docutils literal notranslate"><span class="pre">GENERATE</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The baseline directory for supported platforms is placed under <code class="docutils literal notranslate"><span class="pre">$BASELINE_ROOT</span></code> directory. This can be queried using <code class="docutils literal notranslate"><span class="pre">./xmlquery</span> <span class="pre">-p</span> <span class="pre">BASELINE_ROOT</span></code> command once the test is created using <code class="docutils literal notranslate"><span class="pre">./create.test</span></code> command.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="faq.html" class="btn btn-neutral float-right" title="7. FAQ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="config_new_platform.html" class="btn btn-neutral float-left" title="5. Configuring a new platform" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
