@@ -121,17 +121,19 @@ Users can customize ``$DIN_LOC_IC`` after creating the case using the commands b
 ---------------
 Static files
 ---------------
-The user does not need to stage the fix files manually because CIME retrieves
-the fix files from from ``$DIN_LOC_ROOT`` (if available) or from a
-`FTP data repository <https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_. When CIME retrieves
-the files from the ftp site, it places them in ``$DIN_LOC_ROOT``.
 
-The static files and prestaged initial conditions available on the preconfigured platforms (e.g., Hera and Cheyenne); however, these files are not available on non-preconfigured platforms (e.g., Orion).
+The static files and prestaged initial conditions available on the preconfigured platforms (e.g., Hera and Cheyenne):
 
 .. code-block:: console
 
    Hera: /scratch1/NCEPDEV/stmp2/CIME_UFS
    Cheyenne: /glade/p/cesmdata/cseg/ 
+
+These files are not available on non-preconfigured platforms (e.g., Orion);
+however, the user does not need to stage the fix files manually because CIME retrieves
+the fix files from ``$DIN_LOC_ROOT`` (if available) or from a
+`FTP data repository <https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_. When CIME retrieves
+the files from the ftp site, it places them in ``$DIN_LOC_ROOT``.
 
 ------------------------------------
 Initial condition formats and source
