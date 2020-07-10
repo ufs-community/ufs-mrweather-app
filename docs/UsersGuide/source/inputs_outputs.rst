@@ -126,7 +126,7 @@ the fix files from from ``$DIN_LOC_ROOT`` (if available) or from a
 `FTP data repository <https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_. When CIME retrieves
 the files from the ftp site, it places them in ``$DIN_LOC_ROOT``.
 
-The static files and prestaged initial conditions re available on the pre-configured platforms (e.g., Hera and Cheyenne). 
+The static files and prestaged initial conditions available on the pre-configured platforms (e.g., Hera and Cheyenne). 
 
 .. code-block:: console
 
