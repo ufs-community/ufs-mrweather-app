@@ -299,8 +299,7 @@ The ``project`` argument is optional, to set the batch system project account (s
 
 On machines where a project or account code is needed, you
 must either specify the ``--project $PROJECT`` argument in the ``create_newcase`` command, or set the
-``$PROJECT`` variable in your shell environment.  If this argument is not set, the default value in config_machines.xml for ``$PROJECT``
- will be used. An error will be reported if the default project account is not accessable.
+``$PROJECT`` variable in your shell environment.  If this argument is not set, the default value in config_machines.xml for ``$PROJECT`` will be used. An error will be reported if the default project account is not accessable.
 
 If running on a preconfigured or configurable machine, that machine
 will normally be recognized automatically and therefore it is not
