@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.abspath('.'))
 # -- Project information -----------------------------------------------------
 
 project = 'UFS Medium-Range Weather App Users Guide'
-copyright = '2019'
+copyright = '2020'
 author = ' '
 
 # The short X.Y version
