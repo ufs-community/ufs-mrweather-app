@@ -184,12 +184,12 @@ the distributed documentation, summarized here for ease of use.
    +----------------------------+---------------------------------------------------------------------------------+
    | **Documentation**          | **Location**                                                                    |
    +============================+=================================================================================+
-   | UFS MR Weather App v1.1    | https://ufs-mrweather-app.readthedocs.io/en/ufs-v1.0.0                          |
+   | UFS MR Weather App v1.1    | https://ufs-mrweather-app.readthedocs.io/en/ufs-v1.1.0                          |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
    | chgres_cube User's Guide   | https://ufs-utils.readthedocs.io/en/ufs-v1.0.0                                  |
    +----------------------------+---------------------------------------------------------------------------------+
-   | UFS Weather Model v1.1     | https://ufs-weather-model.readthedocs.io/en/ufs-v1.0.0                          |
+   | UFS Weather Model v1.1     | https://ufs-weather-model.readthedocs.io/en/ufs-v1.1.0                          |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
    | FV3 Documentation          | https://noaa-emc.github.io/FV3_Dycore_ufs-v1.0.0/html/index.html                |
