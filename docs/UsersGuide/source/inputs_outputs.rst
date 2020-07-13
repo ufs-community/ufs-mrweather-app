@@ -314,6 +314,7 @@ The data should be placed in ``$DIN_LOC_IC``.
 If the file is gfs3 not gfs4, user must line new file to the old file name. For example, 
 
      .. code-block:: console
+
          ln -s gfs_3_20190829_0000_000.grb2 gfs_4_20190829_0000_000.grb2
 
 -------------------
