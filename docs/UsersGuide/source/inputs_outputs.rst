@@ -311,7 +311,7 @@ The data should be placed in ``$DIN_LOC_IC``.
          chmod 755 get.sh
          ./get.sh 20191224 12
 
-If the file is gfs3 not gfs4, user must line new file to the old file name. For example, 
+If the file is a gfs3 file not a gfs4 file, the user must link the new file to the old file name. For example, 
 
      .. code-block:: console
 
