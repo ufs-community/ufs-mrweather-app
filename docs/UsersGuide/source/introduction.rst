@@ -31,10 +31,10 @@ Pre-processor and initial conditions
 The MR Weather App is distributed with the :term:`chgres_cube` pre-processing software.
 It converts the Global Forecast System (GFS) analyses to the format needed as
 input to the model, which is six tiles in NetCDF format. Additional information
-about chgres_cube can be found in the `chgres_cube User’s Guide <https://ufs-utils.readthedocs.io/en/ufs-v1.0.0/>`_.
+about chgres_cube can be found in the `chgres_cube User’s Guide <https://ufs-utils.readthedocs.io/en/ufs-v1.1.0/>`_.
 
 GFS analyses for initializing the MR Weather App can be in Gridded Binary
-v2 (GRIB2) format (in 0.25 , 0.50, or 1.1 degree grid spacing) or in the NOAA Environmental
+v2 (GRIB2) format (in 0.25 , 0.50, or 1.0 degree grid spacing) or in the NOAA Environmental
 Modeling System (:term:`NEMS`) Input/Output (:term:`NEMSIO`) format.
 Initialization from dates starting on January 1, 2018 are supported. Dates
 before that may work, but are not guaranteed. GFS public archives can be
@@ -51,7 +51,7 @@ The prognostic model in the UFS MR Weather App is the atmospheric component
 of the UFS Weather Model, which employs the Finite-Volume Cubed-Sphere (:term:`FV3`)
 dynamical core. The atmospheric model in this release is an updated version
 of the atmospheric model that is being used in the operational GFS v15.
-A User’s Guide for the UFS Weather Model is `here <https://ufs-weather-model.readthedocs.io/en/ufs-v1.0.0>`_.
+A User’s Guide for the UFS Weather Model is `here <https://ufs-weather-model.readthedocs.io/en/ufs-v1.1.0>`_.
 
 Supported grid configurations for this release are the global meshes with
 resolutions of C96 (~100 km), C192 (~50 km), C384 (~25 km), and C768 (~13 km),
@@ -187,7 +187,7 @@ the distributed documentation, summarized here for ease of use.
    | UFS MR Weather App v1.1    | https://ufs-mrweather-app.readthedocs.io/en/ufs-v1.1.0                          |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | chgres_cube User's Guide   | https://ufs-utils.readthedocs.io/en/ufs-v1.0.0                                  |
+   | chgres_cube User's Guide   | https://ufs-utils.readthedocs.io/en/ufs-v1.1.0                                  |
    +----------------------------+---------------------------------------------------------------------------------+
    | UFS Weather Model v1.1     | https://ufs-weather-model.readthedocs.io/en/ufs-v1.1.0                          |
    | User's Guide               |                                                                                 |
