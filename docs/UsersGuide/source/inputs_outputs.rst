@@ -103,7 +103,7 @@ In this directory, the initial conditions are located in subdirectories named ``
 
 Variable ``$DIN_LOC_ROOT`` is already set in preconfigured platforms and points
 to a centralized location where the fix files are staged.
-Similarly, variable $DIN_LOC_IC is by default set to $DIN_LOC_ROOT/icfiles and
+Similarly, variable ``$DIN_LOC_IC`` is by default set to $DIN_LOC_ROOT/icfiles and
 points to the directory with initial conditions for the Hurricane Dorian
 initialization in 08-29-2019. In all other platforms, users can customize the
 location of the fix files by setting `$UFS_INPUT` to a writable directory and

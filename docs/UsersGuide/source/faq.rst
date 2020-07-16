@@ -244,9 +244,12 @@ and restart the model for 24 hours simulation:
 
 How do I change a namelist option for chgres_cube or the model?
 ===============================================================
-From the case directory running ./preview_namelists will generate the namelists for the run.  This is normally run by case.submit, but you can also run it from the command line after running the command case.setup.   Run it once before editing user_nl_ufsatm and examine input.nml to see the default value, then edit user_nl_ufsatm and run it again to see the change.
+From the case directory running ``./preview_namelists`` will generate the namelists for the run.  This is normally run by case.submit, but you can also run it from the command line after running the command case.setup.   Run it once before editing ``user_nl_ufsatm`` and examine ``input.nml`` to see the default value, then edit ``user_nl_ufsatm`` and run it again to see the change.
 
-Typical usage of preview_namelists is simply:
+Typical usage of ``preview_namelists`` is simply:
+
+.. code-block:: console
+
 ./preview_namelists
 
 The input.nml will be generated under the directory CaseDocs,
@@ -305,7 +308,7 @@ or the case subdirectory ``CaseDocs/``.
 Some variables are tied to xml in the case and can only be changed via the
 ``xmlchange`` command. Attempting to change them by editing the file
 ``user_nl_ufsatm`` may generate an error.
-The parameters that need to be changed via xmlchange are defined in namelist_definition_ufsatm.xml
+The parameters that need to be changed via ``xmlchange`` are defined in ``namelist_definition_ufsatm.xml``.
 
 .. code-block:: console
 
