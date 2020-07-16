@@ -305,7 +305,7 @@ or the case subdirectory ``CaseDocs/``.
 Some variables are tied to xml in the case and can only be changed via the
 ``xmlchange`` command. Attempting to change them by editing the file
 ``user_nl_ufsatm`` may generate an error.
-The list of parameters that needs to be changed via xmlchange are defined in namelist_definition_ufsatm.xml
+The parameters that need to be changed via xmlchange are defined in namelist_definition_ufsatm.xml
 
 .. code-block:: console
 
