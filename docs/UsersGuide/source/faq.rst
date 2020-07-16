@@ -321,7 +321,7 @@ The parameters that need to be changed via xmlchange are defined in namelist_def
     <entry id="nhours_fcst" modify_via_xml="STOP_N">
     <entry id="restart_interval" modify_via_xml="REST_N”>
 
-The changes are required to ensure consistency between model configuration and the CIME. 
+The changes are required to ensure consistency between the model configuration and the CIME. 
 
 .. warning::
 
