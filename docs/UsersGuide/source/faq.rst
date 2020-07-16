@@ -305,6 +305,23 @@ or the case subdirectory ``CaseDocs/``.
 Some variables are tied to xml in the case and can only be changed via the
 ``xmlchange`` command. Attempting to change them by editing the file
 ``user_nl_ufsatm`` may generate an error.
+The list of parameters that needs to be changed via xmlchange are defined in namelist_definition_ufsatm.xml
+
+.. code-block:: console
+
+    cd src/model/FV3/cime/cime_config
+    cat namelist_definition_ufsatm.xml | grep "modify_via_xml"
+    <entry id="ccpp_suite" modify_via_xml="CCPP_SUITES">
+    <entry id="start_year" modify_via_xml="RUN_STARTDATE">
+    <entry id="start_month" modify_via_xml="RUN_STARTDATE">
+    <entry id="start_day" modify_via_xml="RUN_STARTDATE">
+    <entry id="start_hour" modify_via_xml="START_TOD">
+    <entry id="start_minute" modify_via_xml="START_TOD">
+    <entry id="start_second" modify_via_xml="START_TOD">
+    <entry id="nhours_fcst" modify_via_xml="STOP_N">
+    <entry id="restart_interval" modify_via_xml="REST_N”>
+
+This is required to ensure consistency between model configuration and the CIME. 
 
 .. warning::
 

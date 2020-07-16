@@ -53,6 +53,8 @@ code:
     When cloning the ufs-mrweather-app repository, the connection to github may time out.  In this
     case, resubmit the ``git clone`` command.
 
+The information that "Detached HEAD" state is a standard git notification about a release tag.  If you plan to add development to the codes, you will need a development branch.
+
 To checkout UFS MR Weather Model components, including CIME, run the ``checkout_externals`` script from /path/to/my_ufs_sandbox.
 
 .. code-block:: console
