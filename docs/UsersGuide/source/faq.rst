@@ -252,7 +252,7 @@ Typical usage of ``preview_namelists`` is simply:
 
    ./preview_namelists
 
-The input.nml will be generated under the directory CaseDocs,
+The ``input.nml`` will be generated under the directory CaseDocs,
 
 .. code-block:: console
 
