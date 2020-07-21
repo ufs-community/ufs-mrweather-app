@@ -338,7 +338,7 @@ and add
 
 .. code-block:: console
 
-    input_type = "nemsio"
+    input_type = "gaussian"
 
 ---------------------------------------------------------------
 Best practices for conserving disk space and keeping files safe
