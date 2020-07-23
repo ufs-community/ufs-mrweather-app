@@ -242,6 +242,8 @@ and restart the model for 24 hours simulation:
 
     The restart run length can be changed using the ``xmlchange`` command and setting ``STOP_N`` and ``STOP_OPTION``.
 
+The model outputs always start from 000 (e.g.,  sfcf000.nc, atmf000.nc), and don't depend on the model start time and method (warm or cold start).
+
 How do I change a namelist option for chgres_cube or the model?
 ===============================================================
 From the case directory running ``./preview_namelists`` will generate the namelists for the run.  This is normally run by ``case.submit``, but you can also run it from the command line after running the command ``case.setup``.   Run it once before editing ``user_nl_ufsatm`` and examine ``input.nml`` to see the default value, then edit ``user_nl_ufsatm`` and run it again to see the change.
