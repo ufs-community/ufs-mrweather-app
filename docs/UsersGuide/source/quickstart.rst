@@ -12,11 +12,11 @@ The following quick start guide is applicable to versions of the `UFS Medium-Ran
 
 The workflow for building and running the App is built on the CIME
 (Common Infrastructure for Modeling Earth) framework.  Please refer to
-the `CIME Porting Documentation <http://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/porting-cime.html>`_
+the `CIME Porting Documentation <http://esmci.github.io/cime/versions/ufs_release_v1.1/html/users_guide/porting-cime.html>`_
 if CIME has not yet been ported to the target machine.
 
 If you are new to CIME, please consider reading the `CIME Case Control System Part 1: Basic Usage
-<https://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/index.html#case-control-system-part-1-basic-usage>`_
+<https://esmci.github.io/cime/versions/ufs_release_v1.1/html/users_guide/index.html#case-control-system-part-1-basic-usage>`_
 *after downloading the code*.  The CIME Users Guide will be easier to follow after the
 directory structure has been created by the `git clone` command.
 
@@ -46,12 +46,14 @@ code:
 
 .. code-block:: console
 
-    git clone https://github.com/ufs-community/ufs-mrweather-app.git -b ufs-v1.0.0 my_ufs_sandbox
+    git clone https://github.com/ufs-community/ufs-mrweather-app.git -b ufs-v1.1.0 my_ufs_sandbox
     cd my_ufs_sandbox
 
 .. note::
     When cloning the ufs-mrweather-app repository, the connection to github may time out.  In this
     case, resubmit the ``git clone`` command.
+
+The information of being a "detached HEAD" is a standard git notification about a release tag.  If you plan to add development to the codes, you will need a development branch.
 
 To checkout UFS MR Weather Model components, including CIME, run the ``checkout_externals`` script from /path/to/my_ufs_sandbox.
 
@@ -299,8 +301,7 @@ The ``project`` argument is optional, to set the batch system project account (s
 
 On machines where a project or account code is needed, you
 must either specify the ``--project $PROJECT`` argument in the ``create_newcase`` command, or set the
-``$PROJECT`` variable in your shell environment.  If this argument is not set, the error message
-``ERROR: PROJECT_REQUIRED`` will be reported.
+``$PROJECT`` variable in your shell environment.  If this argument is not set, the default value in config_machines.xml for ``$PROJECT`` will be used. An error will be reported if the default project account is not accessable.
 
 If running on a preconfigured or configurable machine, that machine
 will normally be recognized automatically and therefore it is not
@@ -356,7 +357,7 @@ along with namelist ``user_nl_xxx`` files, where xxx denotes the set of componen
 for the given case configuration such as ``ufsatm`` and ``cpl``.
 Selected namelist entries can be customized by editing ``user_nl_xxx``, see :ref:`FAQ <faq>`.
 
-cd to the case directory ``$UFS_SCRATCH/ufs-mrweather-app-workflow.c96`` as shown above:
+cd to the case directory or case root (``$CASEROOT``) ``$UFS_SCRATCH/ufs-mrweather-app-workflow.c96`` as shown above:
 
 .. code-block:: console
 
@@ -422,7 +423,7 @@ now are:
       ./xmlquery STOP_OPTION,STOP_N
 
    These default settings can be useful in `troubleshooting
-   <http://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/troubleshooting.html>`_ runtime problems
+   <http://esmci.github.io/cime/versions/ufs_release_v1.1/html/users_guide/troubleshooting.html>`_ runtime problems
    before submitting for a longer time or a production runs. For example, following setting can be used to
    set the simulation lenght to 36-hours. Please, also be aware that ``nyears``, ``nmonths`` and ``nsteps``
    options for ``STOP_OPTION`` are not supported in the UFS MR Weather App.
@@ -521,8 +522,8 @@ comma separated names and no spaces):
   The case namelist files are copied into this directory from the ``$RUNDIR``.
 
 .. _CIME: http://esmci.github.io/cime
-.. _porting: http://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/porting-cime
-.. _query_config: http://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/introduction-and-overview.html#discovering-available-cases-with-query-config
-.. _create_newcase: http://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/create-a-case.html
-.. _xmlchange: http://esmci.github.io/cime/versions/ufs_release_v1.0/html/Tools_user/xmlchange.html
-.. _case.setup: http://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/setting-up-a-case.html
+.. _porting: http://esmci.github.io/cime/versions/ufs_release_v1.1/html/users_guide/porting-cime
+.. _query_config: http://esmci.github.io/cime/versions/ufs_release_v1.1/html/users_guide/introduction-and-overview.html#discovering-available-cases-with-query-config
+.. _create_newcase: http://esmci.github.io/cime/versions/ufs_release_v1.1/html/users_guide/create-a-case.html
+.. _xmlchange: http://esmci.github.io/cime/versions/ufs_release_v1.1/html/Tools_user/xmlchange.html
+.. _case.setup: http://esmci.github.io/cime/versions/ufs_release_v1.1/html/users_guide/setting-up-a-case.html

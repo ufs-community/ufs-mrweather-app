@@ -41,7 +41,7 @@ associated with this umbrella (see :numref:`Table %s <top_level_repos>`).
 
 The UFS MR Weather Model is itself an umbrella repository and contains a number of sub-repositories
 used by the model as documented `here
-<https://ufs-weather-model.readthedocs.io/en/ufs-v1.0.0/CodeOverview.html>`_.
+<https://ufs-weather-model.readthedocs.io/en/ufs-v1.1.0/CodeOverview.html>`_.
 The CIME repository contains the workflow and build system for the prognostic model.  The last
 two repositories provide interfaces to allow CIME to properly build the ufs-weather-model and the NEMS driver.
 

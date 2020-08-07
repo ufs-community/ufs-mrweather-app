@@ -242,8 +242,25 @@ and restart the model for 24 hours simulation:
 
     The restart run length can be changed using the ``xmlchange`` command and setting ``STOP_N`` and ``STOP_OPTION``.
 
+The model outputs always start from 000 (e.g.,  sfcf000.nc, atmf000.nc), and don't depend on the model start time and method (warm or cold start).
+
 How do I change a namelist option for chgres_cube or the model?
 ===============================================================
+From the case directory running ``./preview_namelists`` will generate the namelists for the run.  This is normally run by ``case.submit``, but you can also run it from the command line after running the command ``case.setup``.   Run it once before editing ``user_nl_ufsatm`` and examine ``input.nml`` to see the default value, then edit ``user_nl_ufsatm`` and run it again to see the change.
+
+Typical usage of ``preview_namelists`` is simply:
+
+.. code-block:: console
+
+   ./preview_namelists
+
+The ``input.nml`` will be generated under the directory CaseDocs,
+
+.. code-block:: console
+
+    ls CaseDocs
+    atm_in  config.nml  input.nml  itag.tmp  model_configure
+
 To set model namelist options in CIME, edit the file ``user_nl_ufsatm`` in
 the case and add the change(s) as name-value pairs. For example:
 
@@ -293,6 +310,23 @@ or the case subdirectory ``CaseDocs/``.
 Some variables are tied to xml in the case and can only be changed via the
 ``xmlchange`` command. Attempting to change them by editing the file
 ``user_nl_ufsatm`` may generate an error.
+The parameters that need to be changed via ``xmlchange`` are defined in ``namelist_definition_ufsatm.xml``.
+
+.. code-block:: console
+
+    cd src/model/FV3/cime/cime_config
+    cat namelist_definition_ufsatm.xml | grep "modify_via_xml"
+    <entry id="ccpp_suite" modify_via_xml="CCPP_SUITES">
+    <entry id="start_year" modify_via_xml="RUN_STARTDATE">
+    <entry id="start_month" modify_via_xml="RUN_STARTDATE">
+    <entry id="start_day" modify_via_xml="RUN_STARTDATE">
+    <entry id="start_hour" modify_via_xml="START_TOD">
+    <entry id="start_minute" modify_via_xml="START_TOD">
+    <entry id="start_second" modify_via_xml="START_TOD">
+    <entry id="nhours_fcst" modify_via_xml="STOP_N">
+    <entry id="restart_interval" modify_via_xml="REST_N”>
+
+The changes are required to ensure consistency between the model configuration and the CIME. 
 
 .. warning::
 

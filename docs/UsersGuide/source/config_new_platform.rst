@@ -140,7 +140,7 @@ the new machine to which you are porting CIME.  An example entry looks like this
       </environment_variables>
     </machine>
 
-Many of the XML elements above are self-explanatory.  For details about individual elements see the `config_machines.xml file section in the CIME documentation <http://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/machine.html#machinefile>`_.
+Many of the XML elements above are self-explanatory.  For details about individual elements see the `config_machines.xml file section in the CIME documentation <http://esmci.github.io/cime/versions/ufs_release_v1.1/html/users_guide/machine.html#machinefile>`_.
 
 The value of ``CCSM_CPRNC`` will be set in the step below after the "cprnc" is installed on the system.
 
@@ -178,7 +178,7 @@ and making any needed modifications.  Here is an example batch description:
     </batch_system>
 
 For more details see the `config_batch.xml file description in the CIME documentation
-<http://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/machine.html#config-batch-xml-batch-directives>`_.
+<http://esmci.github.io/cime/versions/ufs_release_v1.1/html/users_guide/machine.html#config-batch-xml-batch-directives>`_.
 
 To verify correctness of the config_batch.xml file, use the command:
 

@@ -79,14 +79,14 @@ UFS Weather Model
 -----------------
 
 The output files for the UFS Weather Model are described in the `Users Guide
-<https://ufs-weather-model.readthedocs.io/en/ufs-v1.0.0/InputsOutputs.html>`_.
+<https://ufs-weather-model.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html>`_.
 
 ---------------
 UPP input files
 ---------------
 
 Documentation for the Unified Post Processor (UPP) output files can be found
-`here <https://upp.readthedocs.io/en/ufs-v1.0.0/InputsOutputs.html>`_.
+`here <https://upp.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html>`_.
 
 .. _downloading_input_data:
 
@@ -103,7 +103,7 @@ In this directory, the initial conditions are located in subdirectories named ``
 
 Variable ``$DIN_LOC_ROOT`` is already set in preconfigured platforms and points
 to a centralized location where the fix files are staged.
-Similarly, variable $DIN_LOC_IC is by default set to $DIN_LOC_ROOT/icfiles and
+Similarly, variable ``$DIN_LOC_IC`` is by default set to $DIN_LOC_ROOT/icfiles and
 points to the directory with initial conditions for the Hurricane Dorian
 initialization in 08-29-2019. In all other platforms, users can customize the
 location of the fix files by setting `$UFS_INPUT` to a writable directory and
@@ -118,11 +118,21 @@ Users can customize ``$DIN_LOC_IC`` after creating the case using the commands b
    cd $CASEROOT
    ./xmlchange DIN_LOC_IC=/path/to/directory
 
+Hera and Cheyenne are preconfigured platforms and the static files and prestaged intial conditons can be found at the followind directories:
+
+.. code-block:: console
+
+   Hera: /scratch1/NCEPDEV/stmp2/CIME_UFS
+   Cheyenne: /glade/p/cesmdata/cseg/ 
+
+Orion is a non-preconfigured platform and does not have these files.
+
 ---------------
 Static files
 ---------------
+
 The user does not need to stage the fix files manually because CIME retrieves
-the fix files from from ``$DIN_LOC_ROOT`` (if available) or from a
+the fix files from ``$DIN_LOC_ROOT`` (if available) or from a
 `FTP data repository <https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_. When CIME retrieves
 the files from the ftp site, it places them in ``$DIN_LOC_ROOT``.
 
@@ -300,6 +310,12 @@ The data should be placed in ``$DIN_LOC_IC``.
 
          chmod 755 get.sh
          ./get.sh 20191224 12
+
+If the file is a gfs3 file not a gfs4 file, the user must link the new file to the old file name. For example, 
+
+     .. code-block:: console
+
+         ln -s gfs_3_20190829_0000_000.grb2 gfs_4_20190829_0000_000.grb2
 
 -------------------
 Order of operations

@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.abspath('.'))
 # -- Project information -----------------------------------------------------
 
 project = 'UFS Medium-Range Weather App Users Guide'
-copyright = '2019'
+copyright = '2020'
 author = ' '
 
 # The short X.Y version
@@ -143,7 +143,7 @@ latex_elements = {
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',
-    #  'maketitle': r'\newcommand\sphinxbackoftitlepage{For referencing this document please use: \newline \break Author1, Author2,, 2020. UFS Medium-Range Weather App Users Guide v1.0.0. 91pp. Available at https://ufscommunity.org.}\sphinxmaketitle'
+    #  'maketitle': r'\newcommand\sphinxbackoftitlepage{For referencing this document please use: \newline \break Author1, Author2,, 2020. UFS Medium-Range Weather App Users Guide v1.1.0. 91pp. Available at https://ufscommunity.org.}\sphinxmaketitle'
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
