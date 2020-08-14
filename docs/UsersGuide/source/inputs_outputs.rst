@@ -15,7 +15,7 @@ Input files
 The :term:`UFS` MR Weather App requires numerous input files. :term:`CIME` can copy/link to input files,
 run the end-to-end system and write output files to disk. Depending on the dates and format
 (`GRIB2 <https://www.nco.ncep.noaa.gov/pmb/docs/grib2/>`_,
-`NEMSIO <https://github.com/NOAA-EMC/NCEPLIBS-nemsio/wiki/Home-NEMSIO>`_, and
+`NEMSIO <https://github.com/NOAA-EMC/NCEPLIBS-nemsio/wiki/Home-NEMSIO>`_, or 
 `NETCDF <https://www.unidata.ucar.edu/software/netcdf/>`_)
 requested, input files can be automatically retrieved by CIME (GRIB2) or must be staged by
 the user (:term:`NEMSIO` or :term:`NETCDF`).
@@ -151,10 +151,12 @@ from the `NCEI website <https://www.ncdc.noaa.gov/data-access/model-data/model-d
   These files cover the entire globe down to a horizontal resolution of 13 km and
   can be found at `<https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/>`_.
 
+
 - **NETCDF**
 
   These files cover the entire globe down to a horizontal resolution of 13 km and
   can be found at EMC ftp site `<https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.
+
 
 - **GRIB2**
 
