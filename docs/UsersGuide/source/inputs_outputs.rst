@@ -326,26 +326,26 @@ The data should be placed in ``$DIN_LOC_IC``.
          chmod 755 get.sh
          ./get.sh 20191224 12
 
-For downloading grib2 files, same code can be used except replacing wget part in get.sh by the following line: 
+     For downloading grib2 files, same code can be used except replacing wget part in ``get.sh`` by the following line: 
 
      .. code-block:: console
 
          wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files/$yyyymmdd/gfs_4_${yyyymmdd)_${hh}00_000.grb2
 
-If the file is a gfs3 file not a gfs4 file, the user must link the new file to the old file name. For example, 
+     If the file is a gfs3 file not a gfs4 file, the user must link the new file to the old file name. For example, 
 
      .. code-block:: console
 
          ln -s gfs_3_20190829_0000_000.grb2 gfs_4_20190829_0000_000.grb2
 
-For downloading NETCDF files, the wget parts in get.sh need to be changed to:
+     For downloading NETCDF files, the wget parts in ``get.sh`` need to be changed to:
 
      .. code-block:: console
 
          wget -c https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/$yyyymm/gfs.$yyyymmdd/$hh/gfs.t${hh}z.atmf000.nc
          wget -c https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/$yyyymm/gfs.$yyyymmdd/$hh/gfs.t${hh}z.sfcf000.nc
 
-Currently, only a few sample NETCDF files are available for testing at the EMC ftp site.
+     Currently, only a few sample NETCDF files are available for testing at the EMC ftp site.
 
 -------------------
 Order of operations
