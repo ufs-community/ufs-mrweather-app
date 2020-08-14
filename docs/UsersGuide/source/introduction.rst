@@ -40,7 +40,7 @@ Initialization from dates starting on January 1, 2018 are supported. Dates
 before that may work, but are not guaranteed. GFS public archives can be
 accessed through the National Centers for Environmental Information (NCEI)
 `Global Forecast System website <https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`_
-or through the `Thredds Data Server at NCEI <https://www.ncei.noaa.gov/thredds/model/gfs.html>`_. Some NETCDF data can be found at `ftp site <https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.
+or through the `Thredds Data Server at NCEI <https://www.ncei.noaa.gov/thredds/model/gfs.html>`_. Some NETCDF data can be found at `the EMC UFS ftp site <https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.
 The initial conditions may be pre-staged on disk by the user or
 automatically downloaded by the workflow.
 
