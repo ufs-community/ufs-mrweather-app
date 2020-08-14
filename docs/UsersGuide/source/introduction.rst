@@ -60,7 +60,7 @@ provides more information about FV3 and its grids. Additional information about 
 core is at `here <https://noaa-emc.github.io/FV3_Dycore_ufs-v1.0.0/html/index.html>`_.
 Interoperable atmospheric physics, along with the Noah land surface model, are
 supported through the use of the Common Community Physics Package (:term:`CCPP`;
-described `here <https://dtcenter.org/community-code/common-community-physics-package-ccpp>`_.
+described `here <https://dtcenter.org/community-code/common-community-physics-package-ccpp>`_ ).
 There are four physics suites supported for the release.
 Two of them are variations of an updated version of the physics :term:`suite` used in
 the operational GFS v15, while the other two are variations of an experimental
