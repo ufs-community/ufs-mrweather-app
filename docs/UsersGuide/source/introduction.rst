@@ -31,7 +31,7 @@ Pre-processor and initial conditions
 The MR Weather App is distributed with the :term:`chgres_cube` pre-processing software.
 It converts the Global Forecast System (GFS) analyses to the format needed as
 input to the model, which is six tiles in NetCDF format. Additional information
-about chgres_cube can be found in the `chgres_cube User’s Guide <https://ufs-utils.readthedocs.io/en/ufs-v1.1.0/>`_.
+about chgres_cube can be found in the `chgres_cube User’s Guide <https://ufs-utils.readthedocs.io/en/latest/>`_.
 
 GFS analyses for initializing the MR Weather App can be in Gridded Binary
 v2 (GRIB2) format (in 0.25 , 0.50, or 1.0 degree grid spacing),  the NOAA Environmental
