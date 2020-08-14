@@ -14,10 +14,11 @@ Input files
 
 The :term:`UFS` MR Weather App requires numerous input files. :term:`CIME` can copy/link to input files,
 run the end-to-end system and write output files to disk. Depending on the dates and format
-(`GRIB2 <https://www.nco.ncep.noaa.gov/pmb/docs/grib2/>`_ and
-`NEMSIO <https://github.com/NOAA-EMC/NCEPLIBS-nemsio/wiki/Home-NEMSIO>`_)
+(`GRIB2 <https://www.nco.ncep.noaa.gov/pmb/docs/grib2/>`_,
+`NEMSIO <https://github.com/NOAA-EMC/NCEPLIBS-nemsio/wiki/Home-NEMSIO>`_, and
+`NETCDF <https://www.unidata.ucar.edu/software/netcdf/>`_)
 requested, input files can be automatically retrieved by CIME (GRIB2) or must be staged by
-the user (:term:`NEMSIO`).
+the user (:term:`NEMSIO` or :term:`NETCDF`).
 
 -----------
 chgres_cube
@@ -150,6 +151,11 @@ from the `NCEI website <https://www.ncdc.noaa.gov/data-access/model-data/model-d
   These files cover the entire globe down to a horizontal resolution of 13 km and
   can be found at `<https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/>`_.
 
+- **NETCDF**
+
+  These files cover the entire globe down to a horizontal resolution of 13 km and
+  can be found at EMC ftp site `<https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.
+
 - **GRIB2**
 
   These files cover the entire globe and resolutions of 0.5, or 1.0 degree are supported.
@@ -167,6 +173,11 @@ The default naming convention for the initial conditions files is described belo
 
   - Two-dimensional surface variables ``gfs.tHHz.sfcanl.nemsio``
   - Three-dimensional atmosphere state ``gfs.tHHz.atmanl.nemsio``
+
+- **NETCDF**
+
+  - Two-dimensional surface variables ``gfs.tHHz.sfcanl.nc``
+  - Three-dimensional atmosphere state ``gfs.tHHz.atmanl.nc``
 
 - **GRIB2**
 
@@ -331,14 +342,15 @@ Directory `$DIN_LOC_IC/YYMMMM/YYYYMMDD`` can have both GRIB2 and NEMSIO files fo
 a given initialization hour and can have files for multiple initialization hours
 (00, 06, 12, and 18 UTC).
 
-If a directory has both GRIB2 and NEMSIO files for the same initialization date and time,
+If a directory has both GRIB2 and NEMSIO (or NETCDF) files for the same initialization date and time,
 CIME will use the GRIB2 files. If the user wants to change this behavior so CIME uses the
-NEMSIO files, the user should edit file ``user_nl_ufsatm``
+NEMSIO or NETCDF files, the user should edit file ``user_nl_ufsatm``
 and add
 
 .. code-block:: console
 
-    input_type = "gaussian"
+    input_type = "gaussian" for NEMSIO
+    input_type = "gaussian_netcdf" for NETCDF
 
 ---------------------------------------------------------------
 Best practices for conserving disk space and keeping files safe
