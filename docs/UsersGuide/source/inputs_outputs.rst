@@ -162,7 +162,7 @@ from the `NCEI website <https://www.ncdc.noaa.gov/data-access/model-data/model-d
 
   These files cover the entire globe and resolutions of 0.5, or 1.0 degree are supported.
 
-  - 0.5 deg files are available at `<https://nomads.ncdc.noaa.gov/data/gfs4/>`_
+  - 0.5 deg files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files-old/catalog.html>`_
   - 1.0 deg files can be requested from `<https://www.ncdc.noaa.gov/has/HAS.FileAppRouter?datasetname=GFS3&subqueryby=STATION&applname=&outdest=FILE>`_
 
 ------------------------------------
