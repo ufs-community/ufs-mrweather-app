@@ -17,7 +17,7 @@ run the end-to-end system and write output files to disk. Depending on the dates
 (`GRIB2 <https://www.nco.ncep.noaa.gov/pmb/docs/grib2/>`_,
 `NEMSIO <https://github.com/NOAA-EMC/NCEPLIBS-nemsio/wiki/Home-NEMSIO>`_, or 
 `NETCDF <https://www.unidata.ucar.edu/software/netcdf/>`_)
-requested, input files can be automatically retrieved by CIME (GRIB2) or must be staged by
+requested, input files can be automatically retrieved by CIME (:term:`GRIB2`) or must be staged by
 the user (:term:`NEMSIO` or :term:`NETCDF`).
 
 -----------
@@ -143,20 +143,20 @@ Initial condition formats and source
 
 The UFS MR Weather App currently only supports the use of Global Forecast System
 (GFS) data as raw initial conditions (that is, MRF, AVN, ERA5 etc. are not supported).
-The GFS data can be provided in two formats: NEMSIO or GRIB2. Both types of files can be obtained
+The GFS data can be provided in three formats: :term:`NEMSIO`, :term:`NETCDF`, or :term:`GRIB2`. Both types of files can be obtained
 from the `NCEI website <https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`_.
 
 - **NEMSIO**
 
   These files cover the entire globe down to a horizontal resolution of 13 km and
   can be found at `<https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/>`_.
-
+   
 
 - **NETCDF**
 
   These files cover the entire globe down to a horizontal resolution of 13 km and
   can be found at EMC ftp site `<https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.
-
+  
 
 - **GRIB2**
 
@@ -188,8 +188,8 @@ The default naming convention for the initial conditions files is described belo
   - Surface variables and atmosphere state ``gfsanl_4_YYYYMMDD_HH00_000.grb2``
 
 
-  If the user is initializing from 1.0-degree GRIB2 format data, which on
-  NOMADS uses the gfs_3_YYYYMMDD_00HH_000.grb2 naming convention, the user
+  If the user is initializing from 1.0-degree :term:`GRIB2` format data, which on
+  NCEI website uses the gfs_3_YYYYMMDD_00HH_000.grb2 naming convention, the user
   needs to change variable ``grib2_file_input_grid`` in the chgres_cube namelist.
   This is done by editing file ``user_nl_ufsatm``, which resides in the ``$CASEROOT``
   directory as follows. The example below is for the Dorian case initialized on

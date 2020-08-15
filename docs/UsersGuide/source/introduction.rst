@@ -34,7 +34,7 @@ input to the model, which is six tiles in NetCDF format. Additional information
 about chgres_cube can be found in the `chgres_cube User’s Guide <https://ufs-utils.readthedocs.io/en/latest/>`_.
 
 GFS analyses for initializing the MR Weather App can be in Gridded Binary
-v2 (GRIB2) format (in 0.25 , 0.50, or 1.0 degree grid spacing),  the NOAA Environmental
+v2 (:term:`GRIB2`) format (in 0.25 , 0.50, or 1.0 degree grid spacing),  the NOAA Environmental
 Modeling System (:term:`NEMS`) Input/Output (:term:`NEMSIO`) format, or Network Common Data Formt (:term:`NETCDF`).
 Initialization from dates starting on January 1, 2018 are supported. Dates
 before that may work, but are not guaranteed. GFS public archives can be
@@ -67,7 +67,7 @@ the operational GFS v15, while the other two are variations of an experimental
 suite that includes a subset of the developments for the next version of GFS,
 GFS v16. The variations pertain to how the sea surface temperature (SST) is
 initialized and parameterized to evolve, and are chosen depending on the type
-of initial conditions for the App. Initial conditions in GRIB2 format have a
+of initial conditions for the App. Initial conditions in :term:`GRIB2` format have a
 single two-dimensional field to initialize the SST, which must be kept constant
 throughout the forecast. Initial conditions in :term:`NEMSIO` or :term:`NETCDF` format have two two-dimensional
 fields that describe the baseline SST and its near-surface perturbation related
@@ -97,7 +97,7 @@ Post-processor
 
 The MR Weather App is distributed with a post-processing tools, the Unified
 Post Processor (UPP). The Unified Post Processor (UPP) converts the
-native NetCDF output from the model to the GRIB2 format on standard isobaric
+native NetCDF output from the model to the :term:`GRIB2` format on standard isobaric
 coordinates in the vertical. The UPP can also be used to compute a variety of
 useful diagnostic fields, as described in the `UPP user's guide <https://upp.readthedocs.io/en/ufs-v1.0.0>`_.
 
@@ -116,7 +116,7 @@ producing reasonable results.
 
 The scripts are available in the ftp site ftp://ftp.emc.ncep.noaa.gov/EIB/UFS/visualization_example/.
 File visualization_README describes the plotting scripts. Example plots are provided
-for the C96 5-day forecasts initialized on 8/29/2019 00 UTC using GRIB2 and NEMSIO
+for the C96 5-day forecasts initialized on 8/29/2019 00 UTC using :term:`GRIB2`,  :term:`NEMSIO`, or :term:`NETCDF`
 files as input datasets.
 
 Workflow and Build System
