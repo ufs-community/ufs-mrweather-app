@@ -321,7 +321,7 @@ The data should be placed in ``$DIN_LOC_IC``.
          chmod 755 get.sh
          ./get.sh 20191224 12
 
-     For downloading grib2 files, same code can be used except replacing wget part in ``get.sh`` by the following line: 
+     For downloading grib2 files, the same code ``get.sh`` can be used except replacing wget part by the following line: 
 
      .. code-block:: console
 
