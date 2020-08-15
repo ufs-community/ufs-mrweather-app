@@ -155,7 +155,7 @@ from the `NCEI website <https://www.ncdc.noaa.gov/data-access/model-data/model-d
 - **NETCDF**
 
   These files cover the entire globe down to a horizontal resolution of 13 km and
-  can be found at EMC ftp site `<https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.
+  can be found at the FTP data repository `<https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.
   
 
 - **GRIB2**
@@ -241,7 +241,7 @@ In preconfigured platforms, the 08-29-2019 initial conditions are pre-staged in
 ``$DIN_LOC_IC``. Those are GRIB2 files with 0.5 deg resolution.
 
 The default input data for the Hurricane Dorian initialization of 08-29-2019 is also available
-on `NOAA EMC's FTP data repository <https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/201908/20190829/>`_.
+on the `FTP data repository <https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/201908/20190829/>`_.
 
 -----------------------------------
 Running the App for different dates
@@ -345,7 +345,7 @@ The data should be placed in ``$DIN_LOC_IC``.
          wget -c https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/$yyyymm/gfs.$yyyymmdd/$hh/gfs.t${hh}z.atmf000.nc
          wget -c https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/$yyyymm/gfs.$yyyymmdd/$hh/gfs.t${hh}z.sfcf000.nc
 
-     Currently, only a few sample NETCDF files are available for testing at the EMC ftp site.
+     Currently, only a few sample NETCDF files are available for testing at the FTP data repository.
 
 -------------------
 Order of operations
