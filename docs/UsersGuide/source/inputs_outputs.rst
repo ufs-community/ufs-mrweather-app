@@ -149,15 +149,13 @@ from the `NCEI website <https://www.ncdc.noaa.gov/data-access/model-data/model-d
 - **NEMSIO**
 
   These files cover the entire globe down to a horizontal resolution of 13 km and
-  can be found 
-at `<https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/>`_.  
-    
+  can be found at `<https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/>`_.  
+\ 
 - **NETCDF**
 
   These files cover the entire globe down to a horizontal resolution of 13 km and
-  can be found at the 
-FTP data repository `<https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.  
-   
+  can be found at the FTP data repository `<https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.  
+\    
 - **GRIB2**
 
   These files cover the entire globe and resolutions of 0.5, or 1.0 degree are supported.
@@ -174,15 +172,13 @@ The default naming convention for the initial conditions files is described belo
 - **NEMSIO**
 
   - Two-dimensional surface variables ``gfs.tHHz.sfcanl.nemsio``
-  - Three-dimensional 
-atmosphere state ``gfs.tHHz.atmanl.nemsio`` 
-
+  - Three-dimensional atmosphere state ``gfs.tHHz.atmanl.nemsio`` 
+\ 
 - **NETCDF**
 
   - Two-dimensional surface variables ``gfs.tHHz.sfcanl.nc``
-  - Three-dimensional 
-atmosphere state ``gfs.tHHz.atmanl.nc`` 
-
+  - Three-dimensional atmosphere state ``gfs.tHHz.atmanl.nc`` 
+\ 
 - **GRIB2**
 
   - Surface variables and atmosphere state ``gfsanl_4_YYYYMMDD_HH00_000.grb2``
