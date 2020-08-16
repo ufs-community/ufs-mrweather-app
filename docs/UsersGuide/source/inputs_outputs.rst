@@ -175,7 +175,6 @@ The default naming convention for the initial conditions files is described belo
   - Three-dimensional atmosphere state ``gfs.tHHz.atmanl.nemsio`` 
   
   |
-  
 - **NETCDF**
 
   - Two-dimensional surface variables ``gfs.tHHz.sfcanl.nc``
