@@ -16,9 +16,9 @@ The :term:`UFS` MR Weather App requires numerous input files. :term:`CIME` can c
 run the end-to-end system and write output files to disk. Depending on the dates and format
 (`GRIB2 <https://www.nco.ncep.noaa.gov/pmb/docs/grib2/>`_,
 `NEMSIO <https://github.com/NOAA-EMC/NCEPLIBS-nemsio/wiki/Home-NEMSIO>`_, or 
-`NETCDF <https://www.unidata.ucar.edu/software/netcdf/>`_)
+`netCDF <https://www.unidata.ucar.edu/software/netcdf/>`_)
 requested, input files can be automatically retrieved by CIME (:term:`GRIB2`) or must be staged by
-the user (:term:`NEMSIO` or :term:`NETCDF`).
+the user (:term:`NEMSIO` or :term:`NetCDF`).
 
 -----------
 chgres_cube
@@ -143,7 +143,7 @@ Initial condition formats and source
 
 The UFS MR Weather App currently only supports the use of Global Forecast System
 (GFS) data as raw initial conditions (that is, MRF, AVN, ERA5 etc. are not supported).
-The GFS data can be provided in three formats: :term:`NEMSIO`, :term:`NETCDF`, or :term:`GRIB2`. Both types of files can be obtained
+The GFS data can be provided in three formats: :term:`NEMSIO`, :term:`NetCDF`, or :term:`GRIB2`. Files in NEMSIO and GRIB2 formats can be obtained
 from the `NCEI website <https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`_.
 
 - **NEMSIO**
@@ -151,7 +151,7 @@ from the `NCEI website <https://www.ncdc.noaa.gov/data-access/model-data/model-d
   These files cover the entire globe down to a horizontal resolution of 13 km and
   can be found at `<https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/>`_.  
   
-- **NETCDF**
+- **NetCDF**
 
   These files cover the entire globe down to a horizontal resolution of 13 km and
   can be found at the FTP data repository `<https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.  
@@ -174,7 +174,7 @@ The default naming convention for the initial conditions files is described belo
   - Two-dimensional surface variables ``gfs.tHHz.sfcanl.nemsio``
   - Three-dimensional atmosphere state ``gfs.tHHz.atmanl.nemsio`` 
 
-- **NETCDF**
+- **NetCDF**
 
   - Two-dimensional surface variables ``gfs.tHHz.sfcanl.nc``
   - Three-dimensional atmosphere state ``gfs.tHHz.atmanl.nc`` 
@@ -321,7 +321,7 @@ The data should be placed in ``$DIN_LOC_IC``.
          chmod 755 get.sh
          ./get.sh 20191224 12
 
-     For downloading grib2 files, the same code ``get.sh`` can be used except replacing wget part by the following line: 
+     For downloading files in GRIB2 format with 0.5 degree grid spacing, the same code ``get.sh`` can be used except the wget command should be replaced with the following line: 
 
      .. code-block:: console
 
@@ -333,14 +333,14 @@ The data should be placed in ``$DIN_LOC_IC``.
 
          ln -s gfs_3_20190829_0000_000.grb2 gfs_4_20190829_0000_000.grb2
 
-     For downloading NETCDF files, the wget parts in ``get.sh`` need to be changed to:
+     For downloading files in netCDF format, the wget commands in ``get.sh`` need to be changed to:
 
      .. code-block:: console
 
          wget -c https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/$yyyymm/gfs.$yyyymmdd/$hh/gfs.t${hh}z.atmf000.nc
          wget -c https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/$yyyymm/gfs.$yyyymmdd/$hh/gfs.t${hh}z.sfcf000.nc
 
-     Currently, only a few sample NETCDF files are available for testing at the FTP data repository.
+     Currently, only a few sample netCDF files are available for testing at the FTP data repository.
 
 -------------------
 Order of operations
@@ -356,15 +356,15 @@ Directory `$DIN_LOC_IC/YYMMMM/YYYYMMDD`` can have both GRIB2 and NEMSIO files fo
 a given initialization hour and can have files for multiple initialization hours
 (00, 06, 12, and 18 UTC).
 
-If a directory has both GRIB2 and NEMSIO (or NETCDF) files for the same initialization date and time,
+If a directory has files in more than onf format for the same initialization date and time,
 CIME will use the GRIB2 files. If the user wants to change this behavior so CIME uses the
-NEMSIO or NETCDF files, the user should edit file ``user_nl_ufsatm``
+NEMSIO or netCDF files, the user should edit file ``user_nl_ufsatm``
 and add
 
 .. code-block:: console
 
     input_type = "gaussian" for NEMSIO
-    input_type = "gaussian_netcdf" for NETCDF
+    input_type = "gaussian_netcdf" for netCDF
 
 ---------------------------------------------------------------
 Best practices for conserving disk space and keeping files safe

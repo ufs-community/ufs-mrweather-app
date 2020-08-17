@@ -30,17 +30,17 @@ Pre-processor and initial conditions
 ====================================
 The MR Weather App is distributed with the :term:`chgres_cube` pre-processing software.
 It converts the Global Forecast System (GFS) analyses to the format needed as
-input to the model, which is six tiles in NetCDF format. Additional information
-about chgres_cube can be found in the `chgres_cube User’s Guide <https://ufs-utils.readthedocs.io/en/latest/>`_.
+input to the model, which is six tiles in netCDF format. Additional information
+about chgres_cube can be found in the `chgres_cube User’s Guide <https://ufs-utils.readthedocs.io/en/ufs-v1.1.0/>`_.
 
 GFS analyses for initializing the MR Weather App can be in Gridded Binary
 v2 (:term:`GRIB2`) format (in 0.25 , 0.50, or 1.0 degree grid spacing),  the NOAA Environmental
-Modeling System (:term:`NEMS`) Input/Output (:term:`NEMSIO`) format, or Network Common Data Formt (:term:`NETCDF`).
+Modeling System (:term:`NEMS`) Input/Output (:term:`NEMSIO`) format, or Network Common Data Form (:term:`NetCDF`).
 Initialization from dates starting on January 1, 2018 are supported. Dates
 before that may work, but are not guaranteed. GFS public archives can be
 accessed through the National Centers for Environmental Information (NCEI)
 `Global Forecast System website <https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`_
-or through the `Thredds Data Server at NCEI <https://www.ncei.noaa.gov/thredds/model/gfs.html>`_. Some NETCDF data can be found at `the EMC UFS ftp site <https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.
+or through the `Thredds Data Server at NCEI <https://www.ncei.noaa.gov/thredds/model/gfs.html>`_. Some netCDF data can be found at `the EMC UFS ftp site <https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.
 The initial conditions may be pre-staged on disk by the user or
 automatically downloaded by the workflow.
 
@@ -69,7 +69,7 @@ GFS v16. The variations pertain to how the sea surface temperature (SST) is
 initialized and parameterized to evolve, and are chosen depending on the type
 of initial conditions for the App. Initial conditions in :term:`GRIB2` format have a
 single two-dimensional field to initialize the SST, which must be kept constant
-throughout the forecast. Initial conditions in :term:`NEMSIO` or :term:`NETCDF` format have two two-dimensional
+throughout the forecast. Initial conditions in :term:`NEMSIO` or :term:`NetCDF` format have two two-dimensional
 fields that describe the baseline SST and its near-surface perturbation related
 to the diurnal cycle, enabling the use of the near-sea-surface-temperature (NSST)
 physical parameterization to forecast the temporal variation in SST due to the
@@ -89,7 +89,7 @@ Perturbed Physics Tendencies (SPPT), and Specific Humidity perturbations (SHUM).
 A `User’s Guide for the use of stochastic physics <https://stochastic-physics.readthedocs.io/en/ufs-v1.0.0>`_ is provided.
 
 The UFS Weather Model ingests files produced by chgres_cube and outputs files
-in NetCDF format on a Gaussian grid in the horizontal and model levels in the
+in netCDF format on a Gaussian grid in the horizontal and model levels in the
 vertical.
 
 Post-processor
@@ -97,7 +97,7 @@ Post-processor
 
 The MR Weather App is distributed with a post-processing tools, the Unified
 Post Processor (UPP). The Unified Post Processor (UPP) converts the
-native NetCDF output from the model to the :term:`GRIB2` format on standard isobaric
+native netCDF output from the model to the :term:`GRIB2` format on standard isobaric
 coordinates in the vertical. The UPP can also be used to compute a variety of
 useful diagnostic fields, as described in the `UPP user's guide <https://upp.readthedocs.io/en/ufs-v1.0.0>`_.
 
@@ -116,7 +116,7 @@ producing reasonable results.
 
 The scripts are available in the ftp site ftp://ftp.emc.ncep.noaa.gov/EIB/UFS/visualization_example/.
 File visualization_README describes the plotting scripts. Example plots are provided
-for the C96 5-day forecasts initialized on 8/29/2019 00 UTC using :term:`GRIB2`,  :term:`NEMSIO`, or :term:`NETCDF`
+for the C96 5-day forecasts initialized on 8/29/2019 00 UTC using :term:`GRIB2`,  :term:`NEMSIO`, or :term:`NetCDF`
 files as input datasets.
 
 Workflow and Build System
