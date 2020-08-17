@@ -49,7 +49,7 @@ Glossary
       A binary format for atmospheric model output on the native gaussian grid.
 
    NETCDF
-      A set of software libraries and machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data. 
+      A set of software libraries and machine-independent data formats that supports the creation, access, and sharing of array-oriented scientific data. 
 
    Stochastic physics
       A package of stochastic schemes used to represent model uncertainty:  SKEB (Stochastic
