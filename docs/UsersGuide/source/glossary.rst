@@ -28,6 +28,9 @@ Glossary
       The GFDL Finite-Volume Cubed-Sphere Dynamical Core (FV3) is a scalable and flexible dynamical
       core capable of both hydrostatic and non-hydrostatic atmospheric simulations.
 
+   GRIB2 
+      The second version of the World Meterological Organization's (WMO) standard for distributing gridded data.  
+
    NCEP
       National Centers for Environmental Prediction, an arm of the National Weather Service.
 
