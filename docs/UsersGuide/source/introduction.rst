@@ -38,9 +38,7 @@ v2 (:term:`GRIB2`) format (in 0.25 , 0.50, or 1.0 degree grid spacing),  the NOA
 Modeling System (:term:`NEMS`) Input/Output (:term:`NEMSIO`) format, or Network Common Data Form (:term:`NetCDF`).
 Initialization from dates starting on January 1, 2018 are supported. Dates
 before that may work, but are not guaranteed. GFS public archives can be
-accessed through the National Centers for Environmental Information (NCEI)
-`Global Forecast System website <https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`_
-or through the `Thredds Data Server at NCEI <https://www.ncei.noaa.gov/thredds/model/gfs.html>`_. Some netCDF data can be found at `the EMC UFS ftp site <https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.
+accessed through  the `THREDDS Data Server at NCEI <https://www.ncei.noaa.gov/thredds/model/gfs.html>`_. A small sample of netCDF files can be found at `the EMC FTP site <https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.
 The initial conditions may be pre-staged on disk by the user or
 automatically downloaded by the workflow.
 
@@ -114,9 +112,9 @@ This capability is provided only as an example for users familiar with NCL, and 
 do a visual check to verify that the application is
 producing reasonable results.
 
-The scripts are available in the ftp site ftp://ftp.emc.ncep.noaa.gov/EIB/UFS/visualization_example/.
+The scripts are available in the FTP site ftp://ftp.emc.ncep.noaa.gov/EIB/UFS/visualization_example/.
 File visualization_README describes the plotting scripts. Example plots are provided
-for the C96 5-day forecasts initialized on 8/29/2019 00 UTC using :term:`GRIB2`,  :term:`NEMSIO`, or :term:`NetCDF`
+for the C96 5-day forecasts initialized on 8/29/2019 00 UTC using :term:`GRIB2`,  :term:`NEMSIO`, or :term:`netCDF`
 files as input datasets.
 
 Workflow and Build System

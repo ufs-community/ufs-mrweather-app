@@ -161,7 +161,7 @@ from the `NCEI website <https://www.ncdc.noaa.gov/data-access/model-data/model-d
   These files cover the entire globe and resolutions of 0.5, or 1.0 degree are supported.
 
   - 0.5 deg files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files-old/catalog.html>`_
-  - 1.0 deg files can be requested from `<https://www.ncdc.noaa.gov/has/HAS.FileAppRouter?datasetname=GFS3&subqueryby=STATION&applname=&outdest=FILE>`_
+  - 1.0 deg files can be requested from `<https://www.ncei.noaa.gov/hthredds/catalog/model-gfs-g3-anl-files-old/catalog.html`_
 
 ------------------------------------
 Initial conditions naming convention
@@ -181,7 +181,7 @@ The default naming convention for the initial conditions files is described belo
  
 - **GRIB2**
 
-  - Surface variables and atmosphere state ``gfsanl_4_YYYYMMDD_HH00_000.grb2``
+  - Surface variables and atmosphere state in 0.5 deg ``gfsanl_4_YYYYMMDD_HH00_000.grb2``
 
   If the user is initializing from 1.0-degree :term:`GRIB2` format data, which on
   NCEI website uses the gfs_3_YYYYMMDD_00HH_000.grb2 naming convention, the user
@@ -327,7 +327,14 @@ The data should be placed in ``$DIN_LOC_IC``.
 
          wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files/$yyyymmdd/gfs_4_${yyyymmdd)_${hh}00_000.grb2
 
-     If the file is a gfs3 file not a gfs4 file, the user must link the new file to the old file name. For example, 
+     For downloading files in GRIB2 format with 1.0 degree grid spacing, the same code ``get.sh`` can be used except the wget command should be replaced with the following line: 
+
+
+     .. code-block:: console
+
+         wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files/$yyyymmdd/gfs_3_${yyyymmdd)_${hh}00_000.grb2
+
+     If the file has 1.0 degree resolution (gfs3 file), the user must link the new file to the name expected by the App. For example, 
 
      .. code-block:: console
 
@@ -340,7 +347,7 @@ The data should be placed in ``$DIN_LOC_IC``.
          wget -c https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/$yyyymm/gfs.$yyyymmdd/$hh/gfs.t${hh}z.atmf000.nc
          wget -c https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/$yyyymm/gfs.$yyyymmdd/$hh/gfs.t${hh}z.sfcf000.nc
 
-     Currently, only a few sample netCDF files are available for testing at the FTP data repository.
+     Currently, only two sample netCDF files are available for testing at the FTP data repository.
 
 -------------------
 Order of operations
