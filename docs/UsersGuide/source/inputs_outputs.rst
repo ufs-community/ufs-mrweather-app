@@ -161,13 +161,13 @@ from the `NCEI website <https://www.ncdc.noaa.gov/data-access/model-data/model-d
   These files cover the entire globe and resolutions of 0.5, or 1.0 degree are supported.
 
   - 0.5 deg files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files-old/catalog.html>`_
-  - 1.0 deg files can be requested from `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files-old/catalog.html`_
+  - 1.0 deg files can be requested from `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files-old/catalog.html>`_
 
 ------------------------------------
-Initial conditions naming convention
+Initial condition naming convention
 ------------------------------------
 
-The default naming convention for the initial conditions files is described below.
+The default naming convention for the initial condition files is described below.
 
 - **NEMSIO**
 
