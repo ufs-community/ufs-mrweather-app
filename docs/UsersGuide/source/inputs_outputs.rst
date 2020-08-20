@@ -18,7 +18,7 @@ run the end-to-end system and write output files to disk. Depending on the dates
 `NEMSIO <https://github.com/NOAA-EMC/NCEPLIBS-nemsio/wiki/Home-NEMSIO>`_, or 
 `netCDF <https://www.unidata.ucar.edu/software/netcdf/>`_)
 requested, input files can be automatically retrieved by CIME (:term:`GRIB2`) or must be staged by
-the user (:term:`NEMSIO` or :term:`NetCDF`).
+the user (:term:`NEMSIO` or :term:`netCDF`).
 
 -----------
 chgres_cube
@@ -143,7 +143,7 @@ Initial condition formats and source
 
 The UFS MR Weather App currently only supports the use of Global Forecast System
 (GFS) data as raw initial conditions (that is, MRF, AVN, ERA5 etc. are not supported).
-The GFS data can be provided in three formats: :term:`NEMSIO`, :term:`NetCDF`, or :term:`GRIB2`. Files in NEMSIO and GRIB2 formats can be obtained
+The GFS data can be provided in three formats: :term:`NEMSIO`, :term:`netCDF`, or :term:`GRIB2`. Files in NEMSIO and GRIB2 formats can be obtained
 from the `NCEI website <https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`_.
 
 - **NEMSIO**
@@ -161,7 +161,7 @@ from the `NCEI website <https://www.ncdc.noaa.gov/data-access/model-data/model-d
   These files cover the entire globe and resolutions of 0.5, or 1.0 degree are supported.
 
   - 0.5 deg files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files-old/catalog.html>`_
-  - 1.0 deg files can be requested from `<https://www.ncei.noaa.gov/hthredds/catalog/model-gfs-g3-anl-files-old/catalog.html`_
+  - 1.0 deg files can be requested from `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files-old/catalog.html`_
 
 ------------------------------------
 Initial conditions naming convention
