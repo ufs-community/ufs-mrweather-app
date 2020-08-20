@@ -67,7 +67,7 @@ GFS v16. The variations pertain to how the sea surface temperature (SST) is
 initialized and parameterized to evolve, and are chosen depending on the type
 of initial conditions for the App. Initial conditions in :term:`GRIB2` format have a
 single two-dimensional field to initialize the SST, which must be kept constant
-throughout the forecast. Initial conditions in :term:`NEMSIO` or :term:`NetCDF` format have two two-dimensional
+throughout the forecast. Initial conditions in :term:`NEMSIO` or :term:`netCDF` format have two two-dimensional
 fields that describe the baseline SST and its near-surface perturbation related
 to the diurnal cycle, enabling the use of the near-sea-surface-temperature (NSST)
 physical parameterization to forecast the temporal variation in SST due to the
