@@ -363,7 +363,7 @@ Directory `$DIN_LOC_IC/YYMMMM/YYYYMMDD`` can have both GRIB2 and NEMSIO files fo
 a given initialization hour and can have files for multiple initialization hours
 (00, 06, 12, and 18 UTC).
 
-If a directory has files in more than onf format for the same initialization date and time,
+If a directory has files in more than one format for the same initialization date and time,
 CIME will use the GRIB2 files. If the user wants to change this behavior so CIME uses the
 NEMSIO or netCDF files, the user should edit file ``user_nl_ufsatm``
 and add
