@@ -325,14 +325,14 @@ The data should be placed in ``$DIN_LOC_IC``.
 
      .. code-block:: console
 
-         wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files/$yyyymmdd/gfs_4_${yyyymmdd)_${hh}00_000.grb2
+         wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files/$yyyymmdd/gfs_4_${yyyymmdd}_${hh}00_000.grb2
 
      For downloading files in GRIB2 format with 1.0 degree grid spacing, the same code ``get.sh`` can be used except the wget command should be replaced with the following line: 
 
 
      .. code-block:: console
 
-         wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files/$yyyymmdd/gfs_3_${yyyymmdd)_${hh}00_000.grb2
+         wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files/$yyyymmdd/gfs_3_${yyyymmdd}_${hh}00_000.grb2
 
      If the file has 1.0 degree resolution (gfs3 file), the user must link the new file to the name expected by the App. For example, 
 
