@@ -14,10 +14,11 @@ Input files
 
 The :term:`UFS` MR Weather App requires numerous input files. :term:`CIME` can copy/link to input files,
 run the end-to-end system and write output files to disk. Depending on the dates and format
-(`GRIB2 <https://www.nco.ncep.noaa.gov/pmb/docs/grib2/>`_ and
-`NEMSIO <https://github.com/NOAA-EMC/NCEPLIBS-nemsio/wiki/Home-NEMSIO>`_)
-requested, input files can be automatically retrieved by CIME (GRIB2) or must be staged by
-the user (:term:`NEMSIO`).
+(`GRIB2 <https://www.nco.ncep.noaa.gov/pmb/docs/grib2/>`_,
+`NEMSIO <https://github.com/NOAA-EMC/NCEPLIBS-nemsio/wiki/Home-NEMSIO>`_, or 
+`netCDF <https://www.unidata.ucar.edu/software/netcdf/>`_)
+requested, input files can be automatically retrieved by CIME (:term:`GRIB2`) or must be staged by
+the user (:term:`NEMSIO` or :term:`netCDF`).
 
 -----------
 chgres_cube
@@ -142,39 +143,48 @@ Initial condition formats and source
 
 The UFS MR Weather App currently only supports the use of Global Forecast System
 (GFS) data as raw initial conditions (that is, MRF, AVN, ERA5 etc. are not supported).
-The GFS data can be provided in two formats: NEMSIO or GRIB2. Both types of files can be obtained
+The GFS data can be provided in three formats: :term:`NEMSIO`, :term:`netCDF`, or :term:`GRIB2`. Files in NEMSIO and GRIB2 formats can be obtained
 from the `NCEI website <https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`_.
 
 - **NEMSIO**
 
   These files cover the entire globe down to a horizontal resolution of 13 km and
-  can be found at `<https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/>`_.
+  can be found at `<https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/>`_.  
+  
+- **NetCDF**
 
+  These files cover the entire globe down to a horizontal resolution of 13 km and
+  can be found at the FTP data repository `<https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.  
+     
 - **GRIB2**
 
   These files cover the entire globe and resolutions of 0.5, or 1.0 degree are supported.
 
-  - 0.5 deg files are available at `<https://nomads.ncdc.noaa.gov/data/gfs4/>`_
-  - 1.0 deg files can be requested from `<https://www.ncdc.noaa.gov/has/HAS.FileAppRouter?datasetname=GFS3&subqueryby=STATION&applname=&outdest=FILE>`_
+  - 0.5 deg files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files-old/catalog.html>`_
+  - 1.0 deg files can be requested from `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files-old/catalog.html>`_
 
 ------------------------------------
-Initial conditions naming convention
+Initial condition naming convention
 ------------------------------------
 
-The default naming convention for the initial conditions files is described below.
+The default naming convention for the initial condition files is described below.
 
 - **NEMSIO**
 
   - Two-dimensional surface variables ``gfs.tHHz.sfcanl.nemsio``
-  - Three-dimensional atmosphere state ``gfs.tHHz.atmanl.nemsio``
+  - Three-dimensional atmosphere state ``gfs.tHHz.atmanl.nemsio`` 
 
+- **NetCDF**
+
+  - Two-dimensional surface variables ``gfs.tHHz.sfcanl.nc``
+  - Three-dimensional atmosphere state ``gfs.tHHz.atmanl.nc`` 
+ 
 - **GRIB2**
 
-  - Surface variables and atmosphere state ``gfsanl_4_YYYYMMDD_HH00_000.grb2``
+  - Surface variables and atmosphere state in 0.5 deg ``gfsanl_4_YYYYMMDD_HH00_000.grb2``
 
-
-  If the user is initializing from 1.0-degree GRIB2 format data, which on
-  NOMADS uses the gfs_3_YYYYMMDD_00HH_000.grb2 naming convention, the user
+  If the user is initializing from 1.0-degree :term:`GRIB2` format data, which on
+  NCEI website uses the gfs_3_YYYYMMDD_00HH_000.grb2 naming convention, the user
   needs to change variable ``grib2_file_input_grid`` in the chgres_cube namelist.
   This is done by editing file ``user_nl_ufsatm``, which resides in the ``$CASEROOT``
   directory as follows. The example below is for the Dorian case initialized on
@@ -226,7 +236,7 @@ In preconfigured platforms, the 08-29-2019 initial conditions are pre-staged in
 ``$DIN_LOC_IC``. Those are GRIB2 files with 0.5 deg resolution.
 
 The default input data for the Hurricane Dorian initialization of 08-29-2019 is also available
-on `NOAA EMC's FTP data repository <https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/201908/20190829/>`_.
+on the `FTP data repository <https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/201908/20190829/>`_.
 
 -----------------------------------
 Running the App for different dates
@@ -311,11 +321,33 @@ The data should be placed in ``$DIN_LOC_IC``.
          chmod 755 get.sh
          ./get.sh 20191224 12
 
-If the file is a gfs3 file not a gfs4 file, the user must link the new file to the old file name. For example, 
+     For downloading files in GRIB2 format with 0.5 degree grid spacing, the same code ``get.sh`` can be used except the wget command should be replaced with the following line: 
+
+     .. code-block:: console
+
+         wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files/$yyyymmdd/gfs_4_${yyyymmdd}_${hh}00_000.grb2
+
+     For downloading files in GRIB2 format with 1.0 degree grid spacing, the same code ``get.sh`` can be used except the wget command should be replaced with the following line: 
+
+
+     .. code-block:: console
+
+         wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files/$yyyymmdd/gfs_3_${yyyymmdd}_${hh}00_000.grb2
+
+     If the file has 1.0 degree resolution (gfs3 file), the user must link the new file to the name expected by the App. For example, 
 
      .. code-block:: console
 
          ln -s gfs_3_20190829_0000_000.grb2 gfs_4_20190829_0000_000.grb2
+
+     For downloading files in netCDF format, the wget commands in ``get.sh`` need to be changed to:
+
+     .. code-block:: console
+
+         wget -c https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/$yyyymm/gfs.$yyyymmdd/$hh/gfs.t${hh}z.atmf000.nc
+         wget -c https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/$yyyymm/gfs.$yyyymmdd/$hh/gfs.t${hh}z.sfcf000.nc
+
+     Currently, only two sample netCDF files are available for testing at the FTP data repository.
 
 -------------------
 Order of operations
@@ -331,14 +363,15 @@ Directory `$DIN_LOC_IC/YYMMMM/YYYYMMDD`` can have both GRIB2 and NEMSIO files fo
 a given initialization hour and can have files for multiple initialization hours
 (00, 06, 12, and 18 UTC).
 
-If a directory has both GRIB2 and NEMSIO files for the same initialization date and time,
+If a directory has files in more than one format for the same initialization date and time,
 CIME will use the GRIB2 files. If the user wants to change this behavior so CIME uses the
-NEMSIO files, the user should edit file ``user_nl_ufsatm``
+NEMSIO or netCDF files, the user should edit file ``user_nl_ufsatm``
 and add
 
 .. code-block:: console
 
-    input_type = "gaussian"
+    input_type = "gaussian" for NEMSIO
+    input_type = "gaussian_netcdf" for netCDF
 
 ---------------------------------------------------------------
 Best practices for conserving disk space and keeping files safe

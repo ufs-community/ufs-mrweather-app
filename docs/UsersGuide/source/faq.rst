@@ -411,7 +411,7 @@ throughout the forecast. Compset GFSv15p2 can use either the GFSv15p2 suite or
 the GFSv15p2_no_nsst suite. Similarly, Compset GFSv16beta can use either the
 GFSv16beta suite or the GFSv16beta_no_nsst suite. The choice is made based on the
 format of the initial conditions file. When GRIB2 format is chosen, the non_nsst
-suites are used. When NEMSIO format is chosen, the suites with NSST are chosen.
+suites are used. When NEMSIO or netCDF format is chosen, the suites with NSST are chosen.
 These differences are needed because the GRIB2 files do not have all the fields
 needed to initialize the operational NSST parameterization.
 
@@ -455,7 +455,7 @@ task for NCEP-Post, the subgroup option needs to set to ``case.gfs_post``.
 How to change the filenames for input to chgres_cube?
 =====================================================
 
-By default, CIME uses `pre-defined convention <https://ufs-mrweather-app.readthedocs.io/en/latest/inputs_outputs.html>`_ to define directory and file names for raw input to ``chgres_cube``. In this case, 0.5-degree data in GRIB2 format is used from `NCDC - Global Forecast System <https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`_.
+By default, CIME uses `pre-defined convention <https://ufs-mrweather-app.readthedocs.io/en/latest/inputs_outputs.html>`_ to define directory and file names for raw input to ``chgres_cube``. In this case, 0.5-degree data in GRIB2 format is used from `NCEI - THREDDS Data Server <https://www.ncei.noaa.gov/thredds/model/gfs.html>`_.
 
 In the case of using 1.0-degree GRIB2 format data (with ``gfs_3_YYYYMMDD_00HH_000.grb2`` naming convention),
 the user needs to download the file manually and place it under ``$DIN_LOC_IC/YYYYMM/YYYYMMDD```. Then, the

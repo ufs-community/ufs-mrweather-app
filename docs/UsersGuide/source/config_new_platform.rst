@@ -190,7 +190,7 @@ To verify correctness of the config_batch.xml file, use the command:
 (Optional) Build and install the "cprnc" tool
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The CIME testing system uses a tool called ``cprnc`` to compare NetCDF files. This tool
+The CIME testing system uses a tool called ``cprnc`` to compare netCDF files. This tool
 can either be built one time on a system and referenced from the **config_machines.xml** file
 or it will be built automatically by CIME if not found.
 
