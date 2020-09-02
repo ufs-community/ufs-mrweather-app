@@ -368,8 +368,7 @@ please see  FAQ entry `How do I change a namelist option for chgres_cube or the 
 Can I customize the UPP output?
 ===============================
 
-At this time the CIME workflow does not support the customization of the
-variables or levels output by UPP.
+Starting with v1.1.0, you may customize your output following the instructions in :ref:`UPP-output`.
 
 How do I find out which platforms are preconfigured for the MR Weather App?
 ===========================================================================
