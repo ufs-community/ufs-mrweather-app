@@ -236,12 +236,14 @@ and all with 64 vertical levels.
 Setup the environment
 =====================
 
-Two environment variables need to be set prior to running the CIME workflow:
+Four environment variables need to be set prior to running the CIME workflow:
 
 .. code-block:: console
 
      export UFS_INPUT=/path/to/inputs
      export UFS_SCRATCH=/path/to/outputs
+     export UFS_DRIVER=nems
+     export CIME_MODEL=ufs
 
 ``UFS_INPUT`` should be set to the location of a folder where input
 data will be accessed.  There should be a folder named
