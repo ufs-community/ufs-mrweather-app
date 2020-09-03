@@ -47,7 +47,7 @@ of the input files for the UFS MR Weather Model can be found in the `UFS Weather
 UPP input files
 ---------------
 
-Documentation for the Unified Post Processor (UPP) output files can be found `here <https://upp.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html>`._
+Documentation for the Unified Post Processor (UPP) output files can be found `here <https://upp.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html>`_.
 
 ============
 Output files
@@ -82,7 +82,6 @@ UFS Weather Model
 The output files for the UFS Weather Model are described in the `Users Guide
 <https://ufs-weather-model.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html>`_.
 
-.. _UPP-ouput:
 ---------------
 UPP output files
 ---------------
