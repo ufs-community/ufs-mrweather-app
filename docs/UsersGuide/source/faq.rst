@@ -368,7 +368,7 @@ please see  FAQ entry `How do I change a namelist option for chgres_cube or the 
 Can I customize the UPP output?
 ===============================
 
-Starting with v1.1.0, you may customize your output following the instructions in :ref:`UPP-output`.
+Starting with v1.1.0, you may customize your output following the instructions in  :numref:`Section %s <UPP_output_files>`_.
 
 How do I find out which platforms are preconfigured for the MR Weather App?
 ===========================================================================
