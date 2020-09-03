@@ -43,7 +43,6 @@ of the input files for the UFS MR Weather Model can be found in the `UFS Weather
    Due to renaming/linking by CIME, the file names used in the UFS MR Weather App
    differ from the names described in the UFS Weather Model User's Guide.
 
-.. _upp_input_files:
 
 ---------------
 UPP input files
@@ -83,6 +82,8 @@ UFS Weather Model
 
 The output files for the UFS Weather Model are described in the `Users Guide
 <https://ufs-weather-model.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html>`_.
+
+.. _upp_output_files:
 
 ---------------
 UPP output files
