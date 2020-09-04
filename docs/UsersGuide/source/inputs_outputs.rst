@@ -181,17 +181,17 @@ The default naming convention for the initial condition files is described below
 
 - **NEMSIO**
 
-  - Two-dimensional surface variables ``gfs.tHHz.sfcanl.nemsio``
-  - Three-dimensional atmosphere state ``gfs.tHHz.atmanl.nemsio`` 
+  - Two-dimensional surface variables ``sfc.input.ic.nemsio``
+  - Three-dimensional atmosphere state ``atm.input.ic.nemsio`` 
 
 - **NetCDF**
 
-  - Two-dimensional surface variables ``gfs.tHHz.sfcanl.nc``
-  - Three-dimensional atmosphere state ``gfs.tHHz.atmanl.nc`` 
+  - Two-dimensional surface variables ``sfc.input.ic.nc``
+  - Three-dimensional atmosphere state ``atm.input.ic.nc`` 
  
 - **GRIB2**
 
-  - Surface variables and atmosphere state in 0.5 deg ``gfsanl_4_YYYYMMDD_HH00_000.grb2``
+  - Surface variables and atmosphere state in 0.5 deg ``atm.input.ic.grb2``
 
   If the user is initializing from 1.0-degree :term:`GRIB2` format data, which on
   NCEI website uses the gfs_3_YYYYMMDD_00HH_000.grb2 naming convention, the user
@@ -258,7 +258,7 @@ specify the desired data.  This is done by setting the ``RUN_STARTDATE`` and
 ``START_TOD`` CIME options using ``./xmlchange``.
 
 CIME will look for the following directory containing initial conditions: ``$DIN_LOC_IC/YYMMMM/YYYYMMDD``.
-If the directory is not found, CIME will attempt to retrieve the initial conditions from NOMADS.
+From v1.1.0, the data need to be downloaded mannually if the intial conditions are not avavilable in ``$DIN_LOC_IC``.
 
 ---------------------------------------------------------
 About the automatic stating of initial conditions by CIME
@@ -331,6 +331,13 @@ The data should be placed in ``$DIN_LOC_IC``.
          chmod 755 get.sh
          ./get.sh 20191224 12
 
+     After downloading the nemsio files, the downloaded files need to be linked to the names expected by the App:
+
+     .. code-block:: console
+
+         ln -s gfs.t${hh}z.atmanl.nemsio atm.input.ic.nemsio
+         ln -s gfs.t${hh}z.sfcanl.nemsio sfc.input.ic.nemsio
+
      For downloading files in GRIB2 format with 0.5 degree grid spacing, the same code ``get.sh`` can be used except the wget command should be replaced with the following line: 
 
      .. code-block:: console
@@ -344,11 +351,11 @@ The data should be placed in ``$DIN_LOC_IC``.
 
          wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files/$yyyymmdd/gfs_3_${yyyymmdd}_${hh}00_000.grb2
 
-     If the file has 1.0 degree resolution (gfs3 file), the user must link the new file to the name expected by the App. For example, 
+     After downloading the file, the user must link the new file to the name expected by the App. For example, 
 
      .. code-block:: console
 
-         ln -s gfs_3_20190829_0000_000.grb2 gfs_4_20190829_0000_000.grb2
+         ln -s gfs_3_20190829_0000_000.grb2 atm.input.ic.grb2
 
      For downloading files in netCDF format, the wget commands in ``get.sh`` need to be changed to:
 
@@ -357,7 +364,12 @@ The data should be placed in ``$DIN_LOC_IC``.
          wget -c https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/$yyyymm/gfs.$yyyymmdd/$hh/gfs.t${hh}z.atmf000.nc
          wget -c https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/$yyyymm/gfs.$yyyymmdd/$hh/gfs.t${hh}z.sfcf000.nc
 
-     Currently, only two sample netCDF files are available for testing at the FTP data repository.
+     Currently, only two sample netCDF files are available for testing at the FTP data repository. Similarly, the downloaded files need to be linked to the names expected by the App. For example,
+
+     .. code-block:: console
+
+         ln -s gfs.t${hh}z.atmf000.nc atm.input.ic.nc
+         ln -s gfs.t${hh}z.sfcf000.nc sfc.input.ic.nc
 
 -------------------
 Order of operations
@@ -380,7 +392,7 @@ and add
 
 .. code-block:: console
 
-    input_type = "gaussian" for NEMSIO
+    input_type = "gaussian_nemsio" for NEMSIO
     input_type = "gaussian_netcdf" for netCDF
 
 ---------------------------------------------------------------
