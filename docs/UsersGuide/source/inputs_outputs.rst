@@ -177,7 +177,7 @@ from the `NCEI website <https://www.ncdc.noaa.gov/data-access/model-data/model-d
 Initial condition naming convention
 ------------------------------------
 
-The default naming convention for the initial condition files is described below.
+The default naming convention for the initial condition files is described below. The user must stage the files on disk following this convention so they can be recognized by the MR Weather App workflow.
 
 - **NEMSIO**
 
@@ -292,7 +292,7 @@ Staging initial conditions manually without CIME
 
 
 If users want to run the UFS MR Weather App with initial conditions other than
-0.5 deg GRIB2 data available through NOMADS, they need to stage the data manually.
+what is currently available in preconfigured platforms, they need to stage the data manually.
 The data should be placed in ``$DIN_LOC_IC``.
 
 .. note::
@@ -381,7 +381,7 @@ If you want to download the input data manually, you should do it before you bui
 Coexistence of multiple files for the same date
 -----------------------------------------------
 
-Directory `$DIN_LOC_IC/YYMMMM/YYYYMMDD`` can have both GRIB2 and NEMSIO files for
+Directory `$DIN_LOC_IC/YYMMMM/YYYYMMDD`` can have GRIB2, NEMSIO, and netCDF files for
 a given initialization hour and can have files for multiple initialization hours
 (00, 06, 12, and 18 UTC).
 
