@@ -93,11 +93,11 @@ Customizing UPP output files for the MR Weather App
 
 If you wish to modify the fields or levels that are output from the Unified Post Processor, you will need to make modifications to files postcntrl_gfs_f00.xml (used to post-process model data at the 0-h forecast lead time) and postcntrl_gfs.xml (used to post-process model data at all other forecast lead times), which reside in the UPP repository distributed with the UFS MR Weather App. Specifically, if the code was cloned in the directory my_ufs_sandbox, the files will be located in my_ufs_sandbox/src/post/parm. Please note that this process requires advanced knowledge of which fields can be output for the UFS Weather Model.
 
-Use the directions in `the UPP Users Guide <https://upp.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html#control-file>`_ for details on how to make modifications to these xml files and for remaking the flat text files that the UPP reads, which are postxconfig-NT-GFS.txt and postxconfig-NT-GFS-F00.txt. It is important that you do not rename these flat files or the CIME workflow will not use them.
+Use the directions in `the UPP Users Guide <https://upp.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html#control-file>`_ for details on how to make modifications to these xml files and for remaking the flat text files that the UPP reads, which are ``postxconfig-NT-GFS.txt`` and ``postxconfig-NT-GFS-F00.txt``. It is important that you do not rename these flat files or the CIME workflow will not use them.
 
-Once you have created new flat text files reflecting your changes, you will need to copy or link these static files to the /SourceMods/src.ufsatm directory within the CIME case directory. When running your case, CIME will first look for the postxconfig-NT-GFS.txt or postxconfig-NT-GFS-F00.txt in this directory, depending on forecast hour. If they are not present, the workflow will use the default files in a pre-configured location.
+Once you have created new flat text files reflecting your changes, you will need to copy or link these static files to the ``/SourceMods/src.ufsatm`` directory within the CIME case directory. When running your case, CIME will first look for the ``postxconfig-NT-GFS.txt`` or ``postxconfig-NT-GFS-F00.txt`` in this directory, depending on forecast hour. If they are not present, the workflow will use the default files in a pre-configured location.
 
-You may then setup/build/run your case as usual and the UPP will use the new flat *.txt files.
+You may then setup/build/run your case as usual and the UPP will use the new flat ``*.txt`` files.
 
 .. _downloading_input_data:
 
@@ -114,7 +114,7 @@ In this directory, the initial conditions are located in subdirectories named ``
 
 Variable ``$DIN_LOC_ROOT`` is already set in preconfigured platforms and points
 to a centralized location where the fix files are staged.
-Similarly, variable ``$DIN_LOC_IC`` is by default set to $DIN_LOC_ROOT/icfiles and
+Similarly, variable ``$DIN_LOC_IC`` is by default set to ``$DIN_LOC_ROOT/icfiles`` and
 points to the directory with initial conditions for the Hurricane Dorian
 initialization in 08-29-2019. In all other platforms, users can customize the
 location of the fix files by setting `$UFS_INPUT` to a writable directory and
