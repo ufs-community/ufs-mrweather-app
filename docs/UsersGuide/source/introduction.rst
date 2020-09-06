@@ -34,7 +34,7 @@ input to the model, which is six tiles in netCDF format. Additional information
 about chgres_cube can be found in the `chgres_cube User’s Guide <https://ufs-utils.readthedocs.io/en/ufs-v1.1.0/>`_.
 
 GFS analyses for initializing the MR Weather App can be in Gridded Binary
-v2 (:term:`GRIB2`) format (in 0.25 , 0.50, or 1.0 degree grid spacing),  the NOAA Environmental
+v2 (:term:`GRIB2`) format (in 0.50, or 1.0 degree grid spacing),  the NOAA Environmental
 Modeling System (:term:`NEMS`) Input/Output (:term:`NEMSIO`) format, or Network Common Data Form (:term:`NetCDF`).
 Initialization from dates starting on January 1, 2018 are supported. Dates
 before that may work, but are not guaranteed. GFS public archives can be

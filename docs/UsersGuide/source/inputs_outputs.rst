@@ -153,7 +153,7 @@ Initial condition formats and source
 
 The UFS MR Weather App currently only supports the use of Global Forecast System
 (GFS) data as raw initial conditions (that is, MRF, AVN, ERA5 etc. are not supported).
-The GFS data can be provided in three formats: :term:`NEMSIO`, :term:`netCDF`, or :term:`GRIB2`. Files in NEMSIO and GRIB2 formats can be obtained
+The GFS data can be provided in three formats: :term:`NEMSIO`, :term:`netCDF`, or :term:`GRIB2`. Files in NEMSIO and GRIB2 format can be obtained
 from the `NCEI website <https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`_.
 
 - **NEMSIO**
@@ -168,7 +168,7 @@ from the `NCEI website <https://www.ncdc.noaa.gov/data-access/model-data/model-d
      
 - **GRIB2**
 
-  These files cover the entire globe and resolutions of 0.5, or 1.0 degree are supported.
+  These files cover the entire globe and resolutions of 0.5 and 1.0 degree are supported.
 
   - 0.5 deg files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files-old/catalog.html>`_
   - 1.0 deg files can be requested from `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files-old/catalog.html>`_
