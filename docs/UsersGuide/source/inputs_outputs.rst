@@ -129,15 +129,6 @@ Users can customize ``$DIN_LOC_IC`` after creating the case using the commands b
    cd $CASEROOT
    ./xmlchange DIN_LOC_IC=/path/to/directory
 
-Hera and Cheyenne are preconfigured platforms and the static files and prestaged intial conditons can be found at the followind directories:
-
-.. code-block:: console
-
-   Hera: /scratch1/NCEPDEV/stmp2/CIME_UFS
-   Cheyenne: /glade/p/cesmdata/cseg/ 
-
-Orion is a non-preconfigured platform and does not have these files.
-
 ---------------
 Static files
 ---------------
