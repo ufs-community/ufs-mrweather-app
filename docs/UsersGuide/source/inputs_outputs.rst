@@ -89,7 +89,7 @@ The output files for the UFS Weather Model are described in the `Users Guide
 UPP output files
 ---------------
 
-Customizing UPP output files for the MR Weather App
+Documentation for the UPP output files can be found `here <https://upp.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html>`_.
 
 If you wish to modify the fields or levels that are output from the Unified Post Processor, you will need to make modifications to files postcntrl_gfs_f00.xml (used to post-process model data at the 0-h forecast lead time) and postcntrl_gfs.xml (used to post-process model data at all other forecast lead times), which reside in the UPP repository distributed with the MR Weather App. Specifically, if the code was cloned in the directory my_ufs_sandbox, the files will be located in my_ufs_sandbox/src/post/parm. Please note that this process requires advanced knowledge of which fields can be output for the UFS Weather Model.
 
