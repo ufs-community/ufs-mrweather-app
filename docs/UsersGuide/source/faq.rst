@@ -374,7 +374,7 @@ How do I find out which platforms are preconfigured for the MR Weather App?
 ===========================================================================
 
 Preconfigured machines are platforms that have machine specific files and settings scripts and should
-run the UFS MR Weather Application **out-of-the-box** (other than potentially needing to download input files).
+run the MR Weather Application **out-of-the-box** (other than potentially needing to download input files).
 Preconfigured platforms are usually listed by their common site-specific name.
 
 To see the list of preconfigured, out of the box platforms, issue the following commands:
@@ -504,7 +504,7 @@ the user needs to download the file manually and place it under ``$DIN_LOC_IC/YY
       - Tests were not done with the AVN, MRF or analysis data.
       - The date used in the directory naming must match the date used in file name and the RUN_STARTDATE in the case.
 
-How can I run the UFS MR Weather App for another date without overriding my previous run?
+How can I run the MR Weather App for another date without overriding my previous run?
 ==========================================================================================
 
 Before running the App for a second date, you should save your previous run in

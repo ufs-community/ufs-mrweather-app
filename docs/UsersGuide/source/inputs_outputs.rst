@@ -5,14 +5,14 @@ Inputs and outputs
 ******************
 
 This chapter provides an overview of the input and output files needed by the components
-of the UFS MR Weather App (:term:`chgres_cube`, the UFS :term:`Weather Model`, and :term:`UPP`).  Links to more
+of the MR Weather App (:term:`chgres_cube`, the UFS :term:`Weather Model`, and :term:`UPP`).  Links to more
 detailed documentation for each of the components are provided.
 
 ===========
 Input files
 ===========
 
-The :term:`UFS` MR Weather App requires numerous input files. :term:`CIME` can copy/link to input files,
+The MR Weather App requires numerous input files. :term:`CIME` can copy/link to input files,
 run the end-to-end system and write output files to disk. Depending on the dates and format
 (`GRIB2 <https://www.nco.ncep.noaa.gov/pmb/docs/grib2/>`_,
 `NEMSIO <https://github.com/NOAA-EMC/NCEPLIBS-nemsio/wiki/Home-NEMSIO>`_, or 
@@ -24,7 +24,7 @@ the user (:term:`NEMSIO` or :term:`netCDF`).
 chgres_cube
 -----------
 
-When a user runs the UFS MR Weather App as described in the quickstart guide, input data for
+When a user runs the MR Weather App as described in the quickstart guide, input data for
 chgres_cube is linked from a location on disk to your run directory via CIME. The data
 is stored in a hierarchical way in the ``$DIN_LOC_IC`` directory
 (see :numref:`Section %s <downloading_input_data>`). A list of the input files for chgres_cube
@@ -34,13 +34,13 @@ can be found `here <https://ufs-utils.readthedocs.io/en/ufs-v1.0.0/chgres_cube.h
 UFS Weather Model
 -----------------
 
-The input files for the UFS MR Weather Model are located one directory up from the chgres_cube
+The input files for the MR Weather Model are located one directory up from the chgres_cube
 input files in ``$RUNDIR`` (see :numref:`Section %s <run_the_case>`). An extensive description
-of the input files for the UFS MR Weather Model can be found in the `UFS Weather Model Users Guide
+of the input files for the MR Weather Model can be found in the `UFS Weather Model Users Guide
 <https://ufs-weather-model.readthedocs.io/en/ufs-v1.0.0>`_.
 
 .. note::
-   Due to renaming/linking by CIME, the file names used in the UFS MR Weather App
+   Due to renaming/linking by CIME, the file names used in the MR Weather App
    differ from the names described in the UFS Weather Model User's Guide.
 
 
@@ -91,7 +91,7 @@ UPP output files
 
 Customizing UPP output files for the MR Weather App
 
-If you wish to modify the fields or levels that are output from the Unified Post Processor, you will need to make modifications to files postcntrl_gfs_f00.xml (used to post-process model data at the 0-h forecast lead time) and postcntrl_gfs.xml (used to post-process model data at all other forecast lead times), which reside in the UPP repository distributed with the UFS MR Weather App. Specifically, if the code was cloned in the directory my_ufs_sandbox, the files will be located in my_ufs_sandbox/src/post/parm. Please note that this process requires advanced knowledge of which fields can be output for the UFS Weather Model.
+If you wish to modify the fields or levels that are output from the Unified Post Processor, you will need to make modifications to files postcntrl_gfs_f00.xml (used to post-process model data at the 0-h forecast lead time) and postcntrl_gfs.xml (used to post-process model data at all other forecast lead times), which reside in the UPP repository distributed with the MR Weather App. Specifically, if the code was cloned in the directory my_ufs_sandbox, the files will be located in my_ufs_sandbox/src/post/parm. Please note that this process requires advanced knowledge of which fields can be output for the UFS Weather Model.
 
 Use the directions in `the UPP Users Guide <https://upp.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html#control-file>`_ for details on how to make modifications to these xml files and for remaking the flat text files that the UPP reads, which are ``postxconfig-NT-GFS.txt`` and ``postxconfig-NT-GFS-F00.txt``. It is important that you do not rename these flat files or the CIME workflow will not use them.
 
@@ -105,7 +105,7 @@ You may then setup/build/run your case as usual and the UPP will use the new fla
 Downloading and staging input data
 ==================================
 
-A set of input files, including static (fix) data and raw initial conditions, are needed to run the UFS MR
+A set of input files, including static (fix) data and raw initial conditions, are needed to run the MR
 Weather App. There are two variables that describe the location of the static and initial condition files:
 ``$DIN_LOC_ROOT`` is the directory where the static files are located and ``$DIN_LOC_IC`` is the
 directory where the initial conditions are located. By default, ``$DIN_LOC_ROOT`` is set to
@@ -142,7 +142,7 @@ the files from the ftp site, it places them in ``$DIN_LOC_ROOT``.
 Initial condition formats and source
 ------------------------------------
 
-The UFS MR Weather App currently only supports the use of Global Forecast System
+The MR Weather App currently only supports the use of Global Forecast System
 (GFS) data as raw initial conditions (that is, MRF, AVN, ERA5 etc. are not supported).
 The GFS data can be provided in three formats: :term:`NEMSIO`, :term:`netCDF`, or :term:`GRIB2`. Files in NEMSIO and GRIB2 format can be obtained
 from the `NCEI website <https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`_.
@@ -262,7 +262,7 @@ retrieved from the server when case.submit command is issued.
 Therefore, if users want to start the model from the 0.5 deg GRIB2 data available through
 NOMADS, the users do not need to stage the data manually.
 
-As part of the process of generating the UFS MR Weather App executable,
+As part of the process of generating the MR Weather App executable,
 CIME calls the utility **check_input_data** located in each case directory
 to attempt to locate all required input data for the
 case based upon file lists generated by components. If the required
@@ -282,7 +282,7 @@ Staging initial conditions manually without CIME
 ------------------------------------------------
 
 
-If users want to run the UFS MR Weather App with initial conditions other than
+If users want to run the MR Weather App with initial conditions other than
 what is currently available in preconfigured platforms, they need to stage the data manually.
 The data should be placed in ``$DIN_LOC_IC``.
 
@@ -366,7 +366,7 @@ The data should be placed in ``$DIN_LOC_IC``.
 Order of operations
 -------------------
 
-If you want to download the input data manually, you should do it before you build the UFS MR Weather App.
+If you want to download the input data manually, you should do it before you build the MR Weather App.
 
 -----------------------------------------------
 Coexistence of multiple files for the same date
