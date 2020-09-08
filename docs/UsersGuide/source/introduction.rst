@@ -13,7 +13,7 @@ information about the UFS, visit the UFS Portal at https://ufscommunity.org/.
 
 The Unified Forecast System (:term:`UFS`) can be configured into multiple applications
 (see a complete list at https://ufscommunity.org/#/science/aboutapps).
-The first of these to be released to the community is the UFS Medium-Range
+The first of these to be released to the community is the Medium-Range
 (MR) Weather Application (App), which targets predictions of atmospheric
 behavior out to about two weeks. The MR Weather App v1.1 includes a prognostic
 atmospheric model, pre- and post-processing tools, and a community workflow
@@ -45,7 +45,7 @@ automatically downloaded by the workflow.
 Forecast model
 ==============
 
-The prognostic model in the UFS MR Weather App is the atmospheric component
+The prognostic model in the MR Weather App is the atmospheric component
 of the UFS Weather Model, which employs the Finite-Volume Cubed-Sphere (:term:`FV3`)
 dynamical core. The atmospheric model in this release is an updated version
 of the atmospheric model that is being used in the operational GFS v15.
@@ -163,7 +163,7 @@ pre-processing, forecast model, and post-processing steps. The CIME builds
 the forecast model and the workflow itself, but not the :term:`NCEP` Libraries or the
 pre- and post-processing tools.
 
-`CIME`_ supports a set of tests for the UFS MR Weather App, including the Smoke
+`CIME`_ supports a set of tests for the MR Weather App, including the Smoke
 Startup Test, the Exact Restart from Startup Test, and the Modified Threading
 OPENMP bit for bit Test. These tests are described in more detail later in this
 document and are intended for users to verify the App installation in new
@@ -182,7 +182,7 @@ the distributed documentation, summarized here for ease of use.
    +----------------------------+---------------------------------------------------------------------------------+
    | **Documentation**          | **Location**                                                                    |
    +============================+=================================================================================+
-   | UFS MR Weather App v1.1    | https://ufs-mrweather-app.readthedocs.io/en/ufs-v1.1.0                          |
+   | MR Weather App v1.1    | https://ufs-mrweather-app.readthedocs.io/en/ufs-v1.1.0                          |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
    | chgres_cube User's Guide   | https://ufs-utils.readthedocs.io/en/ufs-v1.1.0                                  |
@@ -217,14 +217,14 @@ management rules of each component (described in their User’s Guides) need to 
 followed. Innovations involving the UFS Weather Model need to be tested using
 the regression test described in its User’s Guide. The regression tests
 distributed with the UFS Weather Model differ from the CIME-base tests
-distributed with the UFS MR Weather App because the former are part of the
+distributed with the MR Weather App because the former are part of the
 official NOAA policy to accept innovations in its code base, while the latter
 are meant as a sanity check for users.
 
 Future Direction
 ================
 Users can expect to see incremental capabilities in upcoming releases of the
-UFS MR Weather App to enhance research options and support operational forecast
+MR Weather App to enhance research options and support operational forecast
 implementations. Planned advancements include addition of component models for
 other Earth domains (such as oceans and sea ice), cycled data assimilation for
 model initialization, and tools for objective forecast verification. Releases
@@ -252,7 +252,7 @@ ad hoc order.
 .. note::
 
    Variables presented as ``$VAR`` in this guide typically refer to variables in XML files
-   in a UFS MR Weather App experimental case. From within a case directory, you can determine the value of such a
+   in a MR Weather App experimental case. From within a case directory, you can determine the value of such a
    variable with ``./xmlquery VAR``. In some instances, ``$VAR`` refers to a shell
    variable or some other variable; we try to make these exceptions clear.
 
