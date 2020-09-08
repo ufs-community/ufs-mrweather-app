@@ -91,9 +91,9 @@ UPP output files
 
 Documentation for the UPP output files can be found `here <https://upp.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html>`_.
 
-If you wish to modify the fields or levels that are output from the Unified Post Processor, you will need to make modifications to files postcntrl_gfs_f00.xml (used to post-process model data at the 0-h forecast lead time) and postcntrl_gfs.xml (used to post-process model data at all other forecast lead times), which reside in the UPP repository distributed with the MR Weather App. Specifically, if the code was cloned in the directory my_ufs_sandbox, the files will be located in my_ufs_sandbox/src/post/parm. Please note that this process requires advanced knowledge of which fields can be output for the UFS Weather Model.
+If you wish to modify the fields or levels that are output from the UPP, you will need to make modifications to files ``postcntrl_gfs_f00.xml`` (used to post-process model data at the 0-h forecast lead time) and/or ``postcntrl_gfs.xml`` (used to post-process model data at all other forecast lead times), which reside in the UPP repository distributed with the MR Weather App. Specifically, if the code was cloned in the directory ``my_ufs_sandbox``, the files will be located in ``my_ufs_sandbox/src/post/parm``. Please note that this process requires advanced knowledge of which fields can be output for the UFS Weather Model.
 
-Use the directions in `the UPP Users Guide <https://upp.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html#control-file>`_ for details on how to make modifications to these xml files and for remaking the flat text files that the UPP reads, which are ``postxconfig-NT-GFS.txt`` and ``postxconfig-NT-GFS-F00.txt``. It is important that you do not rename these flat files or the CIME workflow will not use them.
+Use the directions in the `UPP Users Guide <https://upp.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html#control-file>`_ for details on how to make modifications to these xml files and for remaking the flat text files that the UPP reads, which are ``postxconfig-NT-GFS.txt`` and ``postxconfig-NT-GFS-F00.txt``. It is important that you do not rename these flat files or the CIME workflow will not use them.
 
 Once you have created new flat text files reflecting your changes, you will need to copy or link these static files to the ``/SourceMods/src.ufsatm`` directory within the CIME case directory. When running your case, CIME will first look for the ``postxconfig-NT-GFS.txt`` or ``postxconfig-NT-GFS-F00.txt`` in this directory, depending on forecast hour. If they are not present, the workflow will use the default files in a pre-configured location.
 
@@ -182,51 +182,7 @@ The default naming convention for the initial condition files is described below
  
 - **GRIB2**
 
-  - Surface variables and atmosphere state in 0.5 deg ``atm.input.ic.grb2``
-
-  If the user is initializing from 1.0-degree :term:`GRIB2` format data, which on
-  NCEI website uses the gfs_3_YYYYMMDD_00HH_000.grb2 naming convention, the user
-  needs to change variable ``grib2_file_input_grid`` in the chgres_cube namelist.
-  This is done by editing file ``user_nl_ufsatm``, which resides in the ``$CASEROOT``
-  directory as follows. The example below is for the Dorian case initialized on
-  08-29-2019.
-
-  .. code-block:: console
-
-      !----------------------------------------------------------------------------------
-      ! This file can be used to change namelist options for:
-      ! - Chgres
-      ! - UFS MR-Weather Model
-      ! - NCEP Post
-      !
-      ! Users should add all user-specific namelist changes below in the form of
-      !  namelist_var = new_namelist_value
-      !
-      ! To change the namelist variables that are defined as multiple times under
-      ! different namelist groups
-      !  namelist_var@namelist_group = new_namelist_value
-      !
-      ! Following is the list of namelist variables that need to be accessed by
-      ! specifying the namelist groups:
-      !
-      ! alpha@nam_physics_nml
-      ! alpha@test_case_nml
-      ! avg_max_length@atmos_model_nml
-      ! avg_max_length@gfs_physics_nml
-      ! debug@atmos_model_nml
-      ! debug@gfs_physics_nml
-      ! icliq_sw@gfs_physics_nml
-      ! icliq_sw@nam_physics_nml
-      ! iospec_ieee32@fms_nml
-      ! iospec_ieee32@fms_io_nml
-      ! ntiles@fv_core_nml
-      ! ntiles@nest_nml
-      ! read_all_pe@fms_io_nml
-      ! read_all_pe@fms_nml
-      ! regional@chgres
-      ! regional@fv_core_nml
-      !----------------------------------------------------------------------------------
-      grib2_file_input_grid = gfs_3_20190829_0000_000.grb2
+  - Surface variables and atmosphere state ``atm.input.ic.grb2``
 
 --------------------------
 Default initial conditions
@@ -249,7 +205,7 @@ specify the desired data.  This is done by setting the ``RUN_STARTDATE`` and
 ``START_TOD`` CIME options using ``./xmlchange``.
 
 CIME will look for the following directory containing initial conditions: ``$DIN_LOC_IC/YYMMMM/YYYYMMDD``.
-From v1.1.0, the data need to be downloaded mannually if the intial conditions are not avavilable in ``$DIN_LOC_IC``.
+Starting with the v1.1.0 release, the MR Weather App workflow no longer auot-downloads datasets. The data must be present in the centralized location (for preconfigured platforms) or downloaded manually.
 
 ---------------------------------------------------------
 About the automatic stating of initial conditions by CIME
