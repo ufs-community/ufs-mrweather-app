@@ -159,7 +159,7 @@ from the `NCEI website <https://www.ncdc.noaa.gov/data-access/model-data/model-d
      
 - **GRIB2**
 
-  These files cover the entire globe and resolutions of 0.5 and 1.0 degree are supported.
+  These files cover the entire globe and resolutions of 0.5 and 1.0 degree are supported. There are both current and historic sources of GRIB2 `data available <https://docs.google.com/document/d/1rmQUC-Jn995IphtWx221EcGYBDG_eFA8LXP0LXv-wPQ/edit#>`_, here are two examples:
 
   - 0.5 deg files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files-old/catalog.html>`_
   - 1.0 deg files can be requested from `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files-old/catalog.html>`_
