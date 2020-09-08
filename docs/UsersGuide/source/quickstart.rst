@@ -5,7 +5,7 @@ Workflow Quick Start
 ====================
 
 
-The following quick start guide is applicable to versions of the `UFS Medium-Range Weather Application
+The following quick start guide is applicable to versions of the `Medium-Range Weather Application
 <https://github.com/ufs-community/ufs-mrweather-app>`_ that are on preconfigured or configurable machines as listed
 `here <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_.
 
@@ -20,9 +20,9 @@ If you are new to CIME, please consider reading the `CIME Case Control System Pa
 *after downloading the code*.  The CIME Users Guide will be easier to follow after the
 directory structure has been created by the `git clone` command.
 
-This is the procedure for quickly setting up and running a case of UFS MR Weather App.
+This is the procedure for quickly setting up and running a case of MR Weather App.
 
-* Download the UFS MR Weather App
+* Download the MR Weather App
 * Create a case: use ``create_newcase``
 * Setup  a case: use ``case.setup``
 * Build  a case: use ``case.build``
@@ -37,7 +37,7 @@ This is the procedure for quickly setting up and running a case of UFS MR Weathe
 
 .. _downloading:
 
-Downloading the UFS MR Weather App code and scripts
+Downloading the MR Weather App code and scripts
 ==========================================================================
 
 Access to the code requires git. You will need access to the command line clients, ``git``
@@ -55,7 +55,7 @@ code:
 
 The information of being a "detached HEAD" is a standard git notification about a release tag.  If you plan to add development to the codes, you will need a development branch.
 
-To checkout UFS MR Weather Model components, including CIME, run the ``checkout_externals`` script from /path/to/my_ufs_sandbox.
+To checkout MR Weather Model components, including CIME, run the ``checkout_externals`` script from /path/to/my_ufs_sandbox.
 
 .. code-block:: console
 
@@ -121,7 +121,7 @@ Check the ``manage_externals.log`` file to see what errors are reported.
 Model Configurations
 ====================
 
-The UFS MR Weather App can be configured at four out-of-the-box
+The MR Weather App can be configured at four out-of-the-box
 resolutions with two different compsets, ``GFSv15p2`` or
 ``GFSv16beta``.  These compsets invoke physics suites that use or not
 an ocean-evolving parameterization depending on the initial data
@@ -146,7 +146,7 @@ Supported component sets
 
 The components of the modeling system can be combined in numerous ways to carry out various scientific or
 software experiments. A particular mix of components, along with component-specific configuration and/or
-namelist settings is referred to as  component set or "compset". The UFS MR Weather App
+namelist settings is referred to as  component set or "compset". The MR Weather App
 has a shorthand naming convention for component sets that are supported out-of-the-box.
 
 To determine what MR Weather App compsets are available in the release, use
@@ -263,9 +263,9 @@ The following settings are recommended on the pre-configured platforms:
    +---------------------+-----------------------------------------+-------------------------------+
    | **Platform**        | **$UFS_INPUT**                          |   **$UFS_SCRATCH**            |
    +=====================+=========================================+===============================+
-   | NCAR cheyenne       | $CESMDATAROOT                           | /glade/scratch/$USER          |
+   | NCAR Cheyenne       | $CESMDATAROOT                           | /glade/scratch/$USER          |
    +---------------------+-----------------------------------------+-------------------------------+
-   | NOAA hera           | /scratch1/NCEPDEV/stmp2/CIME_UFS        | <my-project-dir>/$USER        |
+   | NOAA Hera           | /scratch1/NCEPDEV/stmp2/CIME_UFS        | <my-project-dir>/$USER        |
    +---------------------+-----------------------------------------+-------------------------------+
 
 
@@ -336,7 +336,7 @@ where:
 
 - ``WORKFLOW`` is the workflow and can be set as ``ufs-mrweather`` or ``ufs-mrweather_wo_post``. The
   ``ufs-mrweather`` includes both pre- and post-processing steps, while ``ufs-mrweather_wo_post`` includes
-  only pre-processing step. In the current version of the UFS MR Weather App, the
+  only pre-processing step. In the current version of the MR Weather App, the
   pre-processing step need to be run to generate initial conditions for the UFS Weather Model.
 
 - ``PROJECT`` is the project or account code needed to run batch jobs. You
@@ -428,7 +428,7 @@ now are:
    <http://esmci.github.io/cime/versions/ufs_release_v1.1/html/users_guide/troubleshooting.html>`_ runtime problems
    before submitting for a longer time or a production runs. For example, following setting can be used to
    set the simulation lenght to 36-hours. Please, also be aware that ``nyears``, ``nmonths`` and ``nsteps``
-   options for ``STOP_OPTION`` are not supported in the UFS MR Weather App.
+   options for ``STOP_OPTION`` are not supported in the MR Weather App.
 
    .. code-block:: console
 
@@ -485,7 +485,7 @@ comma separated names and no spaces):
 - ``$RUNDIR``
 
   This directory is set in the ``env_run.xml`` file. This is the
-  location where UFS MR Weather App was run. Log files for each stage of the workflow can be found here.
+  location where MR Weather App was run. Log files for each stage of the workflow can be found here.
 
 .. table::  Log files
 
