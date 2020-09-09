@@ -328,7 +328,7 @@ If you want to download the input data manually, you should do it before you bui
 Coexistence of multiple files for the same date
 -----------------------------------------------
 
-Directory `$DIN_LOC_IC/YYMMMM/YYYYMMDD`` can have GRIB2, NEMSIO, and netCDF files for
+Directory `$DIN_LOC_IC/YYMMMM/YYYYMMDD` can have GRIB2, NEMSIO, and netCDF files for
 a given initialization hour and can have files for multiple initialization hours
 (00, 06, 12, and 18 UTC).
 
