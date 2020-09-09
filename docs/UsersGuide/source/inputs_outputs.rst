@@ -205,6 +205,7 @@ specify the desired data.  This is done by setting the ``RUN_STARTDATE`` and
 ``START_TOD`` CIME options using ``./xmlchange``.
 
 CIME will look for the following directory containing initial conditions: ``$DIN_LOC_IC/YYMMMM/YYYYMMDD``.
+
 Starting with the v1.1.0 release, the MR Weather App workflow no longer auot-downloads datasets. The data must be present in the centralized location (for preconfigured platforms) or downloaded manually.
 
 ----------------------------------------------
