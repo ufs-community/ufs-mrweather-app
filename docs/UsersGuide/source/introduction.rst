@@ -13,7 +13,7 @@ information about the UFS, visit the UFS Portal at https://ufscommunity.org/.
 
 The Unified Forecast System (:term:`UFS`) can be configured into multiple applications
 (see a complete list at https://ufscommunity.org/#/science/aboutapps).
-The first of these to be released to the community is the Medium-Range
+The first of these to be released to the community is the UFS Medium-Range
 (MR) Weather Application (App), which targets predictions of atmospheric
 behavior out to about two weeks. The MR Weather App v1.1 includes a prognostic
 atmospheric model, pre- and post-processing tools, and a community workflow
