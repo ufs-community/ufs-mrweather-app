@@ -12,13 +12,14 @@ detailed documentation for each of the components are provided.
 Input files
 ===========
 
-The MR Weather App requires numerous input files. :term:`CIME` can copy/link to input files,
-run the end-to-end system and write output files to disk. Depending on the dates and format
-(`GRIB2 <https://www.nco.ncep.noaa.gov/pmb/docs/grib2/>`_,
+The MR Weather App requires numerous input files. 
+The input files data format can be
+`GRIB2 <https://www.nco.ncep.noaa.gov/pmb/docs/grib2/>`_,
 `NEMSIO <https://github.com/NOAA-EMC/NCEPLIBS-nemsio/wiki/Home-NEMSIO>`_, or 
-`netCDF <https://www.unidata.ucar.edu/software/netcdf/>`_)
-requested, input files can be automatically retrieved by CIME (:term:`GRIB2`) or must be staged by
-the user (:term:`NEMSIO` or :term:`netCDF`).
+`netCDF <https://www.unidata.ucar.edu/software/netcdf/>`_, and the input files  
+must be staged by
+the user. :term:`CIME` can 
+run the end-to-end system and write output files to disk.
 
 -----------
 chgres_cube
@@ -37,7 +38,7 @@ UFS Weather Model
 The input files for the MR Weather Model are located one directory up from the chgres_cube
 input files in ``$RUNDIR`` (see :numref:`Section %s <run_the_case>`). An extensive description
 of the input files for the MR Weather Model can be found in the `UFS Weather Model Users Guide
-<https://ufs-weather-model.readthedocs.io/en/ufs-v1.0.0>`_.
+<https://ufs-weather-model.readthedocs.io/en/ufs-v1.1.0>`_.
 
 .. note::
    Due to renaming/linking by CIME, the file names used in the MR Weather App
@@ -144,8 +145,7 @@ Initial condition formats and source
 
 The MR Weather App currently only supports the use of Global Forecast System
 (GFS) data as raw initial conditions (that is, MRF, AVN, ERA5 etc. are not supported).
-The GFS data can be provided in three formats: :term:`NEMSIO`, :term:`netCDF`, or :term:`GRIB2`. Files in NEMSIO and GRIB2 format can be obtained
-from the `NCEI website <https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`_.
+The GFS data can be provided in three formats: :term:`NEMSIO`, :term:`netCDF`, or :term:`GRIB2`. 
 
 - **NEMSIO**
 
