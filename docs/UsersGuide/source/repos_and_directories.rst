@@ -25,7 +25,7 @@ associated with this umbrella (see :numref:`Table %s <top_level_repos>`).
    | **Repository Description** | **Authoritative repository URL**                        |
    +============================+=========================================================+
    | Umbrella repository for    | https://github.com/ufs-community/ufs-mrweather-app      |
-   | the MR Weather App        |                                                         |
+   | the MR Weather App         |                                                         |
    +----------------------------+---------------------------------------------------------+
    | Umbrella repository for    | https://github.com/ufs-community/ufs-weather-model      |
    | the UFS Weather Model      |                                                         |
@@ -37,6 +37,8 @@ associated with this umbrella (see :numref:`Table %s <top_level_repos>`).
    +----------------------------+---------------------------------------------------------+
    | Layer required for CIME to | https://github.com/ESCOMP/NEMS_interface                |
    | build NEMS driver          |                                                         |
+   +----------------------------+---------------------------------------------------------+
+   | UPP                        | https://github.com/NOAA-EMC/EMC_post                    |
    +----------------------------+---------------------------------------------------------+
 
 The UFS MR Weather Model is itself an umbrella repository and contains a number of sub-repositories
