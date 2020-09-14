@@ -265,9 +265,9 @@ The data should be placed in ``$DIN_LOC_IC``.
 
      .. code-block:: console
 
-         For current files:
+         #For current files:
          wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files/$yyyymmdd/gfsanl_4_${yyyymmdd}_${hh}00_000.grb2
-         For historic files:
+         #For historic files:
          wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files-old/$yyyymmdd/gfsanl_4_${yyyymmdd}_${hh}00_000.grb2
 
      For downloading files in GRIB2 format with 1.0 degree grid spacing, the same code ``get.sh`` can be used except the wget command should be replaced with the following line: 
