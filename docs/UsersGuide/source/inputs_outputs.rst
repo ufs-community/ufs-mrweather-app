@@ -159,10 +159,12 @@ The GFS data can be provided in three formats: :term:`NEMSIO`, :term:`netCDF`, o
      
 - **GRIB2**
 
-  These files cover the entire globe and resolutions of 0.5 and 1.0 degree are supported. There are both current and historic sources of GRIB2 `data available <https://docs.google.com/document/d/1rmQUC-Jn995IphtWx221EcGYBDG_eFA8LXP0LXv-wPQ/edit#>`_, here are two examples:
+  These files cover the entire globe and resolutions of 0.5 and 1.0 degree are supported. There are both current and historic sources of GRIB2 data available, here are examples:
 
-  - 0.5 deg files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files-old/catalog.html>`_
-  - 1.0 deg files can be requested from `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files-old/catalog.html>`_
+  - 0.5 deg current files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files/catalog.html>`_
+  - 0.5 deg historic files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-004-files-old/catalog.html>`_
+  - 1.0 deg current files can be requested from `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-003-files/catalog.html>`_
+  - 1.0 deg hidtorical files can be requested from `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-003-files-old/catalog.html>`_
 
 ------------------------------------
 Initial condition naming convention
@@ -206,17 +208,10 @@ specify the desired data.  This is done by setting the ``RUN_STARTDATE`` and
 
 CIME will look for the following directory containing initial conditions: ``$DIN_LOC_IC/YYMMMM/YYYYMMDD``.
 
-Starting with the v1.1.0 release, the MR Weather App workflow no longer auot-downloads datasets. The data must be present in the centralized location (for preconfigured platforms) or downloaded manually.
-
-----------------------------------------------
-Staging initial conditions manually using CIME
-----------------------------------------------
-
-The user can download the data in advance by
-invoking script **check_input_data** with the ``--download`` argument.
+Starting with the v1.1.0 release, the MR Weather App workflow no longer auto-downloads datasets. The data must be present in the centralized location (for preconfigured platforms) or downloaded manually.
 
 ------------------------------------------------
-Staging initial conditions manually without CIME
+Staging initial conditions manually
 ------------------------------------------------
 
 If users want to run the MR Weather App with initial conditions other than
