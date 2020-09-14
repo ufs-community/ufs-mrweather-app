@@ -159,7 +159,7 @@ The GFS data can be provided in three formats: :term:`NEMSIO`, :term:`netCDF`, o
      
 - **GRIB2**
 
-  These files cover the entire globe and resolutions of 0.5 and 1.0 degree are supported. There are both current and historic sources of GRIB2 data available, here are examples:
+  These files cover the entire globe and resolutions of 0.5 and 1.0 degree are supported. There are both current and historic sources of GRIB2 data available. At the time of this writing, files for dates 05/15/2020 12 UTC or more recent are considered current, while files for preceding dates are considered historical. However, the cutoff date may change in the future. Here are the locations:
 
   - 0.5 deg current files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files/catalog.html>`_
   - 0.5 deg historic files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files-old/catalog.html>`_
