@@ -162,9 +162,9 @@ The GFS data can be provided in three formats: :term:`NEMSIO`, :term:`netCDF`, o
   These files cover the entire globe and resolutions of 0.5 and 1.0 degree are supported. There are both current and historic sources of GRIB2 data available, here are examples:
 
   - 0.5 deg current files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files/catalog.html>`_
-  - 0.5 deg historic files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-004-files-old/catalog.html>`_
-  - 1.0 deg current files can be requested from `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-003-files/catalog.html>`_
-  - 1.0 deg hidtorical files can be requested from `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-003-files-old/catalog.html>`_
+  - 0.5 deg historic files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files-old/catalog.html>`_
+  - 1.0 deg current files can be requested from `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files/catalog.html>`_
+  - 1.0 deg hidtorical files can be requested from `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files-old/catalog.html>`_
 
 ------------------------------------
 Initial condition naming convention
@@ -264,21 +264,25 @@ The data should be placed in ``$DIN_LOC_IC``.
      For downloading files in GRIB2 format with 0.5 degree grid spacing, the same code ``get.sh`` can be used except the wget command should be replaced with the following line: 
 
      .. code-block:: console
-
-         wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files/$yyyymmdd/gfs_4_${yyyymmdd}_${hh}00_000.grb2
+         For current files:
+         wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files/$yyyymmdd/gfsanl_4_${yyyymmdd}_${hh}00_000.grb2
+         For historic files:
+         wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files-old/$yyyymmdd/gfsanl_4_${yyyymmdd}_${hh}00_000.grb2
 
      For downloading files in GRIB2 format with 1.0 degree grid spacing, the same code ``get.sh`` can be used except the wget command should be replaced with the following line: 
 
 
      .. code-block:: console
-
-         wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files/$yyyymmdd/gfs_3_${yyyymmdd}_${hh}00_000.grb2
+         For current files:
+         wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files/$yyyymmdd/gfsanl_3_${yyyymmdd}_${hh}00_000.grb2
+         For historical files:
+         wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files-old/$yyyymmdd/gfsanl_3_${yyyymmdd}_${hh}00_000.grb2
 
      After downloading the file, the user must link the new file to the name expected by the App. For example, 
 
      .. code-block:: console
 
-         ln -s gfs_3_20190829_0000_000.grb2 atm.input.ic.grb2
+         ln -s gfsanl_3_20190829_0000_000.grb2 atm.input.ic.grb2
 
      For downloading files in netCDF format, the wget commands in ``get.sh`` need to be changed to:
 
