@@ -260,13 +260,17 @@ The following settings are recommended on the pre-configured platforms:
 
 .. table::  Path settings for pre-configured platforms.
 
-   +---------------------+-----------------------------------------+-------------------------------+
-   | **Platform**        | **$UFS_INPUT**                          |   **$UFS_SCRATCH**            |
-   +=====================+=========================================+===============================+
-   | NCAR Cheyenne       | $CESMDATAROOT                           | /glade/scratch/$USER          |
-   +---------------------+-----------------------------------------+-------------------------------+
-   | NOAA Hera           | /scratch1/NCEPDEV/stmp2/CIME_UFS        | <my-project-dir>/$USER        |
-   +---------------------+-----------------------------------------+-------------------------------+
+   +-----------------+---------------------------------------------------------+---------------------------+
+   | **Platform**    | **$UFS_INPUT**                                          |   **$UFS_SCRATCH**        |
+   +=================+=========================================================+===========================+
+   | NCAR Cheyenne   | $CESMDATAROOT                                           | /glade/scratch/$USER      |
+   +-----------------+---------------------------------------------------------+---------------------------+
+   | NOAA Hera       | /scratch1/NCEPDEV/stmp2/CIME_UFS                        | <my-project-dir>/$USER    |
+   +-----------------+---------------------------------------------------------+---------------------------+
+   | NOAA Jet        | /lfs4/HFIP/hfv3gfs/ufs-release-v1.1/CIME_UFS            | <my-project-dir>/$USER    |
+   +-----------------+---------------------------------------------------------+---------------------------+
+   | NOAA Gaea       | /lustre/f2/pdata/esrl/gsd/ufs/ufs-release-v1.1/CIME_UFS | <my-project-dir>/$USER    |
+   +-----------------+---------------------------------------------------------+---------------------------+
 
 
 On `platforms that are not pre-configured <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_ a script needs to be executed to define a set of environment variables related to the location of NCEPLIBS dependencies.
