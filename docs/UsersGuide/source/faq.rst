@@ -451,59 +451,6 @@ To change the values set automatically by CIME-CSS, the ``xmlchange`` command ca
 This command will change the number of tasks used by chgres_cube to 72. If the user wants to change the number of
 task for NCEP-Post, the subgroup option needs to set to ``case.gfs_post``.
 
-How to change the filenames for input to chgres_cube?
-=====================================================
-
-By default, CIME uses `pre-defined convention <https://ufs-mrweather-app.readthedocs.io/en/latest/inputs_outputs.html>`_ to define directory and file names for raw input to ``chgres_cube``. In this case, 0.5-degree data in GRIB2 format is used from `NCEI - THREDDS Data Server <https://www.ncei.noaa.gov/thredds/model/gfs.html>`_.
-
-In the case of using 1.0-degree GRIB2 format data (with ``gfs_3_YYYYMMDD_00HH_000.grb2`` naming convention),
-the user needs to download the file manually and place it under ``$DIN_LOC_IC/YYYYMM/YYYYMMDD```. Then, the
-``grib2_file_input_grid`` ``chgres_cube`` namelist variable needs to be modified by editing the
-``user_nl_ufsatm`` file, which resides in the ``$CASEROOT`` directory. The following example is for the Dorian case:
-
-.. code-block:: console
-
-    !----------------------------------------------------------------------------------
-    ! This file can be used to change namelist options for:
-    ! - Chgres
-    ! - UFS MR-Weather Model
-    ! - NCEP Post
-    !
-    ! Users should add all user-specific namelist changes below in the form of
-    !  namelist_var = new_namelist_value
-    !
-    ! To change the namelist variables that are defined as multiple times under
-    ! different namelist groups
-    !  namelist_var@namelist_group = new_namelist_value
-    !
-    ! Following is the list of namelist variables that need to be accessed by
-    ! specifying the namelist groups:
-    !
-    ! alpha@nam_physics_nml
-    ! alpha@test_case_nml
-    ! avg_max_length@atmos_model_nml
-    ! avg_max_length@gfs_physics_nml
-    ! debug@atmos_model_nml
-    ! debug@gfs_physics_nml
-    ! icliq_sw@gfs_physics_nml
-    ! icliq_sw@nam_physics_nml
-    ! iospec_ieee32@fms_nml
-    ! iospec_ieee32@fms_io_nml
-    ! ntiles@fv_core_nml
-    ! ntiles@nest_nml
-    ! read_all_pe@fms_io_nml
-    ! read_all_pe@fms_nml
-    ! regional@chgres
-    ! regional@fv_core_nml
-    !----------------------------------------------------------------------------------
-    grib2_file_input_grid = gfs_3_20190829_0000_000.grb2
-
-.. note::
-
-    Please be aware that:
-      - Tests were not done with the AVN, MRF or analysis data.
-      - The date used in the directory naming must match the date used in file name and the RUN_STARTDATE in the case.
-
 How can I run the MR Weather App for another date without overriding my previous run?
 ==========================================================================================
 
