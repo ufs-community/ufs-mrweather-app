@@ -6,7 +6,7 @@ Workflow Quick Start
 
 
 The following quick start guide is applicable to versions of the `MR Weather App
-<https://github.com/ufs-community/ufs-mrweather-app>`_ that are on preconfigured or configurable machines as listed
+<https://github.com/ufs-community/ufs-mrweather-app>`_ that are on preconfigured machines as listed
 `here <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_. For other machines, please refer to :numref:`Chapter %s <config_new_platform>` before using the quick start guide.
 
 
