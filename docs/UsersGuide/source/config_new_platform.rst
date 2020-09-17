@@ -12,7 +12,7 @@ installing and running MR Weather Application.
 
 -  UNIX style operating system such as CNL, AIX, Linux, Mac
 
--  Python = 2.7
+-  Python  2.7 or 3
 
 -  Perl 5
 

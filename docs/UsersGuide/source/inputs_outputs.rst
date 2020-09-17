@@ -5,26 +5,27 @@ Inputs and outputs
 ******************
 
 This chapter provides an overview of the input and output files needed by the components
-of the UFS MR Weather App (:term:`chgres_cube`, the UFS :term:`Weather Model`, and :term:`UPP`).  Links to more
+of the MR Weather App (:term:`chgres_cube`, the UFS :term:`Weather Model`, and :term:`UPP`).  Links to more
 detailed documentation for each of the components are provided.
 
 ===========
 Input files
 ===========
 
-The :term:`UFS` MR Weather App requires numerous input files. :term:`CIME` can copy/link to input files,
-run the end-to-end system and write output files to disk. Depending on the dates and format
-(`GRIB2 <https://www.nco.ncep.noaa.gov/pmb/docs/grib2/>`_,
+The MR Weather App requires numerous input files. 
+The input files data format can be
+`GRIB2 <https://www.nco.ncep.noaa.gov/pmb/docs/grib2/>`_,
 `NEMSIO <https://github.com/NOAA-EMC/NCEPLIBS-nemsio/wiki/Home-NEMSIO>`_, or 
-`netCDF <https://www.unidata.ucar.edu/software/netcdf/>`_)
-requested, input files can be automatically retrieved by CIME (:term:`GRIB2`) or must be staged by
-the user (:term:`NEMSIO` or :term:`netCDF`).
+`netCDF <https://www.unidata.ucar.edu/software/netcdf/>`_, and the input files  
+must be staged by
+the user. :term:`CIME` can 
+run the end-to-end system and write output files to disk.
 
 -----------
 chgres_cube
 -----------
 
-When a user runs the UFS MR Weather App as described in the quickstart guide, input data for
+When a user runs the MR Weather App as described in the quickstart guide, input data for
 chgres_cube is linked from a location on disk to your run directory via CIME. The data
 is stored in a hierarchical way in the ``$DIN_LOC_IC`` directory
 (see :numref:`Section %s <downloading_input_data>`). A list of the input files for chgres_cube
@@ -34,20 +35,21 @@ can be found `here <https://ufs-utils.readthedocs.io/en/ufs-v1.0.0/chgres_cube.h
 UFS Weather Model
 -----------------
 
-The input files for the UFS MR Weather Model are located one directory up from the chgres_cube
+The input files for the MR Weather Model are located one directory up from the chgres_cube
 input files in ``$RUNDIR`` (see :numref:`Section %s <run_the_case>`). An extensive description
-of the input files for the UFS MR Weather Model can be found in the `UFS Weather Model Users Guide
-<https://ufs-weather-model.readthedocs.io/en/ufs-v1.0.0>`_.
+of the input files for the MR Weather Model can be found in the `UFS Weather Model Users Guide
+<https://ufs-weather-model.readthedocs.io/en/ufs-v1.1.0>`_.
 
 .. note::
-   Due to renaming/linking by CIME, the file names used in the UFS MR Weather App
+   Due to renaming/linking by CIME, the file names used in the MR Weather App
    differ from the names described in the UFS Weather Model User's Guide.
+
 
 ---------------
 UPP input files
 ---------------
 
-Documentation for the input files for UPP are located `here <https://upp.readthedocs.io/en/ufs-v1.0.0/InputsOutputs.html>`_.
+Documentation for the UPP input files can be found `here <https://upp.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html>`_.
 
 ============
 Output files
@@ -82,12 +84,21 @@ UFS Weather Model
 The output files for the UFS Weather Model are described in the `Users Guide
 <https://ufs-weather-model.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html>`_.
 
+.. _upp_output_files:
+
 ---------------
-UPP input files
+UPP output files
 ---------------
 
-Documentation for the Unified Post Processor (UPP) output files can be found
-`here <https://upp.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html>`_.
+Documentation for the UPP output files can be found `here <https://upp.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html>`_.
+
+If you wish to modify the fields or levels that are output from the UPP, you will need to make modifications to files ``postcntrl_gfs_f00.xml`` (used to post-process model data at the 0-h forecast lead time) and/or ``postcntrl_gfs.xml`` (used to post-process model data at all other forecast lead times), which reside in the UPP repository distributed with the MR Weather App. Specifically, if the code was cloned in the directory ``my_ufs_sandbox``, the files will be located in ``my_ufs_sandbox/src/post/parm``. Please note that this process requires advanced knowledge of which fields can be output for the UFS Weather Model.
+
+Use the directions in the `UPP Users Guide <https://upp.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html#control-file>`_ for details on how to make modifications to these xml files and for remaking the flat text files that the UPP reads, which are ``postxconfig-NT-GFS.txt`` and ``postxconfig-NT-GFS-F00.txt``. It is important that you do not rename these flat files or the CIME workflow will not use them.
+
+Once you have created new flat text files reflecting your changes, you will need to copy or link these static files to the ``/SourceMods/src.ufsatm`` directory within the CIME case directory. When running your case, CIME will first look for the ``postxconfig-NT-GFS.txt`` or ``postxconfig-NT-GFS-F00.txt`` in this directory, depending on forecast hour. If they are not present, the workflow will use the default files in a pre-configured location.
+
+You may then setup/build/run your case as usual and the UPP will use the new flat ``*.txt`` files.
 
 .. _downloading_input_data:
 
@@ -95,7 +106,7 @@ Documentation for the Unified Post Processor (UPP) output files can be found
 Downloading and staging input data
 ==================================
 
-A set of input files, including static (fix) data and raw initial conditions, are needed to run the UFS MR
+A set of input files, including static (fix) data and raw initial conditions, are needed to run the MR
 Weather App. There are two variables that describe the location of the static and initial condition files:
 ``$DIN_LOC_ROOT`` is the directory where the static files are located and ``$DIN_LOC_IC`` is the
 directory where the initial conditions are located. By default, ``$DIN_LOC_ROOT`` is set to
@@ -104,7 +115,7 @@ In this directory, the initial conditions are located in subdirectories named ``
 
 Variable ``$DIN_LOC_ROOT`` is already set in preconfigured platforms and points
 to a centralized location where the fix files are staged.
-Similarly, variable ``$DIN_LOC_IC`` is by default set to $DIN_LOC_ROOT/icfiles and
+Similarly, variable ``$DIN_LOC_IC`` is by default set to ``$DIN_LOC_ROOT/icfiles`` and
 points to the directory with initial conditions for the Hurricane Dorian
 initialization in 08-29-2019. In all other platforms, users can customize the
 location of the fix files by setting `$UFS_INPUT` to a writable directory and
@@ -119,15 +130,6 @@ Users can customize ``$DIN_LOC_IC`` after creating the case using the commands b
    cd $CASEROOT
    ./xmlchange DIN_LOC_IC=/path/to/directory
 
-Hera and Cheyenne are preconfigured platforms and the static files and prestaged intial conditons can be found at the followind directories:
-
-.. code-block:: console
-
-   Hera: /scratch1/NCEPDEV/stmp2/CIME_UFS
-   Cheyenne: /glade/p/cesmdata/cseg/ 
-
-Orion is a non-preconfigured platform and does not have these files.
-
 ---------------
 Static files
 ---------------
@@ -141,10 +143,9 @@ the files from the ftp site, it places them in ``$DIN_LOC_ROOT``.
 Initial condition formats and source
 ------------------------------------
 
-The UFS MR Weather App currently only supports the use of Global Forecast System
+The MR Weather App currently only supports the use of Global Forecast System
 (GFS) data as raw initial conditions (that is, MRF, AVN, ERA5 etc. are not supported).
-The GFS data can be provided in three formats: :term:`NEMSIO`, :term:`netCDF`, or :term:`GRIB2`. Files in NEMSIO and GRIB2 formats can be obtained
-from the `NCEI website <https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs>`_.
+The GFS data can be provided in three formats: :term:`NEMSIO`, :term:`netCDF`, or :term:`GRIB2`. 
 
 - **NEMSIO**
 
@@ -158,74 +159,32 @@ from the `NCEI website <https://www.ncdc.noaa.gov/data-access/model-data/model-d
      
 - **GRIB2**
 
-  These files cover the entire globe and resolutions of 0.5, or 1.0 degree are supported.
+  These files cover the entire globe and resolutions of 0.5 and 1.0 degree are supported. There are both current and historic sources of GRIB2 data available. At the time of this writing, files for dates 05/15/2020 12 UTC or more recent are considered current, while files for preceding dates are considered historical. However, the cutoff date may change in the future. Here are the locations:
 
-  - 0.5 deg files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files-old/catalog.html>`_
-  - 1.0 deg files can be requested from `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files-old/catalog.html>`_
+  - 0.5 deg current files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files/catalog.html>`_
+  - 0.5 deg historical files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files-old/catalog.html>`_
+  - 1.0 deg current files can be requested from `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files/catalog.html>`_
+  - 1.0 deg historical files can be requested from `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files-old/catalog.html>`_
 
 ------------------------------------
 Initial condition naming convention
 ------------------------------------
 
-The default naming convention for the initial condition files is described below.
+The default naming convention for the initial condition files is described below. The user must stage the files on disk following this convention so they can be recognized by the MR Weather App workflow.
 
 - **NEMSIO**
 
-  - Two-dimensional surface variables ``gfs.tHHz.sfcanl.nemsio``
-  - Three-dimensional atmosphere state ``gfs.tHHz.atmanl.nemsio`` 
+  - Two-dimensional surface variables ``sfc.input.ic.nemsio``
+  - Three-dimensional atmosphere state ``atm.input.ic.nemsio`` 
 
 - **NetCDF**
 
-  - Two-dimensional surface variables ``gfs.tHHz.sfcanl.nc``
-  - Three-dimensional atmosphere state ``gfs.tHHz.atmanl.nc`` 
+  - Two-dimensional surface variables ``sfc.input.ic.nc``
+  - Three-dimensional atmosphere state ``atm.input.ic.nc`` 
  
 - **GRIB2**
 
-  - Surface variables and atmosphere state in 0.5 deg ``gfsanl_4_YYYYMMDD_HH00_000.grb2``
-
-  If the user is initializing from 1.0-degree :term:`GRIB2` format data, which on
-  NCEI website uses the gfs_3_YYYYMMDD_00HH_000.grb2 naming convention, the user
-  needs to change variable ``grib2_file_input_grid`` in the chgres_cube namelist.
-  This is done by editing file ``user_nl_ufsatm``, which resides in the ``$CASEROOT``
-  directory as follows. The example below is for the Dorian case initialized on
-  08-29-2019.
-
-  .. code-block:: console
-
-      !----------------------------------------------------------------------------------
-      ! This file can be used to change namelist options for:
-      ! - Chgres
-      ! - UFS MR-Weather Model
-      ! - NCEP Post
-      !
-      ! Users should add all user-specific namelist changes below in the form of
-      !  namelist_var = new_namelist_value
-      !
-      ! To change the namelist variables that are defined as multiple times under
-      ! different namelist groups
-      !  namelist_var@namelist_group = new_namelist_value
-      !
-      ! Following is the list of namelist variables that need to be accessed by
-      ! specifying the namelist groups:
-      !
-      ! alpha@nam_physics_nml
-      ! alpha@test_case_nml
-      ! avg_max_length@atmos_model_nml
-      ! avg_max_length@gfs_physics_nml
-      ! debug@atmos_model_nml
-      ! debug@gfs_physics_nml
-      ! icliq_sw@gfs_physics_nml
-      ! icliq_sw@nam_physics_nml
-      ! iospec_ieee32@fms_nml
-      ! iospec_ieee32@fms_io_nml
-      ! ntiles@fv_core_nml
-      ! ntiles@nest_nml
-      ! read_all_pe@fms_io_nml
-      ! read_all_pe@fms_nml
-      ! regional@chgres
-      ! regional@fv_core_nml
-      !----------------------------------------------------------------------------------
-      grib2_file_input_grid = gfs_3_20190829_0000_000.grb2
+  - Surface variables and atmosphere state ``atm.input.ic.grb2``
 
 --------------------------
 Default initial conditions
@@ -248,41 +207,15 @@ specify the desired data.  This is done by setting the ``RUN_STARTDATE`` and
 ``START_TOD`` CIME options using ``./xmlchange``.
 
 CIME will look for the following directory containing initial conditions: ``$DIN_LOC_IC/YYMMMM/YYYYMMDD``.
-If the directory is not found, CIME will attempt to retrieve the initial conditions from NOMADS.
 
----------------------------------------------------------
-About the automatic stating of initial conditions by CIME
----------------------------------------------------------
-
-CIME can be used to automatically download GRIB2 initial conditions in 0.5 deg format for the dates
-available in the NOMADS server at `<https://nomads.ncdc.noaa.gov/data/gfs4/>`_.
-NOMADS has GFS 0.5 deg GRIB2 datasets for the last twelve months. The data will be
-retrieved from the server when case.submit command is issued.
-Therefore, if users want to start the model from the 0.5 deg GRIB2 data available through
-NOMADS, the users do not need to stage the data manually.
-
-As part of the process of generating the UFS MR Weather App executable,
-CIME calls the utility **check_input_data** located in each case directory
-to attempt to locate all required input data for the
-case based upon file lists generated by components. If the required
-static data is not found on local disk in ``$DIN_LOC_ROOT`` and raw initial conditions are not found in ``$DIN_LOC_IC``,
-then CIME will attempt to download the data.
-
-----------------------------------------------
-Staging initial conditions manually using CIME
-----------------------------------------------
-
-GRIB2 data available in the NOMADS server can be automatically downloaded by CIME
-when running the case. Conversely, the user can download the data in advance by
-invoking script **check_input_data** with the ``--download`` argument.
+Starting with the v1.1.0 release, the MR Weather App workflow no longer auto-downloads datasets. The data must be present in the centralized location (for preconfigured platforms) or downloaded manually.
 
 ------------------------------------------------
-Staging initial conditions manually without CIME
+Staging initial conditions manually
 ------------------------------------------------
 
-
-If users want to run the UFS MR Weather App with initial conditions other than
-0.5 deg GRIB2 data available through NOMADS, they need to stage the data manually.
+If users want to run the MR Weather App with initial conditions other than
+what is currently available in preconfigured platforms, they need to stage the data manually.
 The data should be placed in ``$DIN_LOC_IC``.
 
 .. note::
@@ -321,24 +254,37 @@ The data should be placed in ``$DIN_LOC_IC``.
          chmod 755 get.sh
          ./get.sh 20191224 12
 
+     After downloading the nemsio files, the downloaded files need to be linked to the names expected by the App:
+
+     .. code-block:: console
+
+         ln -s gfs.t${hh}z.atmanl.nemsio atm.input.ic.nemsio
+         ln -s gfs.t${hh}z.sfcanl.nemsio sfc.input.ic.nemsio
+
      For downloading files in GRIB2 format with 0.5 degree grid spacing, the same code ``get.sh`` can be used except the wget command should be replaced with the following line: 
 
      .. code-block:: console
 
-         wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files/$yyyymmdd/gfs_4_${yyyymmdd}_${hh}00_000.grb2
+         #For current files:
+         wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files/$yyyymmdd/gfsanl_4_${yyyymmdd}_${hh}00_000.grb2
+         #For historic files:
+         wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files-old/$yyyymmdd/gfsanl_4_${yyyymmdd}_${hh}00_000.grb2
 
      For downloading files in GRIB2 format with 1.0 degree grid spacing, the same code ``get.sh`` can be used except the wget command should be replaced with the following line: 
 
 
      .. code-block:: console
 
-         wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files/$yyyymmdd/gfs_3_${yyyymmdd}_${hh}00_000.grb2
+         #For current files:
+         wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files/$yyyymmdd/gfsanl_3_${yyyymmdd}_${hh}00_000.grb2
+         #For historical files:
+         wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files-old/$yyyymmdd/gfsanl_3_${yyyymmdd}_${hh}00_000.grb2
 
-     If the file has 1.0 degree resolution (gfs3 file), the user must link the new file to the name expected by the App. For example, 
+     After downloading the file, the user must link the new file to the name expected by the App. For example, 
 
      .. code-block:: console
 
-         ln -s gfs_3_20190829_0000_000.grb2 gfs_4_20190829_0000_000.grb2
+         ln -s gfsanl_3_20190829_0000_000.grb2 atm.input.ic.grb2
 
      For downloading files in netCDF format, the wget commands in ``get.sh`` need to be changed to:
 
@@ -347,19 +293,24 @@ The data should be placed in ``$DIN_LOC_IC``.
          wget -c https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/$yyyymm/gfs.$yyyymmdd/$hh/gfs.t${hh}z.atmf000.nc
          wget -c https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/$yyyymm/gfs.$yyyymmdd/$hh/gfs.t${hh}z.sfcf000.nc
 
-     Currently, only two sample netCDF files are available for testing at the FTP data repository.
+     Currently, only two sample netCDF files are available for testing at the FTP data repository. Similarly, the downloaded files need to be linked to the names expected by the App. For example,
+
+     .. code-block:: console
+
+         ln -s gfs.t${hh}z.atmf000.nc atm.input.ic.nc
+         ln -s gfs.t${hh}z.sfcf000.nc sfc.input.ic.nc
 
 -------------------
 Order of operations
 -------------------
 
-If you want to download the input data manually, you should do it before you build the UFS MR Weather App.
+If you want to download the input data manually, you should do it before you build the MR Weather App.
 
 -----------------------------------------------
 Coexistence of multiple files for the same date
 -----------------------------------------------
 
-Directory `$DIN_LOC_IC/YYMMMM/YYYYMMDD`` can have both GRIB2 and NEMSIO files for
+Directory `$DIN_LOC_IC/YYMMMM/YYYYMMDD` can have GRIB2, NEMSIO, and netCDF files for
 a given initialization hour and can have files for multiple initialization hours
 (00, 06, 12, and 18 UTC).
 
@@ -370,7 +321,7 @@ and add
 
 .. code-block:: console
 
-    input_type = "gaussian" for NEMSIO
+    input_type = "gaussian_nemsio" for NEMSIO
     input_type = "gaussian_netcdf" for netCDF
 
 ---------------------------------------------------------------

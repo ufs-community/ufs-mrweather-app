@@ -20,7 +20,7 @@ Tests must be named with the following forms, [ ]=optional::
 
 where:
 
-- ``TESTTYPE`` defines the general type of test, e.g. SMS. Following is the list of tests that are supported by `UFS Medium-Range Weather Application <https://github.com/ufs-community/ufs-mrweather-app>`_.
+- ``TESTTYPE`` defines the general type of test, e.g. SMS. Following is the list of tests that are supported by `Medium-Range Weather Application <https://github.com/ufs-community/ufs-mrweather-app>`_.
 
   * SMS: Smoke startup test (default 5 days).
          | Do a 5 day initial test. (file suffix: base)
