@@ -43,7 +43,7 @@ Query list of supported tests
 =============================
 
 **$CIMEROOT/scripts/query_testlists** gathers descriptions of the tests and testlists available
-for CESM, the components, and projects.
+for UFS, the components, and projects.
 
 The ``--xml-{compiler,machine,category,testlist}`` arguments can be used 
 as in create_test (above) to focus the search.
@@ -56,7 +56,7 @@ The available categories, with the tests they encompass, can be listed by::
 The ``--show-options`` argument does the same, but displays the 'options' defined for the tests,
 such as queue, walltime, etc..
 
-Using **create_test** (UFSATM)
+Using **create_test** 
 ==============================
 
 To run a Smoke startup test::
