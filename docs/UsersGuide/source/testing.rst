@@ -4,9 +4,9 @@
 Testing
 =======
 
-There are around 38 test cases available for the regression testing to ensure the system is installed correctly and works fine. The regression testing (RT) also make sure that new code upgrades should not have side effects on the existing functionalities. It ensures that the system still works once the latest code changes are done. The RT can be run on Cheyenne, Orion, and Stampede. There is no preexist baseline and the users need to create the baseline by themselves.
+There are around 38 test cases available for the regression testing to ensure the system is installed correctly and works properly. The regression testing (RT) also make sure that new code upgrades should not have side effects on the existing functionalities. It ensures that the system still works once the latest code changes are done. The RT can be run on Cheyenne, Orion, and Stampede. There is no preexist baseline and the users need to create the baseline by themselves.
 
-`create_test <https://esmci.github.io/cime/versions/ufs_release_v1.1/html/Tools_user/create_test.html>`_ is the tool that is used to do the regression testing.
+`create_test <https://esmci.github.io/cime/versions/ufs_release_v1.1/html/Tools_user/create_test.html>`_ is the CIME tool used to do the regression testing.
 It can be used as an easy way to run a single basic test or an entire suite of tests.  
 `create_test <https://esmci.github.io/cime/versions/ufs_release_v1.1/html/Tools_user/create_test.html>`_ runs a test suite in parallel for improved performance.  
 It is the driver behind the automated nightly testing of cime-driven models.
@@ -102,3 +102,18 @@ To run entire test suite::
 
 This will run entire test suite on specified machine ``MACHINE`` such as Stampede2 and generates the baseline under ``BASELINE_ROOT`` directory with a name of ``GENERATE``. 
 
+Here are the commands to run RT on Cheyenne, Orion, and Stampde::
+
+    For Cheyenne:
+    qcmd -l walltime=3:00:00 -- “export UFS_DRIVER=nems; CIME_MODEL=ufs ./create_test --xml-testlist ../../src/model/FV3/cime/cime_config/testlist.xml --xml-machine cheyenne --workflow ufs-mrweather_wo_post  --xml-category prealpha"
+    For Orion:
+    export UFS_DRIVER=nems; CIME_MODEL=ufs ./create_test --xml-testlist ../../src/model/FV3/cime/cime_config/testlist.xml --xml-machine MACHINE --generate GENERATE --baseline-root BASELINE_ROOT --workflow ufs-mrweather_wo_post --xml-compiler intel --xml-category prealpha
+    For Stampede:
+    export UFS_DRIVER=nems; CIME_MODEL=ufs ./create_test --xml-testlist ../../src/model/FV3/cime/cime_config/testlist.xml --xml-machine stampede2-skx --workflow ufs-mrweather_wo_post -j 4 --walltime 01:00:00 --xml-compiler intel --xml-category prealpha_p1
+    export UFS_DRIVER=nems; CIME_MODEL=ufs ./create_test --xml-testlist ../../src/model/FV3/cime/cime_config/testlist.xml --xml-machine stampede2-skx --workflow ufs-mrweather_wo_post -j 4 --walltime 01:00:00 --xml-compiler intel --xml-category prealpha_p2
+    export UFS_DRIVER=nems; CIME_MODEL=ufs ./create_test --xml-testlist ../../src/model/FV3/cime/cime_config/testlist.xml --xml-machine stampede2-skx --workflow ufs-mrweather_wo_post -j 4 --walltime 01:00:00 --xml-compiler intel --xml-category prealpha_p3 
+
+The running status can be checked by the following command::
+     ./cs.status
+
+Test success is defined as no failures and no jobs left in pending (PEND) state.
