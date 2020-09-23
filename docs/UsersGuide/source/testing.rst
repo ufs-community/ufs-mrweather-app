@@ -115,6 +115,6 @@ Here are the commands to run RT on Cheyenne, Orion, and Stampde::
 
 The running status can be checked by the following command::
 
-     ./cs.status
+    ./cs.status
 
 Test success is defined as no failures and no jobs left in pending (PEND) state.
