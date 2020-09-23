@@ -114,6 +114,7 @@ Here are the commands to run RT on Cheyenne, Orion, and Stampde::
     export UFS_DRIVER=nems; CIME_MODEL=ufs ./create_test --xml-testlist ../../src/model/FV3/cime/cime_config/testlist.xml --xml-machine stampede2-skx --workflow ufs-mrweather_wo_post -j 4 --walltime 01:00:00 --xml-compiler intel --xml-category prealpha_p3 
 
 The running status can be checked by the following command::
+
      ./cs.status
 
 Test success is defined as no failures and no jobs left in pending (PEND) state.
