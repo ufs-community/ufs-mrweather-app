@@ -4,6 +4,8 @@
 Testing
 =======
 
+There are around 38 test cases available for the regression testing to ensure the system is installed correctly and works fine. The regression testing (RT) also make sure that new code upgrades should not have side effects on the existing functionalities. It ensures that the old code still works once the latest code changes are done. The RT can be run on Cheyenne, Orion, and Stampede. There is no preexist baselines and the users need to create the baseline by themselves.
+
 `create_test <https://esmci.github.io/cime/versions/ufs_release_v1.1/html/Tools_user/create_test.html>`_ is the tool that is used to test both CIME and CIME-driven models.
 It can be used as an easy way to run a single basic test or an entire suite of tests.  
 `create_test <https://esmci.github.io/cime/versions/ufs_release_v1.1/html/Tools_user/create_test.html>`_ runs a test suite in parallel for improved performance.  
@@ -11,10 +13,16 @@ It is the driver behind the automated nightly testing of cime-driven models.
 
 More information about CIME testing can be found on `CIME: Testing <https://esmci.github.io/cime/versions/ufs_release_v1.1/html/users_guide/testing.html>`_.
 
+Test requirements
+=================
+In order to run the tests, NCEPLIB and NCEPLIBS-external needs to be installed (see Chapter 5). The libraries have been preinstalled on Cheyenne, but not on Stampede and Orion.
+The input data needed for the tests are staged on preconfigured machine Cheyenne. On Orion and Stampede, data must be acquired from the ftp site and staged on disk (see Chapter 4). Then setting the running environment according to Chapter 2. 
+
+
 Testname syntax
 ===============
 
-Tests must be named with the following forms, [ ]=optional::
+Tests are named with the following forms, [ ]=optional::
 
   TESTTYPE[_MODIFIERS].GRID.COMPSET[.MACHINE_COMPILER][.GROUP-TESTMODS]
 
@@ -93,6 +101,3 @@ To run entire test suite::
 
 This will run entire test suite on specified machine ``MACHINE`` such as Stampede2 and generates the baseline under ``BASELINE_ROOT`` directory with a name of ``GENERATE``. 
 
-.. note::
-
-    The baseline directory for supported platforms is placed under ``$BASELINE_ROOT`` directory. This can be queried using ``./xmlquery -p BASELINE_ROOT`` command once the test is created using ``./create.test`` command.
