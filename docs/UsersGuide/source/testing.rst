@@ -4,9 +4,9 @@
 Testing
 =======
 
-There are around 38 test cases available for the regression testing to ensure the system is installed correctly and works properly. The regression testing (RT) also make sure that new code upgrades should not have side effects on the existing functionalities. It ensures that the system still works once the latest code changes are done. The RT can be run on Cheyenne, Orion, and Stampede. There is no preexist baseline and the users need to create the baseline by themselves.
+There are around 38 test cases available for the regression testing to ensure the system is installed correctly and works properly. The regression testing (RT) also makes sure that new code upgrades should not have side effects on the existing functionalities. It ensures that the system still works once the latest code changes are done. The RT can be run on Cheyenne, Orion, and Stampede. There is no preexist baseline and the users need to create the baseline by themselves.
 
-`create_test <https://esmci.github.io/cime/versions/ufs_release_v1.1/html/Tools_user/create_test.html>`_ is the CIME tool used to do the regression testing.
+`create_test <https://esmci.github.io/cime/versions/ufs_release_v1.1/html/Tools_user/create_test.html>`_ is the CIME tool used to do the RT.
 It can be used as an easy way to run a single basic test or an entire suite of tests.  
 `create_test <https://esmci.github.io/cime/versions/ufs_release_v1.1/html/Tools_user/create_test.html>`_ runs a test suite in parallel for improved performance.  
 It is the driver behind the automated nightly testing of cime-driven models.
