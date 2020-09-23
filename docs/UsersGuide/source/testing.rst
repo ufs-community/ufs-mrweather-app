@@ -4,9 +4,9 @@
 Testing
 =======
 
-There are around 38 test cases available for the regression testing to ensure the system is installed correctly and works fine. The regression testing (RT) also make sure that new code upgrades should not have side effects on the existing functionalities. It ensures that the old code still works once the latest code changes are done. The RT can be run on Cheyenne, Orion, and Stampede. There is no preexist baselines and the users need to create the baseline by themselves.
+There are around 38 test cases available for the regression testing to ensure the system is installed correctly and works fine. The regression testing (RT) also make sure that new code upgrades should not have side effects on the existing functionalities. It ensures that the system still works once the latest code changes are done. The RT can be run on Cheyenne, Orion, and Stampede. There is no preexist baseline and the users need to create the baseline by themselves.
 
-`create_test <https://esmci.github.io/cime/versions/ufs_release_v1.1/html/Tools_user/create_test.html>`_ is the tool that is used to test both CIME and CIME-driven models.
+`create_test <https://esmci.github.io/cime/versions/ufs_release_v1.1/html/Tools_user/create_test.html>`_ is the tool that is used to do the regression testing.
 It can be used as an easy way to run a single basic test or an entire suite of tests.  
 `create_test <https://esmci.github.io/cime/versions/ufs_release_v1.1/html/Tools_user/create_test.html>`_ runs a test suite in parallel for improved performance.  
 It is the driver behind the automated nightly testing of cime-driven models.
@@ -15,8 +15,9 @@ More information about CIME testing can be found on `CIME: Testing <https://esmc
 
 Test requirements
 =================
-In order to run the tests, NCEPLIB and NCEPLIBS-external needs to be installed (see Chapter 5). The libraries have been preinstalled on Cheyenne, but not on Stampede and Orion.
-The input data needed for the tests are staged on preconfigured machine Cheyenne. On Orion and Stampede, data must be acquired from the ftp site and staged on disk (see Chapter 4). Then setting the running environment according to Chapter 2. 
+In order to run the tests, NCEPLIB and NCEPLIBS-external need to be installed (see :numref:`Chapter %s <config_new_platform>` for instructions). These libraries have been preinstalled on Cheyenne, but not on Stampede and Orion.
+
+The input data needed for the tests are staged on preconfigured machine Cheyenne. On Orion and Stampede, data must be acquired from the ftp site and staged on disk (see :numref:`Chapter %s <inputs_and_outputs>`). Then setting the running environment according to :numref:`Chapter %s <quickstart>`. 
 
 
 Testname syntax
