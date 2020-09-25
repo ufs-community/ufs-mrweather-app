@@ -54,87 +54,46 @@ Query list of supported tests
 =============================
 
 **$CIMEROOT/scripts/query_testlists** gathers descriptions of the tests and testlists available
-for UFS, the components, and projects::
+for UFS, the components, and projects. The testlists for Cheyenne:
 
-    cd $SRCROOT/cime/scripts
-    hafs       : SMS_Lh3.C768r.HAFS.orion_intel               
-    hafs       : ERS_Lh11.C768r.HAFS.orion_intel              
     prealpha   : SMS_Lh3.C96.GFSv15p2.cheyenne_intel          
     prealpha   : SMS_Lh3.C96.GFSv15p2.cheyenne_gnu            
-    prealpha   : SMS_Lh3.C96.GFSv15p2.orion_intel             
     prealpha   : SMS_Lh3.C96.GFSv16beta.cheyenne_intel        
     prealpha   : SMS_Lh3.C96.GFSv16beta.cheyenne_gnu          
-    prealpha   : SMS_Lh3.C96.GFSv16beta.orion_intel           
     prealpha   : SMS_Lh3_D.C96.GFSv15p2.cheyenne_intel        
     prealpha   : SMS_Lh3_D.C96.GFSv15p2.cheyenne_gnu          
-    prealpha   : SMS_Lh3_D.C96.GFSv15p2.orion_intel           
     prealpha   : SMS_Lh3_D.C96.GFSv16beta.cheyenne_intel      
     prealpha   : SMS_Lh3_D.C96.GFSv16beta.cheyenne_gnu        
-    prealpha   : SMS_Lh3_D.C96.GFSv16beta.orion_intel         
     prealpha   : ERS_Lh11.C96.GFSv15p2.cheyenne_intel         
     prealpha   : ERS_Lh11.C96.GFSv15p2.cheyenne_gnu           
-    prealpha   : ERS_Lh11.C96.GFSv15p2.orion_intel            
     prealpha   : ERS_Lh11.C96.GFSv16beta.cheyenne_intel       
     prealpha   : ERS_Lh11.C96.GFSv16beta.cheyenne_gnu         
-    prealpha   : ERS_Lh11.C96.GFSv16beta.orion_intel          
     prealpha   : PET_Lh11.C96.GFSv15p2.cheyenne_intel         
     prealpha   : PET_Lh11.C96.GFSv15p2.cheyenne_gnu           
-    prealpha   : PET_Lh11.C96.GFSv15p2.orion_intel            
     prealpha   : SMS_Lh3.C192.GFSv15p2.cheyenne_intel         
     prealpha   : SMS_Lh3.C192.GFSv15p2.cheyenne_gnu           
-    prealpha   : SMS_Lh3.C192.GFSv15p2.orion_intel            
     prealpha   : SMS_Lh3.C192.GFSv16beta.cheyenne_intel       
     prealpha   : SMS_Lh3.C192.GFSv16beta.cheyenne_gnu         
-    prealpha   : SMS_Lh3.C192.GFSv16beta.orion_intel          
     prealpha   : SMS_Lh3_D.C192.GFSv15p2.cheyenne_intel       
     prealpha   : SMS_Lh3_D.C192.GFSv15p2.cheyenne_gnu         
-    prealpha   : SMS_Lh3_D.C192.GFSv15p2.orion_intel          
     prealpha   : SMS_Lh3_D.C192.GFSv16beta.cheyenne_intel     
     prealpha   : SMS_Lh3_D.C192.GFSv16beta.cheyenne_gnu       
-    prealpha   : SMS_Lh3_D.C192.GFSv16beta.orion_intel        
     prealpha   : SMS_Lh3.C384.GFSv15p2.cheyenne_intel         
     prealpha   : SMS_Lh3.C384.GFSv15p2.cheyenne_gnu           
-    prealpha   : SMS_Lh3.C384.GFSv15p2.orion_intel            
     prealpha   : SMS_Lh3.C384.GFSv16beta.cheyenne_intel       
     prealpha   : SMS_Lh3.C384.GFSv16beta.cheyenne_gnu         
-    prealpha   : SMS_Lh3.C384.GFSv16beta.orion_intel          
     prealpha   : SMS_Lh3_D.C384.GFSv15p2.cheyenne_intel       
     prealpha   : SMS_Lh3_D.C384.GFSv15p2.cheyenne_gnu         
-    prealpha   : SMS_Lh3_D.C384.GFSv15p2.orion_intel          
     prealpha   : SMS_Lh3_D.C384.GFSv16beta.cheyenne_intel     
     prealpha   : SMS_Lh3_D.C384.GFSv16beta.cheyenne_gnu       
-    prealpha   : SMS_Lh3_D.C384.GFSv16beta.orion_intel        
     prealpha   : SMS_Lh3.C768.GFSv15p2.cheyenne_intel         
     prealpha   : SMS_Lh3.C768.GFSv15p2.cheyenne_gnu           
-    prealpha   : SMS_Lh3.C768.GFSv15p2.orion_intel            
     prealpha   : SMS_Lh3.C768.GFSv16beta.cheyenne_intel       
     prealpha   : SMS_Lh3.C768.GFSv16beta.cheyenne_gnu         
-    prealpha   : SMS_Lh3.C768.GFSv16beta.orion_intel          
     prealpha   : SMS_Lh3_D.C768.GFSv15p2.cheyenne_intel       
     prealpha   : SMS_Lh3_D.C768.GFSv15p2.cheyenne_gnu         
-    prealpha   : SMS_Lh3_D.C768.GFSv15p2.orion_intel          
     prealpha   : SMS_Lh3_D.C768.GFSv16beta.cheyenne_intel     
     prealpha   : SMS_Lh3_D.C768.GFSv16beta.cheyenne_gnu       
-    prealpha   : SMS_Lh3_D.C768.GFSv16beta.orion_intel        
-    prealpha_p1: SMS_Lh3.C96.GFSv15p2.stampede2-skx_intel     
-    prealpha_p1: SMS_Lh3.C96.GFSv16beta.stampede2-skx_intel   
-    prealpha_p1: SMS_Lh3_D.C96.GFSv15p2.stampede2-skx_intel   
-    prealpha_p1: SMS_Lh3_D.C96.GFSv16beta.stampede2-skx_intel 
-    prealpha_p1: ERS_Lh11.C96.GFSv15p2.stampede2-skx_intel    
-    prealpha_p1: ERS_Lh11.C96.GFSv16beta.stampede2-skx_intel  
-    prealpha_p2: PET_Lh11.C96.GFSv15p2.stampede2-skx_intel    
-    prealpha_p2: SMS_Lh3.C192.GFSv15p2.stampede2-skx_intel    
-    prealpha_p2: SMS_Lh3.C192.GFSv16beta.stampede2-skx_intel  
-    prealpha_p2: SMS_Lh3_D.C192.GFSv15p2.stampede2-skx_intel  
-    prealpha_p2: SMS_Lh3_D.C192.GFSv16beta.stampede2-skx_intel
-    prealpha_p2: SMS_Lh3.C384.GFSv15p2.stampede2-skx_intel    
-    prealpha_p3: SMS_Lh3.C384.GFSv16beta.stampede2-skx_intel  
-    prealpha_p3: SMS_Lh3_D.C384.GFSv15p2.stampede2-skx_intel  
-    prealpha_p3: SMS_Lh3_D.C384.GFSv16beta.stampede2-skx_intel
-    prealpha_p3: SMS_Lh3.C768.GFSv15p2.stampede2-skx_intel    
-    prealpha_p3: SMS_Lh3.C768.GFSv16beta.stampede2-skx_intel  
-    prealpha_p3: SMS_Lh3_D.C768.GFSv15p2.stampede2-skx_intel  
-    prealpha_p3: SMS_Lh3_D.C768.GFSv16beta.stampede2-skx_intel
 
 The ``--xml-{compiler,machine,category,testlist}`` arguments can be used 
 as in create_test (above) to focus the search.
