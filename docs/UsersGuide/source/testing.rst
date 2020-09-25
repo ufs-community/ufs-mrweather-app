@@ -6,7 +6,7 @@ Testing
 
 There are several tests available as part of the regression testing suite to ensure the system is installed correctly and works properly. The regression test also confirms that code upgrades do not have side effects on existing functionalities and ensures that the system still works after code changes are made. The regression test can only be run on Cheyenne, Orion, and Stampede. 
 
-Pre-existing baselines are not provided for this App. Users can run the tests without using a baseline (just to certify that the tests run to completeion) or create their own baseline (to compare future runs against).
+Pre-existing baselines are not provided for this App. Users can run the tests without using a baseline (just to certify that the tests run to completion) or create their own baseline (to compare future runs against).
 
 `create_test <https://esmci.github.io/cime/versions/ufs_release_v1.1/html/Tools_user/create_test.html>`_ is the CIME tool used to execute the regression tests.
 It can be used as an easy way to run a single basic test or an entire suite of tests.  
@@ -67,7 +67,7 @@ Query list of supported tests
 =============================
 
 **$CIMEROOT/scripts/query_testlists** gathers descriptions of the tests and testlists available
-for UFS, the components, and projects. The available testlists for Cheyenne: ::
+for UFS, the components, and projects. The available tests for Cheyenne: ::
 
     prealpha   : SMS_Lh3.C96.GFSv15p2.cheyenne_intel          
     prealpha   : SMS_Lh3.C96.GFSv15p2.cheyenne_gnu            
@@ -107,6 +107,8 @@ for UFS, the components, and projects. The available testlists for Cheyenne: ::
     prealpha   : SMS_Lh3_D.C768.GFSv15p2.cheyenne_gnu         
     prealpha   : SMS_Lh3_D.C768.GFSv16beta.cheyenne_intel     
     prealpha   : SMS_Lh3_D.C768.GFSv16beta.cheyenne_gnu       
+
+The results indicate that there are tests available on Cheyenne for two compilers (Intel and GNU). Furthermore, the results indicate that all tests are part of a ``testlist`` called prealpha. ``Testlists`` are lists that aggregate a number of tests under a single umbrella. All tests contained in a ``testlist`` can be run with single command when the ``testlist`` is passed as an argument to the create_test command.
 
 The ``--xml-{compiler,machine,category,testlist}`` arguments can be used 
 as in create_test (above) to focus the search.
