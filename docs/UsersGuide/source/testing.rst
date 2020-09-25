@@ -27,7 +27,7 @@ The code must have been downloaded before the regression tests can be run. This 
     cd my_ufs_sandbox
     ./manage_externals/checkout_externals
 
-The input data required for the tests needs to be on disk before the tests are submitted. It is already staged on Cheyenne since it is a preconfigured platform. On Orion and Stampede, data must be acquired from the ftp site and staged on disk before proceeding with the test. The instructions below provide quick information on how to stage data on disk (for complete information, users should refer to :numref:`Chapter %s <inputs_and_outputs>). ::
+The input data required for the tests needs to be on disk before the tests are submitted. It is already staged on Cheyenne since it is a preconfigured platform. On Orion and Stampede, data must be acquired from the ftp site and staged on disk before proceeding with the test. The instructions below provide quick information on how to stage data on disk (for complete information, users should refer to :numref:`Chapter %s <inputs_and_outputs>`). ::
 
     mkdir -p $myUFS_INPUT/ufs_inputdata/icfiles/201908/20190829  # Create subdirectory for raw ICs
     cd $myUFS_INPUT/ufs_inputdata/icfiles/201908/20190829
