@@ -4,9 +4,11 @@
 Testing
 =======
 
-There are around 38 test cases available for the regression testing to ensure the system is installed correctly and works properly. The regression testing (RT) also makes sure that new code upgrades should not have side effects on the existing functionalities. It ensures that the system still works once the latest code changes are done. The RT can be run on Cheyenne, Orion, and Stampede. There is no preexist baseline and the users need to create the baseline by themselves.
+There are several tests available as part of the regression testing suite to ensure the system is installed correctly and works properly. The regression test also confirms that code upgrades do not have side effects on existing functionalities and ensures that the system still works after code changes are made. The regression test can only be run on Cheyenne, Orion, and Stampede. 
 
-`create_test <https://esmci.github.io/cime/versions/ufs_release_v1.1/html/Tools_user/create_test.html>`_ is the CIME tool used to do the RT.
+Pre-existing baselines are not provided for this App. Users can run the tests without using a baseline (just to certify that the tests run to completeion) or create their own baseline (to compare future runs against).
+
+`create_test <https://esmci.github.io/cime/versions/ufs_release_v1.1/html/Tools_user/create_test.html>`_ is the CIME tool used to execute the regression tests.
 It can be used as an easy way to run a single basic test or an entire suite of tests.  
 `create_test <https://esmci.github.io/cime/versions/ufs_release_v1.1/html/Tools_user/create_test.html>`_ runs a test suite in parallel for improved performance.  
 It is the driver behind the automated nightly testing of cime-driven models.
@@ -15,9 +17,9 @@ More information about CIME testing can be found on `CIME: Testing <https://esmc
 
 Test requirements
 =================
-In order to run the tests, NCEPLIB and NCEPLIBS-external need to be installed (see :numref:`Chapter %s <config_new_platform>` for instructions). These libraries have been preinstalled on Cheyenne, but not on Stampede and Orion.
+In order to run the tests, NCEPLIBS and NCEPLIBS-external need to be installed (see :numref:`Chapter %s <config_new_platform>` for instructions). These libraries have been preinstalled on Cheyenne, but not on Stampede and Orion.
 
-The input data needed for the tests are staged on preconfigured machine Cheyenne. On Orion and Stampede, data must be acquired from the ftp site and staged on disk (see :numref:`Chapter %s <inputs_and_outputs>`). Then setting the running environment according to :numref:`Chapter %s <quickstart>`. 
+The input data needed for the tests need to be on disk before the tests are submitted. It is already staged on Cheyenne since it is a preconfigured platform. On Orion and Stampede, data must be acquired from the ftp site and staged on disk (see :numref:`Chapter %s <inputs_and_outputs>`) before proceeding with the test. Then setting the running environment according to :numref:`Chapter %s <quickstart>`. 
 
 
 Testname syntax
@@ -52,7 +54,87 @@ Query list of supported tests
 =============================
 
 **$CIMEROOT/scripts/query_testlists** gathers descriptions of the tests and testlists available
-for UFS, the components, and projects.
+for UFS, the components, and projects::
+
+    cd $SRCROOT/cime/scripts
+    hafs       : SMS_Lh3.C768r.HAFS.orion_intel               
+    hafs       : ERS_Lh11.C768r.HAFS.orion_intel              
+    prealpha   : SMS_Lh3.C96.GFSv15p2.cheyenne_intel          
+    prealpha   : SMS_Lh3.C96.GFSv15p2.cheyenne_gnu            
+    prealpha   : SMS_Lh3.C96.GFSv15p2.orion_intel             
+    prealpha   : SMS_Lh3.C96.GFSv16beta.cheyenne_intel        
+    prealpha   : SMS_Lh3.C96.GFSv16beta.cheyenne_gnu          
+    prealpha   : SMS_Lh3.C96.GFSv16beta.orion_intel           
+    prealpha   : SMS_Lh3_D.C96.GFSv15p2.cheyenne_intel        
+    prealpha   : SMS_Lh3_D.C96.GFSv15p2.cheyenne_gnu          
+    prealpha   : SMS_Lh3_D.C96.GFSv15p2.orion_intel           
+    prealpha   : SMS_Lh3_D.C96.GFSv16beta.cheyenne_intel      
+    prealpha   : SMS_Lh3_D.C96.GFSv16beta.cheyenne_gnu        
+    prealpha   : SMS_Lh3_D.C96.GFSv16beta.orion_intel         
+    prealpha   : ERS_Lh11.C96.GFSv15p2.cheyenne_intel         
+    prealpha   : ERS_Lh11.C96.GFSv15p2.cheyenne_gnu           
+    prealpha   : ERS_Lh11.C96.GFSv15p2.orion_intel            
+    prealpha   : ERS_Lh11.C96.GFSv16beta.cheyenne_intel       
+    prealpha   : ERS_Lh11.C96.GFSv16beta.cheyenne_gnu         
+    prealpha   : ERS_Lh11.C96.GFSv16beta.orion_intel          
+    prealpha   : PET_Lh11.C96.GFSv15p2.cheyenne_intel         
+    prealpha   : PET_Lh11.C96.GFSv15p2.cheyenne_gnu           
+    prealpha   : PET_Lh11.C96.GFSv15p2.orion_intel            
+    prealpha   : SMS_Lh3.C192.GFSv15p2.cheyenne_intel         
+    prealpha   : SMS_Lh3.C192.GFSv15p2.cheyenne_gnu           
+    prealpha   : SMS_Lh3.C192.GFSv15p2.orion_intel            
+    prealpha   : SMS_Lh3.C192.GFSv16beta.cheyenne_intel       
+    prealpha   : SMS_Lh3.C192.GFSv16beta.cheyenne_gnu         
+    prealpha   : SMS_Lh3.C192.GFSv16beta.orion_intel          
+    prealpha   : SMS_Lh3_D.C192.GFSv15p2.cheyenne_intel       
+    prealpha   : SMS_Lh3_D.C192.GFSv15p2.cheyenne_gnu         
+    prealpha   : SMS_Lh3_D.C192.GFSv15p2.orion_intel          
+    prealpha   : SMS_Lh3_D.C192.GFSv16beta.cheyenne_intel     
+    prealpha   : SMS_Lh3_D.C192.GFSv16beta.cheyenne_gnu       
+    prealpha   : SMS_Lh3_D.C192.GFSv16beta.orion_intel        
+    prealpha   : SMS_Lh3.C384.GFSv15p2.cheyenne_intel         
+    prealpha   : SMS_Lh3.C384.GFSv15p2.cheyenne_gnu           
+    prealpha   : SMS_Lh3.C384.GFSv15p2.orion_intel            
+    prealpha   : SMS_Lh3.C384.GFSv16beta.cheyenne_intel       
+    prealpha   : SMS_Lh3.C384.GFSv16beta.cheyenne_gnu         
+    prealpha   : SMS_Lh3.C384.GFSv16beta.orion_intel          
+    prealpha   : SMS_Lh3_D.C384.GFSv15p2.cheyenne_intel       
+    prealpha   : SMS_Lh3_D.C384.GFSv15p2.cheyenne_gnu         
+    prealpha   : SMS_Lh3_D.C384.GFSv15p2.orion_intel          
+    prealpha   : SMS_Lh3_D.C384.GFSv16beta.cheyenne_intel     
+    prealpha   : SMS_Lh3_D.C384.GFSv16beta.cheyenne_gnu       
+    prealpha   : SMS_Lh3_D.C384.GFSv16beta.orion_intel        
+    prealpha   : SMS_Lh3.C768.GFSv15p2.cheyenne_intel         
+    prealpha   : SMS_Lh3.C768.GFSv15p2.cheyenne_gnu           
+    prealpha   : SMS_Lh3.C768.GFSv15p2.orion_intel            
+    prealpha   : SMS_Lh3.C768.GFSv16beta.cheyenne_intel       
+    prealpha   : SMS_Lh3.C768.GFSv16beta.cheyenne_gnu         
+    prealpha   : SMS_Lh3.C768.GFSv16beta.orion_intel          
+    prealpha   : SMS_Lh3_D.C768.GFSv15p2.cheyenne_intel       
+    prealpha   : SMS_Lh3_D.C768.GFSv15p2.cheyenne_gnu         
+    prealpha   : SMS_Lh3_D.C768.GFSv15p2.orion_intel          
+    prealpha   : SMS_Lh3_D.C768.GFSv16beta.cheyenne_intel     
+    prealpha   : SMS_Lh3_D.C768.GFSv16beta.cheyenne_gnu       
+    prealpha   : SMS_Lh3_D.C768.GFSv16beta.orion_intel        
+    prealpha_p1: SMS_Lh3.C96.GFSv15p2.stampede2-skx_intel     
+    prealpha_p1: SMS_Lh3.C96.GFSv16beta.stampede2-skx_intel   
+    prealpha_p1: SMS_Lh3_D.C96.GFSv15p2.stampede2-skx_intel   
+    prealpha_p1: SMS_Lh3_D.C96.GFSv16beta.stampede2-skx_intel 
+    prealpha_p1: ERS_Lh11.C96.GFSv15p2.stampede2-skx_intel    
+    prealpha_p1: ERS_Lh11.C96.GFSv16beta.stampede2-skx_intel  
+    prealpha_p2: PET_Lh11.C96.GFSv15p2.stampede2-skx_intel    
+    prealpha_p2: SMS_Lh3.C192.GFSv15p2.stampede2-skx_intel    
+    prealpha_p2: SMS_Lh3.C192.GFSv16beta.stampede2-skx_intel  
+    prealpha_p2: SMS_Lh3_D.C192.GFSv15p2.stampede2-skx_intel  
+    prealpha_p2: SMS_Lh3_D.C192.GFSv16beta.stampede2-skx_intel
+    prealpha_p2: SMS_Lh3.C384.GFSv15p2.stampede2-skx_intel    
+    prealpha_p3: SMS_Lh3.C384.GFSv16beta.stampede2-skx_intel  
+    prealpha_p3: SMS_Lh3_D.C384.GFSv15p2.stampede2-skx_intel  
+    prealpha_p3: SMS_Lh3_D.C384.GFSv16beta.stampede2-skx_intel
+    prealpha_p3: SMS_Lh3.C768.GFSv15p2.stampede2-skx_intel    
+    prealpha_p3: SMS_Lh3.C768.GFSv16beta.stampede2-skx_intel  
+    prealpha_p3: SMS_Lh3_D.C768.GFSv15p2.stampede2-skx_intel  
+    prealpha_p3: SMS_Lh3_D.C768.GFSv16beta.stampede2-skx_intel
 
 The ``--xml-{compiler,machine,category,testlist}`` arguments can be used 
 as in create_test (above) to focus the search.
@@ -68,7 +150,7 @@ such as queue, walltime, etc..
 Using **create_test** 
 ==============================
 
-To run a Smoke startup test::
+To run a SMS test::
 
     cd $SRCROOT/cime/scripts
     ./create_test SMS_D_Lh5.C96.GFSv15p2 --workflow ufs-mrweather_wo_post --test-id try
@@ -102,7 +184,7 @@ To run entire test suite::
 
 This will run entire test suite on specified machine ``MACHINE`` such as Stampede2 and generates the baseline under ``BASELINE_ROOT`` directory with a name of ``GENERATE``. 
 
-Here are the commands to run RT on Cheyenne, Orion, and Stampde::
+The commands to run the regression test on Cheyenne, Orion, and Stampede are below. You must replace the compute projects listed (using variable ``PROJECT``) to a project you can use to run the tests. ::
 
     For Cheyenne:
     qcmd -l walltime=3:00:00 -- “export UFS_DRIVER=nems; CIME_MODEL=ufs; PROJECT=p48503002 ./create_test --xml-testlist ../../src/model/FV3/cime/cime_config/testlist.xml --xml-machine cheyenne --workflow ufs-mrweather_wo_post  --xml-category prealpha"
