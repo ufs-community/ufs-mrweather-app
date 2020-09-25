@@ -149,7 +149,7 @@ The commands to run the regression test on Cheyenne, Orion, and Stampede are bel
     qcmd -l walltime=3:00:00 -- “export UFS_DRIVER=nems; CIME_MODEL=ufs; PROJECT=p48503002 ./create_test --xml-testlist ../../src/model/FV3/cime/cime_config/testlist.xml --xml-machine cheyenne --workflow ufs-mrweather_wo_post  --xml-category prealpha"
     For Orion:
     export UFS_DRIVER=nems; CIME_MODEL=ufs; PROJECT=gmtb ./create_test --xml-testlist ../../src/model/FV3/cime/cime_config/testlist.xml --xml-machine orion --generate GENERATE --baseline-root BASELINE_ROOT --workflow ufs-mrweather_wo_post --xml-compiler intel --xml-category prealpha
-    For Stampede:
+    For Stampede, Tests must be run in three separate parts because there is a limit on how many jobs can be submitted to the queue at once. After the first set of tests is completed, launch the second set. After the second set of tests is completed, launch the third set:
     export UFS_DRIVER=nems; CIME_MODEL=ufs; PROJECT=tg854445 ./create_test --xml-testlist ../../src/model/FV3/cime/cime_config/testlist.xml --xml-machine stampede2-skx --workflow ufs-mrweather_wo_post -j 4 --walltime 01:00:00 --xml-compiler intel --xml-category prealpha_p1
     export UFS_DRIVER=nems; CIME_MODEL=ufs; PROJECT=tg854445 ./create_test --xml-testlist ../../src/model/FV3/cime/cime_config/testlist.xml --xml-machine stampede2-skx --workflow ufs-mrweather_wo_post -j 4 --walltime 01:00:00 --xml-compiler intel --xml-category prealpha_p2
     export UFS_DRIVER=nems; CIME_MODEL=ufs; PROJECT=tg854445 ./create_test --xml-testlist ../../src/model/FV3/cime/cime_config/testlist.xml --xml-machine stampede2-skx --workflow ufs-mrweather_wo_post -j 4 --walltime 01:00:00 --xml-compiler intel --xml-category prealpha_p3 
