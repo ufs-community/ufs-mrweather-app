@@ -17,9 +17,22 @@ More information about CIME testing can be found on `CIME: Testing <https://esmc
 
 Test requirements
 =================
+
 In order to run the tests, NCEPLIBS and NCEPLIBS-external need to be installed (see :numref:`Chapter %s <config_new_platform>` for instructions). These libraries have been preinstalled on Cheyenne, but not on Stampede and Orion.
 
-The input data needed for the tests needs to be on disk before the tests are submitted. It is already staged on Cheyenne since it is a preconfigured platform. On Orion and Stampede, data must be acquired from the ftp site and staged on disk (see :numref:`Chapter %s <inputs_and_outputs>`) before proceeding with the test. Then setting the running environment according to :numref:`Chapter %s <quickstart>`. 
+The code must have been downloaded before the regression tests can be run. This can be done with the following commands: ::
+
+    mkdir -p $myUFS_INPUT/ufs_inputdata/icfiles/201908/20190829  # Create subdirectory for raw ICs
+    git clone https://github.com/ufs-community/ufs-mrweather-app.git -b ufs-v1.1.0 my_ufs_sandbox
+    cd my_ufs_sandbox
+    ./manage_externals/checkout_externals
+
+The input data required for the tests needs to be on disk before the tests are submitted. It is already staged on Cheyenne since it is a preconfigured platform. On Orion and Stampede, data must be acquired from the ftp site and staged on disk before proceeding with the test. The instructions below provide quick information on how to stage data on disk (for complete information, users should refer to :numref:`Chapter %s <inputs_and_outputs>). ::
+
+    mkdir -p $myUFS_INPUT/ufs_inputdata/icfiles/201908/20190829  # Create subdirectory for raw ICs
+    cd $myUFS_INPUT/ufs_inputdata/icfiles/201908/20190829
+    wget https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/201908/20190829/gfs_4_20190829_0000_000.grb2
+    ln -s gfs_4_20190829_0000_000.grb2 atm.input.ic.grb2 # Link raw ICs to expected name
 
 
 Testname syntax
