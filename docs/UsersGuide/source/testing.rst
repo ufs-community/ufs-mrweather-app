@@ -19,7 +19,7 @@ Test requirements
 =================
 In order to run the tests, NCEPLIBS and NCEPLIBS-external need to be installed (see :numref:`Chapter %s <config_new_platform>` for instructions). These libraries have been preinstalled on Cheyenne, but not on Stampede and Orion.
 
-The input data needed for the tests need to be on disk before the tests are submitted. It is already staged on Cheyenne since it is a preconfigured platform. On Orion and Stampede, data must be acquired from the ftp site and staged on disk (see :numref:`Chapter %s <inputs_and_outputs>`) before proceeding with the test. Then setting the running environment according to :numref:`Chapter %s <quickstart>`. 
+The input data needed for the tests needs to be on disk before the tests are submitted. It is already staged on Cheyenne since it is a preconfigured platform. On Orion and Stampede, data must be acquired from the ftp site and staged on disk (see :numref:`Chapter %s <inputs_and_outputs>`) before proceeding with the test. Then setting the running environment according to :numref:`Chapter %s <quickstart>`. 
 
 
 Testname syntax
