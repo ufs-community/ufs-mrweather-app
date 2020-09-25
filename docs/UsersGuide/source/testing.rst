@@ -54,7 +54,7 @@ Query list of supported tests
 =============================
 
 **$CIMEROOT/scripts/query_testlists** gathers descriptions of the tests and testlists available
-for UFS, the components, and projects. The testlists for Cheyenne:
+for UFS, the components, and projects. The testlists for Cheyenne: ::
 
     prealpha   : SMS_Lh3.C96.GFSv15p2.cheyenne_intel          
     prealpha   : SMS_Lh3.C96.GFSv15p2.cheyenne_gnu            
