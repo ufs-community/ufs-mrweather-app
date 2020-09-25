@@ -167,13 +167,15 @@ To run entire test suite::
 
 This will run entire test suite on specified machine ``MACHINE`` such as Stampede2 and generates the baseline under ``BASELINE_ROOT`` directory with a name of ``GENERATE``. 
 
-The commands to run the regression test on Cheyenne, Orion, and Stampede are below. You must replace the compute projects listed (using variable ``PROJECT``) to a project you can use to run the tests. ::
+The commands to run the regression test on Cheyenne, Orion, and Stampede are below. You must replace the compute projects listed (using variable ``PROJECT``) to a project you can use to run the tests. 
 
-    For Cheyenne:
+For Cheyenne: ::
     qcmd -l walltime=3:00:00 -- “export UFS_DRIVER=nems; CIME_MODEL=ufs; PROJECT=p48503002 ./create_test --xml-testlist ../../src/model/FV3/cime/cime_config/testlist.xml --xml-machine cheyenne --workflow ufs-mrweather_wo_post  --xml-category prealpha"
-    For Orion:
+
+For Orion: ::
     export UFS_DRIVER=nems; CIME_MODEL=ufs; PROJECT=gmtb ./create_test --xml-testlist ../../src/model/FV3/cime/cime_config/testlist.xml --xml-machine orion --generate GENERATE --baseline-root BASELINE_ROOT --workflow ufs-mrweather_wo_post --xml-compiler intel --xml-category prealpha
-    For Stampede, tests must be run in three separate parts because there is a limit on how many jobs can be submitted to the queue at once. The next set tests can only be submitted after the first set tests are completed: 
+
+On Stampede it is necessary to submit the tests divided in three ``testlists`` (`prealpha_p1`, `pre_alpha_p2`, and `prealpha_p3`) because there is a limit to the number of jobs a user can have in the queue at a given time. Users should submit each set of tests separately, and wait for all tests to finish before submitting the next set: ::
     export UFS_DRIVER=nems; CIME_MODEL=ufs; PROJECT=tg854445 ./create_test --xml-testlist ../../src/model/FV3/cime/cime_config/testlist.xml --xml-machine stampede2-skx --workflow ufs-mrweather_wo_post -j 4 --walltime 01:00:00 --xml-compiler intel --xml-category prealpha_p1
     export UFS_DRIVER=nems; CIME_MODEL=ufs; PROJECT=tg854445 ./create_test --xml-testlist ../../src/model/FV3/cime/cime_config/testlist.xml --xml-machine stampede2-skx --workflow ufs-mrweather_wo_post -j 4 --walltime 01:00:00 --xml-compiler intel --xml-category prealpha_p2
     export UFS_DRIVER=nems; CIME_MODEL=ufs; PROJECT=tg854445 ./create_test --xml-testlist ../../src/model/FV3/cime/cime_config/testlist.xml --xml-machine stampede2-skx --workflow ufs-mrweather_wo_post -j 4 --walltime 01:00:00 --xml-compiler intel --xml-category prealpha_p3 
