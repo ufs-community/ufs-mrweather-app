@@ -29,11 +29,11 @@ The code must have been downloaded before the regression tests can be run. This 
 
 Several environment variables need to be set before running the regression tests. The instructions below provide quick information on how to set up the environment variables (for complete information, users should refer to :numref:`Chapter %s <quickstart>`). ::
 
-    export myUFS_INPUT=my_directory	# Directory for staging input datasets
+    export myUFS_INPUT=my_directory	 # Directory for staging input datasets
     export UFS_SCRATCH=my_scratch_space  # Directory for output files
-    export PROJECT=your_compute_project 	# Project you can use to conduct runs in your platform
-    export UFS_DRIVER=nems		# Do not change
-    export CIME_MODEL=ufs			# Do not change
+    export PROJECT=your_compute_project  # Project you can use to conduct runs in your platform
+    export UFS_DRIVER=nems		 # Do not change
+    export CIME_MODEL=ufs		 # Do not change
 
 
 The input data required for the tests needs to be on disk before the tests are submitted. It is already staged on Cheyenne since it is a preconfigured platform. On Orion and Stampede, data must be acquired from the ftp site and staged on disk before proceeding with the test. The instructions below provide quick information on how to stage data on disk (for complete information, users should refer to :numref:`Chapter %s <inputs_and_outputs>`). ::
