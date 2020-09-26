@@ -167,9 +167,7 @@ To run entire test suite::
 
 This will run entire test suite on specified machine ``MACHINE`` such as Stampede2 and generates the baseline under ``BASELINE_ROOT`` directory with a name of ``GENERATE``. 
 
-The commands to run the regression test on Cheyenne, Orion, and Stampede are below. You must replace the compute projects listed (using variable ``PROJECT``) to a project you can use to run the tests. 
-
-For Cheyenne: ::
+The commands to run the regression test on Cheyenne, Orion, and Stampede are below. You must replace the compute projects listed (using variable ``PROJECT``) to a project you can use to run the tests. For Cheyenne: ::
 
     qcmd -l walltime=3:00:00 -- “export UFS_DRIVER=nems; CIME_MODEL=ufs; PROJECT=p48503002 ./create_test --xml-testlist ../../src/model/FV3/cime/cime_config/testlist.xml --xml-machine cheyenne --workflow ufs-mrweather_wo_post  --xml-category prealpha"
 
