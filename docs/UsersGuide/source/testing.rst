@@ -175,7 +175,7 @@ For Orion: ::
 
     export UFS_DRIVER=nems; CIME_MODEL=ufs; PROJECT=gmtb ./create_test --xml-testlist ../../src/model/FV3/cime/cime_config/testlist.xml --xml-machine orion --generate GENERATE --baseline-root BASELINE_ROOT --workflow ufs-mrweather_wo_post --xml-compiler intel --xml-category prealpha
 
-On Stampede it is necessary to submit the tests divided in three ``testlists`` (`prealpha_p1`, `pre_alpha_p2`, and `prealpha_p3`) because there is a limit to the number of jobs a user can have in the queue at a given time. Users should submit each set of tests separately, and wait for all tests to finish before submitting the next set: ::
+On Stampede, it is necessary to submit the tests divided in three ``testlists`` (`prealpha_p1`, `pre_alpha_p2`, and `prealpha_p3`) because there is a limit to the number of jobs a user can have in the queue at a given time. Users should submit each set of tests separately, and wait for all tests to finish before submitting the next set: ::
 
     export UFS_DRIVER=nems; CIME_MODEL=ufs; PROJECT=tg854445 ./create_test --xml-testlist ../../src/model/FV3/cime/cime_config/testlist.xml --xml-machine stampede2-skx --workflow ufs-mrweather_wo_post -j 4 --walltime 01:00:00 --xml-compiler intel --xml-category prealpha_p1
     export UFS_DRIVER=nems; CIME_MODEL=ufs; PROJECT=tg854445 ./create_test --xml-testlist ../../src/model/FV3/cime/cime_config/testlist.xml --xml-machine stampede2-skx --workflow ufs-mrweather_wo_post -j 4 --walltime 01:00:00 --xml-compiler intel --xml-category prealpha_p2
