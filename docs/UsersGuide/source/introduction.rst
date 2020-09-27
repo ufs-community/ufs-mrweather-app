@@ -75,7 +75,7 @@ physical parameterization to forecast the temporal variation in SST due to the
 diurnal cycle.
 
 A scientific description of the CCPP parameterizations and suites can be found in the
-`CCPP Scientific Documentation <https://dtcenter.org/GMTB/v4.0/sci_doc>`_, and
+`CCPP Scientific Documentation <https://dtcenter.org/GMTB/v4.1/sci_doc>`_, and
 CCPP technical aspects are described in the `CCPP Technical Documentation <https://ccpp-techdoc.readthedocs.io/en/v4.1.0/>`_.
 The model namelists for the physics suites differ in ways that go beyond
 the physics to optimize various aspects of the model for use with each of the
@@ -193,10 +193,10 @@ the distributed documentation, summarized here for ease of use.
    +----------------------------+---------------------------------------------------------------------------------+
    | FV3 Documentation          | https://noaa-emc.github.io/FV3_Dycore_ufs-v1.1.0/html/index.html                |
    +----------------------------+---------------------------------------------------------------------------------+
-   | CCPP Scientific            | https://dtcenter.org/GMTB/v4.0/sci_doc                                          |
+   | CCPP Scientific            | https://dtcenter.org/GMTB/v4.1.0/sci_doc                                          |
    | Documentation              |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | CCPP Technical             | https://ccpp-techdoc.readthedocs.io/en/v4.0                                     |
+   | CCPP Technical             | https://ccpp-techdoc.readthedocs.io/en/v4.1.0                                     |
    | Documentation              |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
    | Stochastic Physics         | https://stochastic-physics.readthedocs.io/en/ufs-v1.1.0                         |
@@ -241,8 +241,8 @@ building and running the MR Weather Application.
 
 If you are a new user, we recommend reading the first few sections of
 the `CIME`_ documentation which is written so that, as much as
-possible, individual sections stand on their own and the `CIME`_
-documentation guide can be scanned and sections read in a relatively
+possible, individual sections stand on their own. The `CIME`_
+documentation can be scanned and sections read in a relatively
 ad hoc order.
 
 .. code-block:: console
