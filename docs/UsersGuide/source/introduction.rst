@@ -38,7 +38,8 @@ v2 (:term:`GRIB2`) format (in 0.50, or 1.0 degree grid spacing),  the NOAA Envir
 Modeling System (:term:`NEMS`) Input/Output (:term:`NEMSIO`) format, or Network Common Data Form (:term:`NetCDF`).
 Initialization from dates starting on January 1, 2018 are supported. Dates
 before that may work, but are not guaranteed. GFS public archives can be
-accessed through  the `THREDDS Data Server at NCEI <https://www.ncei.noaa.gov/thredds/model/gfs.html>`_. A small sample of netCDF files can be found at `the EMC FTP site <https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.
+accessed through  the `THREDDS Data Server at NCEI <https://www.ncei.noaa.gov/thredds/model/gfs.html>`_.
+A small sample of files in all supported formats can be found at `the EMC FTP site <https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.
 The initial conditions may be pre-staged on disk by the user or
 automatically downloaded by the workflow.
 
@@ -55,7 +56,7 @@ Supported grid configurations for this release are the global meshes with
 resolutions of C96 (~100 km), C192 (~50 km), C384 (~25 km), and C768 (~13 km),
 all with 64 vertical levels. The `NOAA Geophysical Fluid Dynamics Laboratory website <https://www.gfdl.noaa.gov/fv3>`_
 provides more information about FV3 and its grids. Additional information about the FV3 dynamical
-core is at `here <https://noaa-emc.github.io/FV3_Dycore_ufs-v1.0.0/html/index.html>`_.
+core is at `here <https://noaa-emc.github.io/FV3_Dycore_ufs-v1.1.0/html/index.html>`_.
 Interoperable atmospheric physics, along with the Noah land surface model, are
 supported through the use of the Common Community Physics Package (:term:`CCPP`;
 described `here <https://dtcenter.org/community-code/common-community-physics-package-ccpp>`_).
@@ -75,7 +76,7 @@ diurnal cycle.
 
 A scientific description of the CCPP parameterizations and suites can be found in the
 `CCPP Scientific Documentation <https://dtcenter.org/GMTB/v4.0/sci_doc>`_, and
-CCPP technical aspects are described in the `CCPP Technical Documentation <https://ccpp-techdoc.readthedocs.io/en/latest>`_.
+CCPP technical aspects are described in the `CCPP Technical Documentation <https://ccpp-techdoc.readthedocs.io/en/v4.1.0/>`_.
 The model namelists for the physics suites differ in ways that go beyond
 the physics to optimize various aspects of the model for use with each of the
 suites.
@@ -84,7 +85,7 @@ in this release, although the option is off by default in both of the
 supported physics suites. Three methods are supported for use separately or in
 combination: Stochastic Kinetic Energy Backscatter (SKEB), Stochastically
 Perturbed Physics Tendencies (SPPT), and Specific Humidity perturbations (SHUM).
-A `User’s Guide for the use of stochastic physics <https://stochastic-physics.readthedocs.io/en/ufs-v1.0.0>`_ is provided.
+A `User’s Guide for the use of stochastic physics <https://stochastic-physics.readthedocs.io/en/ufs-v1.1.0>`_ is provided.
 
 The UFS Weather Model ingests files produced by chgres_cube and outputs files
 in netCDF format on a Gaussian grid in the horizontal and model levels in the
@@ -97,7 +98,7 @@ The MR Weather App is distributed with a post-processing tools, the Unified
 Post Processor (UPP). The Unified Post Processor (UPP) converts the
 native netCDF output from the model to the :term:`GRIB2` format on standard isobaric
 coordinates in the vertical. The UPP can also be used to compute a variety of
-useful diagnostic fields, as described in the `UPP user's guide <https://upp.readthedocs.io/en/ufs-v1.0.0>`_.
+useful diagnostic fields, as described in the `UPP user's guide <https://upp.readthedocs.io/en/ufs-v1.1.0>`_.
 
 The UPP output can be used with visualization, plotting and verification
 packages, or for further downstream post-processing, e.g. statistical
@@ -154,7 +155,7 @@ it comes with two default configurations, or
 Component Sets (compsets). One compset is used to evoke the physics :term:`suite`
 used in the operational GFS v15, while the other is used to evoke the
 experimental GFS v16 physics. Based on the type of initial conditions, the
-workflow determines whether the to employ the variant with simple or more complex 
+workflow determines whether or not to employ the variant with simple or more complex
 SST. The workflow provides
 ways to choose the grid resolution, as well as to change namelist options,
 such as history file frequency. It also allows for configuration of other
@@ -190,7 +191,7 @@ the distributed documentation, summarized here for ease of use.
    | UFS Weather Model v1.1     | https://ufs-weather-model.readthedocs.io/en/ufs-v1.1.0                          |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | FV3 Documentation          | https://noaa-emc.github.io/FV3_Dycore_ufs-v1.0.0/html/index.html                |
+   | FV3 Documentation          | https://noaa-emc.github.io/FV3_Dycore_ufs-v1.1.0/html/index.html                |
    +----------------------------+---------------------------------------------------------------------------------+
    | CCPP Scientific            | https://dtcenter.org/GMTB/v4.0/sci_doc                                          |
    | Documentation              |                                                                                 |
@@ -198,15 +199,15 @@ the distributed documentation, summarized here for ease of use.
    | CCPP Technical             | https://ccpp-techdoc.readthedocs.io/en/v4.0                                     |
    | Documentation              |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | Stochastic Physics         | https://stochastic-physics.readthedocs.io/en/ufs-v1.0.0                         |
+   | Stochastic Physics         | https://stochastic-physics.readthedocs.io/en/ufs-v1.1.0                         |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
    | ESMF manual                | http://www.earthsystemmodeling.org/esmf_releases/public/ESMF_8_0_0/ESMF_refdoc  |
    +----------------------------+---------------------------------------------------------------------------------+
-   | Common Infrastructure for  | http://esmci.github.io/cime/versions/ufs_release_v1.0/html/index.html           |
+   | Common Infrastructure for  | http://esmci.github.io/cime/versions/ufs_release_v1.1/html/index.html           |
    | Modeling the Earth         |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | Unified Post Processor     | https://upp.readthedocs.io/en/ufs-v1.0.0                                        |
+   | Unified Post Processor     | https://upp.readthedocs.io/en/ufs-v1.1.0                                        |
    +----------------------------+---------------------------------------------------------------------------------+
 
 The UFS community is encouraged to contribute to the UFS development effort.
