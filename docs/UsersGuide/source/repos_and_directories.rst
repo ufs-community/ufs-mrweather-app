@@ -62,11 +62,11 @@ two layer repositories provide interfaces to allow CIME to properly build the uf
    wiki pages of those repositories: <https://github.com/NOAA-EMC/NCEPLIBS/wiki>` and
    <https://github.com/NOAA-EMC/NCEPLIBS-external/wiki>.
 
-The UPP code works in two ways with the MRW App. The code to create the UPP
+The UPP code works in two ways with the MR Weather App. The code to create the UPP
 executable is part of the NCEPLIBS, and the executable is already installed in
 preconfigued platforms. For the purposes of enabling customization of UPP fields,
 as described in the :ref:`Inputs and Outputs chapter <inputs_and_outputs>`,
-the UPP code is also included in the MRW App umbrella repository.
+the UPP code is also included in the MR Weather App umbrella repository.
 
 Directory Structure
 -------------------
