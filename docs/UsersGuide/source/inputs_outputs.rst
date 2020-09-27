@@ -12,13 +12,13 @@ detailed documentation for each of the components are provided.
 Input files
 ===========
 
-The MR Weather App requires numerous input files. 
+The MR Weather App requires numerous input files.
 The input files data format can be
 `GRIB2 <https://www.nco.ncep.noaa.gov/pmb/docs/grib2/>`_,
-`NEMSIO <https://github.com/NOAA-EMC/NCEPLIBS-nemsio/wiki/Home-NEMSIO>`_, or 
-`netCDF <https://www.unidata.ucar.edu/software/netcdf/>`_, and the input files  
+`NEMSIO <https://github.com/NOAA-EMC/NCEPLIBS-nemsio/wiki/Home-NEMSIO>`_, or
+`netCDF <https://www.unidata.ucar.edu/software/netcdf/>`_, and the input files
 must be staged by
-the user. :term:`CIME` can 
+the user. :term:`CIME` can
 run the end-to-end system and write output files to disk.
 
 -----------
@@ -145,26 +145,33 @@ Initial condition formats and source
 
 The MR Weather App currently only supports the use of Global Forecast System
 (GFS) data as raw initial conditions (that is, MRF, AVN, ERA5 etc. are not supported).
-The GFS data can be provided in three formats: :term:`NEMSIO`, :term:`netCDF`, or :term:`GRIB2`. 
+The GFS data can be provided in three formats: :term:`NEMSIO`, :term:`netCDF`, or :term:`GRIB2`.
 
 - **NEMSIO**
 
   These files cover the entire globe down to a horizontal resolution of 13 km and
-  can be found at `<https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/>`_.  
-  
+  can be found at `<https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/>`_.
+  A small sample is also available at the FTP data repository `<https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.
+
 - **NetCDF**
 
   These files cover the entire globe down to a horizontal resolution of 13 km and
-  can be found at the FTP data repository `<https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.  
-     
+  can be found at the FTP data repository `<https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.
+
 - **GRIB2**
 
-  These files cover the entire globe and resolutions of 0.5 and 1.0 degree are supported. There are both current and historic sources of GRIB2 data available. At the time of this writing, files for dates 05/15/2020 12 UTC or more recent are considered current, while files for preceding dates are considered historical. However, the cutoff date may change in the future. Here are the locations:
+  These files cover the entire globe and resolutions of 0.5 and 1.0 degree are
+  supported. There are both current and historic sources of GRIB2 data available.
+  At the time of this writing, files for dates 05/15/2020 12 UTC or more recent
+  are considered current, while files for preceding dates are considered historical.
+  However, the cutoff date may change in the future. Here are the locations:
 
   - 0.5 deg current files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files/catalog.html>`_
   - 0.5 deg historical files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files-old/catalog.html>`_
   - 1.0 deg current files can be requested from `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files/catalog.html>`_
   - 1.0 deg historical files can be requested from `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files-old/catalog.html>`_
+
+  A small sample is also available at the FTP data repository `<https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.
 
 ------------------------------------
 Initial condition naming convention
@@ -175,13 +182,13 @@ The default naming convention for the initial condition files is described below
 - **NEMSIO**
 
   - Two-dimensional surface variables ``sfc.input.ic.nemsio``
-  - Three-dimensional atmosphere state ``atm.input.ic.nemsio`` 
+  - Three-dimensional atmosphere state ``atm.input.ic.nemsio``
 
 - **NetCDF**
 
   - Two-dimensional surface variables ``sfc.input.ic.nc``
-  - Three-dimensional atmosphere state ``atm.input.ic.nc`` 
- 
+  - Three-dimensional atmosphere state ``atm.input.ic.nc``
+
 - **GRIB2**
 
   - Surface variables and atmosphere state ``atm.input.ic.grb2``
@@ -261,7 +268,7 @@ The data should be placed in ``$DIN_LOC_IC``.
          ln -s gfs.t${hh}z.atmanl.nemsio atm.input.ic.nemsio
          ln -s gfs.t${hh}z.sfcanl.nemsio sfc.input.ic.nemsio
 
-     For downloading files in GRIB2 format with 0.5 degree grid spacing, the same code ``get.sh`` can be used except the wget command should be replaced with the following line: 
+     For downloading files in GRIB2 format with 0.5 degree grid spacing, the same code ``get.sh`` can be used except the wget command should be replaced with the following line:
 
      .. code-block:: console
 
@@ -270,7 +277,7 @@ The data should be placed in ``$DIN_LOC_IC``.
          #For historic files:
          wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files-old/$yyyymmdd/gfsanl_4_${yyyymmdd}_${hh}00_000.grb2
 
-     For downloading files in GRIB2 format with 1.0 degree grid spacing, the same code ``get.sh`` can be used except the wget command should be replaced with the following line: 
+     For downloading files in GRIB2 format with 1.0 degree grid spacing, the same code ``get.sh`` can be used except the wget command should be replaced with the following line:
 
 
      .. code-block:: console
@@ -280,7 +287,7 @@ The data should be placed in ``$DIN_LOC_IC``.
          #For historical files:
          wget -c https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files-old/$yyyymmdd/gfsanl_3_${yyyymmdd}_${hh}00_000.grb2
 
-     After downloading the file, the user must link the new file to the name expected by the App. For example, 
+     After downloading the file, the user must link the new file to the name expected by the App. For example,
 
      .. code-block:: console
 
