@@ -75,7 +75,7 @@ physical parameterization to forecast the temporal variation in SST due to the
 diurnal cycle.
 
 A scientific description of the CCPP parameterizations and suites can be found in the
-`CCPP Scientific Documentation <https://dtcenter.org/GMTB/v4.1/sci_doc>`_, and
+`CCPP Scientific Documentation <https://dtcenter.org/GMTB/v4.1.0/sci_doc>`_, and
 CCPP technical aspects are described in the `CCPP Technical Documentation <https://ccpp-techdoc.readthedocs.io/en/v4.1.0/>`_.
 The model namelists for the physics suites differ in ways that go beyond
 the physics to optimize various aspects of the model for use with each of the
