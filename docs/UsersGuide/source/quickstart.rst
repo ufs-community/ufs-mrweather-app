@@ -28,13 +28,6 @@ This is the procedure for quickly setting up and running a case of MR Weather Ap
 * Build  a case: use ``case.build``
 * Run    a case: use ``case.submit``
 
-.. note::
-
-   Variables presented as ``$VAR`` in this guide typically refer to variables in XML files
-   that are created in your case directory. From within a case directory, you can determine the value of such a
-   variable with ``./xmlquery VAR``. In some instances, ``$VAR`` refers to a shell
-   variable or some other variable; we try to make these exceptions clear.
-
 .. _downloading:
 
 Downloading the MR Weather App code and scripts
