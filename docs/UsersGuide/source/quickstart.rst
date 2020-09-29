@@ -304,8 +304,8 @@ must either specify the ``--project $PROJECT`` argument in the ``create_newcase`
 
 If running on a preconfigured or configurable machine, that machine
 will normally be recognized automatically and therefore it is not
-required to specify the --machine argument to create_newcase. Generic linux and
-macos systems will require the ``--machine`` argument to be used.
+required to specify the ``--machine`` argument to create_newcase. Generic linux and
+macos systems will require the ``--machine linux`` / ``--machine macos`` argument to be used (see :numref:`Section %s <config_new_platform>`).
 
 Invoke ``create_newcase`` as follows from the ``cime/scripts`` directory:
 
