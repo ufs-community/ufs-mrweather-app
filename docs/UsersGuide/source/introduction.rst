@@ -183,7 +183,7 @@ the distributed documentation, summarized here for ease of use.
    +----------------------------+---------------------------------------------------------------------------------+
    | **Documentation**          | **Location**                                                                    |
    +============================+=================================================================================+
-   | MR Weather App v1.1    | https://ufs-mrweather-app.readthedocs.io/en/ufs-v1.1.0                          |
+   | MR Weather App v1.1        | https://ufs-mrweather-app.readthedocs.io/en/ufs-v1.1.0                          |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
    | chgres_cube User's Guide   | https://ufs-utils.readthedocs.io/en/ufs-v1.1.0                                  |
@@ -193,10 +193,10 @@ the distributed documentation, summarized here for ease of use.
    +----------------------------+---------------------------------------------------------------------------------+
    | FV3 Documentation          | https://noaa-emc.github.io/FV3_Dycore_ufs-v1.1.0/html/index.html                |
    +----------------------------+---------------------------------------------------------------------------------+
-   | CCPP Scientific            | https://dtcenter.org/GMTB/v4.1.0/sci_doc                                          |
+   | CCPP Scientific            | https://dtcenter.org/GMTB/v4.1.0/sci_doc                                        |
    | Documentation              |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | CCPP Technical             | https://ccpp-techdoc.readthedocs.io/en/v4.1.0                                     |
+   | CCPP Technical             | https://ccpp-techdoc.readthedocs.io/en/v4.1.0                                   |
    | Documentation              |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
    | Stochastic Physics         | https://stochastic-physics.readthedocs.io/en/ufs-v1.1.0                         |
