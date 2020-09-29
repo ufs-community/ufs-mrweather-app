@@ -30,7 +30,7 @@ associated with this umbrella (see :numref:`Table %s <top_level_repos>`).
    | Umbrella repository for    | https://github.com/ufs-community/ufs-weather-model      |
    | the UFS Weather Model      |                                                         |
    +----------------------------+---------------------------------------------------------+
-   | CIME CSS                   | https://github.com/ESMCI/cime                           |
+   | CIME                       | https://github.com/ESMCI/cime                           |
    +----------------------------+---------------------------------------------------------+
    | Layer required for CIME to | https://github.com/ESCOMP/fv3gfs_interface              |
    | build ufs-weather-model    |                                                         |
