@@ -6,11 +6,13 @@ FAQ
 
 How can I set required environment variables?
 =============================================
-The best practice to set environment variables (``UFS_SCRATCH`` and ``UFS_INPUT``)
-and source the NCEPLIBS provided shell script (``setenv_nceplibs.sh|.csh``) is
+The best practice to set environment variables (``UFS_SCRATCH``, ``UFS_INPUT``,
+``UFS_DRIVER``, ``CIME_MODEL``, and ``PROJECT``) is
 to put them into the ``.bashrc`` (Bash shell) or ``.tcshrc`` (Tcsh shell) files.
 These files are executed when a user opens a new shell or logs in to the server
-(including compute nodes) so that their environment is set correctly.
+(including compute nodes) so that their environment is set correctly. In platforms
+that are not preconfigured, the NCEPLIBS-provided shell script (``setenv_nceplibs.sh|.csh``)
+should be sourced in the same way.
 
 **BASH (edit ~/.bashrc):**
 
@@ -18,6 +20,9 @@ These files are executed when a user opens a new shell or logs in to the server
 
     export UFS_INPUT=/path/to/inputs
     export UFS_SCRATCH=/path/to/outputs
+    export PROJECT=your_compute_project
+    export UFS_DRIVER=nems
+    export CIME_MODEL=ufs
     source /path/to/nceplibs/bin/setenv_nceplibs.sh
 
 **BASH (edit ~/.tcshrc):**
@@ -26,11 +31,14 @@ These files are executed when a user opens a new shell or logs in to the server
 
     setenv UFS_INPUT /path/to/inputs
     setenv UFS_SCRATCH /path/to/outputs
+    setenv PROJECT your_compute_project
+    setenv UFS_DRIVER nems
+    setenv CIME_MODEL ufs
     source /path/to/nceplibs/bin/setenv_nceplibs.csh
 
 .. note::
 
-    The user might need to create ``~/.bashrc`` or ``~/.tcshrc`` file.
+    The user might need to create the ``~/.bashrc`` or ``~/.tcshrc`` file.
 
 How can I see/check the steps in my workflow?
 =============================================
@@ -326,7 +334,7 @@ The parameters that need to be changed via ``xmlchange`` are defined in ``nameli
     <entry id="nhours_fcst" modify_via_xml="STOP_N">
     <entry id="restart_interval" modify_via_xml="REST_N”>
 
-The changes are required to ensure consistency between the model configuration and the CIME. 
+The changes are required to ensure consistency between the model configuration and the CIME.
 
 .. warning::
 

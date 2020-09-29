@@ -30,7 +30,7 @@ associated with this umbrella (see :numref:`Table %s <top_level_repos>`).
    | Umbrella repository for    | https://github.com/ufs-community/ufs-weather-model      |
    | the UFS Weather Model      |                                                         |
    +----------------------------+---------------------------------------------------------+
-   | CIME CSS                   | https://github.com/ESMCI/cime                           |
+   | CIME                       | https://github.com/ESMCI/cime                           |
    +----------------------------+---------------------------------------------------------+
    | Layer required for CIME to | https://github.com/ESCOMP/fv3gfs_interface              |
    | build ufs-weather-model    |                                                         |
@@ -44,8 +44,8 @@ associated with this umbrella (see :numref:`Table %s <top_level_repos>`).
 The UFS MR Weather Model is itself an umbrella repository and contains a number of sub-repositories
 used by the model as documented `here
 <https://ufs-weather-model.readthedocs.io/en/ufs-v1.1.0/CodeOverview.html>`_.
-The CIME repository contains the workflow and build system for the prognostic model.  The last
-two repositories provide interfaces to allow CIME to properly build the ufs-weather-model and the NEMS driver.
+The CIME repository contains the workflow and build system for the prognostic model.  The
+two layer repositories provide interfaces to allow CIME to properly build the ufs-weather-model and the NEMS driver.
 
 .. note::
 
@@ -56,11 +56,17 @@ two repositories provide interfaces to allow CIME to properly build the ufs-weat
    `chgres_cube preprocessor repository <https://github.com/NOAA-EMC/UFS_UTILS>`_ and to `UPP
    <https://github.com/NOAA-EMC/EMC_post>`_.
 
-These external components are already built on the preconfigured platforms
-listed `here <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_.
-However, they must be cloned and built on other platforms according to the instructions provided in the
-wiki pages of those repositories: <https://github.com/NOAA-EMC/NCEPLIBS/wiki>` and
-<https://github.com/NOAA-EMC/NCEPLIBS-external/wiki>.
+   These external components are already built on the preconfigured platforms
+   listed `here <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_.
+   However, they must be cloned and built on other platforms according to the instructions provided in the
+   wiki pages of those repositories: <https://github.com/NOAA-EMC/NCEPLIBS/wiki>` and
+   <https://github.com/NOAA-EMC/NCEPLIBS-external/wiki>.
+
+The UPP code works in two ways with the MR Weather App. The code to create the UPP
+executable is part of the NCEPLIBS, and the executable is already installed in
+preconfigued platforms. For the purposes of enabling customization of UPP fields,
+as described in the :ref:`Inputs and Outputs chapter <inputs_and_outputs>`,
+the UPP code is also included in the MR Weather App umbrella repository.
 
 Directory Structure
 -------------------
