@@ -443,7 +443,6 @@ now are:
    .. code-block:: console
 
       ./xmlchange JOB_WALLCLOCK_TIME=00:30:00
-      ./xmlchange USER_REQUESTED_WALLTIME=00:30:00
 
 4. The default start date (2019-08-29, 00 UTC) can be also changed by following commands
 
