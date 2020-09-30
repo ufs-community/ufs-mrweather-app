@@ -107,6 +107,12 @@ The following command will change the job queue to ``bigmem`` for ``chgres_cube`
     Without the ``--subgroup`` option, the ``xmlchange`` command changes the job wall clock time for all
     submitted jobs.
 
+What should the wall clock time be for a C768 24-hour forecast on Gaea?
+=======================================================================
+
+For this run you should set the ``JOB_WALLCLOCK_TIME`` to one hour. For instructions
+on how to do that, see the FAQ above.
+
 How can I change the project account that will be used to submit jobs?
 ======================================================================
 
