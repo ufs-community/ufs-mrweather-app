@@ -6,15 +6,15 @@ FAQ
 
 How can I set required environment variables?
 =============================================
-The best practice to set environment variables (``UFS_SCRATCH``, ``UFS_INPUT``,
-``UFS_DRIVER``, ``CIME_MODEL``, and ``PROJECT``) is
-to put them into the ``.bashrc`` (Bash shell) or ``.tcshrc`` (Tcsh shell) files.
-These files are executed when a user opens a new shell or logs in to the server
-(including compute nodes) so that their environment is set correctly. In platforms
-that are not preconfigured, the NCEPLIBS-provided shell script (``setenv_nceplibs.sh|.csh``)
-should be sourced in the same way.
+The best practice is to set environment variables (``UFS_SCRATCH``, ``UFS_INPUT``,
+``UFS_DRIVER``, ``CIME_MODEL``, and ``PROJECT``) in the user's enviroment. Some systems
+(in particular Stampede2) require to to export them in the ``.bashrc`` (Bash shell) or
+``.tcshrc`` (Tcsh shell) files for the batch jobs to function. These environment
+variables are then set automatically when a user opens a new shell or logs in to the server
+(including compute nodes). In platforms that are not preconfigured, the NCEPLIBS-provided
+shell script (``setenv_nceplibs.sh|.csh``) must be sourced in the same way.
 
-**BASH (edit ~/.bashrc):**
+**BASH:**
 
 .. code-block:: console
 
@@ -25,7 +25,7 @@ should be sourced in the same way.
     export CIME_MODEL=ufs
     source /path/to/nceplibs/bin/setenv_nceplibs.sh
 
-**BASH (edit ~/.tcshrc):**
+**TCSH:**
 
 .. code-block:: console
 
@@ -35,10 +35,6 @@ should be sourced in the same way.
     setenv UFS_DRIVER nems
     setenv CIME_MODEL ufs
     source /path/to/nceplibs/bin/setenv_nceplibs.csh
-
-.. note::
-
-    The user might need to create the ``~/.bashrc`` or ``~/.tcshrc`` file.
 
 How can I see/check the steps in my workflow?
 =============================================
