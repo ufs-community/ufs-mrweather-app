@@ -276,17 +276,18 @@ On `platforms that are not pre-configured <https://github.com/ufs-community/ufs/
      # CSH or TCSH shells
      source $NCEPLIBS_DIR/bin/setenv_nceplibs.csh
 
-The recommended best practice to set the ``$UFS_SCRATCH`` and
+The recommended best practice is to set the ``$UFS_SCRATCH`` and
 ``$UFS_INPUT`` environment variables and source the NCEPLIBS provided
-shell script ``setenv_nceplibs.sh|.csh`` is to add the above commands
-to a startup script such as ``$HOME/.bashrc`` (Bash shell) or
-``$HOME/.tcshrc`` (Tcsh shell). These files are executed automatically
-when you start a new shell so that you do not need to re-define them
-during each login.
+shell script ``setenv_nceplibs.sh|.csh`` in the user environment before
+creating the case and running the setup, build and submit steps.
 
 .. important::
-     On some platforms (in particular Stampede2) this practice is **required** to ensure the
-     environment variables are properly set on compute nodes accessed by the workflow.
+     On some platforms (in particular Stampede2) it is **required** to export
+     `UFS_INPUT`, `UFS_SCRATCH` and `NCEPLIBS_DIR` in the user's shell
+     startup scripts, such as ``$HOME/.bashrc`` (Bash shell) or
+     ``$HOME/.tcshrc`` (Tcsh shell). These environment variables are
+     then set automatically when you start a new shell or run a job through
+     the scheduler.
 
 Create a case
 ==============
