@@ -479,3 +479,46 @@ How do I diagnose a failure with a high-resolution run?
 
 One possible source of failure with high-resolution runs is lack of memory. To
 diagnose if this is the problem, try a low resolution run first.
+
+How can I diagnose errors when building the model?
+==================================================
+
+If the ``./case.build`` step fails, the first step is to inspect the build logs
+in the case build directories. These files are called ``ufs.bldlog.YYMMDD-HHMMSS``
+and ``atm.bldlog.YYMMDD-HHMMSS``, and may be compressed using ``gzip``. In this case,
+unzip them using ``gunzip``.
+
+How can I fix cmake build errors of type: This is now an error according to policy CMP0004
+==========================================================================================
+
+If the model build fails with an error message like:
+
+.. code-block:: console
+
+   CMake Error at CMakeLists.txt:180 (add_executable):
+     Target "NEMS.exe" links to item
+     "-L/lustre/f2/pdata/esrl/gsd/ufs/modules/NCEPlibs-ufs-v1.1.0/intel-18.0.6.288/cray-mpich-7.7.11/lib64
+     -L/lustre/f2/pdata/esrl/gsd/ufs/modules/NCEPlibs-ufs-v1.1.0/intel-18.0.6.288/cray-mpich-7.7.11/lib64
+     -lesmf -cxxlib -lrt -ldl
+     /lustre/f2/pdata/esrl/gsd/ufs/modules/NCEPlibs-ufs-v1.1.0/intel-18.0.6.288/cray-mpich-7.7.11/lib64/libnetcdff.a
+     /lustre/f2/pdata/esrl/gsd/ufs/modules/NCEPlibs-ufs-v1.1.0/intel-18.0.6.288/cray-mpich-7.7.11/lib64/libnetcdf.a
+     /lustre/f2/pdata/esrl/gsd/ufs/modules/NCEPlibs-ufs-v1.1.0/intel-18.0.6.288/cray-mpich-7.7.11/lib64/libhdf5_hl.a
+     /lustre/f2/pdata/esrl/gsd/ufs/modules/NCEPlibs-ufs-v1.1.0/intel-18.0.6.288/cray-mpich-7.7.11/lib64/libhdf5.a
+     /lustre/f2/pdata/esrl/gsd/ufs/modules/NCEPlibs-ufs-v1.1.0/intel-18.0.6.288/cray-mpich-7.7.11/lib64/libz.a
+     -g " which has leading or trailing whitespace.  This is now an error
+     according to policy CMP0004.
+
+then this usually means that one of the linker flags that the build process gathered from the ESMF MK file ``esmf.mk`` is either empty
+or has trailing whitespaces. The easiest way to fix this is to locate ``esmf.mk`` (in the NCEPLIBS install directory, under ``lib``
+or ``lib64``) and check the following entries:
+
+.. code-block:: console
+
+   ESMF_F90COMPILEPATHS
+   ESMF_F90ESMFLINKRPATHS
+   ESMF_F90ESMFLINKPATHS
+   ESMF_F90ESMFLINKLIBS
+   ESMF_F90LINKOPTS
+
+If any of these is empty, simply add ``-g`` and make sure that there is no trailing whitespace added after it. For all others, check
+that there are no trailing whitespaces. It is advisable to make a backup copy of this file before editing it manually.
