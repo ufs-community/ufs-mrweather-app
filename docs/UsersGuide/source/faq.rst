@@ -491,7 +491,7 @@ unzip them using ``gunzip``.
 How can I fix cmake build errors of type: This is now an error according to policy CMP0004
 ==========================================================================================
 
-If the model build fails with an error message like
+If the model build fails with an error message like:
 
 .. code-block:: console
 
