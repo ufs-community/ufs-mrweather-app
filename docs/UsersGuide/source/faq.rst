@@ -484,16 +484,17 @@ How can I diagnose errors when building the model?
 ==================================================
 
 If the ``./case.build`` step fails, the first step is to inspect the build logs
-in the case build directories. These files are called ufs.bldlog.YYMMDD-HHMMSS
-and atm.bldlog.YYMMDD-HHMMSS, and may be compressed using ``gzip``. In this case,
+in the case build directories. These files are called ``ufs.bldlog.YYMMDD-HHMMSS``
+and ``atm.bldlog.YYMMDD-HHMMSS``, and may be compressed using ``gzip``. In this case,
 unzip them using ``gunzip``.
 
-How can I fix build errors of type ``Make Error at CMakeLists.txt:180 (add_executable) ... This is now an error according to policy CMP0004``
-=============================================================================================================================================
+How can I fix cmake build errors of type: This is now an error according to policy CMP0004
+==========================================================================================
 
 If the model build fails with an error message like
 
 .. code-block:: console
+
    CMake Error at CMakeLists.txt:180 (add_executable):
      Target "NEMS.exe" links to item
      "-L/lustre/f2/pdata/esrl/gsd/ufs/modules/NCEPlibs-ufs-v1.1.0/intel-18.0.6.288/cray-mpich-7.7.11/lib64
@@ -520,4 +521,4 @@ or ``lib64``) and check the following entries:
    ESMF_F90LINKOPTS
 
 If any of these is empty, simply add ``-g`` and make sure that there is no trailing whitespace added after it. For all others, check
-that there are no trailing whitespaces. It is advisable to take a backup copy of this file before editing it manually.
+that there are no trailing whitespaces. It is advisable to make a backup copy of this file before editing it manually.
