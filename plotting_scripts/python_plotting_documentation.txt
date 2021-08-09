@@ -2,7 +2,7 @@ For visually checking the results of your run, we have provided a Python script 
 
 You will need to load Anaconda first. Here are some examples of how to do this:
 
-In an HPC, you can use modules to load Anaconda. Otherwise, follow the following instructions. Find download link here: https://www.anaconda.com/products/individual. Scroll to the bottom to the “Anaconda Installers” section and copy the download link for the appropriate version
+In an HPC, you can use modules to load Anaconda. Otherwise, use the following instructions. Find download link here: https://www.anaconda.com/products/individual. Scroll to the bottom to the “Anaconda Installers” section and copy the download link for the appropriate version
 $ cd $HOME
 $ wget <download_link>
 $ bash <Anaconda_excecutable_name>
@@ -43,5 +43,4 @@ To view the GIFs and files, you could also use scp to transfer files to your loc
 Sample Output
 The sample plots are in the sample_output.pdf document in this folder. They are consistent with the Hurricane Dorian initial conditions and tag ufs-v1.1.0. Your results may look different if you are using a different branch or tag. Your results will also look different just because you are running on a platform different from what we used to generate the plots.
 Now that you completed this step, you may be interested in trying to change a namelist option and run a second test to check your dexterity and understanding of how results will change. If you are interested in doing that, please visit the UFS Portal to take our graduate student test which will give you instructions to take that leap, and will also provide important information for our development work
-
 
