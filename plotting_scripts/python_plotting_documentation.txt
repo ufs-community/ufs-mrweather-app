@@ -5,7 +5,7 @@ You will need to load Anaconda first. Here are some examples of how to do this:
 In an HPC, you can use modules to load Anaconda. Otherwise, follow the following instructions. Find download link here: https://www.anaconda.com/products/individual. Scroll to the bottom to the “Anaconda Installers” section and copy the download link for the appropriate version
 $ cd $HOME
 $ wget <download_link>
-$ conda install <Anaconda_excecutable_name>
+$ bash <Anaconda_excecutable_name>
 $ export PATH=$HOME/anaconda3/bin:$PATH
 
 Install Libraries
