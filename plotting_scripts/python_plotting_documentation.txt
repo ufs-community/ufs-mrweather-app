@@ -37,10 +37,9 @@ View Results
 A utility typically used to visualize the resulting images in png format is display. If it is available on your platform, you can use the command:
 $ display *.png
 
-To view the GIFs and files, you could also use scp to transfer files to your local computer.
+If you are working on a remote platform and want to view the GIFs and files, you could also use scp to transfer files to your local computer.
 
 
 Sample Output
 The sample plots are in the sample_output.pdf document in this folder. They are consistent with the Hurricane Dorian initial conditions and tag ufs-v1.1.0. Your results may look different if you are using a different branch or tag. Your results will also look different just because you are running on a platform different from what we used to generate the plots.
 Now that you completed this step, you may be interested in trying to change a namelist option and run a second test to check your dexterity and understanding of how results will change. If you are interested in doing that, please visit the UFS Portal to take our graduate student test which will give you instructions to take that leap, and will also provide important information for our development work
-
