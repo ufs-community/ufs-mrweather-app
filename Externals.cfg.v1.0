@@ -1,0 +1,43 @@
+[externals_description]
+schema_version = 1.0.0
+
+[model]
+tag = ufs-v1.1.0
+protocol = git
+repo_url = https://github.com/ufs-community/ufs-weather-model/
+local_path = src/model
+required = True
+
+[cime]
+tag = ufs-v1.1.0
+protocol = git
+repo_url = https://github.com/ESMCI/cime.git
+local_path = cime
+required = True
+
+[emc_post]
+tag = ufs-v1.1.0
+protocol = git
+repo_url = https://github.com/NOAA-EMC/EMC_post.git
+local_path = src/post
+required = True
+
+# this layer required for CIME to know how to build
+# FV3GFS - this should be merged into the NOAA-EMC/fv3atm
+# repository so this extra repo is not needed
+[fv3gfs_interface]
+tag = ufs-v1.1.0
+protocol = git
+repo_url = https://github.com/ESCOMP/fv3gfs_interface.git
+local_path = src/model/FV3/cime
+required = True
+
+# This layer required for CIME to know how to build
+# NEMS driver - this should be merged into the NOAA-EMC/NEMS
+# repository so this extra repo is not needed
+[nems_interface]
+tag = ufs-v1.1.0
+protocol = git
+repo_url = https://github.com/ESCOMP/NEMS_interface.git
+local_path = src/model/NEMS/cime/
+required = True
