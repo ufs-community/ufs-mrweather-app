@@ -23,6 +23,9 @@ CUR_PWD=$(pwd);
 cd global-workflow/sorc
 sh checkout.sh
 
+# turn off gsi build option
+sed -i '6s/yes/no/g' fv3gfs_build.cfg
+
 if [ $UFS_BUILD_OPTION == "-c" ]
 then
     sh build_all.sh -c
