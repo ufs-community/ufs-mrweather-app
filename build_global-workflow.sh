@@ -16,12 +16,15 @@ do
         esac
 done
 
+# set current and working paths ---------------------------------------------------
 echo "current path" $(pwd);
 CUR_PWD=$(pwd)
 cd global-workflow/sorc; WRK_PWD=$(pwd)
+
+# checkout components -------------------------------------------------------------
 sh checkout.sh                                                                                                                               
 
-# turn off gsi build option                                                                                                                   
+# turn off gsi build option -------------------------------------------------------                                                                                                                   
 sed -i '6s/yes/no/g' fv3gfs_build.cfg                                                                                                        
 
 # build and link components -------------------------------------------------------                                                           
