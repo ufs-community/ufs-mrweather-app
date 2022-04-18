@@ -11,14 +11,12 @@ https://github.com/ufs-community/ufs-mrweather-app/wiki
 
 Getting started
 
-1. Clone ufs-mrweather-app
+1. Clone ufs-mrweather-app and Check out global-workflow.
 
 ```
 git clone -b feature/global_workflow https://github.com/jkbk2004/ufs-mrweather-app
 cd ufs-mrweather-app
 ```
-
-Check out global-workflow. 
 
 ```
 ./manage_externals/checkout_externals
