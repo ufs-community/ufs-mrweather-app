@@ -11,21 +11,30 @@ https://github.com/ufs-community/ufs-mrweather-app/wiki
 
 Getting started
 
-1. Check out the code
+1. Clone ufs-mrweather-app
 
 ```
 git clone -b feature/global_workflow https://github.com/jkbk2004/ufs-mrweather-app
 cd ufs-mrweather-app
 ```
 
-Then, check out the global-workflow. 
+Check out global-workflow. 
 
 ```
 ./manage_externals/checkout_externals
 ```
 
-2. Build the globa-workflow
+
+2. Build UFS model and global-workflow components
 
 ```
 sh build_global-workflow.sh
+```
+
+
+3. Run experiment generator script
+
+```
+cd ush/rocoto
+./setup_expt.py forecast-only --pslot test --idate 2020010100 --edate 2020010118 --resdet 384 --gfs_cyc 4 --comrot /some_large_disk_area/comrot --expdir /some_safe_disk_area/expdir 
 ```
