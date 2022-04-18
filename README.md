@@ -26,9 +26,9 @@ cd ufs-mrweather-app
 2. Build UFS model and global-workflow components
 
 ```
-sh build_global-workflow.sh
+sh build_global-workflow.sh [-c]
+(Use the -c option to compile for coupled UFS)
 ```
-
 
 3. Run experiment generator script
 
