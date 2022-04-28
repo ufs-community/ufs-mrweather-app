@@ -36,3 +36,47 @@ sh build_global-workflow.sh [-c]
 cd ush/rocoto
 ./setup_expt.py forecast-only --pslot test --idate 2020010100 --edate 2020010118 --resdet 384 --gfs_cyc 4 --comrot /some_large_disk_area/comrot --expdir /some_safe_disk_area/expdir 
 ```
+
+4. ufs-mrweather-app directort tree
+
+```
+ufs-mrweather-app/
+├── build_global-workflow.sh
+├── describe_version
+├── docs
+│   └── UsersGuide
+├── Externals.cfg
+├── Externals.cfg.v1.0
+├── global-workflow
+│   ├── docs
+│   ├── driver
+│   ├── ecflow
+│   ├── env
+│   ├── exec
+│   ├── Externals.cfg
+│   ├── fix
+│   ├── gempak
+│   ├── jobs
+│   ├── modulefiles
+│   ├── parm
+│   ├── README.md
+│   ├── scripts
+│   ├── sorc
+│   ├── ush
+│   └── util
+├── LICENSE.md
+├── manage_externals
+│   ├── checkout_externals
+│   ├── LICENSE.txt
+│   ├── manic
+│   └── README.md
+├── plotting_scripts
+│   ├── plot_mrw_cloud_diff.py
+│   ├── plot_mrw.py
+│   ├── python_plotting_documentation.txt
+│   └── sample_output.pdf
+└── README.md
+```
+
+
+
