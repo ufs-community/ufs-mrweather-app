@@ -14,7 +14,7 @@ Getting started
 1. Clone ufs-mrweather-app and check out global-workflow
 
 ```
-git clone -b feature/global_workflow https://github.com/jkbk2004/ufs-mrweather-app
+git clone https://github.com/ufs-community/ufs-mrweather-app
 cd ufs-mrweather-app
 ```
 
