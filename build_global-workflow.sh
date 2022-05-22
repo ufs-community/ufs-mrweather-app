@@ -46,20 +46,11 @@ sh checkout.sh
 sed -i '6s/yes/no/g' gfs_build.cfg                                                                                                        
 
 # build and link components -------------------------------------------------------                                                           
-if [ $UFS_BUILD_OPTION == "-c" ]; then
-  sh build_all.sh -c                                                                                                                         
-  logfile="logs/build_ufs.log"
-  if [[ -f $logfile ]] ; then
-    target=$(grep 'target=' $logfile | awk -F. '{print $1}' | awk -F= '{print $2}')
-    sh link_workflow.sh emc $target coupled; cd $CUR_PWD; exit 0
-  fi
-else
-  sh build_all.sh                                                                                                                            
-  logfile="logs/build_ufs.log"
-  if [[ -f $logfile ]] ; then
-    target=$(grep 'target=' $logfile | awk -F. '{print $1}' | awk -F= '{print $2}')
-    sh link_workflow.sh emc $target; cd $CUR_PWD; exit 0
-  fi
+sh build_all.sh $build_option                                                                                                                       
+logfile="logs/build_ufs.log"
+if [[ -f $logfile ]] ; then
+  target=$(grep 'target=' $logfile | awk -F. '{print $1}' | awk -F= '{print $2}')
+  sh link_workflow.sh emc $target coupled; cd $CUR_PWD; exit 0
 fi
 
 [[ -f "$WRK_PWD/logs/build_ufs.log" ]] && cd $CUR_PWD; echo "Error: logs/build_ufs.log does not exist." >&2; exit 1
