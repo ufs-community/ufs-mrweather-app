@@ -31,7 +31,7 @@ sh build_global-workflow.sh [-a UFS_app] [-c build_config] [-v]  [-h]
 -c: build_config instead of the default config
 -v: build verbose option
 -h: print usesage and exit
-(e.g.: sh build_global-workflow.sh will build the default option, S2SWA)sh build_global-workflow.sh [-c]
+(e.g.: sh build_global-workflow.sh will build the default option, S2SWA)
 ```
 
 3. Run experiment generator script
