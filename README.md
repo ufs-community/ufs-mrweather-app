@@ -26,8 +26,12 @@ cd ufs-mrweather-app
 2. Build UFS model and global-workflow components
 
 ```
-sh build_global-workflow.sh [-c]
-(Use the -c option to compile for coupled UFS)
+sh build_global-workflow.sh [-a UFS_app] [-c build_config] [-v]  [-h]
+-a: S2SWA (default), ATM, ATMA, S2S, and S2SW
+-c: build_config instead of the default config
+-v: build verbose option
+-h: print usesage and exit
+(e.g.: sh build_global-workflow.sh will build the default option, S2SWA)sh build_global-workflow.sh [-c]
 ```
 
 3. Run experiment generator script
@@ -160,23 +164,23 @@ global-workflow/
 │   └── ww3_prnc
 ├── Externals.cfg
 ├── fix
-│   ├── fix_aer -> /scratch1/NCEPDEV/global/glopara/fix_NEW/fix_aer
-│   ├── fix_am -> /scratch1/NCEPDEV/global/glopara/fix_NEW/fix_am
-│   ├── fix_chem -> /scratch1/NCEPDEV/global/glopara/fix_NEW/fix_chem
-│   ├── fix_cice -> /scratch1/NCEPDEV/global/glopara/fix_NEW/fix_cice
-│   ├── fix_cpl -> /scratch1/NCEPDEV/global/glopara/fix_NEW/fix_cpl
-│   ├── fix_fv3_fracoro -> /scratch1/NCEPDEV/global/glopara/fix_NEW/fix_fv3_fracoro
-│   ├── fix_fv3_gmted2010 -> /scratch1/NCEPDEV/global/glopara/fix_NEW/fix_fv3_gmted2010
-│   ├── fix_gldas -> /scratch1/NCEPDEV/global/glopara/fix_NEW/fix_gldas
+│   ├── fix_aer -> /work/noaa/global/glopara/fix_NEW/fix_aer
+│   ├── fix_am -> /work/noaa/global/glopara/fix_NEW/fix_am
+│   ├── fix_chem -> /work/noaa/global/glopara/fix_NEW/fix_chem
+│   ├── fix_cice -> /work/noaa/global/glopara/fix_NEW/fix_cice
+│   ├── fix_cpl -> /work/noaa/global/glopara/fix_NEW/fix_cpl
+│   ├── fix_fv3_fracoro -> /work/noaa/global/glopara/fix_NEW/fix_fv3_fracoro
+│   ├── fix_fv3_gmted2010 -> /work/noaa/global/glopara/fix_NEW/fix_fv3_gmted2010
+│   ├── fix_gldas -> /work/noaa/global/glopara/fix_NEW/fix_gldas
 │   ├── fix_gsi -> ../sorc/gsi.fd/fix
-│   ├── fix_lut -> /scratch1/NCEPDEV/global/glopara/fix_NEW/fix_lut
-│   ├── fix_mom6 -> /scratch1/NCEPDEV/global/glopara/fix_NEW/fix_mom6
-│   ├── fix_orog -> /scratch1/NCEPDEV/global/glopara/fix_NEW/fix_orog
-│   ├── fix_reg2grb2 -> /scratch1/NCEPDEV/global/glopara/fix_NEW/fix_reg2grb2
-│   ├── fix_sfc_climo -> /scratch1/NCEPDEV/global/glopara/fix_NEW/fix_sfc_climo
-│   ├── fix_ugwd -> /scratch1/NCEPDEV/global/glopara/fix_NEW/fix_ugwd
-│   ├── fix_verif -> /scratch1/NCEPDEV/global/glopara/fix_NEW/fix_verif
-│   ├── fix_wave -> /scratch1/NCEPDEV/global/glopara/fix_NEW/fix_wave
+│   ├── fix_lut -> /work/noaa/global/glopara/fix_NEW/fix_lut
+│   ├── fix_mom6 -> /work/noaa/global/glopara/fix_NEW/fix_mom6
+│   ├── fix_orog -> /work/noaa/global/glopara/fix_NEW/fix_orog
+│   ├── fix_reg2grb2 -> /work/noaa/global/glopara/fix_NEW/fix_reg2grb2
+│   ├── fix_sfc_climo -> /work/noaa/global/glopara/fix_NEW/fix_sfc_climo
+│   ├── fix_ugwd -> /work/noaa/global/glopara/fix_NEW/fix_ugwd
+│   ├── fix_verif -> /work/noaa/global/glopara/fix_NEW/fix_verif
+│   ├── fix_wave -> /work/noaa/global/glopara/fix_NEW/fix_wave
 │   ├── gdas
 │   └── product
 ├── gempak
@@ -233,17 +237,12 @@ global-workflow/
 │   ├── module_base.hera.lua
 │   ├── module_base.jet.lua
 │   ├── module_base.orion.lua
-│   ├── module_base.wcoss_c
 │   ├── module_base.wcoss_dell_p3.lua
 │   ├── modulefile.ww3.hera.lua
 │   ├── modulefile.ww3.orion.lua
 │   ├── modulefile.ww3.wcoss_dell_p3.lua
 │   ├── module-setup.csh.inc
 │   ├── module-setup.sh.inc
-│   ├── OznMonBuild.orion
-│   ├── OznMonBuild.wcoss_dell_p3
-│   ├── RadMonBuild.orion
-│   ├── RadMonBuild.wcoss_dell_p3
 │   ├── workflow_utils.hera.lua
 │   ├── workflow_utils.jet.lua
 │   ├── workflow_utils.orion.lua
@@ -329,6 +328,7 @@ global-workflow/
 │   ├── exgdas_enkf_select_obs.sh -> ../sorc/gsi.fd/scripts/exgdas_enkf_select_obs.sh
 │   ├── exgdas_enkf_sfc.sh -> ../sorc/gsi.fd/scripts/exgdas_enkf_sfc.sh
 │   ├── exgdas_enkf_update.sh -> ../sorc/gsi.fd/scripts/exgdas_enkf_update.sh
+│   ├── exgfs_aero_init_aerosol.py
 │   ├── exgfs_atmos_awips_20km_1p0deg.sh
 │   ├── exgfs_atmos_fbwind.sh
 │   ├── exgfs_atmos_gempak_gif_ncdc_skew_t.sh
@@ -337,7 +337,7 @@ global-workflow/
 │   ├── exgfs_atmos_grib2_special_npoess.sh
 │   ├── exgfs_atmos_grib_awips.sh
 │   ├── exgfs_atmos_nawips.sh
-│   ├── exgfs_atmos_nceppost.sh -> ../sorc/gfs_post.fd/scripts/exgfs_atmos_nceppost.sh
+│   ├── exgfs_atmos_nceppost.sh -> exgfs_nceppost_cpl.sh
 │   ├── exgfs_atmos_postsnd.sh
 │   ├── exgfs_atmos_vminmon.sh -> ../sorc/gsi.fd/util/Minimization_Monitor/nwprod/gfs.v1.0.0/scripts/exgfs_atmos_vminmon.sh
 │   ├── exgfs_nceppost_cpl.sh
@@ -387,7 +387,6 @@ global-workflow/
 │   ├── enkf_chgres_recenter_nc.fd
 │   ├── fbwndgfs.fd
 │   ├── fregrid.fd -> ufs_utils.fd/sorc/fre-nctools.fd/tools/fregrid
-│   ├── fv3gfs_build.cfg
 │   ├── fv3nc2nemsio.fd
 │   ├── gaussian_sfcanl.fd
 │   ├── gdas2gldas.fd -> gldas.fd/sorc/gdas2gldas.fd
@@ -395,6 +394,7 @@ global-workflow/
 │   ├── getsigensmeanp_smooth.fd -> gsi.fd/util/EnKF/gfs/src/getsigensmeanp_smooth.fd
 │   ├── getsigensstatp.fd -> gsi.fd/util/EnKF/gfs/src/getsigensstatp.fd
 │   ├── gfs_bufr.fd
+│   ├── gfs_build.cfg
 │   ├── gfs_ncep_post.fd -> gfs_post.fd/sorc/ncep_post.fd
 │   ├── gfs_post.fd
 │   ├── gldas2gdas.fd -> gldas.fd/sorc/gldas2gdas.fd
@@ -448,7 +448,7 @@ global-workflow/
 │   ├── forecast_postdet.sh
 │   ├── forecast_predet.sh
 │   ├── fv3gfs_downstream_nems_cpl.sh
-│   ├── fv3gfs_downstream_nems.sh -> ../sorc/gfs_post.fd/ush/fv3gfs_downstream_nems.sh
+│   ├── fv3gfs_downstream_nems.sh -> fv3gfs_downstream_nems_cpl.sh
 │   ├── fv3gfs_driver_grid.sh -> ../sorc/ufs_utils.fd/ush/fv3gfs_driver_grid.sh
 │   ├── fv3gfs_dwn_nems.sh -> ../sorc/gfs_post.fd/ush/fv3gfs_dwn_nems.sh
 │   ├── fv3gfs_filter_topo.sh -> ../sorc/ufs_utils.fd/ush/fv3gfs_filter_topo.sh
@@ -485,6 +485,7 @@ global-workflow/
 │   ├── inter_flux.sh
 │   ├── link_crtm_fix.sh -> ../sorc/gfs_post.fd/ush/link_crtm_fix.sh
 │   ├── load_fv3gfs_modules.sh
+│   ├── merge_fv3_aerosol_tile.py
 │   ├── minmon_xtrct_costs.pl -> ../sorc/gsi.fd/util/Minimization_Monitor/nwprod/minmon_shared.v1.0.1/ush/minmon_xtrct_costs.pl
 │   ├── minmon_xtrct_gnorms.pl -> ../sorc/gsi.fd/util/Minimization_Monitor/nwprod/minmon_shared.v1.0.1/ush/minmon_xtrct_gnorms.pl
 │   ├── minmon_xtrct_reduct.pl -> ../sorc/gsi.fd/util/Minimization_Monitor/nwprod/minmon_shared.v1.0.1/ush/minmon_xtrct_reduct.pl
@@ -528,7 +529,6 @@ global-workflow/
 │   ├── wave_prnc_ice.sh
 │   └── wave_tar.sh
 └── util
-    ├── exec
     ├── modulefiles
     ├── sorc
     └── ush
