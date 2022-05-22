@@ -7,7 +7,7 @@ usage() {
   echo
   echo "Usage: $0 -a <UFS_app> | -c <build_config> | -v | -h "
   echo
-  echo "  -a  Build a specific UFS_app instead of the default"
+  echo "  -a  Build a specific UFS_app instead of the default: S2SWA can be used for ATM, ATMA, S2S, and S2SW"
   echo "  -c  Selectively build based on the provided build_config instead of the default config"
   echo "  -v  Execute all build scripts with -v option"
   echo "  -h  print this help message and exit"
