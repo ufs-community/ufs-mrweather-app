@@ -2,17 +2,32 @@
 
 set -x
 
-UFS_BUILD_OPTION=""
+usage() {
+  set +x
+  echo
+  echo "Usage: $0 -a <UFS_app> | -c <build_config> | -v | -h "
+  echo
+  echo "  -a  Build a specific UFS_app instead of the default"
+  echo "  -c  Selectively build based on the provided build_config instead of the default config"
+  echo "  -v  Execute all build scripts with -v option"
+  echo "  -h  print this help message and exit"
+  echo
+  set -x
+  exit 1
+}
 
-while getopts "c" flag;
+build_ufs_option=""
+build_v_option=""
+
+while getopts ":a:c:v:h" flag;
 
 do
         case "${flag}" in
-	    c)
-		echo "Received -c flag, building ufs-weather-model for S2SW app"
-		UFS_BUILD_OPTION=-c
-		break
-		;;	    
+	        a) build_ufs_option+="-a ${OPTARG} ";;
+		c) build_ufs_option+="-c ${OPTARG} ";;
+                v) build_v_option+="-v";;
+		h) usage;;
+		*) echo "Invalid options: -$flag" ;;	    
         esac
 done
 
