@@ -43,7 +43,7 @@ cd global-workflow/sorc; WRK_PWD=$(pwd)
 sh checkout.sh                                                                                                                               
 
 # turn off gsi build option -------------------------------------------------------                                                                                                                   
-sed -i '6s/yes/no/g' fv3gfs_build.cfg                                                                                                        
+sed -i '6s/yes/no/g' gfs_build.cfg                                                                                                        
 
 # build and link components -------------------------------------------------------                                                           
 if [ $UFS_BUILD_OPTION == "-c" ]; then
