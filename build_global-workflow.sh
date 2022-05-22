@@ -31,6 +31,9 @@ do
         esac
 done
 
+build_option+=$build_v_option
+build_option+=" ${build_ufs_option}"
+
 # set current and working paths ---------------------------------------------------
 echo "current path" $(pwd);
 CUR_PWD=$(pwd)
