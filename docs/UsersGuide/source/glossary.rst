@@ -36,8 +36,8 @@ Glossary
    Coupled models
       A coupled model joins two or more weather or climate model components into one larger Earth systems model for more accurate predictions. Fully-coupled models contain an atmospheric model, an ocean model, a land model, and a sea ice model. 
    
-   ..
-      COMMENT: Is this accurate?
+      ..
+         COMMENT: Is this accurate?
 
    Dynamical core
       Global atmospheric model based on fluid dynamics principles, including Euler's equations of motion.
@@ -122,9 +122,9 @@ Glossary
 
    Stochastic physics
       A package of stochastic schemes used to represent model uncertainty: SKEB (Stochastic Kinetic Energy Backscatter), SPPT (Stochastically Perturbed Physics Tendencies), and SHUM (Specific Humidity)
-
-   ..
-      COMMENT: Need definition of the field of Stochastic physics. Then can specify that there is a stochastic physics package that does specific things. 
+      
+      ..
+         COMMENT: Need definition of the field of Stochastic physics. Then can specify that there is a stochastic physics package that does specific things. 
 
    Suite
       A collection of primary physics schemes and interstitial schemes that are known to work

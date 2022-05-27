@@ -4,7 +4,7 @@
 Workflow Quick Start
 ====================
 
-This Quick Start Guide will help users to build and run the "out-of-the-box" case for the Unified Forecast System (:term:`UFS`) `Medium-Range Weather (MRW) Application <https://github.com/ufs-community/ufs-mrweather-app>`__ on preconfigured (`Level 1 <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`__) machines. This chapter uses :term:`uncoupled`, :term:`free-forecast` mode. For more detailed guidance on building and running the MRW App, see Chapters :numref:`%s <build-mrw>` and :numref:`%s <run-mrw>`. 
+This Quick Start Guide will help users to build and run the "out-of-the-box" case for the Unified Forecast System (:term:`UFS`) `Medium-Range Weather (MRW) Application <https://github.com/ufs-community/ufs-mrweather-app>`__ on preconfigured (`Level 1 <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`__) machines. This chapter uses :term:`uncoupled`, :term:`free-forecast` mode. 
 
 ..
    COMMENT: Describe case we are running! Hurricane?
@@ -91,7 +91,7 @@ Running the UFS Medium-Range Weather Application
       
       cp <ICfile> $COMROT/$PSLOT
    
-   where **<ICfile>** refers to a given IC file (copy an entire directory by adding the ``-r`` argument). These files should be placed within a directory named according to the ``gfs.YYYYMMDDHH`` convention with a filename structure like ``gfs.$YYYYMMDD/HH/atmos/INPUT``. The INPUT folder within ``.../atmos/`` contains ``sfc`` files needed for the Global Forecast System (:term:`GFS`) atmospheric model (:term:`ATM`) to run.
+   where **<ICfile>** refers to a given IC file (copy an entire directory by adding the ``-r`` argument). These files should be placed within a directory named according to the ``gfs.YYYYMMDDHH`` convention with a filename structure like ``gfs.$YYYYMMDD/HH/atmos/INPUT``. The INPUT folder within ``.../atmos/`` contains ``sfc`` files needed for the Global Forecast System (:term:`GFS`) atmospheric model (ATM) to run.
 
    ..
       COMMENT: Does it also contain ``gfs`` files?
