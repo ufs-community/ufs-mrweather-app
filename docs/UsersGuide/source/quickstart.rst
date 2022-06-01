@@ -35,10 +35,10 @@ Building the UFS Medium-Range Weather Application
       sh build_global-workflow.sh [-a <UFS_app>] [-c <config_file>] [-v] [-h]
 
    where: 
-      * **-a**: Builds a specific UFS app instead of the default. Valid values: ``S2SWA`` (default) | ``ATM`` | ``ATMA`` | ``S2S`` | ``S2SW``
-      * **-c**: Selectively builds based on the provided config file instead of the default config. 
-      * **-v**: Builds verbose option.
-      * **-h**: Prints usage and exits.
+      * ``-a``: Builds a specific UFS app instead of the default. Valid values: ``S2SWA`` (default) | ``ATM`` | ``ATMA`` | ``S2S`` | ``S2SW``
+      * ``-c``: Selectively builds based on the provided config file instead of the default config. 
+      * ``-v``: Builds verbose option.
+      * ``-h``: Prints usage and exits.
 
    Users who run ``sh build_global-workflow.sh`` without any options will build the default option, ``S2SWA``, which stands for *Subseasonal to Seasonal with Wave and Aerosol* capabilities. 
 
