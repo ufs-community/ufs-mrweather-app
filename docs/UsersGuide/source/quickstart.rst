@@ -86,13 +86,13 @@ Running the UFS Medium-Range Weather Application
       * Valid ``app`` values are: ``ATM`` (default) | ``ATMA`` | ``S2S`` | ``S2SW`` | ``S2SWA`` 
       * Valid ``resdet`` values are: 48, 96, 192, 384, 768
       * ``--idate`` and ``--edate`` are the *same* and refer to the initial start time of the experiment.
-      * ``gfs_cyc`` must be set to 1.
+      * Valid values for ``gfs_cyc`` are: ``0`` (data assimilation only), ``1`` (00z only), ``2`` (00z and 12z), and ``4`` (00z, 06z, 12z, 18z)
 
    For example: 
 
    .. code-block:: console
       
-      ./setup_expt.py forecast-only --pslot test --app ATM --idate 2020010100 --edate 2020010100 --resdet 384 --gfs_cyc 1 --comrot /home/$USER/COMROT --expdir /home/$USER/uncoupled/EXPDIR
+      ./setup_expt.py forecast-only --pslot test --app ATM --idate 2020010100 --edate 2020010100 --resdet 384 --gfs_cyc 1 --comrot /home/$USER/COMROT --expdir /home/$USER/EXPDIR
 
    This will generate ``COMROT`` and ``EXPDIR`` directories. Additionally, it will create a ``$PSLOT`` (specific experiment name) subdirectory within ``COMROT`` and ``EXPDIR`` and a collection of ``config`` files in ``$EXPDIR/$PSLOT``.
 
@@ -107,7 +107,7 @@ Running the UFS Medium-Range Weather Application
    ..
       COMMENT: Does it also contain ``gfs`` files?
 
-#. Edit ``config.base`` in ``$EXPDIR/$PSLOT``. In particular, users will need to check/modify the following parameters: ACCOUNT, HOMEDIR, STMP, PTMP, HPSSARCH, SDATE, EDATE, and the number ``384`` in the ``export FHMAX_GFS_##=${FHMAX_GFS_##:-384}`` statement that corresponds to the start hour of the experiment cycle. ``384`` should be adjusted to reflect the length of the forecast experiment. 
+#. Edit ``config.base`` in ``$EXPDIR/$PSLOT``. In particular, users will need to check/modify the following parameters: ACCOUNT, HOMEDIR, STMP, PTMP, HPSSARCH, SDATE, EDATE, and the number ``384`` in the ``export FHMAX_GFS_##=${FHMAX_GFS_##:-384}`` statement whose ## value corresponds to the start hour of the experiment cycle. ``384`` should be adjusted to reflect the length of the forecast experiment. 
 
 #. Run the following to generate a crontab and ``.xml`` files for the experiment in ``$EXPDIR/$PSLOT``:
 
