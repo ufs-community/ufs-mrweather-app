@@ -98,7 +98,7 @@ The MR Weather App is distributed with a post-processing tools, the Unified
 Post Processor (UPP). The Unified Post Processor (UPP) converts the
 native netCDF output from the model to the :term:`GRIB2` format on standard isobaric
 coordinates in the vertical. The UPP can also be used to compute a variety of
-useful diagnostic fields, as described in the `UPP user's guide <https://upp.readthedocs.io/en/ufs-v1.1.0>`_.
+useful diagnostic fields, as described in the `UPP User's Guide <https://upp.readthedocs.io/en/upp_v10.1.0/>`_.
 
 The UPP output can be used with visualization, plotting and verification
 packages, or for further downstream post-processing, e.g. statistical
@@ -207,7 +207,7 @@ the distributed documentation, summarized here for ease of use.
    | Common Infrastructure for  | http://esmci.github.io/cime/versions/ufs_release_v1.1/html/index.html           |
    | Modeling the Earth         |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | Unified Post Processor     | https://upp.readthedocs.io/en/ufs-v1.1.0                                        |
+   | Unified Post Processor     | https://upp.readthedocs.io/en/upp_v10.1.0/                                      |
    +----------------------------+---------------------------------------------------------------------------------+
 
 The UFS community is encouraged to contribute to the UFS development effort.

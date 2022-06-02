@@ -75,7 +75,7 @@ The directory structure on disk for users of the MR Weather App depends on wheth
 a pre-configured platform. Users working on pre-configured platforms will only have the
 files associated with the ufs-mrweather-app in their disk space. The directory structure is set
 in configuration file ``Externals.cfg``, which is in the top directory where the umbrella repository
-has been cloned. A listing of the directory structure is shown :ref:`here <top_level_dir_structure>`.
+has been cloned. 
 
 The directory structures for the standalone UFS Weather Model and the UFS Weather Model included with
 the MR Weather App are equal in that they contain subdirectories for :term:`FMS`, :term:`FV3`, :term:`NEMS`
