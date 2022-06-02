@@ -35,7 +35,7 @@ Building the UFS Medium-Range Weather Application
       sh build_global-workflow.sh [-a <UFS_app>] [-c <config_file>] [-v] [-h]
 
    where: 
-      * ``-a``: Builds a specific UFS app instead of the default. Valid values: ``S2SWA`` (default) | ``ATM`` | ``ATMA`` | ``S2S`` | ``S2SW``
+      * ``-a``: Builds a specific UFS app instead of the default. Valid values: ``S2SWA`` (default) | ``ATM`` | ``ATMW`` | ``S2S`` | ``S2SW``
       * ``-c``: Selectively builds based on the provided config file instead of the default config. 
       * ``-v``: Builds verbose option.
       * ``-h``: Prints usage and exits.
@@ -83,7 +83,7 @@ Running the UFS Medium-Range Weather Application
       ./setup_expt.py forecast-only --pslot <experiment_name> [--app <valid_app>] --idate <YYYYMMDDHH> --edate <YYYYMMDDHH> --resdet <desired_resolution> --gfs_cyc <\#> --comrot <PATH_TO_YOUR_COMROT_DIR> --expdir <PATH_TO_YOUR_EXPDIR>
 
    where:
-      * Valid ``app`` values are: ``ATM`` (default) | ``ATMA`` | ``S2S`` | ``S2SW`` | ``S2SWA`` 
+      * Valid ``app`` values are: ``ATM`` (default) | ``ATMW`` | ``S2S`` | ``S2SW`` | ``S2SWA`` 
       * Valid ``resdet`` values are: 48, 96, 192, 384, 768
       * ``--idate`` and ``--edate`` are the *same* and refer to the initial start time of the experiment.
       * Valid values for ``gfs_cyc`` are: ``0`` (data assimilation only), ``1`` (00z only), ``2`` (00z and 12z), and ``4`` (00z, 06z, 12z, 18z)
