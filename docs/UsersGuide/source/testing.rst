@@ -27,7 +27,7 @@ The code must have been downloaded before the regression tests can be run. This 
     cd my_ufs_sandbox
     ./manage_externals/checkout_externals
 
-Several environment variables need to be set before running the regression tests. The instructions below provide quick information on how to set up the environment variables (for complete information, users should refer to :numref:`Chapter %s <quickstart>`). ::
+Several environment variables need to be set before running the regression tests. The instructions below provide quick information on how to set up the environment variables (for complete information, users should refer to :numref:`Chapter %s <quickstart>`). 
 
     export myUFS_INPUT=my_directory	 # Directory for staging input datasets
     export UFS_SCRATCH=my_scratch_space  # Directory for output files
