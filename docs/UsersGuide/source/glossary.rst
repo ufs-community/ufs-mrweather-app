@@ -68,6 +68,9 @@ Glossary
    HPC-Stack
       The `HPC-Stack <https://github.com/NOAA-EMC/hpc-stack>`__ is a repository that provides a unified, shell script-based build system for building the software stack required for numerical weather prediction (NWP) tools such as the `Unified Forecast System (UFS) <https://ufscommunity.org/>`__ and the `Joint Effort for Data assimilation Integration (JEDI) <https://jointcenterforsatellitedataassimilation-jedi-docs.readthedocs-hosted.com/en/latest/>`__ framework.
 
+   HPSS
+      High Performance Storage System (HPSS).
+
    IC
    ICs
       Initial conditions
@@ -108,7 +111,7 @@ Glossary
       A binary format for atmospheric model output on the native gaussian grid.
 
    NetCDF
-      A set of software libraries and machine-independent data formats that supports the creation, access, and sharing of array-oriented scientific data. 
+      NetCDF (`Network Common Data Form <https://www.unidata.ucar.edu/software/netcdf/>`__) is a file format and community standard for storing multidimensional scientific data. It includes a set of software libraries and machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data.
 
    NWP
    Numerical Weather Prediction
@@ -121,10 +124,8 @@ Glossary
       The `spack-stack <https://github.com/NOAA-EMC/spack-stack>`__ is a collaborative effort between the NOAA Environmental Modeling Center (EMC), the UCAR Joint Center for Satellite Data Assimilation (JCSDA), and the Earth Prediction Innovation Center (EPIC). *spack-stack* is a repository that provides a Spack-based method for building the software stack required for numerical weather prediction (NWP) tools such as the `Unified Forecast System (UFS) <https://ufscommunity.org/>`__ and the `Joint Effort for Data assimilation Integration (JEDI) <https://jointcenterforsatellitedataassimilation-jedi-docs.readthedocs-hosted.com/en/latest/>`__ framework. spack-stack uses the Spack package manager along with custom Spack configuration files and Python scripts to simplify installation of the libraries required to run various applications. The *spack-stack* can be installed on a range of platforms and comes pre-configured for many systems. Users can install the necessary packages for a particular application and later add the missing packages for another application without having to rebuild the entire stack.
 
    Stochastic physics
-      A package of stochastic schemes used to represent model uncertainty: SKEB (Stochastic Kinetic Energy Backscatter), SPPT (Stochastically Perturbed Physics Tendencies), and SHUM (Specific Humidity)
-      
-      ..
-         COMMENT: Need definition of the field of Stochastic physics. Then can specify that there is a stochastic physics package that does specific things. 
+      1. Stochastics physics schemes are physics packages that apply randomized perturbations to the physical tendencies or the physical parameters of a model in order to compensate for model uncertainty. 
+      2. Stochastic Physics also refers to the specific package of stochastic schemes used alongside the CCPP to represent model uncertainty: SKEB (Stochastic Kinetic Energy Backscatter), SPPT (Stochastically Perturbed Physics Tendencies), SHUM (Specific Humidity), SPP (Stochastically Perturbed Parameterizations), and LSM SPP (Land Surface Model SPP).  
 
    Suite
       A collection of primary physics schemes and interstitial schemes that are known to work

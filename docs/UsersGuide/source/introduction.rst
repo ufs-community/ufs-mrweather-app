@@ -464,7 +464,7 @@ A `forum-based online support system <https://forums.ufscommunity.org>`__ with t
    | UFS_UTILS Scientific       | https://ufs-community.github.io/UFS_UTILS/index.html                            |
    | Documentation              |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | UFS Weather Model v2.0     | https://ufs-weather-model.readthedocs.io/en/latest                              |
+   | UFS Weather Model          | https://ufs-weather-model.readthedocs.io/en/latest                              |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
    | Global Workflow User's     | https://github.com/NOAA-EMC/global-workflow/wiki/Run-Global-Workflow            |
@@ -479,7 +479,7 @@ A `forum-based online support system <https://forums.ufscommunity.org>`__ with t
    | CCPP Scientific            | https://dtcenter.ucar.edu/GMTB/v6.0.0/sci_doc/index.html                        |
    | Documentation              |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | CCPP Technical             | https://ccpp-techdoc.readthedocs.io/en/latest/                                  |
+   | CCPP Technical             | https://ccpp-techdoc.readthedocs.io/en/v6.0.0/                                  |
    | Documentation              |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
    | Stochastic Physics         | https://stochastic-physics.readthedocs.io/en/release-public-v3/                 |
