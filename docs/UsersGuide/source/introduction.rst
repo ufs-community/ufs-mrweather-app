@@ -353,17 +353,11 @@ An abbreviated version of the global-workflow directory tree:
 
    global-workflow/
       ├── docs
-      │   ├── archive
-      │   ├── doxygen
-      │   ├── note_fixfield.txt
-      │   ├── Release_Notes.gfs.v16.0.0.md
-      │   └── Release_Notes.gfs.v16.1.0.txt
       ├── driver
       │   ├── gdas
       │   ├── gfs
       │   └── product
       ├── ecflow
-      │   └── ecf
       ├── env
       │   ├── gfs.ver
       │   ├── HERA.env
@@ -371,7 +365,7 @@ An abbreviated version of the global-workflow directory tree:
       │   ├── ORION.env
       │   ├── WCOSS_C.env
       │   └── WCOSS_DELL_P3.env
-      ├── exec
+      ├── (exec)
       ├── Externals.cfg
       ├── fix
       ├── gempak
@@ -379,12 +373,8 @@ An abbreviated version of the global-workflow directory tree:
       │   ├── fix
       │   └── ush
       ├── jobs
-      │   ├── JGDAS_ATMOS_<JOBNAME>
-      │   ├── JGDAS_ENKF_<JOBNAME>
-      │   ├── JGFS_ATMOS_<JOBNAME>
-      │   ├── JGLOBAL_ATMOS_<JOBNAME>
-      │   ├── JGLOBAL_FORECAST
-      │   ├── JGLOBAL_WAVE_<JOBNAME>
+      │   ├── JGDAS_<JOBS>    # multiple scripts
+      │   ├── JGLOBAL_<JOBS>  # multiple scripts
       │   └── rocoto
       ├── modulefiles
       │   ├── module_base.<platform>.lua
@@ -395,104 +385,42 @@ An abbreviated version of the global-workflow directory tree:
       ├── parm
       │   ├── chem
       │   ├── config
-      │   ├── gldas
       │   ├── mom6
-      │   ├── mon
       │   ├── parm_fv3diag
       │   ├── parm_wave
       │   ├── post
       │   ├── product
       │   ├── relo
-      │   ├── transfer_gdas_1a.list
-      │   ├── transfer_gdas_1b.list
-      │   ├── transfer_gdas_1c.list
-      │   ├── transfer_gdas_enkf_enkf_<##>.list
-      │   ├── transfer_gdas_misc.list
-      │   ├── transfer_gfs_<##>.list
-      │   ├── transfer_gfs_gempak.list
-      │   ├── transfer_gfs_misc.list
-      │   ├── transfer_gfs_wave_restart<#>.list
-      │   ├── transfer_gfs_wave_rundata.list
-      │   ├── transfer_gfs_wave_wave.list
-      │   ├── transfer_rdhpcs_gdas_enkf_enkf_<#>.list
-      │   ├── transfer_rdhpcs_gdas.list
-      │   ├── transfer_rdhpcs_gfs.list
-      │   ├── transfer_rdhpcs_gfs_nawips.list
+      │   ├── transfer_<file>.list # multiple files
       │   ├── wave
       │   └── wmo
       ├── README.md
       ├── scripts
       │   ├── exemcsfc_global_sfc_prep.sh
-      │   ├── exgdas_atmos_<name>.sh
-      │   ├── exgdas_enkf_<name>.sh
+      │   ├── exgdas_<name>.sh               # multiple shell scripts
       │   ├── exgfs_aero_init_aerosol.py
-      │   ├── exgfs_atmos_<name>.sh
-      │   ├── exgfs_nceppost_cpl.sh
-      │   ├── exgfs_pmgr.sh
-      │   ├── exgfs_prdgen_manager.sh
-      │   ├── exgfs_wave_<name>.sh
-      │   ├── exglobal_atmos_<name>.sh
-      │   ├── exglobal_atmos_tropcy_qc_reloc.sh
-      │   ├── exglobal_diag.sh
-      │   ├── exglobal_forecast.sh
-      │   ├── run_gfsmos_master.sh.<system>
-      │   ├── run_reg2grb2.sh
-      │   ├── run_regrid.sh
-      │   └── vsdbjob_submit.sh
+      │   ├── exgfs_<name>.sh                # multiple shell scripts
+      │   ├── exglobal_<name>.sh             # multiple shell scripts
+      │   ├── run_gfsmos_master.sh.<system>  # multiple shell scripts
+      │   ├── run_<name>.sh                  # multiple shell scripts
       ├── sorc
-      │   ├── build
-      │   ├── build_all.sh
-      │   ├── build_<name>.sh
-      │   ├── calc_analysis.fd
-      │   ├── calc_increment_ens.fd
-      │   ├── calc_increment_ens_ncio.fd
+      │   ├── build_<name>.sh       # multiple shell scripts
       │   ├── checkout.sh
       │   ├── cmake
       │   ├── CMakeLists.txt
-      │   ├── cpl_build.cfg
-      │   ├── emcsfc_ice_blend.fd
-      │   ├── emcsfc_snow2mdl.fd
       │   ├── enkf_chgres_recenter.fd
       │   ├── enkf_chgres_recenter_nc.fd
       │   ├── fbwndgfs.fd
-      │   ├── fregrid.fd
       │   ├── fv3nc2nemsio.fd
       │   ├── gaussian_sfcanl.fd
-      │   ├── gdas2gldas.fd
-      │   ├── getsfcensmeanp.fd
-      │   ├── getsigensmeanp_smooth.fd
-      │   ├── getsigensstatp.fd
       │   ├── gfs_bufr.fd
       │   ├── gfs_build.cfg
-      │   ├── gfs_ncep_post.fd
-      │   ├── gfs_post.fd
-      │   ├── gldas2gdas.fd
-      │   ├── gldas.fd
-      │   ├── gldas_forcing.fd
-      │   ├── gldas_model.fd
-      │   ├── gldas_post.fd
-      │   ├── gldas_rst.fd
-      │   ├── global_cycle.fd
-      │   ├── global_enkf.fd
-      │   ├── global_gsi.fd
-      │   ├── gsi.fd
       │   ├── install
-      │   ├── interp_inc.fd
       │   ├── link_workflow.sh
       │   ├── logs
       │   ├── machine-setup.sh
-      │   ├── make_hgrid.fd
-      │   ├── make_solo_mosaic.fd
-      │   ├── ncdiag_cat.fd
       │   ├── ncl.setup
-      │   ├── oznmon_horiz.fd
-      │   ├── oznmon_time.fd
       │   ├── partial_build.sh
-      │   ├── radmon_angle.fd
-      │   ├── radmon_bcoef.fd
-      │   ├── radmon_bcor.fd
-      │   ├── radmon_time.fd
-      │   ├── recentersigp.fd
       │   ├── reg2grb2.fd
       │   ├── regrid_nemsio.fd
       │   ├── supvit.fd
@@ -501,112 +429,25 @@ An abbreviated version of the global-workflow directory tree:
       │   ├── syndat_qctropcy.fd
       │   ├── tave.fd
       │   ├── tocsbufr.fd
-      │   ├── ufs_model.fd
-      │   ├── ufs_utils.fd
-      │   ├── verif-global.fd
       │   └── vint.fd
       ├── ush
-      │   ├── calcanl_gfs.py
-      │   ├── calcinc_gfs.py
-      │   ├── cplvalidate.sh
-      │   ├── drive_makeprepbufr.sh
-      │   ├── emcsfc_ice_blend.sh
-      │   ├── emcsfc_snow.sh
-      │   ├── fix_precip.sh
-      │   ├── forecast_det.sh
-      │   ├── forecast_postdet.sh
-      │   ├── forecast_predet.sh
-      │   ├── fv3gfs_downstream_nems_cpl.sh
-      │   ├── fv3gfs_downstream_nems.sh
-      │   ├── fv3gfs_driver_grid.sh
-      │   ├── fv3gfs_dwn_nems.sh
-      │   ├── fv3gfs_filter_topo.sh
-      │   ├── fv3gfs_make_grid.sh
-      │   ├── fv3gfs_make_orog.sh
-      │   ├── fv3gfs_nc2nemsio.sh
-      │   ├── fv3gfs_regrid_nemsio.sh
-      │   ├── fv3gfs_remap.sh
-      │   ├── fv3gfs_remap_weights.sh
-      │   ├── gaussian_sfcanl.sh
-      │   ├── getdump.sh
-      │   ├── getges.sh
-      │   ├── getncdimlen
-      │   ├── gfs_bfr2gpk.sh
-      │   ├── gfs_bufr_netcdf.sh
-      │   ├── gfs_bufr.sh
-      │   ├── gfs_nceppost.sh
-      │   ├── gfs_sndp.sh
-      │   ├── gfs_transfer.sh
-      │   ├── gfs_truncate_enkf.sh
-      │   ├── gldas_archive.sh
-      │   ├── gldas_forcing.sh
-      │   ├── gldas_get_data.sh
-      │   ├── gldas_liscrd.sh
-      │   ├── gldas_post.sh
-      │   ├── gldas_process_data.sh
-      │   ├── global_cycle_driver.sh
-      │   ├── global_cycle.sh
-      │   ├── global_extrkr.sh
-      │   ├── global_savefits.sh
-      │   ├── gsi_utils.py
-      │   ├── hpssarch_gen.sh
-      │   ├── icepost.ncl
-      │   ├── inter_flux.sh
-      │   ├── link_crtm_fix.sh
-      │   ├── load_fv3gfs_modules.sh
-      │   ├── merge_fv3_aerosol_tile.py
-      │   ├── minmon_xtrct_costs.pl
-      │   ├── minmon_xtrct_gnorms.pl
-      │   ├── minmon_xtrct_reduct.pl
-      │   ├── mod_icec.sh
-      │   ├── nems.configure.<name>.IN
-      │   ├── nems_configure.sh
-      │   ├── ocnpost.ncl
-      │   ├── ozn_xtrct.sh
-      │   ├── parsing_model_configure_DATM.sh
-      │   ├── parsing_model_configure_FV3.sh
-      │   ├── parsing_namelists_CICE.sh
-      │   ├── parsing_namelists_FV3.sh
-      │   ├── parsing_namelists_MOM6.sh
-      │   ├── radmon_ck_stdout.sh
-      │   ├── radmon_err_rpt.sh
-      │   ├── radmon_verf_angle.sh
-      │   ├── radmon_verf_bcoef.sh
-      │   ├── radmon_verf_bcor.sh
-      │   ├── radmon_verf_time.sh
-      │   ├── rocoto
-      │   ├── scale_dec.sh
-      │   ├── syndat_getjtbul.sh
-      │   ├── syndat_qctropcy.sh
-      │   ├── trim_rh.sh
-      │   ├── tropcy_relocate_extrkr.sh
-      │   ├── tropcy_relocate.sh
-      │   ├── WAM_XML_to_ASCII.pl
-      │   ├── wave_grib2_sbs.sh
-      │   ├── wave_grid_interp_sbs.sh
-      │   ├── wave_grid_moddef.sh
-      │   ├── wave_outp_cat.sh
-      │   ├── wave_outp_spec.sh
-      │   ├── wave_prnc_cur.sh
-      │   ├── wave_prnc_ice.sh
-      │   └── wave_tar.sh
+      │   └── rocoto
       └── util
          ├── modulefiles
          ├── sorc
          └── ush
-
-
-Hierarchical Repository Structure
-=====================================
-
 ..
    COMMENT: Update this from code repos dirs doc!
+   COMMENT: Should exec be removed or put in parentheses? Doesn't appear to be in global-workflow on GitHub.
+   COMMENT: See which files/directories are added after the build and put in parentheses?
 
 ===========================================================
 User Support, Documentation, and Contributing Development
 ===========================================================
-A `forum-based online support system <https://forums.ufscommunity.org>`__ with topical sections
-provides a centralized location for UFS users and developers to post questions and exchange information. The forum complements the distributed documentation, summarized here for ease of use.
+A `forum-based online support system <https://forums.ufscommunity.org>`__ with topical sections provides a centralized location for UFS users and developers to post questions and exchange information. The forum complements the distributed documentation, summarized here for ease of use.
+
+..
+   COMMENTS: Are these forums shifting to the EPIC website? If so, when? Update? 
 
 .. _list_of_documentation:
 
@@ -615,40 +456,54 @@ provides a centralized location for UFS users and developers to post questions a
    +----------------------------+---------------------------------------------------------------------------------+
    | **Documentation**          | **Location**                                                                    |
    +============================+=================================================================================+
-   | MRW App v2.0               | https://ufs-mrweather-app.readthedocs.io/en/ufs-v1.1.0                          |
-   | User's Guide               |                                                                                 |
+   | MRW App User's Guide       | https://ufs-mrweather-app.readthedocs.io/en/latest                              |
    +----------------------------+---------------------------------------------------------------------------------+
-   | chgres_cube User's Guide   | https://ufs-utils.readthedocs.io/en/ufs-v1.1.0                                  |
-   +----------------------------+---------------------------------------------------------------------------------+
-   | UFS Weather Model v2.0     | https://ufs-weather-model.readthedocs.io/en/ufs-v1.1.0                          |
-   | User's Guide               |                                                                                 |
-   +----------------------------+---------------------------------------------------------------------------------+
-   | FV3 Documentation          | https://noaa-emc.github.io/FV3_Dycore_ufs-v1.1.0/html/index.html                |
-   +----------------------------+---------------------------------------------------------------------------------+
-   | CCPP Scientific            | https://dtcenter.org/GMTB/v4.1.0/sci_doc                                        |
+   | UFS_UTILS Technical        | https://noaa-emcufs-utils.readthedocs.io/en/latest                              |
    | Documentation              |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | CCPP Technical             | https://ccpp-techdoc.readthedocs.io/en/v4.1.0                                   |
+   | UFS_UTILS Scientific       | https://ufs-community.github.io/UFS_UTILS/index.html                            |
    | Documentation              |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | Stochastic Physics         | https://stochastic-physics.readthedocs.io/en/ufs-v1.1.0                         |
+   | UFS Weather Model v2.0     | https://ufs-weather-model.readthedocs.io/en/latest                              |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | ESMF manual                | http://www.earthsystemmodeling.org/esmf_releases/public/ESMF_8_0_0/ESMF_refdoc  |
+   | Global Workflow User's     | https://github.com/NOAA-EMC/global-workflow/wiki/Run-Global-Workflow            |
+   | Guide                      |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | Common Infrastructure for  | http://esmci.github.io/cime/versions/ufs_release_v1.1/html/index.html           |
-   | Modeling the Earth         |                                                                                 |
+   | FV3 Scientific             | https://repository.library.noaa.gov/view/noaa/30725                             |
+   | Documentation              |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | Unified Post Processor     | https://upp.readthedocs.io/en/upp_v10.1.0/                                      |
+   | FV3 Technical              | https://noaa-emc.github.io/FV3_Dycore_ufs-v2.0.0/html/index.html                |
+   | Documentation              |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | CCPP Scientific            | https://dtcenter.ucar.edu/GMTB/v6.0.0/sci_doc/index.html                        |
+   | Documentation              |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | CCPP Technical             | https://ccpp-techdoc.readthedocs.io/en/latest/                                  |
+   | Documentation              |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | Stochastic Physics         | https://stochastic-physics.readthedocs.io/en/release-public-v3/                 |
+   | Documentation              |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | ESMF manual                | https://earthsystemmodeling.org/docs/release/latest/ESMF_usrdoc/                |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | spack-stack Documentation  | https://spack-stack.readthedocs.io/en/latest/                                   |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | Unified Post Processor     | https://upp.readthedocs.io/en/latest/                                           |
    +----------------------------+---------------------------------------------------------------------------------+
 
 ..
    COMMENT: Update version numbers/links!
+   COMMENT: Deleted:
+      | Common Infrastructure for  | http://esmci.github.io/cime/versions/ufs_release_v1.1/html/index.html           |
+      | Modeling the Earth         |                                                                                 |
+      +----------------------------+---------------------------------------------------------------------------------+
+   
+
+
 
 The UFS community is encouraged to contribute to the development effort of all related
-utilities, model code, and infrastructure. Users can post issues in the related GitHub repositories to report bugs or to announce upcoming contributions to the code base. For code to be accepted in the authoritative repositories, users must follow the code management rules of each UFS component repository, which are outlined in the respective User's Guides listed in :numref:`Table %s <list_of_documentation>`. In particular, innovations involving the UFS Weather Model need to be tested using the regression tests described in its User’s Guide. These tests are part of the
-official NOAA policy on accepting innovations into its code base, whereas the MRW App end-to-end tests
-are meant as a sanity check for users.
+utilities, model code, and infrastructure. Users can post issues in the related GitHub repositories to report bugs or to announce upcoming contributions to the code base. For code to be accepted in the authoritative repositories, users must follow the code management rules of each UFS component repository, which are outlined in the respective User's Guides listed in :numref:`Table %s <list_of_documentation>`. In particular, innovations involving the UFS Weather Model need to be tested using the regression tests described in its User's Guide. These tests are part of the official NOAA policy on accepting innovations into its code base, whereas the MRW App end-to-end tests are meant as a sanity check for users.
 
 ..
    COMMENT: Revise this to better reflect WE2E test purposes. 
