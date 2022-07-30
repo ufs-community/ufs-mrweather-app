@@ -6,7 +6,10 @@ Introduction
 
 The Unified Forecast System (:term:`UFS`) is a community-based, coupled, comprehensive Earth modeling system. NOAA's operational model suite for numerical weather prediction (NWP) is quickly transitioning to the UFS from a number of different modeling systems. The UFS enables research, development, and contribution opportunities within the broader :term:`Weather Enterprise` (e.g., government, industry, and academia). For more information about the UFS, visit the `UFS Portal <https://ufscommunity.org/>`__.
 
-The UFS includes `multiple applications <https://ufscommunity.org/science/aboutapps/>`__ that span local to global domains and a range of predictive time scales. This documentation describes the UFS Medium-Range Weather (MRW) Application (App), which targets predictions of atmospheric behavior out to about two weeks. This MRW App release includes a prognostic atmospheric model, pre- and post-processing tools, and a community workflow. These components are documented within this User's Guide and supported through a `community forum <https://forums.ufscommunity.org/>`__. Additionally, the MRW App has transitioned from a :term:`CIME`-based workflow to the `global workflow <https://github.com/NOAA-EMC/global-workflow/>`__. New and improved capabilities for the upcoming release include the option to run in coupled or uncoupled mode, the addition of a verification package (METplus) for both deterministic and ensemble simulations and support for four physics schemes and stochastic physics options. Future work will expand the capabilities of the application to include data assimilation (DA) and a forecast restart/cycling capability.
+The UFS includes `multiple applications <https://ufscommunity.org/science/aboutapps/>`__ that span local to global domains and a range of predictive time scales. This documentation describes the UFS Medium-Range Weather (MRW) Application (App), which targets predictions of atmospheric behavior out to about two weeks. The MRW App includes a prognostic atmospheric model, pre- and post-processing tools, and a community workflow. These components are documented within this User's Guide and supported through a `community forum <https://forums.ufscommunity.org/>`__. Additionally, the MRW App has transitioned from a :term:`CIME`-based workflow to the `Global Workflow <https://github.com/NOAA-EMC/global-workflow/>`__. New and improved capabilities for the upcoming release include the option to run in coupled or uncoupled mode, the addition of a verification package (METplus) for both deterministic and ensemble simulations, and support for four physics schemes and stochastic physics options. Future work will expand the capabilities of the application to include data assimilation (:term:`DA`) and a forecast restart/cycling capability.
+
+..
+   COMMENT: GitHub Discussions aren't live yet for the MRW, but aren't we deprecating the forums soon? Could post in global-workflow Discussions? https://github.com/NOAA-EMC/global-workflow/discussions
 
 The MRW App is `available on GitHub <https://github.com/ufs-community/ufs-mrweather-app.git>`__ and is designed to be code that the community can run and improve. It is portable to a set of `commonly used platforms <https://github.com/ufs-community/ufs-mrweather-app/wiki/Supported-Platforms-and-Compilers-for-MRW-App>`__. A limited set of configurations of the release, such as specific model resolutions and physics options, are documented and supported. This documentation provides a :ref:`Quick Start Guide <quickstart>` and a detailed guide for running the MRW Application on supported platforms. It also provides an overview of the release components and details on how to customize or modify different portions of the workflow.
 
@@ -15,7 +18,7 @@ The MRW App v1.1.0 citation is as follows and should be used when presenting res
 UFS Development Team. (2020, March 11). Unified Forecast System (UFS) Medium-Range Weather (MRW) Application (Version v1.1.0). 
 
 ..
-   COMMENT: Update release number/links; remove reference to "upcoming" release.
+   COMMENT: Update release number/links.
    COMMENT: Is the "future work" section accurate?
    COMMENT: Add v2.0.0 wiki page!
    COMMENT: Add "Zenodo. https://doi.org/........."
@@ -26,19 +29,22 @@ How to Use This Document
 
 This guide instructs both novice and experienced users on downloading, building, and running the MRW Application. Please post questions in the `UFS Forum <https://forums.ufscommunity.org/>`__.
 
+..
+   COMMENT: Or post in GitHub Discussions? (not live yet) Or global-workflow Discussions? https://github.com/NOAA-EMC/global-workflow/discussions
+
 .. code-block:: console
 
    Throughout the guide, this presentation style indicates shell commands and options, 
    code examples, etc.
 
-Variables presented as ``AaBbCc123`` in this User's Guide typically refer to variables in scripts, names of files, and directories. Variables presented as ``$VAR`` in this guide typically refer to variables in XML files in a MRW App experiment or to environment variables.
+Variables presented as ``$VAR`` or ``Dir123`` in this User's Guide refer to environment variables, variables in scripts, names of files, or directories. 
 
 File paths or code that include angle brackets (e.g., ``<platform>.env``) indicate that users should insert options appropriate to their MRW App configuration (e.g., ``HERA.env``). 
 
 .. hint:: 
    * To get started running the MRW App, see the :ref:`Quick Start Guide <quickstart>` for beginners or refer to the in-depth chapter on :ref:`Configuring a New Platform <config_new_platform>`.
-   * For background information on the MRW App code repositories and directory structure, see :numref:`Section %s <MRWStructure>` below. 
    * For an outline of MRW App components, see section :numref:`Section %s <components-overview>` below or refer to :numref:`Chapter %s <components>` for a more in-depth treatment.
+   * For background information on the MRW App code repositories and directory structure, see :numref:`Section %s <MRWStructure>` below. 
 
    ..
       COMMENT: Change config new platform ref to ":ref:`Running the Medium-Range Weather Application <build-mrw>`." once it's added. 
@@ -85,25 +91,19 @@ The UFS MRW Application has been designed so that any sufficiently up-to-date ma
    * UNIX style operating system such as CNL, AIX, Linux, Mac
 
    ..
-      COMMENT: Does it need to be POSIX-compliant, too, as /wSRW, or is that implied? 
+      COMMENT: Does it need to be POSIX-compliant, too, as w/SRW, or is that implied? 
 
-   * >40 GB disk space
+   * >44 GB disk space
 
-      * 18 GB input data from GFS, RAP, and HRRR for "out-of-the-box" MRW App case described in :numref:`Chapter %s <quickstart>`
-      * 6 GB for :term:`spack-stack` full installation
-      * 1 GB for ufs-mrweather-app installation
+      * 18 GB input data from GFS for "out-of-the-box" MRW App case
+      * 8 GB for :term:`HPC-Stack` full installation
+      * 3 GB for ``ufs-mrweather-app`` installation and build
       * 11 GB for 120hr/5-day forecast 
    
    ..
-      COMMENT: change ref to build-mrw once created
+      COMMENT: Update disk space requirements once "out-of-the-box" case, data, & tests are settled on. CHANGE/REVISE all numbers above for accuracy!!!
    
    * 4GB memory (25km domain)
-
-   ..
-      COMMENT: CHANGE/REVISE all numbers above to correspond to MRW!!!
-      COMMENT: How large is basic input data for out-of-the-box case? 
-      COMMENT: Where does data come from for out-of-the-box case? Probs no RAP or HRRR...
-      COMMENT: How much disk space required for spack-stack? For ufs-mrweather-app installation? For forecast? 
 
    * Python 3.7+
 
@@ -122,14 +122,14 @@ The UFS MRW Application has been designed so that any sufficiently up-to-date ma
 
       * gcc v9+, ifort v18+, and clang v9+ (macOS, native Apple clang or LLVM clang) have been tested
 
+      ..
+         COMMENT: Should it be C AND C++???
+         COMMENT: Have all of these versions been tested...?
+         COMMENT: Do we need curl and wget for MRW?
+
    * Lmod
 
-   ..
-      COMMENT: Should it be C AND C++???
-      COMMENT: Do we need curl and wget for MRW?
-      COMMENT: Have all of these versions been tested...?
-
-The following software is also required to run the MRW Application, but :term:`spack-stack` (which contains the software libraries necessary for building and running the MRW App) can be configured to build these requirements:
+The following software is also required to run the MRW Application, but :term:`HPC-Stack` (which contains the software libraries necessary for building and running the MRW App) can be configured to build these requirements:
 
    * :term:`MPI` (MPICH, OpenMPI, or other implementation)
 
@@ -140,36 +140,23 @@ The following software is also required to run the MRW Application, but :term:`s
    ..
       COMMENT: Check that this is the case for spack-stack, not just HPC-Stack.
 
-   * `spack-stack <https://github.com/NOAA-EMC/spack-stack>`__ (or `HPC-Stack <https://github.com/NOAA-EMC/hpc-stack>`__), which includes:
+   * `spack-stack <https://github.com/NOAA-EMC/spack-stack>`__ or `HPC-Stack <https://github.com/NOAA-EMC/hpc-stack>`__, which include:
 
-      * `NCEPLIBS-external <https://github.com/NOAA-EMC/NCEPLIBS-external>`__ (includes ESMF)
       * `NCEPLIBS <https://github.com/NOAA-EMC/NCEPLIBS>`__
+      * `NCEPLIBS-external <https://github.com/NOAA-EMC/NCEPLIBS-external>`__ (includes ESMF)
 
    ..
       COMMENT: Are more software packages required? Should NCEPLIBS, etc. be listed at all???
-      COMMENT: Are all of these version numbers up to date?
-
-..
-   COMMENT: Add: "For MacOS systems, some additional software is needed. It is recommended that users install this software using the `Homebrew <https://brew.sh/>`__ package manager for MacOS:" plus 
-   COMMENT: ADD MacOS-specific software here!!!
-      * bash v4.x
-      * GNU compiler suite v.11 or higher with gfortran
-      * cmake
-      * make
-      * coreutils
-      * gsed
-   More details are in :numref:`Section %s <genericMacOS>`.
-   COMMENT: Change above to reflect spack-stack details and/or integrate spack-stack docs.
 
 Optional but recommended prerequisites for all systems:
 
    * Conda for installing/managing Python packages
    * Bash v4+
    * Rocoto Workflow Management System (1.3.1)
-   * Python packages ``scipy``, ``matplotlib``, ``pygrib``, ``cartopy``, and ``pillow`` for graphics
+   * Python packages ``matplotlib``, ``numpy``, ``cartopy``, and ``netCDF4`` for graphics
 
 ..
-   COMMENT: Are these packages need for graphics in MRW? or just SRW?
+   COMMENT: Are these the only packages need for graphics in MRW? 
 
 After installing these prerequisites, users may continue on to build the MRW App as documented in the :ref:`quickstart`.
 
@@ -180,7 +167,23 @@ After installing these prerequisites, users may continue on to build the MRW App
 MRW App Components Overview 
 ==============================
 
-Pre-Processor Utilities and Initial Conditions
+Build System and Workflow
+===========================
+
+The MRW Application has a portable CMake-based build system that packages together all the components required to build the MRW Application. Once built, users can generate the Rocoto-based Global Workflow, which will run each task in the proper sequence. (See `Rocoto documentation <https://github.com/christopherwharrop/rocoto/wiki/Documentation>`__ for more on workflow management.) 
+
+..
+   COMMENT: Can the app also be run stand-alone (i.e. w/o a workflow manager)?
+
+This MRW Application release has been tested on a variety of platforms widely used by researchers, including NOAA High-Performance Computing (HPC) systems (e.g., Jet, Gaea), cloud environments, and generic Linux and macOS systems. Four `levels of support <https://github.com/ufs-community/ufs-mrweather-app/wiki/Supported-Platforms-and-Compilers-for-MRW-App>`__ have been defined for the MRW Application. Preconfigured (Level 1) systems already have the required software libraries available in a central location via the *spack-stack*. The MRW Application is expected to build and run out-of-the-box on these systems, and users can :ref:`download the MRW App code <quickstart>` without first installing prerequisites. On other platforms (Levels 2-4), the required libraries will need to be installed as part of the :ref:`MRW Application build <quickstart>` process. On Level 2 platforms, installation should be straightforward, and the MRW App should build and run successfully. On Level 3 & 4 platforms, users may need to perform additional troubleshooting since little or no pre-release testing has been conducted on these systems.
+
+..
+   COMMENT: Is Linux/Mac still supported? Seems like we're not testing it... 
+   COMMENT: Switch quickstart ref to DownloadMRWApp/BuildMRW ref once available.
+   COMMENT: What about Level 2 systems?! Do we have any?
+
+
+Data and Pre-Processing Utilities 
 =================================================
 
 The MRW App requires input model data and the :term:`chgres_cube` pre-processing software, which is part of the `UFS_UTILS <https://github.com/ufs-community/UFS_UTILS>`__ pre-processing utilities package, to initialize and prepare the model. Additional information about the pre-processor utilities can be found in :numref:`Chapter %s <utils>`, in the `UFS_UTILS Technical Documentation <https://noaa-emcufs-utils.readthedocs.io/en/latest>`__, and in the `UFS_UTILS Scientific Documentation <https://ufs-community.github.io/UFS_UTILS/index.html>`__.
@@ -192,8 +195,7 @@ Forecast Model
 Atmospheric Model
 --------------------
 The prognostic atmospheric model in the UFS MRW Application uses the Finite-Volume Cubed-Sphere
-(:term:`FV3`) dynamical core. The :term:`dynamical core` is the computational part of a model that solves the equations of fluid motion for the atmospheric component of the UFS Weather Model. A User's Guide for the UFS :term:`Weather Model` can be found `here <https://ufs-weather-model.readthedocs.io/en/latest/>`__. Additional information about the FV3 dynamical core can be found in the `scientific documentation <https://repository.library.noaa.gov/view/noaa/30725>` and the `technical documentation <https://noaa-emc.github.io/FV3_Dycore_ufs-v2.0.0/html/index.html
-\>`__.
+(:term:`FV3`) dynamical core. The :term:`dynamical core` is the computational part of a model that solves the equations of fluid motion for the atmospheric component of the UFS Weather Model. A User's Guide for the UFS :term:`Weather Model` can be found `here <https://ufs-weather-model.readthedocs.io/en/latest/>`__. Additional information about the FV3 dynamical core can be found in the `scientific documentation <https://repository.library.noaa.gov/view/noaa/30725>`__ and the `technical documentation <https://noaa-emc.github.io/FV3_Dycore_ufs-v2.0.0/html/index.html>`__.
 
 Common Community Physics Package
 ------------------------------------
@@ -233,31 +235,7 @@ The Model Evaluation Tools (MET) package is a set of statistical verification to
 Visualization Example
 =======================
 
-This release does not include support for model visualization. Four basic NCAR Command Language (:term:`NCL`) scripts are provided to create a basic visualization of model output, but this capability is provided only as an example for users familiar with NCL. The scripts may be used to complete a visual check to verify that the application is producing reasonable results.
-
-..
-   COMMENT: Is this still true? Should we switch to something like:
-      
-      The MRW Application includes Python scripts to create basic visualizations of the model output. :numref:`Chapter %s <graphics>` contains usage information and instructions; instructions also appear at the top of the scripts. 
-   
-   Would need to make a graphics chapter...
-   Regardless, the current plotting scripts seem to be in Python, not NCL...
-
-
-Workflow and Build System
-===========================
-
-The MRW Application has a portable CMake-based build system that packages together all the components required to build the MRW Application. Once built, users can generate a Rocoto-based workflow that will run each task in the proper sequence (see `Rocoto documentation <https://github.com/christopherwharrop/rocoto/wiki/Documentation>`__ for more on workflow management). 
-
-..
-   COMMENT: Can the app also be run stand-alone (i.e. w/o a workflow manager)?
-
-This MRW Application release has been tested on a variety of platforms widely used by researchers, including NOAA High-Performance Computing (HPC) systems (e.g., Jet, Gaea), cloud environments, and generic Linux and macOS systems. Four `levels of support <https://github.com/ufs-community/ufs-mrweather-app/wiki/Supported-Platforms-and-Compilers-for-MRW-App>`__ have been defined for the MRW Application. Preconfigured (Level 1) systems already have the required software libraries available in a central location via the *spack-stack*. The MRW Application is expected to build and run out-of-the-box on these systems, and users can :ref:`download the MRW App code <quickstart>` without first installing prerequisites. On other platforms (Levels 2-4), the required libraries will need to be installed as part of the :ref:`MRW Application build <quickstart>` process. On Level 2 platforms, installation should be straightforward, and the MRW App should build and run successfully. On Level 3 & 4 platforms, users may need to perform additional troubleshooting since little or no pre-release testing has been conducted on these systems.
-
-..
-   COMMENT: Is Linux/Mac still supported? Seems like we're not testing it... 
-   COMMENT: Switch quickstart ref to DownloadMRWApp/BuildMRW ref once available.
-   COMMENT: What about Level 2 systems?! Do we have any?
+The MRW Application includes Python scripts to create basic visualizations of the model output. The scripts may be used to complete a visual check to verify that the application is producing reasonable results.
 
 .. _MRWStructure:
 

@@ -12,21 +12,24 @@ Glossary
    CCPP
       The `Common Community Physics Package <https://dtcenter.org/community-code/common-community-physics-package-ccpp>`_ is a forecast-model agnostic, vetted collection of codes containing atmospheric physical parameterizations and suites of parameterizations for use in Numerical Weather Prediction (NWP) along with a framework that connects the physics to the host forecast model.
 
+   CESM
+   Community Earth System Model
+      The `Community Earth System Model <https://www.cesm.ucar.edu/>`__ is a community climate model centered at the National Center for Atmospheric Research (:term:`NCAR`). 
+
    chgres_cube
-       The preprocessing software used to create initial condition files to “coldstart” the forecast
+       The preprocessing software used to create initial condition files to "coldstart" the forecast
        model. The initial conditions are created from either GFS GRIB2 or NEMSIO data.
 
    CIME
-      The Common Infrastructure for Modeling the Earth (CIME - pronounced “SEAM”) provides a Case
-      Control System for configuring, compiling and executing Earth system models, data and stub model
-      components, a driver and associated tools and libraries.
+      The `Common Infrastructure for Modeling Earth <https://github.com/ESMCI/cime>`__ (CIME - pronounced "SEAM") consists of a Case Control System (CCS) that supports the configuration, compilation, execution, system testing, and unit testing of an Earth System Model. The CIME CCS is used in :term:`CESM` and was previously used in the Medium-Range Weather (MRW) Application. View the CIME documentation `here <https://esmci.github.io/cime/versions/master/html/index.html>`__.
+
 
    Component
       A software element that has a clear function and interface. In Earth system models, components are often single portions of the Earth system (e.g. atmosphere, ocean, or land surface) that are assembled to form a whole.
 
    Compset
    Compsets
-      A component set. It refers to a particular mix of components, along with a component-specific configuration and/or namelist settings”.
+      A component set. It refers to a particular mix of components, along with a component-specific configuration and/or namelist settings.
 
    CONUS
       Continental United States
@@ -38,6 +41,10 @@ Glossary
    
       ..
          COMMENT: Is this accurate?
+
+   DA
+   Data Assimilation
+      Data assimilation is the combining of diverse data, possibly sampled at different times and intervals and different locations, into a unified and consistent description of a physical system, such as the state of the atmosphere or the Earth system.
 
    Dynamical core
       Global atmospheric model based on fluid dynamics principles, including Euler's equations of motion.
@@ -139,7 +146,7 @@ Glossary
       operational numerical weather prediction applications
 
    Umbrella repository
-      A repository that houses external code, or “externals,” from additional repositories.
+      A repository that houses external code, or "externals," from additional repositories.
 
    Uncoupled
    Uncoupled model
