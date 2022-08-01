@@ -51,6 +51,7 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
     'sphinx.ext.napoleon',
+    'sphinxcontrib.bibtex',
 ]
 
 bibtex_bibfiles = ['references.bib']
@@ -108,6 +109,7 @@ html_static_path = ['_static']
 
 def setup(app):
     app.add_css_file('custom.css')  # may also be an URL
+    app.add_css_file('theme_overrides.css')  # may also be an URL
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
