@@ -18,7 +18,7 @@ Glossary
 
    chgres_cube
        The preprocessing software used to create initial condition files to "coldstart" the forecast
-       model. The initial conditions are created from either GFS GRIB2 or NEMSIO data.
+       model. The initial conditions are created from either GFS :term:`GRIB2` or :term:`NEMSIO` data.
 
    CIME
       The `Common Infrastructure for Modeling Earth <https://github.com/ESMCI/cime>`__ (CIME - pronounced "SEAM") consists of a Case Control System (CCS) that supports the configuration, compilation, execution, system testing, and unit testing of an Earth System Model. The CIME CCS is used in :term:`CESM` and was previously used in the Medium-Range Weather (MRW) Application. View the CIME documentation `here <https://esmci.github.io/cime/versions/master/html/index.html>`__.
@@ -46,6 +46,7 @@ Glossary
    Data Assimilation
       Data assimilation is the combining of diverse data, possibly sampled at different times and intervals and different locations, into a unified and consistent description of a physical system, such as the state of the atmosphere or the Earth system.
 
+   Dycore
    Dynamical core
       Global atmospheric model based on fluid dynamics principles, including Euler's equations of motion.
 
@@ -61,7 +62,7 @@ Glossary
       Free-forecast mode means that the application is running without data assimilation/data cycling capabilities. 
 
    FV3
-      The Finite-Volume Cubed-Sphere Dynamical Core (dycore). Developed at NOAA's Geophysical 
+      The Finite-Volume Cubed-Sphere :term:`Dynamical Core` (dycore). Developed at NOAA's Geophysical 
       Fluid Dynamics Laboratory (GFDL), it is a scalable and flexible dycore capable of both 
       hydrostatic and non-hydrostatic atmospheric simulations. It is the dycore used in the 
       UFS Weather Model.
@@ -112,7 +113,7 @@ Glossary
 
    NEMS
       The NOAA Environmental Modeling System - a software infrastructure that supports
-      NCEP/EMC’s forecast products.
+      NCEP/EMC's forecast products.
 
    NEMSIO
       A binary format for atmospheric model output on the native gaussian grid.
@@ -154,6 +155,7 @@ Glossary
       An uncoupled model contains just one weather or climate model, unlike :term:`coupled models`, which bundle together two or more different weather/climate model components. 
 
    UPP
+   Unified Post Processor
       The `Unified Post Processor <https://dtcenter.org/community-code/unified-post-processor-upp>`__ is software developed at :term:`NCEP` and used operationally for models maintained by NCEP. The UPP processes raw model output from a variety of :term:`NCEP`'s NWP models, including the FV3.
 
    Weather Enterprise

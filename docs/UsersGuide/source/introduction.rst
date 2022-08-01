@@ -99,14 +99,11 @@ The UFS MRW Application has been designed so that any sufficiently up-to-date ma
       * 8 GB for :term:`HPC-Stack` full installation
       * 3 GB for ``ufs-mrweather-app`` installation and build
       * 11 GB for 120hr/5-day forecast 
-   
    ..
       COMMENT: Update disk space requirements once "out-of-the-box" case, data, & tests are settled on. CHANGE/REVISE all numbers above for accuracy!!!
-   
-   * 4GB memory (25km domain)
+      COMMENT: What are the memory requirements?
 
    * Python 3.7+
-
    ..
       COMMENT: Add: ", including prerequisite packages ``jinja2``, ``pyyaml`` and ``f90nml``"??? Or is that just SRW?
 
@@ -175,7 +172,7 @@ The MRW Application has a portable CMake-based build system that packages togeth
 ..
    COMMENT: Can the app also be run stand-alone (i.e. w/o a workflow manager)?
 
-This MRW Application release has been tested on a variety of platforms widely used by researchers, including NOAA High-Performance Computing (HPC) systems (e.g., Jet, Gaea), cloud environments, and generic Linux and macOS systems. Four `levels of support <https://github.com/ufs-community/ufs-mrweather-app/wiki/Supported-Platforms-and-Compilers-for-MRW-App>`__ have been defined for the MRW Application. Preconfigured (Level 1) systems already have the required software libraries available in a central location via the *spack-stack*. The MRW Application is expected to build and run out-of-the-box on these systems, and users can :ref:`download the MRW App code <quickstart>` without first installing prerequisites. On other platforms (Levels 2-4), the required libraries will need to be installed as part of the :ref:`MRW Application build <quickstart>` process. On Level 2 platforms, installation should be straightforward, and the MRW App should build and run successfully. On Level 3 & 4 platforms, users may need to perform additional troubleshooting since little or no pre-release testing has been conducted on these systems.
+The MRW Application has been tested on a variety of platforms widely used by researchers, including NOAA High-Performance Computing (HPC) systems (e.g., Hera, Jet), cloud environments, and generic Linux and macOS systems. Four `levels of support <https://github.com/ufs-community/ufs-mrweather-app/wiki/Supported-Platforms-and-Compilers-for-MRW-App>`__ have been defined for the MRW Application. Preconfigured (Level 1) systems already have the required software libraries available in a central location via the :term:`HPC-Stack` or :term:`spack-stack`. The MRW Application is expected to build and run out-of-the-box on these systems, and users can :ref:`download the MRW App code <quickstart>` without first installing prerequisites. On other platforms (Levels 2-4), the required libraries will need to be installed as part of the :ref:`MRW Application build <quickstart>` process. On Level 2 platforms, installation should be straightforward, and the MRW App should build and run successfully. On Level 3 & 4 platforms, users may need to perform additional troubleshooting since little or no pre-release testing has been conducted on these systems.
 
 ..
    COMMENT: Is Linux/Mac still supported? Seems like we're not testing it... 
@@ -200,7 +197,7 @@ The prognostic atmospheric model in the UFS MRW Application uses the Finite-Volu
 Common Community Physics Package
 ------------------------------------
 
-The `Common Community Physics Package <https://dtcenter.org/community-code/common-community-physics-package-ccpp>`__ (:term:`CCPP`) supports interoperable atmospheric physics and land surface model options. Atmospheric physics are a set of numerical methods describing small-scale processes such as clouds, turbulence, radiation, and their interactions. The upcoming MRW App release includes four physics suites and :term:`stochastic<Stochastic physics>` options to represent model uncertainty. 
+The `Common Community Physics Package <https://dtcenter.org/community-code/common-community-physics-package-ccpp>`__ (:term:`CCPP`) supports interoperable atmospheric physics and land surface model options. Atmospheric physics are a set of numerical methods describing small-scale processes such as clouds, turbulence, radiation, and their interactions. The MRW App currently includes the ``GFS_v17_p8`` physics suite and :term:`stochastic<Stochastic physics>` options to represent model uncertainty. 
 
 ..
    COMMENT: It seems like all but the GFS v16 are designed only for high resolution grids... so why are we including them with this release? It seems like GFS v16 would be more appropriate for the MRW App.
@@ -230,7 +227,7 @@ The Medium-Range Weather (MRW) Application is distributed with a post-processing
 METplus Verification Suite
 =============================
 
-The Model Evaluation Tools (MET) package is a set of statistical verification tools developed by the `Developmental Testbed Center <https://dtcenter.org/>`__ (DTC) for use by the :term:`NWP` community to help them assess and evaluate the performance of numerical weather predictions. MET is the core component of the enhanced METplus verification framework. The suite also includes the associated database and display systems called METviewer and METexpress. METplus spans a wide range of temporal and spatial scales. It is intended to be extensible through additional capabilities developed by the community. More details about METplus can be found in :numref:`Chapter %s <MetplusComponent>` and on the `METplus website <https://dtcenter.org/community-code/metplus>`__.
+The Model Evaluation Tools (MET) package is a set of statistical verification tools developed by the `Developmental Testbed Center <https://dtcenter.org/>`__ (DTC) for use by the :term:`NWP` community to help them assess and evaluate the performance of numerical weather predictions. MET is the core component of the enhanced METplus verification framework. The suite also includes the associated database and display systems called METviewer and METexpress. The `EMC_verif-global <https://github.com/NOAA-EMC/EMC_verif-global>`__ repository provides a Global Workflow wrapper for running METplus. METplus spans a wide range of temporal and spatial scales. It is intended to be extensible through additional capabilities developed by the community. More details about METplus can be found in :numref:`Chapter %s <MetplusComponent>` and on the `METplus website <https://dtcenter.org/community-code/metplus>`__.
 
 Visualization Example
 =======================
