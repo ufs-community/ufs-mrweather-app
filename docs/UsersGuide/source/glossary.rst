@@ -128,7 +128,7 @@ Glossary
 
    NOMADS
    NOAA Operational Model Archive and Distribution System
-   The `NOAA Operational Model Archive and Distribution System <https://nomads.ncep.noaa.gov/>`__ hosts :term:`NCEP` data
+      The `NOAA Operational Model Archive and Distribution System <https://nomads.ncep.noaa.gov/>`__ provides access to :term:`NCEP`'s operational data sets as they are being generated. Depending on the type of data in question, records may be available for the previous couple of days up to a week or more. 
 
    NWP
    Numerical Weather Prediction
