@@ -67,8 +67,13 @@ Glossary
       hydrostatic and non-hydrostatic atmospheric simulations. It is the dycore used in the 
       UFS Weather Model.
 
+   GDAS
+   Global Data Assimilation System
+      The National Center for Environmental Prediction (:term:`NCEP`) uses the Global Data Assimilation System (`GDAS <https://www.ncei.noaa.gov/products/weather-climate-models/global-data-assimilation>`__) to interpolate data from a variety of observing systems and instruments onto a three-dimensional grid. This data can then be used to initialize the Global Forecast System (GFS).
+
    GFS
-      `Global Forecast System <https://www.ncei.noaa.gov/products/weather-climate-models/global-forecast>`_. The GFS is a National Centers for Environmental Prediction (NCEP) weather forecast model that generates data for dozens of atmospheric and land-soil variables, including temperatures, winds, precipitation, soil moisture, and atmospheric ozone concentration. The system couples four separate models (atmosphere, ocean model, land/soil model, and sea ice) that work together to accurately depict weather conditions.
+   Global Forecast System
+      `Global Forecast System <https://www.ncei.noaa.gov/products/weather-climate-models/global-forecast>`__. The GFS is a National Centers for Environmental Prediction (NCEP) weather forecast model that generates data for dozens of atmospheric and land-soil variables, including temperatures, winds, precipitation, soil moisture, and atmospheric ozone concentration. The system couples four separate models (atmosphere, ocean model, land/soil model, and sea ice) that work together to accurately depict weather conditions.
 
    GRIB2 
       The second version of the World Meterological Organization's (WMO) standard for distributing gridded data. 

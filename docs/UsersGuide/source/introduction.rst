@@ -81,7 +81,7 @@ Additional background knowledge in the following areas could be helpful:
 ..
    COMMENT: Eliminate containerization?
 
-.. _software-prereqs
+.. _software-prereqs:
 
 Software/Operating System Requirements
 =========================================
