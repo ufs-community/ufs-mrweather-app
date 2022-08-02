@@ -12,7 +12,6 @@ Welcome to the UFS Medium-Range Weather App Users Guide!
 
    introduction.rst
    quickstart.rst
-   repos_and_directories.rst
    components.rst
    inputs_outputs.rst
    config_new_platform

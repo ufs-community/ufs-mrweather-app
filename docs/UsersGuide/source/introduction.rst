@@ -291,21 +291,88 @@ The ``ufs-mrweather-app`` :term:`umbrella repository` structure is determined by
       ├── Externals.cfg
       ├── global-workflow
       │   ├── docs
-      │   ├── driver
-      │   ├── ecflow
-      │   ├── env
-      │   ├── exec               # Should this be removed or put in parentheses???
-      │   ├── Externals.cfg
-      │   ├── fix
-      │   ├── gempak
-      │   ├── jobs
+      │   ├── ecf
+      │   ├── env
+      │   │   ├── gfs.ver
+      │   │   ├── HERA.env
+      │   │   ├── JET.env
+      │   │   └── ORION.env
+      │   ├── (exec)               # Should this be removed or put in parentheses???
+      │   ├── Externals.cfg
+      │   ├── fix
+      │   ├── gempak
+      │   │   ├── dictionaries
+      │   │   ├── fix
+      │   │   └── ush
+      │   ├── jobs
+      │   │   ├── JGDAS_<JOBS>    # multiple scripts
+      │   │   ├── JGFS_<JOBS>    # multiple scripts
+      │   │   ├── JGLOBAL_<JOBS>  # multiple scripts
+      │   │   └── rocoto
       │   ├── modulefiles
+      │   │   ├── module_base.<platform>.lua
+      │   │   ├── modulefile.ww3.<platform>.lua
+      │   │   ├── module-setup.csh.inc
+      │   │   ├── module-setup.sh.inc
+      │   │   └── workflow_utils.<platform>.lua
       │   ├── parm
+      │   │   ├── chem
+      │   │   ├── config
+      │   │   ├── mom6
+      │   │   ├── parm_fv3diag
+      │   │   ├── parm_wave
+      │   │   ├── post
+      │   │   ├── product
+      │   │   ├── relo
+      │   │   ├── transfer
+      │   │   ├── wave
+      │   │   └── wmo
       │   ├── README.md
       │   ├── scripts
+      │   │   ├── exgdas_<name>.py               # multiple python scripts
+      │   │   ├── exgdas_<name>.sh               # multiple shell scripts
+      │   │   ├── exgfs_aero_init_aerosol.py
+      │   │   ├── exgfs_<name>.sh                # multiple shell scripts
+      │   │   ├── exglobal_<name>.sh             # multiple shell scripts
+      │   │   └── run_<name>.sh                  # multiple shell scripts
       │   ├── sorc
-      │   ├── ush
-      │   └── util
+      │   │   ├── build_<name>.sh                # multiple shell scripts
+      │   │   ├── checkout.sh
+      │   │   ├── cmake
+      │   │   ├── CMakeLists.txt
+      │   │   ├── enkf_chgres_recenter.fd
+      │   │   ├── enkf_chgres_recenter_nc.fd
+      │   │   ├── fbwndgfs.fd
+      │   │   ├── fv3nc2nemsio.fd
+      │   │   ├── gaussian_sfcanl.fd
+      │   │   ├── gfs_bufr.fd
+      │   │   ├── gfs_build.cfg
+      │   │   ├── install
+      │   │   ├── link_workflow.sh
+      │   │   ├── logs
+      │   │   ├── machine-setup.sh
+      │   │   ├── ncl.setup
+      │   │   ├── partial_build.sh
+      │   │   ├── reg2grb2.fd
+      │   │   ├── regrid_nemsio.fd
+      │   │   ├── supvit.fd
+      │   │   ├── syndat_getjtbul.fd
+      │   │   ├── syndat_maksynrc.fd
+      │   │   ├── syndat_qctropcy.fd
+      │   │   ├── tave.fd
+      │   │   ├── tocsbufr.fd
+      │   │   ├── ufs_model.fd
+      │   │   ├── ufs_utils.fd
+      │   │   ├── verif-global.fd
+      │   │   └── vint.fd
+      │   ├── test
+      │   ├── ush
+      │   ├── util
+      │   │   ├── modulefiles
+      │   │   ├── sorc
+      │   │   └── ush
+      │   └── workflow
+      │   │   └── rocoto
       ├── LICENSE.md
       ├── manage_externals
       │   ├── checkout_externals
@@ -317,106 +384,12 @@ The ``ufs-mrweather-app`` :term:`umbrella repository` structure is determined by
       │   ├── plot_mrw.py
       │   ├── python_plotting_documentation.txt
       │   └── sample_output.pdf
-      └── README.md
-
-An abbreviated version of the global-workflow directory tree:
-
-.. code-block:: console
-
-   global-workflow/
-      ├── docs
-      ├── driver
-      │   ├── gdas
-      │   ├── gfs
-      │   └── product
-      ├── ecflow
-      ├── env
-      │   ├── gfs.ver
-      │   ├── HERA.env
-      │   ├── JET.env
-      │   ├── ORION.env
-      │   ├── WCOSS_C.env
-      │   └── WCOSS_DELL_P3.env
-      ├── (exec)
-      ├── Externals.cfg
-      ├── fix
-      ├── gempak
-      │   ├── dictionaries
-      │   ├── fix
-      │   └── ush
-      ├── jobs
-      │   ├── JGDAS_<JOBS>    # multiple scripts
-      │   ├── JGLOBAL_<JOBS>  # multiple scripts
-      │   └── rocoto
-      ├── modulefiles
-      │   ├── module_base.<platform>.lua
-      │   ├── modulefile.ww3.<platform>.lua
-      │   ├── module-setup.csh.inc
-      │   ├── module-setup.sh.inc
-      │   ├── workflow_utils.<platform>.lua
-      ├── parm
-      │   ├── chem
-      │   ├── config
-      │   ├── mom6
-      │   ├── parm_fv3diag
-      │   ├── parm_wave
-      │   ├── post
-      │   ├── product
-      │   ├── relo
-      │   ├── transfer_<file>.list # multiple files
-      │   ├── wave
-      │   └── wmo
-      ├── README.md
-      ├── scripts
-      │   ├── exemcsfc_global_sfc_prep.sh
-      │   ├── exgdas_<name>.sh               # multiple shell scripts
-      │   ├── exgfs_aero_init_aerosol.py
-      │   ├── exgfs_<name>.sh                # multiple shell scripts
-      │   ├── exglobal_<name>.sh             # multiple shell scripts
-      │   ├── run_gfsmos_master.sh.<system>  # multiple shell scripts
-      │   ├── run_<name>.sh                  # multiple shell scripts
-      ├── sorc
-      │   ├── build_<name>.sh       # multiple shell scripts
-      │   ├── checkout.sh
-      │   ├── cmake
-      │   ├── CMakeLists.txt
-      │   ├── enkf_chgres_recenter.fd
-      │   ├── enkf_chgres_recenter_nc.fd
-      │   ├── fbwndgfs.fd
-      │   ├── fv3nc2nemsio.fd
-      │   ├── gaussian_sfcanl.fd
-      │   ├── gfs_bufr.fd
-      │   ├── gfs_build.cfg
-      │   ├── install
-      │   ├── link_workflow.sh
-      │   ├── logs
-      │   ├── machine-setup.sh
-      │   ├── ncl.setup
-      │   ├── partial_build.sh
-      │   ├── reg2grb2.fd
-      │   ├── regrid_nemsio.fd
-      │   ├── supvit.fd
-      │   ├── syndat_getjtbul.fd
-      │   ├── syndat_maksynrc.fd
-      │   ├── syndat_qctropcy.fd
-      │   ├── tave.fd
-      │   ├── tocsbufr.fd
-      │   └── vint.fd
-      ├── ush
-      │   └── rocoto
-      └── util
-         ├── modulefiles
-         ├── sorc
-         └── ush
-..
-   COMMENT: Update this from code repos dirs doc!
-   COMMENT: Should exec be removed or put in parentheses? Doesn't appear to be in global-workflow on GitHub.
-   COMMENT: See which files/directories are added after the build and put in parentheses?
+      └── README.md    
 
 ===========================================================
 User Support, Documentation, and Contributing Development
 ===========================================================
-A `forum-based online support system <https://forums.ufscommunity.org>`__ with topical sections provides a centralized location for UFS users and developers to post questions and exchange information. The forum complements the distributed documentation, summarized here for ease of use.
+A `forum-based online support system <https://forums.ufscommunity.org>`__ organized by topic provides a centralized location for UFS users and developers to post questions and exchange information. The forum complements the distributed documentation, summarized here for ease of use.
 
 ..
    COMMENTS: Are these forums shifting to the EPIC website? If so, when? Update? 
@@ -457,22 +430,15 @@ A `forum-based online support system <https://forums.ufscommunity.org>`__ with t
    | Stochastic Physics         | https://stochastic-physics.readthedocs.io/en/release-public-v3/                 |
    | Documentation              |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | ESMF manual                | https://earthsystemmodeling.org/docs/release/latest/ESMF_usrdoc/                |
-   +----------------------------+---------------------------------------------------------------------------------+
-   | spack-stack Documentation  | https://spack-stack.readthedocs.io/en/latest/                                   |
-   +----------------------------+---------------------------------------------------------------------------------+
    | Unified Post Processor     | https://upp.readthedocs.io/en/latest/                                           |
    +----------------------------+---------------------------------------------------------------------------------+
-
-..
-   COMMENT: Update version numbers/links!
-   COMMENT: Deleted:
-      | Common Infrastructure for  | http://esmci.github.io/cime/versions/ufs_release_v1.1/html/index.html           |
-      | Modeling the Earth         |                                                                                 |
-      +----------------------------+---------------------------------------------------------------------------------+
+   | HPC-Stack Documentation    | https://hpc-stack.readthedocs.io/en/latest/                                     |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | Spack-stack Documentation  | https://spack-stack.readthedocs.io/en/latest/                                   |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | ESMF manual                | https://earthsystemmodeling.org/docs/release/latest/ESMF_usrdoc/                |
+   +----------------------------+---------------------------------------------------------------------------------+
    
-
-
 
 The UFS community is encouraged to contribute to the development effort of all related
 utilities, model code, and infrastructure. Users can post issues in the related GitHub repositories to report bugs or to announce upcoming contributions to the code base. For code to be accepted in the authoritative repositories, users must follow the code management rules of each UFS component repository, which are outlined in the respective User's Guides listed in :numref:`Table %s <list_of_documentation>`. In particular, innovations involving the UFS Weather Model need to be tested using the regression tests described in its User's Guide. These tests are part of the official NOAA policy on accepting innovations into its code base, whereas the MRW App end-to-end tests are meant as a sanity check for users.
