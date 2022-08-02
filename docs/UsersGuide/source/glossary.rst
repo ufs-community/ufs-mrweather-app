@@ -126,6 +126,10 @@ Glossary
    NetCDF
       NetCDF (`Network Common Data Form <https://www.unidata.ucar.edu/software/netcdf/>`__) is a file format and community standard for storing multidimensional scientific data. It includes a set of software libraries and machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data.
 
+   NOMADS
+   NOAA Operational Model Archive and Distribution System
+   The `NOAA Operational Model Archive and Distribution System <https://nomads.ncep.noaa.gov/>`__ 
+
    NWP
    Numerical Weather Prediction
       Numerical Weather Prediction (NWP) takes current observations of weather and processes them with computer models to forecast the future state of the weather. 
