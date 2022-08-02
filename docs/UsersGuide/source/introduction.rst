@@ -270,7 +270,7 @@ The Global Workflow ``checkout.sh`` script then checks out the repositories list
 The UFS Weather Model is itself an :term:`umbrella repository` and contains a number of subcomponent repositories, which are documented `here <https://ufs-weather-model.readthedocs.io/en/latest/CodeOverview.html>`__. 
 
    .. note::
-      The MRW Application prerequisite libraries (including NCEP Libraries and external libraries) are not included in the MRW App repository. The :term:`HPC-Stack` and :term:`spack-stack` repositories each assemble these prerequisite libraries. HPC-Stack or spack-stack has already been built on `preconfigured (Level 1) platforms <https://github.com/ufs-community/ufs-mrweather-app/wiki/Supported-Platforms-and-Compilers-for-MRW-App>`__. However, it must be built on other systems. Users can view the HPC-Stack documentation :external:ref:`here <Overview>`. 
+      The MRW Application prerequisite libraries (including NCEP Libraries and external libraries) are not included in the MRW App repository. The :term:`HPC-Stack` and :term:`spack-stack` repositories each assemble these prerequisite libraries. HPC-Stack or spack-stack has already been built on `preconfigured (Level 1) platforms <https://github.com/ufs-community/ufs-mrweather-app/wiki/Supported-Platforms-and-Compilers-for-MRW-App>`__. However, it must be built on other systems. Users can view the HPC-Stack documentation :external:ref:`here <Intro>`. 
 
 
 .. _TopLevelDirStructure:
