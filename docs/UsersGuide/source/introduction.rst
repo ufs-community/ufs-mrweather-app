@@ -81,6 +81,7 @@ Additional background knowledge in the following areas could be helpful:
 ..
    COMMENT: Eliminate containerization?
 
+.. _software-prereqs
 
 Software/Operating System Requirements
 =========================================
@@ -277,7 +278,7 @@ The UFS Weather Model is itself an :term:`umbrella repository` and contains a nu
 
 Directory Structure
 ======================
-The ``ufs-mrweather-app`` :term:`umbrella repository` structure is determined by the ``local_path`` settings contained within the ``Externals.cfg`` file. After ``manage_externals/checkout_externals`` is run (see :numref:`Chapter %s <quickstart>`), the specific GitHub repositories described in :numref:`Table %s <top_level_repos>` are cloned into the target subdirectories shown below. Directories that will be created as part of the build process appear in parentheses and will not be visible until after the build is complete. Some directories have been removed for brevity.
+The ``ufs-mrweather-app`` :term:`umbrella repository` structure is determined by the ``local_path`` settings contained within the ``Externals.cfg`` file. After ``manage_externals/checkout_externals`` is run (see :numref:`Chapter %s <quickstart>`), the specific GitHub repositories described in :numref:`Table %s <top_level_repos>` are cloned into the target subdirectories shown below. Directories that will be created later as part of the build process appear in parentheses and will not be visible until after the build is complete. Some files and directories have been removed for brevity.
 
 .. _dir-str:
 
