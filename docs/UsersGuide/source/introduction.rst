@@ -297,7 +297,7 @@ The ``ufs-mrweather-app`` :term:`umbrella repository` structure is determined by
       │   │   ├── HERA.env
       │   │   ├── JET.env
       │   │   └── ORION.env
-      │   ├── (exec)               # Should this be removed or put in parentheses???
+      │   ├── (exec)
       │   ├── Externals.cfg
       │   ├── fix
       │   ├── gempak
@@ -306,7 +306,7 @@ The ``ufs-mrweather-app`` :term:`umbrella repository` structure is determined by
       │   │   └── ush
       │   ├── jobs
       │   │   ├── JGDAS_<JOBS>    # multiple scripts
-      │   │   ├── JGFS_<JOBS>    # multiple scripts
+      │   │   ├── JGFS_<JOBS>     # multiple scripts
       │   │   ├── JGLOBAL_<JOBS>  # multiple scripts
       │   │   └── rocoto
       │   ├── modulefiles
@@ -441,10 +441,10 @@ A `forum-based online support system <https://forums.ufscommunity.org>`__ organi
    
 
 The UFS community is encouraged to contribute to the development effort of all related
-utilities, model code, and infrastructure. Users can post issues in the related GitHub repositories to report bugs or to announce upcoming contributions to the code base. For code to be accepted in the authoritative repositories, users must follow the code management rules of each UFS component repository, which are outlined in the respective User's Guides listed in :numref:`Table %s <list_of_documentation>`. In particular, innovations involving the UFS Weather Model need to be tested using the regression tests described in its User's Guide. These tests are part of the official NOAA policy on accepting innovations into its code base, whereas the MRW App end-to-end tests are meant as a sanity check for users.
+utilities, model code, and infrastructure. Users can post issues in the related GitHub repositories to report bugs or to announce upcoming contributions to the code base. For code to be accepted in the authoritative repositories, users must follow the code management rules of each UFS component repository, which are outlined in the respective User's Guides listed in :numref:`Table %s <list_of_documentation>` or on the repository's wiki. In particular, innovations involving the UFS Weather Model need to be tested using the regression tests described in its User's Guide. These tests are part of the official NOAA policy on accepting innovations into its code base, whereas the MRW App tests are meant as a sanity check for users.
 
 ..
-   COMMENT: Revise this to better reflect WE2E test purposes. 
+   COMMENT: Revise this later to better reflect MRW App tests. 
 
 =================
 Future Direction
@@ -458,8 +458,7 @@ Planned advancements include addition of:
    * expansion of supported platforms
 
 ..
-   COMMENT: Are these up-to-date/accurate? Are any other enhancements in the works for future MRW releases? That GO-CART thing, for example?
-   :external:ref:`Spack Stack Documentation <Overview>`
+   COMMENT: Are these up-to-date/accurate? Are any other enhancements in the works for future MRW releases? Those aerosols and GO-CART additions, for example?
 
 
 .. bibliography:: references.bib
