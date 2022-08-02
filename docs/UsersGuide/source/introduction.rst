@@ -99,11 +99,13 @@ The UFS MRW Application has been designed so that any sufficiently up-to-date ma
       * 8 GB for :term:`HPC-Stack` full installation
       * 3 GB for ``ufs-mrweather-app`` installation and build
       * 11 GB for 120hr/5-day forecast 
+   
    ..
       COMMENT: Update disk space requirements once "out-of-the-box" case, data, & tests are settled on. CHANGE/REVISE all numbers above for accuracy!!!
       COMMENT: What are the memory requirements?
 
    * Python 3.7+
+   
    ..
       COMMENT: Add: ", including prerequisite packages ``jinja2``, ``pyyaml`` and ``f90nml``"??? Or is that just SRW?
 
@@ -196,7 +198,7 @@ The prognostic atmospheric model in the UFS MRW Application uses the Finite-Volu
 Common Community Physics Package
 ------------------------------------
 
-The `Common Community Physics Package <https://dtcenter.org/community-code/common-community-physics-package-ccpp>`__ (:term:`CCPP`) supports interoperable atmospheric physics and land surface model options. Atmospheric physics are a set of numerical methods describing small-scale processes such as clouds, turbulence, radiation, and their interactions. The MRW App currently includes the ``GFS_v17_p8`` physics suite and :term:`stochastic<Stochastic physics>` options to represent model uncertainty. 
+The `Common Community Physics Package <https://dtcenter.org/community-code/common-community-physics-package-ccpp>`__ (:term:`CCPP`) supports interoperable atmospheric physics and land surface model options. Atmospheric physics are a set of numerical methods describing small-scale processes such as clouds, turbulence, radiation, and their interactions. The MRW App currently includes the ``GFS_v17_p8`` physics suite as well as :term:`stochastic<Stochastic physics>` options to represent model uncertainty. 
 
 ..
    COMMENT: It seems like all but the GFS v16 are designed only for high resolution grids... so why are we including them with this release? It seems like GFS v16 would be more appropriate for the MRW App.
@@ -224,11 +226,14 @@ The MRW Application includes Python scripts to create basic visualizations of th
 Code Repositories and Directory Structure
 ===========================================
 
-The :term:`umbrella repository` for the MRW Application is named ``ufs-mrweather-app``. It is available on GitHub at https://github.com/ufs-community/ufs-mrweather-app. An umbrella repository is a repository that houses external code, called "externals," from additional repositories. The MRW Application includes the ``manage_externals`` tool and a configuration file called ``Externals.cfg``, which tags the appropriate versions of the external repositories associated with the MRW App (see :numref:`Table %s <top_level_repos>`).
+Hierarchical Repository Structure
+=====================================
+
+The :term:`umbrella repository` for the MRW Application is named ``ufs-mrweather-app``. It is available on GitHub at https://github.com/ufs-community/ufs-mrweather-app. An umbrella repository is a repository that pulls in external code, called "externals," from additional repositories. The MRW Application includes the ``manage_externals`` tool and a configuration file called ``Externals.cfg``, which tags the appropriate versions of the external repositories associated with the MRW App (see :numref:`Table %s <top_level_repos>`).
 
 .. _top_level_repos:
 
-.. table::  List of top-level repositories that comprise the UFS SRW Application
+.. table::  List of top-level repositories that comprise the UFS MRW Application
 
    +----------------------------------+---------------------------------------------------------+
    | **Repository Description**       | **Authoritative repository URL**                        |
@@ -240,24 +245,32 @@ The :term:`umbrella repository` for the MRW Application is named ``ufs-mrweather
    | workflow                         |                                                         |
    +----------------------------------+---------------------------------------------------------+
 
-..
-   COMMENT: At the moment, only the global workflow is in the checkout externals script. Add the following when updated:
+The Global Workflow ``checkout.sh`` script then checks out the repositories listed in :numref:`Table %s <gw_repos>`. 
 
-      | Repository for                   | https://github.com/ufs-community/ufs-weather-model      |
-      | the UFS Weather Model            |                                                         |
-      +----------------------------------+---------------------------------------------------------+
-      | Repository for UFS utilities,    | https://github.com/ufs-community/UFS_UTILS              |
-      | including pre-processing,        |                                                         |
-      | chgres_cube, and more            |                                                         |
-      +----------------------------------+---------------------------------------------------------+
-      | Repository for the Unified Post  | https://github.com/NOAA-EMC/UPP                         |
-      | Processor (UPP)                  |                                                         |
-      +----------------------------------+---------------------------------------------------------+
+.. _gw_repos:
 
-   The UFS Weather Model contains a number of sub-repositories, which are documented `here <https://ufs-weather-model.readthedocs.io/en/latest/CodeOverview.html>`__.
+.. table::  List of Global Workflow subcomponents included in the UFS MRW Application
+
+   +----------------------------------+---------------------------------------------------------+
+   | **Repository Description**       | **Authoritative repository URL**                        |
+   +==================================+=========================================================+
+   | Repository for                   | https://github.com/ufs-community/ufs-weather-model      |
+   | the UFS Weather Model            |                                                         |
+   +----------------------------------+---------------------------------------------------------+
+   | Repository for UFS utilities,    | https://github.com/ufs-community/UFS_UTILS              |
+   | including pre-processing,        |                                                         |
+   | chgres_cube, and more            |                                                         |
+   +----------------------------------+---------------------------------------------------------+
+   | Repository for the Unified Post  | https://github.com/NOAA-EMC/UPP                         |
+   | Processor (UPP)                  |                                                         |
+   +----------------------------------+---------------------------------------------------------+
+   | EMC_verif-global                 | https://github.com/NOAA-EMC/EMC_verif-global.git        |
+   +----------------------------------+---------------------------------------------------------+
+
+The UFS Weather Model is itself an :term:`umbrella repository` and contains a number of subcomponent repositories, which are documented `here <https://ufs-weather-model.readthedocs.io/en/latest/CodeOverview.html>`__. 
 
    .. note::
-      The prerequisite libraries (including NCEP Libraries and external libraries) are not included in the UFS MRW Application repository. The `spack-stack <https://github.com/NOAA-EMC/spack-stack>`__ repository assembles these prerequisite libraries. The spack-stack has already been built on `preconfigured (Level 1) platforms <https://github.com/ufs-community/ufs-mrweather-app/wiki/Supported-Platforms-and-Compilers-for-MRW-App>`__. However, it must be built on other systems. Users can view the spack-stack documentation :external:ref:`here <index>`. 
+      The prerequisite libraries (including NCEP Libraries and external libraries) are not included in the UFS MRW Application repository. The `HPC-Stack <https://github.com/NOAA-EMC/hpc-stack>`__ and `spack-stack <https://github.com/NOAA-EMC/spack-stack>`__ repositories each assemble these prerequisite libraries. HPC-Stack or spack-stack has already been built on `preconfigured (Level 1) platforms <https://github.com/ufs-community/ufs-mrweather-app/wiki/Supported-Platforms-and-Compilers-for-MRW-App>`__. However, it must be built on other systems. Users can view the spack-stack documentation :external:ref:`here <Overview>`. 
 
 
 .. _TopLevelDirStructure:
@@ -266,7 +279,7 @@ Directory Structure
 ======================
 The ``ufs-mrweather-app`` :term:`umbrella repository` structure is determined by the ``local_path`` settings contained within the ``Externals.cfg`` file. After ``manage_externals/checkout_externals`` is run (see :numref:`Chapter %s <quickstart>`), the specific GitHub repositories described in :numref:`Table %s <top_level_repos>` are cloned into the target subdirectories shown below. Directories that will be created as part of the build process appear in parentheses and will not be visible until after the build is complete. Some directories have been removed for brevity.
 
-.. _hierarchical-repo-str:
+.. _dir-str:
 
 .. code-block:: console
 
