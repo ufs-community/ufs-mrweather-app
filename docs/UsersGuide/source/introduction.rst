@@ -133,14 +133,14 @@ The following software is also required to run the MRW Application, but :term:`H
 
    * :term:`MPI` (MPICH, OpenMPI, or other implementation)
 
-      * Only **MPICH** or **OpenMPI** can be built with spack-stack. Other options must be installed separately by the user (if desired). 
+      * Only **MPICH** or **OpenMPI** can be built with HPC-Stack. Other options must be installed separately by the user (if desired). 
    
    * `CMake v3.20+ <http://www.cmake.org/>`__
 
    ..
       COMMENT: Check that this is the case for spack-stack, not just HPC-Stack.
 
-   * `spack-stack <https://github.com/NOAA-EMC/spack-stack>`__ or `HPC-Stack <https://github.com/NOAA-EMC/hpc-stack>`__, which include:
+   * `HPC-Stack <https://github.com/NOAA-EMC/hpc-stack>`__, which includes:
 
       * `NCEPLIBS <https://github.com/NOAA-EMC/NCEPLIBS>`__
       * `NCEPLIBS-external <https://github.com/NOAA-EMC/NCEPLIBS-external>`__ (includes ESMF)
@@ -175,7 +175,7 @@ The MRW Application has a portable CMake-based build system that packages togeth
 ..
    COMMENT: Can the app also be run stand-alone (i.e. w/o a workflow manager)?
 
-The MRW Application has been tested on a variety of platforms widely used by researchers, including NOAA High-Performance Computing (HPC) systems (e.g., Hera, Jet), cloud environments, and generic Linux and macOS systems. Four `levels of support <https://github.com/ufs-community/ufs-mrweather-app/wiki/Supported-Platforms-and-Compilers-for-MRW-App>`__ have been defined for the MRW Application. Preconfigured (Level 1) systems already have the required software libraries available in a central location via the :term:`HPC-Stack` or :term:`spack-stack`. The MRW Application is expected to build and run out-of-the-box on these systems, and users can :ref:`download the MRW App code <quickstart>` without first installing prerequisites. On other platforms (Levels 2-4), the required libraries will need to be installed as part of the :ref:`MRW Application build <quickstart>` process. On Level 2 platforms, installation should be straightforward, and the MRW App should build and run successfully. On Level 3 & 4 platforms, users may need to perform additional troubleshooting since little or no pre-release testing has been conducted on these systems.
+The MRW Application has been tested on a variety of platforms widely used by researchers, including NOAA High-Performance Computing (HPC) systems (e.g., Hera, Jet), cloud environments, and generic Linux and macOS systems. Four `levels of support <https://github.com/ufs-community/ufs-mrweather-app/wiki/Supported-Platforms-and-Compilers-for-MRW-App>`__ have been defined for the MRW Application. Preconfigured (Level 1) systems already have the required software libraries available in a central location via the :term:`HPC-Stack`. The MRW Application is expected to build and run out-of-the-box on these systems, and users can :ref:`download the MRW App code <quickstart>` without first installing prerequisites. On other platforms (Levels 2-4), the required libraries will need to be installed as part of the :ref:`MRW Application build <quickstart>` process. On Level 2 platforms, installation should be straightforward, and the MRW App should build and run successfully. On Level 3 & 4 platforms, users may need to perform additional troubleshooting since little or no pre-release testing has been conducted on these systems.
 
 ..
    COMMENT: Is Linux/Mac still supported? Seems like we're not testing it... 
@@ -271,7 +271,7 @@ The Global Workflow ``checkout.sh`` script then checks out the repositories list
 The UFS Weather Model is itself an :term:`umbrella repository` and contains a number of subcomponent repositories, which are documented `here <https://ufs-weather-model.readthedocs.io/en/latest/CodeOverview.html>`__. 
 
    .. note::
-      The MRW Application prerequisite libraries (including NCEP Libraries and external libraries) are not included in the MRW App repository. The :term:`HPC-Stack` and :term:`spack-stack` repositories each assemble these prerequisite libraries. HPC-Stack or spack-stack has already been built on `preconfigured (Level 1) platforms <https://github.com/ufs-community/ufs-mrweather-app/wiki/Supported-Platforms-and-Compilers-for-MRW-App>`__. However, it must be built on other systems. Users can view the HPC-Stack documentation :external:ref:`here <Intro>`. 
+      The MRW Application prerequisite libraries (including NCEP Libraries and external libraries) are not included in the MRW App repository. The :term:`HPC-Stack` repository assembles these prerequisite libraries. HPC-Stack has already been built on `preconfigured (Level 1) platforms <https://github.com/ufs-community/ufs-mrweather-app/wiki/Supported-Platforms-and-Compilers-for-MRW-App>`__. However, it must be built on other systems. Users can view the HPC-Stack documentation :external:ref:`here <Intro>`. 
 
 
 .. _TopLevelDirStructure:
