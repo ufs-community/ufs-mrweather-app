@@ -12,21 +12,24 @@ Glossary
    CCPP
       The `Common Community Physics Package <https://dtcenter.org/community-code/common-community-physics-package-ccpp>`_ is a forecast-model agnostic, vetted collection of codes containing atmospheric physical parameterizations and suites of parameterizations for use in Numerical Weather Prediction (NWP) along with a framework that connects the physics to the host forecast model.
 
+   CESM
+   Community Earth System Model
+      The `Community Earth System Model <https://www.cesm.ucar.edu/>`__ is a community climate model centered at the National Center for Atmospheric Research (:term:`NCAR`). 
+
    chgres_cube
-       The preprocessing software used to create initial condition files to “coldstart” the forecast
-       model. The initial conditions are created from either GFS GRIB2 or NEMSIO data.
+       The preprocessing software used to create initial condition files to "coldstart" the forecast
+       model. The initial conditions are created from either GFS :term:`GRIB2` or :term:`NEMSIO` data.
 
    CIME
-      The Common Infrastructure for Modeling the Earth (CIME - pronounced “SEAM”) provides a Case
-      Control System for configuring, compiling and executing Earth system models, data and stub model
-      components, a driver and associated tools and libraries.
+      The `Common Infrastructure for Modeling Earth <https://github.com/ESMCI/cime>`__ (CIME - pronounced "SEAM") consists of a Case Control System (CCS) that supports the configuration, compilation, execution, system testing, and unit testing of an Earth System Model. The CIME CCS is used in :term:`CESM` and was previously used in the Medium-Range Weather (MRW) Application. View the CIME documentation `here <https://esmci.github.io/cime/versions/master/html/index.html>`__.
+
 
    Component
       A software element that has a clear function and interface. In Earth system models, components are often single portions of the Earth system (e.g. atmosphere, ocean, or land surface) that are assembled to form a whole.
 
    Compset
    Compsets
-      A component set. It refers to a particular mix of components, along with a component-specific configuration and/or namelist settings”.
+      A component set. It refers to a particular mix of components, along with a component-specific configuration and/or namelist settings.
 
    CONUS
       Continental United States
@@ -39,6 +42,11 @@ Glossary
       ..
          COMMENT: Is this accurate?
 
+   DA
+   Data Assimilation
+      Data assimilation is the combining of diverse data, possibly sampled at different times and intervals and different locations, into a unified and consistent description of a physical system, such as the state of the atmosphere or the Earth system.
+
+   Dycore
    Dynamical core
       Global atmospheric model based on fluid dynamics principles, including Euler's equations of motion.
 
@@ -54,19 +62,27 @@ Glossary
       Free-forecast mode means that the application is running without data assimilation/data cycling capabilities. 
 
    FV3
-      The Finite-Volume Cubed-Sphere Dynamical Core (dycore). Developed at NOAA's Geophysical 
+      The Finite-Volume Cubed-Sphere :term:`Dynamical Core` (dycore). Developed at NOAA's Geophysical 
       Fluid Dynamics Laboratory (GFDL), it is a scalable and flexible dycore capable of both 
       hydrostatic and non-hydrostatic atmospheric simulations. It is the dycore used in the 
       UFS Weather Model.
 
+   GDAS
+   Global Data Assimilation System
+      The National Center for Environmental Prediction (:term:`NCEP`) uses the Global Data Assimilation System (`GDAS <https://www.ncei.noaa.gov/products/weather-climate-models/global-data-assimilation>`__) to interpolate data from a variety of observing systems and instruments onto a three-dimensional grid. This data can then be used to initialize the Global Forecast System (GFS).
+
    GFS
-      `Global Forecast System <https://www.ncei.noaa.gov/products/weather-climate-models/global-forecast>`_. The GFS is a National Centers for Environmental Prediction (NCEP) weather forecast model that generates data for dozens of atmospheric and land-soil variables, including temperatures, winds, precipitation, soil moisture, and atmospheric ozone concentration. The system couples four separate models (atmosphere, ocean model, land/soil model, and sea ice) that work together to accurately depict weather conditions.
+   Global Forecast System
+      `Global Forecast System <https://www.ncei.noaa.gov/products/weather-climate-models/global-forecast>`__. The GFS is a National Centers for Environmental Prediction (NCEP) weather forecast model that generates data for dozens of atmospheric and land-soil variables, including temperatures, winds, precipitation, soil moisture, and atmospheric ozone concentration. The system couples four separate models (atmosphere, ocean model, land/soil model, and sea ice) that work together to accurately depict weather conditions.
 
    GRIB2 
       The second version of the World Meterological Organization's (WMO) standard for distributing gridded data. 
 
    HPC-Stack
       The `HPC-Stack <https://github.com/NOAA-EMC/hpc-stack>`__ is a repository that provides a unified, shell script-based build system for building the software stack required for numerical weather prediction (NWP) tools such as the `Unified Forecast System (UFS) <https://ufscommunity.org/>`__ and the `Joint Effort for Data assimilation Integration (JEDI) <https://jointcenterforsatellitedataassimilation-jedi-docs.readthedocs-hosted.com/en/latest/>`__ framework.
+
+   HPSS
+      High Performance Storage System (HPSS).
 
    IC
    ICs
@@ -102,13 +118,17 @@ Glossary
 
    NEMS
       The NOAA Environmental Modeling System - a software infrastructure that supports
-      NCEP/EMC’s forecast products.
+      NCEP/EMC's forecast products.
 
    NEMSIO
       A binary format for atmospheric model output on the native gaussian grid.
 
    NetCDF
-      A set of software libraries and machine-independent data formats that supports the creation, access, and sharing of array-oriented scientific data. 
+      NetCDF (`Network Common Data Form <https://www.unidata.ucar.edu/software/netcdf/>`__) is a file format and community standard for storing multidimensional scientific data. It includes a set of software libraries and machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data.
+
+   NOMADS
+   NOAA Operational Model Archive and Distribution System
+      The `NOAA Operational Model Archive and Distribution System <https://nomads.ncep.noaa.gov/>`__ provides access to :term:`NCEP`'s operational data sets as they are being generated. Depending on the type of data in question, records may be available for the previous couple of days up to a week or more. 
 
    NWP
    Numerical Weather Prediction
@@ -121,10 +141,8 @@ Glossary
       The `spack-stack <https://github.com/NOAA-EMC/spack-stack>`__ is a collaborative effort between the NOAA Environmental Modeling Center (EMC), the UCAR Joint Center for Satellite Data Assimilation (JCSDA), and the Earth Prediction Innovation Center (EPIC). *spack-stack* is a repository that provides a Spack-based method for building the software stack required for numerical weather prediction (NWP) tools such as the `Unified Forecast System (UFS) <https://ufscommunity.org/>`__ and the `Joint Effort for Data assimilation Integration (JEDI) <https://jointcenterforsatellitedataassimilation-jedi-docs.readthedocs-hosted.com/en/latest/>`__ framework. spack-stack uses the Spack package manager along with custom Spack configuration files and Python scripts to simplify installation of the libraries required to run various applications. The *spack-stack* can be installed on a range of platforms and comes pre-configured for many systems. Users can install the necessary packages for a particular application and later add the missing packages for another application without having to rebuild the entire stack.
 
    Stochastic physics
-      A package of stochastic schemes used to represent model uncertainty: SKEB (Stochastic Kinetic Energy Backscatter), SPPT (Stochastically Perturbed Physics Tendencies), and SHUM (Specific Humidity)
-      
-      ..
-         COMMENT: Need definition of the field of Stochastic physics. Then can specify that there is a stochastic physics package that does specific things. 
+      1. Stochastics physics schemes are physics packages that apply randomized perturbations to the physical tendencies or the physical parameters of a model in order to compensate for model uncertainty. 
+      2. Stochastic Physics also refers to the specific package of stochastic schemes used alongside the CCPP to represent model uncertainty: SKEB (Stochastic Kinetic Energy Backscatter), SPPT (Stochastically Perturbed Physics Tendencies), SHUM (Specific Humidity), SPP (Stochastically Perturbed Parameterizations), and LSM SPP (Land Surface Model SPP).  
 
    Suite
       A collection of primary physics schemes and interstitial schemes that are known to work
@@ -138,7 +156,7 @@ Glossary
       operational numerical weather prediction applications
 
    Umbrella repository
-      A repository that houses external code, or “externals,” from additional repositories.
+      A repository that houses external code, or "externals," from additional repositories.
 
    Uncoupled
    Uncoupled model
@@ -146,6 +164,7 @@ Glossary
       An uncoupled model contains just one weather or climate model, unlike :term:`coupled models`, which bundle together two or more different weather/climate model components. 
 
    UPP
+   Unified Post Processor
       The `Unified Post Processor <https://dtcenter.org/community-code/unified-post-processor-upp>`__ is software developed at :term:`NCEP` and used operationally for models maintained by NCEP. The UPP processes raw model output from a variety of :term:`NCEP`'s NWP models, including the FV3.
 
    Weather Enterprise
@@ -154,4 +173,4 @@ Glossary
    Weather Model
       A prognostic model that can be used for short- and medium-range research and
       operational forecasts. It can be an atmosphere-only model or be an atmospheric
-      model coupled with one or more additional components, such as a wave or ocean model.
+      model coupled with one or more additional components, such as a wave or ocean model. The UFS Weather Model repository is publicly available on `GitHub <https://github.com/ufs-community/ufs-weather-model>`__. 

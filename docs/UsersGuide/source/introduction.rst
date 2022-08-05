@@ -1,260 +1,467 @@
 .. _introduction:
 
-============
+****************
 Introduction
-============
+****************
 
-The Unified Forecast System (:term:`UFS`) is a community-based, coupled, comprehensive
-Earth modeling system with applications that span local to global domains and
-predictive time scales. It is designed to be the source system for NOAA’s
-operational numerical weather prediction applications while enabling both
-research and capabilities for the broader weather enterprise. For more
-information about the UFS, visit the UFS Portal at https://ufscommunity.org/.
+The Unified Forecast System (:term:`UFS`) is a community-based, coupled, comprehensive Earth modeling system. NOAA's operational model suite for numerical weather prediction (NWP) is quickly transitioning to the UFS from a number of different modeling systems. The UFS enables research, development, and contribution opportunities within the broader :term:`Weather Enterprise` (e.g., government, industry, and academia). For more information about the UFS, visit the `UFS Portal <https://ufscommunity.org/>`__.
 
-The Unified Forecast System (:term:`UFS`) can be configured into multiple applications
-(see a complete list at https://ufscommunity.org/#/science/aboutapps).
-The first of these to be released to the community is the UFS Medium-Range
-(MR) Weather Application (App), which targets predictions of atmospheric
-behavior out to about two weeks. The MR Weather App v1.1 includes a prognostic
-atmospheric model, pre- and post-processing tools, and a community workflow
-The release is available on GitHub and is designed to be a code that the
-community can run and improve. It is portable to a set of commonly used
-platforms. A limited set of configurations of the release, such as specific
-model resolutions and physics options, are documented and supported.
-This documentation provides an overview of the release components, a
-description of the supported capabilities, a quick start for running the
-application, and information on where to find more information and obtain
-support.
+The UFS includes `multiple applications <https://ufscommunity.org/science/aboutapps/>`__ that span local to global domains and a range of predictive time scales. This documentation describes the UFS Medium-Range Weather (MRW) Application (App), which targets predictions of atmospheric behavior out to about two weeks. The MRW App includes a prognostic atmospheric model, pre- and post-processing tools, and a community workflow. These components are documented within this User's Guide and supported through a `community forum <https://forums.ufscommunity.org/>`__. Additionally, the MRW App has transitioned from a :term:`CIME`-based workflow to the `Global Workflow <https://github.com/NOAA-EMC/global-workflow/>`__. New and improved capabilities for the upcoming release include the option to run in coupled or uncoupled mode, the addition of a verification package (METplus) for both deterministic and ensemble simulations, and support for the updated ``GFS_v17_p8`` physics scheme and stochastic physics. Future work will expand the capabilities of the application to include data assimilation (:term:`DA`) and a forecast restart/cycling capability.
 
-Pre-processor and initial conditions
-====================================
-The MR Weather App is distributed with the :term:`chgres_cube` pre-processing software.
-It converts the Global Forecast System (GFS) analyses to the format needed as
-input to the model, which is six tiles in netCDF format. Additional information
-about chgres_cube can be found in the `chgres_cube User’s Guide <https://ufs-utils.readthedocs.io/en/ufs-v1.1.0/>`_.
+..
+   COMMENT: GitHub Discussions aren't live yet for the MRW, but aren't we deprecating the forums soon? Could post in global-workflow Discussions? https://github.com/NOAA-EMC/global-workflow/discussions
 
-GFS analyses for initializing the MR Weather App can be in Gridded Binary
-v2 (:term:`GRIB2`) format (in 0.50, or 1.0 degree grid spacing),  the NOAA Environmental
-Modeling System (:term:`NEMS`) Input/Output (:term:`NEMSIO`) format, or Network Common Data Form (:term:`NetCDF`).
-Initialization from dates starting on January 1, 2018 are supported. Dates
-before that may work, but are not guaranteed. GFS public archives can be
-accessed through  the `THREDDS Data Server at NCEI <https://www.ncei.noaa.gov/thredds/model/gfs.html>`_.
-A small sample of files in all supported formats can be found at `the EMC FTP site <https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.
-The initial conditions may be pre-staged on disk by the user or
-automatically downloaded by the workflow.
+The MRW App is `available on GitHub <https://github.com/ufs-community/ufs-mrweather-app.git>`__ and is designed to be code that the community can run and improve. It is portable to a set of `commonly used platforms <https://github.com/ufs-community/ufs-mrweather-app/wiki/Supported-Platforms-and-Compilers-for-MRW-App>`__. A limited set of configurations, such as specific model resolutions and physics options, are documented and supported. This documentation provides a :ref:`Quick Start Guide <quickstart>` and will soon provide a detailed guide for running the MRW Application on supported platforms. It also provides an overview of the release components and details on how to customize or modify different portions of the workflow.
 
-Forecast model
-==============
+The MRW App v1.1.0 citation is as follows and should be used when presenting results based on research conducted with the App: 
 
-The prognostic model in the MR Weather App is the atmospheric component
-of the UFS Weather Model, which employs the Finite-Volume Cubed-Sphere (:term:`FV3`)
-dynamical core. The atmospheric model in this release is an updated version
-of the atmospheric model that is being used in the operational GFS v15.
-A User’s Guide for the UFS Weather Model is `here <https://ufs-weather-model.readthedocs.io/en/ufs-v1.1.0>`_.
+UFS Development Team. (2020, March 11). Unified Forecast System (UFS) Medium-Range Weather (MRW) Application (Version v1.1.0). 
 
-Supported grid configurations for this release are the global meshes with
-resolutions of C96 (~100 km), C192 (~50 km), C384 (~25 km), and C768 (~13 km),
-all with 64 vertical levels. The `NOAA Geophysical Fluid Dynamics Laboratory website <https://www.gfdl.noaa.gov/fv3>`_
-provides more information about FV3 and its grids. Additional information about the FV3 dynamical
-core is at `here <https://noaa-emc.github.io/FV3_Dycore_ufs-v1.1.0/html/index.html>`_.
-Interoperable atmospheric physics, along with the Noah land surface model, are
-supported through the use of the Common Community Physics Package (:term:`CCPP`;
-described `here <https://dtcenter.org/community-code/common-community-physics-package-ccpp>`_).
-There are four physics suites supported for the release.
-Two of them are variations of an updated version of the physics :term:`suite` used in
-the operational GFS v15, while the other two are variations of an experimental
-suite that includes a subset of the developments for the next version of GFS,
-GFS v16. The variations pertain to how the sea surface temperature (SST) is
-initialized and parameterized to evolve, and are chosen depending on the type
-of initial conditions for the App. Initial conditions in :term:`GRIB2` format have a
-single two-dimensional field to initialize the SST, which must be kept constant
-throughout the forecast. Initial conditions in :term:`NEMSIO` or :term:`netCDF` format have two two-dimensional
-fields that describe the baseline SST and its near-surface perturbation related
-to the diurnal cycle, enabling the use of the near-sea-surface-temperature (NSST)
-physical parameterization to forecast the temporal variation in SST due to the
-diurnal cycle.
+..
+   COMMENT: Update release number/links.
+   COMMENT: Is the "future work" section accurate?
+   COMMENT: Add v2.0.0 wiki page!
+   COMMENT: Add "Zenodo. https://doi.org/........."
 
-A scientific description of the CCPP parameterizations and suites can be found in the
-`CCPP Scientific Documentation <https://dtcenter.org/GMTB/v4.1.0/sci_doc>`_, and
-CCPP technical aspects are described in the `CCPP Technical Documentation <https://ccpp-techdoc.readthedocs.io/en/v4.1.0/>`_.
-The model namelists for the physics suites differ in ways that go beyond
-the physics to optimize various aspects of the model for use with each of the
-suites.
-The use of :term:`stochastic<Stochastic physics>` processes to represent model uncertainty is an option
-in this release, although the option is off by default in both of the
-supported physics suites. Three methods are supported for use separately or in
-combination: Stochastic Kinetic Energy Backscatter (SKEB), Stochastically
-Perturbed Physics Tendencies (SPPT), and Specific Humidity perturbations (SHUM).
-A `User’s Guide for the use of stochastic physics <https://stochastic-physics.readthedocs.io/en/ufs-v1.1.0>`_ is provided.
+===========================
+How to Use This Document
+===========================
 
-The UFS Weather Model ingests files produced by chgres_cube and outputs files
-in netCDF format on a Gaussian grid in the horizontal and model levels in the
-vertical.
+This guide instructs both novice and experienced users on downloading, building, and running the MRW Application. Please post questions in the `UFS Forums <https://forums.ufscommunity.org/>`__.
 
-Post-processor
-================================
+..
+   COMMENT: Or post in GitHub Discussions? (not live yet) Or global-workflow Discussions? https://github.com/NOAA-EMC/global-workflow/discussions
 
-The MR Weather App is distributed with a post-processing tools, the Unified
-Post Processor (UPP). The Unified Post Processor (UPP) converts the
-native netCDF output from the model to the :term:`GRIB2` format on standard isobaric
-coordinates in the vertical. The UPP can also be used to compute a variety of
-useful diagnostic fields, as described in the `UPP User's Guide <https://upp.readthedocs.io/en/upp_v10.1.0/>`_.
+.. code-block:: console
 
-The UPP output can be used with visualization, plotting and verification
-packages, or for further downstream post-processing, e.g. statistical
-post-processing techniques.
+   Throughout the guide, this presentation style indicates shell commands and options, 
+   code examples, etc.
+
+Variables presented as ``$VAR`` or ``Dir123`` in this User's Guide refer to environment variables, variables in scripts, names of files, or directories. 
+
+File paths or code that include angle brackets (e.g., ``<platform>.env``) indicate that users should insert options appropriate to their MRW App configuration (e.g., ``HERA.env``). 
+
+.. hint:: 
+   * To get started running the MRW App, see the :ref:`Quick Start Guide <quickstart>` for beginners or refer to the in-depth chapter on :ref:`Configuring a New Platform <config_new_platform>`.
+   * For an outline of MRW App components, see section :numref:`Section %s <components-overview>` below or refer to :numref:`Chapter %s <components>` for a more in-depth treatment.
+   * For background information on the MRW App code repositories and directory structure, see :numref:`Section %s <MRWStructure>` below. 
+
+   ..
+      COMMENT: Change config new platform ref to ":ref:`Running the Medium-Range Weather Application <build-mrw>`." once it's added. 
+
+
+.. _MRWPrerequisites:
+
+===============================================
+Prerequisites for Using the MRW Application
+===============================================
+
+Background Knowledge Prerequisites
+=====================================
+
+The instructions in this documentation assume that users have certain background knowledge: 
+
+   * Familiarity with LINUX/UNIX systems
+   * Command line basics
+   * System configuration knowledge (e.g., compilers, environment variables, paths, etc.)
+   * Numerical Weather Prediction
+   * Meteorology
+
+..
+   COMMENT: Add subpoints!
+
+Additional background knowledge in the following areas could be helpful:
+
+   * High-Performance Computing (HPC) Systems for those running the MRW App on an HPC system
+   * Programming (particularly Python) for those interested in contributing to the MRW App code
+   * Creating an SSH Tunnel to access HPC systems from the command line
+   * Containerization
+   * Workflow Managers/Rocoto
+
+..
+   COMMENT: Eliminate containerization?
+
+.. _software-prereqs:
+
+Software/Operating System Requirements
+=========================================
+The UFS MRW Application has been designed so that any sufficiently up-to-date machine with a UNIX-based operating system should be capable of running the application. NOAA `Level 1 & 2 systems <https://github.com/ufs-community/ufs-mrweather-app/wiki/Supported-Platforms-and-Compilers-for-MRW-App>`__ already have these prerequisites installed. However, users working on other systems must ensure that the following requirements are installed on their system: 
+
+**Minimum Platform Requirements:**
+
+   * UNIX style operating system such as CNL, AIX, Linux, Mac
+
+   ..
+      COMMENT: Does it need to be POSIX-compliant, too, as w/SRW, or is that implied? 
+
+   * >44 GB disk space
+
+      * 18 GB input data from GFS for "out-of-the-box" MRW App case
+      * 8 GB for :term:`HPC-Stack` full installation
+      * 3 GB for ``ufs-mrweather-app`` installation and build
+      * 11 GB for 120hr/5-day forecast 
+   
+   ..
+      COMMENT: Update disk space requirements once "out-of-the-box" case, data, & tests are settled on. CHANGE/REVISE all numbers above for accuracy!!!
+      COMMENT: What are the memory requirements?
+
+   * Python 3.7+
+   
+   ..
+      COMMENT: Add: ", including prerequisite packages ``jinja2``, ``pyyaml`` and ``f90nml``"??? Or is that just SRW?
+
+   * Perl 5
+
+   * Git client (1.8+)
+
+   * Fortran compiler released since 2018
+
+      * gfortran v9+ or ifort v18+ are the only ones tested, but others may work.
+
+   * C compiler compatible with the Fortran compiler
+
+      * gcc v9+, ifort v18+, and clang v9+ (macOS, native Apple clang or LLVM clang) have been tested
+
+      ..
+         COMMENT: Should it be C AND C++???
+         COMMENT: Have all of these versions been tested...?
+         COMMENT: Do we need curl and wget for MRW?
+
+   * Lmod
+
+The following software is also required to run the MRW Application, but :term:`HPC-Stack` (which contains the software libraries necessary for building and running the MRW App) can be configured to build these requirements:
+
+   * :term:`MPI` (MPICH, OpenMPI, or other implementation)
+
+      * Only **MPICH** or **OpenMPI** can be built with HPC-Stack. Other options must be installed separately by the user (if desired). 
+   
+   * `CMake v3.20+ <http://www.cmake.org/>`__
+
+   ..
+      COMMENT: Check that this is the case for spack-stack, not just HPC-Stack.
+
+   * `HPC-Stack <https://github.com/NOAA-EMC/hpc-stack>`__, which includes:
+
+      * `NCEPLIBS <https://github.com/NOAA-EMC/NCEPLIBS>`__
+      * `NCEPLIBS-external <https://github.com/NOAA-EMC/NCEPLIBS-external>`__ (includes ESMF)
+
+   ..
+      COMMENT: Are more software packages required? Should NCEPLIBS, etc. be listed at all???
+
+Optional but recommended prerequisites for all systems:
+
+   * Conda for installing/managing Python packages
+   * Bash v4+
+   * Rocoto Workflow Management System (1.3.1)
+   * Python packages ``matplotlib``, ``numpy``, ``cartopy``, and ``netCDF4`` for graphics
+
+..
+   COMMENT: Are these the only packages need for graphics in MRW? 
+
+After installing these prerequisites, users may continue on to build the MRW App as documented in the :ref:`quickstart`.
+
+
+.. _components-overview:
+
+==============================
+MRW App Components Overview 
+==============================
+
+Build System and Workflow
+===========================
+
+The MRW Application has a portable CMake-based build system that packages together all the components required to build the MRW Application. Once built, users can generate the Rocoto-based Global Workflow, which will run each task in the proper sequence. (See `Rocoto documentation <https://github.com/christopherwharrop/rocoto/wiki/Documentation>`__ for more on workflow management.) 
+
+..
+   COMMENT: Can the app also be run stand-alone (i.e. w/o a workflow manager)?
+
+The MRW Application has been tested on a variety of platforms widely used by researchers, including NOAA High-Performance Computing (HPC) systems (e.g., Hera, Jet), cloud environments, and generic Linux and macOS systems. Four `levels of support <https://github.com/ufs-community/ufs-mrweather-app/wiki/Supported-Platforms-and-Compilers-for-MRW-App>`__ have been defined for the MRW Application. Preconfigured (Level 1) systems already have the required software libraries available in a central location via the :term:`HPC-Stack`. The MRW Application is expected to build and run out-of-the-box on these systems, and users can :ref:`download the MRW App code <quickstart>` without first installing prerequisites. On other platforms (Levels 2-4), the required libraries will need to be installed as part of the :ref:`MRW Application build <quickstart>` process. On Level 2 platforms, installation should be straightforward, and the MRW App should build and run successfully. On Level 3 & 4 platforms, users may need to perform additional troubleshooting since little or no pre-release testing has been conducted on these systems.
+
+..
+   COMMENT: Is Linux/Mac still supported? Seems like we're not testing it... 
+   COMMENT: Switch quickstart ref to DownloadMRWApp/BuildMRW ref once available.
+   COMMENT: What about Level 2 systems?! Do we have any?
+
+
+Data and Pre-Processing Utilities 
+=================================================
+
+The MRW App requires input model data in :term:`GRIB2`, :term:`NEMSIO`, or :term:`netCDF` format. The :term:`chgres_cube` pre-processing software, which is part of the `UFS_UTILS <https://github.com/ufs-community/UFS_UTILS>`__ pre-processing utilities package, uses these files to initialize and prepare the model. Additional information about the pre-processor utilities can be found in :numref:`Section %s <utils>`, in the `UFS_UTILS Technical Documentation <https://noaa-emcufs-utils.readthedocs.io/en/latest>`__, and in the `UFS_UTILS Scientific Documentation <https://ufs-community.github.io/UFS_UTILS/index.html>`__.
+
+Forecast Model
+==================
+
+Atmospheric Model
+--------------------
+The prognostic atmospheric model in the UFS MRW Application uses the Finite-Volume Cubed-Sphere
+(:term:`FV3`) dynamical core. The :term:`dynamical core` is the computational part of a model that solves the equations of fluid motion for the atmospheric component of the UFS Weather Model. A User's Guide for the UFS :term:`Weather Model` can be found `here <https://ufs-weather-model.readthedocs.io/en/latest/>`__. Additional information about the FV3 dynamical core can be found in the `scientific documentation <https://repository.library.noaa.gov/view/noaa/30725>`__ and the `technical documentation <https://noaa-emc.github.io/FV3_Dycore_ufs-v2.0.0/html/index.html>`__.
+
+Common Community Physics Package
+------------------------------------
+
+The `Common Community Physics Package <https://dtcenter.org/community-code/common-community-physics-package-ccpp>`__ (:term:`CCPP`) supports interoperable atmospheric physics and land surface model options. Atmospheric physics are a set of numerical methods describing small-scale processes such as clouds, turbulence, radiation, and their interactions. The MRW App currently includes the ``GFS_v17_p8`` physics suite as well as :term:`stochastic<Stochastic physics>` options to represent model uncertainty. 
+
+..
+   COMMENT: It seems like all but the GFS v16 are designed only for high resolution grids... so why are we including them with this release? It seems like GFS v16 would be more appropriate for the MRW App.
+
+Unified Post-Processor
+=========================
+
+The Medium-Range Weather (MRW) Application is distributed with a post-processing tool, the `Unified Post Processor <https://dtcenter.org/community-code/unified-post-processor-upp>`__ (:term:`UPP`). The UPP converts the native :term:`netCDF` output from the model to :term:`GRIB2` format on standard isobaric coordinates in the vertical direction. The UPP can also be used to compute a variety of useful diagnostic fields, as described in the `UPP User's Guide <https://upp.readthedocs.io/en/upp_v10.1.0/InputsOutputs.html#>`__. The UPP output can be used with visualization, plotting and verification packages, or for further downstream post-processing (e.g., statistical post-processing techniques).
+
+.. _Metplus:
+
+METplus Verification Suite
+=============================
+
+The Model Evaluation Tools (MET) package is a set of statistical verification tools developed by the `Developmental Testbed Center <https://dtcenter.org/>`__ (DTC) for use by the :term:`NWP` community to help them assess and evaluate the performance of numerical weather predictions. MET is the core component of the enhanced METplus verification framework. METplus spans a wide range of temporal and spatial scales. It is intended to be extensible through additional capabilities developed by the community. More details about METplus can be found in :numref:`Chapter %s <MetplusComponent>` and on the `METplus website <https://dtcenter.org/community-code/metplus>`__.
 
 Visualization Example
-=========================
+=======================
 
-This release does not include support for model verification or visualization. Currently,
-only four basic NCAR Command Language (:term:`NCL`) scripts are provided to create a basic visualization of model output.
-This capability is provided only as an example for users familiar with NCL, and may be used to
-do a visual check to verify that the application is
-producing reasonable results.
+The MRW Application includes Python scripts to create basic visualizations of the model output. The scripts may be used to complete a visual check to verify that the application is producing reasonable results.
 
-The scripts are available in the FTP site ftp://ftp.emc.ncep.noaa.gov/EIB/UFS/visualization_example/.
-File visualization_README describes the plotting scripts. Example plots are provided
-for the C96 5-day forecasts initialized on 8/29/2019 00 UTC using :term:`GRIB2`,  :term:`NEMSIO`, or :term:`netCDF`
-files as input datasets.
+.. _MRWStructure:
 
-Workflow and Build System
-=========================
-The MR Weather App has a user-friendly workflow and a portable build system that
-invokes the CMake build software before compiling the codes. This release is
-supported for use with Linux and Mac operating systems, with Intel and GNU
-compilers. There is a small set of system libraries that are assumed to be
-present on the target computer, including CMake, a compiler, and the MPI
-library that enables parallelism.
+===========================================
+Code Repositories and Directory Structure
+===========================================
 
-A few select computational platforms have been preconfigured for the release
-with all the required libraries for building community releases of
-UFS models and applications available in a central place. That means
-bundled libraries (:term:`NCEPLIBS`) and third-party libraries (:term:`NCEPLIBS-external`),
-including the Earth System Modeling Framework (ESMF)
-have both been built. Applications and models are expected to build and run out of the box.
-In preconfigured platforms, users can proceed directly to the using the
-workflow, as described in the :ref:`Quick Start chapter <quickstart>`.
+Hierarchical Repository Structure
+=====================================
 
-A few additional computational platforms are considered configurable for the release.
-Configurable platforms are platforms where all of the required libraries for
-building community releases of UFS models and applications are expected to
-install successfully, but are not available in a central place. Applications and
-models are expected to build and run once the required bundled libraries
-(:term:`NCEPLIBS`) and third-party libraries (:term:`NCEPLIBS-external`) are built.
+The :term:`umbrella repository` for the MRW Application is named ``ufs-mrweather-app``. It is available on GitHub at https://github.com/ufs-community/ufs-mrweather-app. An umbrella repository is a repository that pulls in external code, called "externals," from additional repositories. The MRW Application includes the ``manage_externals`` tool and a configuration file called ``Externals.cfg``, which tags the appropriate versions of the external repositories associated with the MRW App (see :numref:`Table %s <top_level_repos>`).
 
-Limited-test and Build-Only computational platforms are those in which the developers
-have built the code but little or no
-pre-release testing has been conducted, respectively.
-A complete description of the levels of support, along with a list of preconfigured
-and configurable platforms can be found `here <https://github.com/ufs-community/ufs/wiki/Supported-Platforms-and-Compilers>`_.
+.. _top_level_repos:
 
-The workflow leverages the Common Infrastructure for Modeling the Earth (:term:`CIME`)
-Case Control System (CCS). As described in the `CIME documentation <http://esmci.github.io/cime/versions/ufs_release_v1.1/html/index.html>`_,
-it comes with two default configurations, or
-Component Sets (compsets). One compset is used to evoke the physics :term:`suite`
-used in the operational GFS v15, while the other is used to evoke the
-experimental GFS v16 physics. Based on the type of initial conditions, the
-workflow determines whether or not to employ the variant with simple or more complex
-SST. The workflow provides
-ways to choose the grid resolution, as well as to change namelist options,
-such as history file frequency. It also allows for configuration of other
-elements of the workflow; for example, whether to run some or all of the
-pre-processing, forecast model, and post-processing steps. The CIME builds
-the forecast model and the workflow itself, but not the :term:`NCEP` Libraries or the
-pre- and post-processing tools.
+.. table::  List of top-level repositories that comprise the UFS MRW Application
 
-`CIME`_ supports a set of tests for the MR Weather App, including the Smoke
-Startup Test, the Exact Restart from Startup Test, and the Modified Threading
-OPENMP bit for bit Test. These tests are described in more detail later in this
-document and are intended for users to verify the App installation in new
-platforms and to test the integrity of their code in case
-they modify the source code.
+   +----------------------------------+---------------------------------------------------------+
+   | **Repository Description**       | **Authoritative repository URL**                        |
+   +==================================+=========================================================+
+   | UFS Medium-Range Weather         | https://github.com/ufs-community/ufs-mrweather-app      |
+   | Application Umbrella Repository  |                                                         |
+   +----------------------------------+---------------------------------------------------------+
+   | Repository for the Global        | https://github.com/NOAA-EMC/global-workflow             |
+   | Workflow                         |                                                         |
+   +----------------------------------+---------------------------------------------------------+
 
+The Global Workflow ``checkout.sh`` script then checks out the repositories listed in :numref:`Table %s <gw_repos>`. 
+
+.. _gw_repos:
+
+.. table::  List of Global Workflow subcomponents included in the UFS MRW Application
+
+   +----------------------------------+---------------------------------------------------------+
+   | **Repository Description**       | **Authoritative repository URL**                        |
+   +==================================+=========================================================+
+   | UFS Weather Model Repository     | https://github.com/ufs-community/ufs-weather-model      |
+   +----------------------------------+---------------------------------------------------------+
+   | Repository for UFS utilities,    | https://github.com/ufs-community/UFS_UTILS              |
+   | including pre-processing,        |                                                         |
+   | chgres_cube, and more            |                                                         |
+   +----------------------------------+---------------------------------------------------------+
+   | Unified Post Processor (UPP)     | https://github.com/NOAA-EMC/UPP                         |
+   | Repository                       |                                                         |
+   +----------------------------------+---------------------------------------------------------+
+   | Verification package using MET   | https://github.com/NOAA-EMC/EMC_verif-global.git        |
+   | and METplus                      |                                                         |
+   +----------------------------------+---------------------------------------------------------+
+
+The UFS Weather Model is itself an :term:`umbrella repository` and contains a number of subcomponent repositories, which are documented `here <https://ufs-weather-model.readthedocs.io/en/latest/CodeOverview.html>`__. 
+
+   .. note::
+      The MRW Application prerequisite libraries (including NCEP Libraries and external libraries) are not included in the MRW App repository. The :term:`HPC-Stack` repository assembles these prerequisite libraries. HPC-Stack has already been built on `preconfigured (Level 1) platforms <https://github.com/ufs-community/ufs-mrweather-app/wiki/Supported-Platforms-and-Compilers-for-MRW-App>`__. However, it must be built on other systems. Users can view the HPC-Stack documentation :external:ref:`here <Intro>`. 
+
+
+.. _TopLevelDirStructure:
+
+Directory Structure
+======================
+The ``ufs-mrweather-app`` :term:`umbrella repository` structure is determined by the ``local_path`` settings contained within the ``Externals.cfg`` file. After ``manage_externals/checkout_externals`` is run (see :numref:`Chapter %s <quickstart>`), the specific GitHub repositories described in :numref:`Table %s <top_level_repos>` are cloned into the target subdirectories shown below. Directories that will be created later as part of the build process appear in parentheses and will not be visible until after the build is complete. Some files and directories have been removed for brevity.
+
+.. _dir-str:
+
+.. code-block:: console
+
+   ufs-mrweather-app/
+      ├── build_global-workflow.sh
+      ├── describe_version
+      ├── docs
+      │   └── UsersGuide
+      ├── Externals.cfg
+      ├── global-workflow
+      │   ├── docs
+      │   ├── ecf
+      │   ├── env
+      │   │   ├── gfs.ver
+      │   │   ├── HERA.env
+      │   │   ├── JET.env
+      │   │   └── ORION.env
+      │   ├── (exec)
+      │   ├── Externals.cfg
+      │   ├── fix
+      │   ├── gempak
+      │   │   ├── dictionaries
+      │   │   ├── fix
+      │   │   └── ush
+      │   ├── jobs
+      │   │   ├── JGDAS_<JOBS>    # multiple scripts
+      │   │   ├── JGFS_<JOBS>     # multiple scripts
+      │   │   ├── JGLOBAL_<JOBS>  # multiple scripts
+      │   │   └── rocoto
+      │   ├── modulefiles
+      │   │   ├── module_base.<platform>.lua
+      │   │   ├── modulefile.ww3.<platform>.lua
+      │   │   ├── module-setup.csh.inc
+      │   │   ├── module-setup.sh.inc
+      │   │   └── workflow_utils.<platform>.lua
+      │   ├── parm
+      │   │   ├── chem
+      │   │   ├── config
+      │   │   ├── mom6
+      │   │   ├── parm_fv3diag
+      │   │   ├── parm_wave
+      │   │   ├── post
+      │   │   ├── product
+      │   │   ├── relo
+      │   │   ├── transfer
+      │   │   ├── wave
+      │   │   └── wmo
+      │   ├── README.md
+      │   ├── scripts
+      │   │   ├── exgdas_<name>.py               # multiple python scripts
+      │   │   ├── exgdas_<name>.sh               # multiple shell scripts
+      │   │   ├── exgfs_aero_init_aerosol.py
+      │   │   ├── exgfs_<name>.sh                # multiple shell scripts
+      │   │   ├── exglobal_<name>.sh             # multiple shell scripts
+      │   │   └── run_<name>.sh                  # multiple shell scripts
+      │   ├── sorc
+      │   │   ├── build_<name>.sh                # multiple shell scripts
+      │   │   ├── checkout.sh
+      │   │   ├── cmake
+      │   │   ├── CMakeLists.txt
+      │   │   ├── enkf_chgres_recenter.fd
+      │   │   ├── enkf_chgres_recenter_nc.fd
+      │   │   ├── fbwndgfs.fd
+      │   │   ├── fv3nc2nemsio.fd
+      │   │   ├── gaussian_sfcanl.fd
+      │   │   ├── gfs_bufr.fd
+      │   │   ├── gfs_build.cfg
+      │   │   ├── install
+      │   │   ├── link_workflow.sh
+      │   │   ├── logs
+      │   │   ├── machine-setup.sh
+      │   │   ├── ncl.setup
+      │   │   ├── partial_build.sh
+      │   │   ├── reg2grb2.fd
+      │   │   ├── regrid_nemsio.fd
+      │   │   ├── supvit.fd
+      │   │   ├── syndat_getjtbul.fd
+      │   │   ├── syndat_maksynrc.fd
+      │   │   ├── syndat_qctropcy.fd
+      │   │   ├── tave.fd
+      │   │   ├── tocsbufr.fd
+      │   │   ├── ufs_model.fd
+      │   │   ├── ufs_utils.fd
+      │   │   ├── verif-global.fd
+      │   │   └── vint.fd
+      │   ├── test
+      │   ├── ush
+      │   ├── util
+      │   │   ├── modulefiles
+      │   │   ├── sorc
+      │   │   └── ush
+      │   └── workflow
+      │   │   └── rocoto
+      ├── LICENSE.md
+      ├── manage_externals
+      │   ├── checkout_externals
+      │   ├── LICENSE.txt
+      │   ├── manic
+      │   └── README.md
+      ├── plotting_scripts
+      │   ├── plot_mrw_cloud_diff.py
+      │   ├── plot_mrw.py
+      │   ├── python_plotting_documentation.txt
+      │   └── sample_output.pdf
+      └── README.md    
+
+===========================================================
 User Support, Documentation, and Contributing Development
-=========================================================
-A `forum-based online support system <https://forums.ufscommunity.org>`_ with topical sections
-provides a centralized location for UFS users and
-developers to post questions and exchange information. The forum complements
-the distributed documentation, summarized here for ease of use.
+===========================================================
+A `forum-based online support system <https://forums.ufscommunity.org>`__ organized by topic provides a centralized location for UFS users and developers to post questions and exchange information. The forum complements the distributed documentation, summarized here for ease of use.
 
-.. table::  Centralized list of documentation
+..
+   COMMENTS: Are these forums shifting to the EPIC website? If so, when? Update? 
+
+.. _list_of_documentation:
+
+.. table:: Centralized list of documentation
 
    +----------------------------+---------------------------------------------------------------------------------+
    | **Documentation**          | **Location**                                                                    |
    +============================+=================================================================================+
-   | MR Weather App v1.1        | https://ufs-mrweather-app.readthedocs.io/en/ufs-v1.1.0                          |
-   | User's Guide               |                                                                                 |
+   | MRW App User's Guide       | https://ufs-mrweather-app.readthedocs.io/en/latest                              |
    +----------------------------+---------------------------------------------------------------------------------+
-   | chgres_cube User's Guide   | https://ufs-utils.readthedocs.io/en/ufs-v1.1.0                                  |
-   +----------------------------+---------------------------------------------------------------------------------+
-   | UFS Weather Model v1.1     | https://ufs-weather-model.readthedocs.io/en/ufs-v1.1.0                          |
-   | User's Guide               |                                                                                 |
-   +----------------------------+---------------------------------------------------------------------------------+
-   | FV3 Documentation          | https://noaa-emc.github.io/FV3_Dycore_ufs-v1.1.0/html/index.html                |
-   +----------------------------+---------------------------------------------------------------------------------+
-   | CCPP Scientific            | https://dtcenter.org/GMTB/v4.1.0/sci_doc                                        |
+   | UFS_UTILS Technical        | https://noaa-emcufs-utils.readthedocs.io/en/latest                              |
    | Documentation              |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | CCPP Technical             | https://ccpp-techdoc.readthedocs.io/en/v4.1.0                                   |
+   | UFS_UTILS Scientific       | https://ufs-community.github.io/UFS_UTILS/index.html                            |
    | Documentation              |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | Stochastic Physics         | https://stochastic-physics.readthedocs.io/en/ufs-v1.1.0                         |
+   | UFS Weather Model          | https://ufs-weather-model.readthedocs.io/en/latest                              |
    | User's Guide               |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | ESMF manual                | http://www.earthsystemmodeling.org/esmf_releases/public/ESMF_8_0_0/ESMF_refdoc  |
+   | Global Workflow User's     | https://github.com/NOAA-EMC/global-workflow/wiki/Run-Global-Workflow            |
+   | Guide                      |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | Common Infrastructure for  | http://esmci.github.io/cime/versions/ufs_release_v1.1/html/index.html           |
-   | Modeling the Earth         |                                                                                 |
+   | FV3 Scientific             | https://repository.library.noaa.gov/view/noaa/30725                             |
+   | Documentation              |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
-   | Unified Post Processor     | https://upp.readthedocs.io/en/upp_v10.1.0/                                      |
+   | FV3 Technical              | https://noaa-emc.github.io/FV3_Dycore_ufs-v2.0.0/html/index.html                |
+   | Documentation              |                                                                                 |
    +----------------------------+---------------------------------------------------------------------------------+
+   | CCPP Scientific            | https://dtcenter.ucar.edu/GMTB/v6.0.0/sci_doc/index.html                        |
+   | Documentation              |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | CCPP Technical             | https://ccpp-techdoc.readthedocs.io/en/v6.0.0/                                  |
+   | Documentation              |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | Stochastic Physics         | https://stochastic-physics.readthedocs.io/en/release-public-v3/                 |
+   | Documentation              |                                                                                 |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | Unified Post Processor     | https://upp.readthedocs.io/en/latest/                                           |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | HPC-Stack Documentation    | https://hpc-stack.readthedocs.io/en/latest/                                     |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | Spack-stack Documentation  | https://spack-stack.readthedocs.io/en/latest/                                   |
+   +----------------------------+---------------------------------------------------------------------------------+
+   | ESMF manual                | https://earthsystemmodeling.org/docs/release/latest/ESMF_usrdoc/                |
+   +----------------------------+---------------------------------------------------------------------------------+
+   
 
-The UFS community is encouraged to contribute to the UFS development effort.
-Issues can be posted in the GitHub repository for the App or the relevant
-subcomponent to report bugs or to announce upcoming contributions to the code
-base. For a code to be accepted in the authoritative repositories, the code
-management rules of each component (described in their User’s Guides) need to be
-followed. Innovations involving the UFS Weather Model need to be tested using
-the regression test described in its User’s Guide. The regression tests
-distributed with the UFS Weather Model differ from the CIME-base tests
-distributed with the MR Weather App because the former are part of the
-official NOAA policy to accept innovations in its code base, while the latter
-are meant as a sanity check for users.
+The UFS community is encouraged to contribute to the development effort of all related
+utilities, model code, and infrastructure. Users can post issues in the related GitHub repositories to report bugs or to announce upcoming contributions to the code base. For code to be accepted in the authoritative repositories, users must follow the code management rules of each UFS component repository, which are outlined in the respective User's Guides listed in :numref:`Table %s <list_of_documentation>` or on the repository's wiki. In particular, innovations involving the UFS Weather Model need to be tested using the regression tests described in its User's Guide. These tests are part of the official NOAA policy on accepting innovations into its code base, whereas the MRW App tests are meant as a sanity check for users.
 
+..
+   COMMENT: Revise this later to better reflect MRW App tests. 
+
+=================
 Future Direction
-================
-Users can expect to see incremental capabilities in upcoming releases of the
-MR Weather App to enhance research options and support operational forecast
-implementations. Planned advancements include addition of component models for
-other Earth domains (such as oceans and sea ice), cycled data assimilation for
-model initialization, and tools for objective forecast verification. Releases
-of other UFS applications, such as the Stand-Alone Regional (SAR) application
-are also forthcoming and will be announced through the UFS Forum and the UFS
-Portal.
+=================
+Users can expect to see incremental improvements and additional capabilities in upcoming releases of the MRW Application to enhance research opportunities and support operational forecast implementations. 
 
-How To Use This Document
-========================
+Planned advancements include addition of: 
 
-This guide instructs both novice and experienced users on downloading,
-building and running the MR Weather Application.
+   * component models for other Earth domains (such as oceans and sea ice)
+   * cycled data assimilation for model initialization
+   * expansion of supported platforms
 
-If you are a new user, we recommend reading the first few sections of
-the `CIME`_ documentation which is written so that, as much as
-possible, individual sections stand on their own. The `CIME`_
-documentation can be scanned and sections read in a relatively
-ad hoc order.
+..
+   COMMENT: Are these up-to-date/accurate? Are any other enhancements in the works for future MRW releases? Those aerosols and GO-CART additions, for example?
 
-.. code-block:: console
 
-    Throughout the guide, this presentation style indicates shell
-    commands and options, fragments of code, namelist variables, etc.
+.. bibliography:: references.bib
 
-.. note::
-
-   Variables presented as ``$VAR`` in this guide typically refer to variables in XML files
-   in a MR Weather App experimental case. From within a case directory, you can determine the value of such a
-   variable with ``./xmlquery VAR``. In some instances, ``$VAR`` refers to a shell
-   variable or some other variable; we try to make these exceptions clear.
-
-.. _CIME: http://esmci.github.io/cime/versions/ufs_release_v1.1/html/index.html
+.. _hpc-stack: https://hpc-stack.readthedocs.io/en/latest/

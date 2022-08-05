@@ -51,6 +51,7 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
     'sphinx.ext.napoleon',
+    'sphinxcontrib.bibtex',
 ]
 
 bibtex_bibfiles = ['references.bib']
@@ -105,9 +106,11 @@ html_theme_options = {"body_max_width": "none"}
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+html_context = {}
 
 def setup(app):
     app.add_css_file('custom.css')  # may also be an URL
+    app.add_css_file('theme_overrides.css')  # may also be an URL
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
@@ -202,7 +205,9 @@ epub_exclude_files = ['search.html']
 # -- Options for intersphinx extension ---------------------------------------
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'https://docs.python.org/': None}
+#intersphinx_mapping = {'https://docs.python.org/': None}
+intersphinx_mapping = {'spack-stack' : ('https://spack-stack.readthedocs.io/en/latest/', None), 
+                       'hpc-stack' : ('https://hpc-stack.readthedocs.io/en/latest/', None) }
 
 # -- Options for todo extension ----------------------------------------------
 

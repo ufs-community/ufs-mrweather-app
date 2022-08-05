@@ -14,9 +14,9 @@ Input files
 
 The MR Weather App requires numerous input files.
 The input files data format can be
-`GRIB2 <https://www.nco.ncep.noaa.gov/pmb/docs/grib2/>`_,
-`NEMSIO <https://github.com/NOAA-EMC/NCEPLIBS-nemsio/wiki/Home-NEMSIO>`_, or
-`netCDF <https://www.unidata.ucar.edu/software/netcdf/>`_, and the input files
+`GRIB2 <https://www.nco.ncep.noaa.gov/pmb/docs/grib2/>`__,
+`NEMSIO <https://github.com/NOAA-EMC/NCEPLIBS-nemsio/wiki/Home-NEMSIO>`__, or
+`netCDF <https://www.unidata.ucar.edu/software/netcdf/>`__, and the input files
 must be staged by
 the user. :term:`CIME` can
 run the end-to-end system and write output files to disk.
@@ -29,7 +29,7 @@ When a user runs the MR Weather App as described in the quickstart guide, input 
 chgres_cube is linked from a location on disk to your run directory via CIME. The data
 is stored in a hierarchical way in the ``$DIN_LOC_IC`` directory
 (see :numref:`Section %s <downloading_input_data>`). A list of the input files for chgres_cube
-can be found `here <https://ufs-utils.readthedocs.io/en/ufs-v1.0.0/chgres_cube.html#program-inputs-and-outputs>`_.
+can be found `here <https://ufs-utils.readthedocs.io/en/ufs-v1.0.0/chgres_cube.html#program-inputs-and-outputs>`__.
 
 -----------------
 UFS Weather Model
@@ -38,7 +38,7 @@ UFS Weather Model
 The input files for the MR Weather Model are located one directory up from the chgres_cube
 input files in ``$RUNDIR``. An extensive description
 of the input files for the MR Weather Model can be found in the `UFS Weather Model Users Guide
-<https://ufs-weather-model.readthedocs.io/en/ufs-v1.1.0>`_.
+<https://ufs-weather-model.readthedocs.io/en/ufs-v1.1.0>`__.
 
 .. note::
    Due to renaming/linking by CIME, the file names used in the MR Weather App
@@ -49,7 +49,7 @@ of the input files for the MR Weather Model can be found in the `UFS Weather Mod
 UPP input files
 ---------------
 
-Documentation for the UPP input files can be found `here <https://upp.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html>`_.
+Documentation for the UPP input files can be found `here <https://upp.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html>`__.
 
 ============
 Output files
@@ -81,7 +81,7 @@ UFS Weather Model
 -----------------
 
 The output files for the UFS Weather Model are described in the `Users Guide
-<https://ufs-weather-model.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html>`_.
+<https://ufs-weather-model.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html>`__.
 
 .. _upp_output_files:
 
@@ -89,11 +89,11 @@ The output files for the UFS Weather Model are described in the `Users Guide
 UPP output files
 -----------------
 
-Documentation for the UPP output files can be found `here <https://upp.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html>`_.
+Documentation for the UPP output files can be found `here <https://upp.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html>`__.
 
 If you wish to modify the fields or levels that are output from the UPP, you will need to make modifications to files ``postcntrl_gfs_f00.xml`` (used to post-process model data at the 0-h forecast lead time) and/or ``postcntrl_gfs.xml`` (used to post-process model data at all other forecast lead times), which reside in the UPP repository distributed with the MR Weather App. Specifically, if the code was cloned in the directory ``my_ufs_sandbox``, the files will be located in ``my_ufs_sandbox/src/post/parm``. Please note that this process requires advanced knowledge of which fields can be output for the UFS Weather Model.
 
-Use the directions in the `UPP Users Guide <https://upp.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html#control-file>`_ for details on how to make modifications to these xml files and for remaking the flat text files that the UPP reads, which are ``postxconfig-NT-GFS.txt`` and ``postxconfig-NT-GFS-F00.txt``. It is important that you do not rename these flat files or the CIME workflow will not use them.
+Use the directions in the `UPP Users Guide <https://upp.readthedocs.io/en/ufs-v1.1.0/InputsOutputs.html#control-file>`__ for details on how to make modifications to these xml files and for remaking the flat text files that the UPP reads, which are ``postxconfig-NT-GFS.txt`` and ``postxconfig-NT-GFS-F00.txt``. It is important that you do not rename these flat files or the CIME workflow will not use them.
 
 Once you have created new flat text files reflecting your changes, you will need to copy or link these static files to the ``/SourceMods/src.ufsatm`` directory within the CIME case directory. When running your case, CIME will first look for the ``postxconfig-NT-GFS.txt`` or ``postxconfig-NT-GFS-F00.txt`` in this directory, depending on forecast hour. If they are not present, the workflow will use the default files in a pre-configured location.
 
@@ -135,7 +135,7 @@ Static files
 
 The user does not need to stage the fix files manually because CIME retrieves
 the fix files from ``$DIN_LOC_ROOT`` (if available) or from a
-`FTP data repository <https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_. When CIME retrieves
+`FTP data repository <https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`__. When CIME retrieves
 the files from the ftp site, it places them in ``$DIN_LOC_ROOT``.
 
 ------------------------------------
@@ -149,13 +149,13 @@ The GFS data can be provided in three formats: :term:`NEMSIO`, :term:`netCDF`, o
 - **NEMSIO**
 
   These files cover the entire globe down to a horizontal resolution of 13 km and
-  can be found at `<https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/>`_.
-  A small sample is also available at the FTP data repository `<https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.
+  can be found at `<https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/>`__.
+  A small sample is also available at the FTP data repository `<https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`__.
 
 - **NetCDF**
 
   These files cover the entire globe down to a horizontal resolution of 13 km and
-  can be found at the FTP data repository `<https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.
+  can be found at the FTP data repository `<https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`__.
 
 - **GRIB2**
 
@@ -165,12 +165,12 @@ The GFS data can be provided in three formats: :term:`NEMSIO`, :term:`netCDF`, o
   are considered current, while files for preceding dates are considered historical.
   However, the cutoff date may change in the future. Here are the locations:
 
-  - 0.5 deg current files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files/catalog.html>`_
-  - 0.5 deg historical files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files-old/catalog.html>`_
-  - 1.0 deg current files can be requested from `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files/catalog.html>`_
-  - 1.0 deg historical files can be requested from `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files-old/catalog.html>`_
+  - 0.5 deg current files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files/catalog.html>`__
+  - 0.5 deg historical files are available at `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g4-anl-files-old/catalog.html>`__
+  - 1.0 deg current files can be requested from `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files/catalog.html>`__
+  - 1.0 deg historical files can be requested from `<https://www.ncei.noaa.gov/thredds/catalog/model-gfs-g3-anl-files-old/catalog.html>`__
 
-  A small sample is also available at the FTP data repository `<https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`_.
+  A small sample is also available at the FTP data repository `<https://ftp.emc.ncep.noaa.gov/EIB/UFS/>`__.
 
 ------------------------------------
 Initial condition naming convention
@@ -201,7 +201,7 @@ In preconfigured platforms, the 08-29-2019 initial conditions are pre-staged in
 ``$DIN_LOC_IC``. Those are GRIB2 files with 0.5 deg resolution.
 
 The default input data for the Hurricane Dorian initialization of 08-29-2019 is also available
-on the `FTP data repository <https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/201908/20190829/>`_.
+on the `FTP data repository <https://ftp.emc.ncep.noaa.gov/EIB/UFS/inputdata/201908/20190829/>`__.
 
 -----------------------------------
 Running the App for different dates

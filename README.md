@@ -6,8 +6,9 @@ atmospheric behavior out to about two weeks. This application will
 includes a full workflow, with pre-processing (preparation of inputs),
 a forecast model, and post-processing.
 
-Details at:
-https://github.com/ufs-community/ufs-mrweather-app/wiki
+Details are available via:
+- The MRW App wiki at https://github.com/ufs-community/ufs-mrweather-app/wiki
+- The MRW App Documentation at https://ufs-mrweather-app.readthedocs.io/en/latest/
 
 Getting started
 
